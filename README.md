@@ -1,1 +1,1 @@
-# Exploring.WPF
+# Exploring.WPF 1.000
