@@ -1,0 +1,2 @@
+﻿- design-time DataContext
+- ItemsControl.Source, ItemsTemplate, ItemsPanelTemplate
