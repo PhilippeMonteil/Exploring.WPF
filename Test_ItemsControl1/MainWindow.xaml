@@ -14,7 +14,7 @@
             
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="Red" Margin="4" TextBlock.Foreground="White">
+                    <Grid Background="Red" TextBlock.Foreground="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50*" />
                             <ColumnDefinition Width="50*" />
@@ -26,9 +26,11 @@
             </ItemsControl.ItemTemplate>
 
             <ItemsControl.ItemContainerStyle>
-                <Style TargetType="FrameworkElement">
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Margin" Value="2" />
                 </Style>
             </ItemsControl.ItemContainerStyle>
+            
         </ItemsControl>
 
     </Grid>

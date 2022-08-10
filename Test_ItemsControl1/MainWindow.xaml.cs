@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ItemsControlLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Test_ItemsControl1
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new TodoItemListTest();
         }
     }
 }
