@@ -9,8 +9,16 @@
         Title="MainWindow" Height="450" Width="800"
         Background="LightGray"
         d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=lib:TodoItemListTest}">
+    
     <Grid>
-        <ListBox ItemsSource="{Binding}"
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Grid.Column="0" 
+                    ItemsSource="{Binding}"
                     Background="Silver" 
                     Width="600" Margin="10" 
                     SelectedIndex="0">
@@ -26,29 +34,6 @@
                                 <Setter Property="Opacity" Value="1.0" />
                             </Trigger.Setters>
                         </Trigger>
-                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                                Duration="0:0:0.2"
-                                                Storyboard.TargetProperty="MaxHeight"
-                                                To="90"  />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
-                            <EventTrigger.Actions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                                Duration="0:0:1"
-                                                Storyboard.TargetProperty="MaxHeight" />
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger.Actions>
-                        </EventTrigger>
                     </Style.Triggers>
                 </Style>
 
@@ -68,5 +53,43 @@
             </ListBox.ItemTemplate>
             
         </ListBox>
+
+        <ListBox Grid.Column="1"
+                    ItemsSource="{Binding}"
+                    Background="Silver" 
+                    Width="600" Margin="10" 
+                    SelectedIndex="0">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="Blue" Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="4" />
+                        <ProgressBar Grid.Column="1" Margin="4" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ItemContainerStyle>
+                
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Opacity" Value="0.5" />
+                    <Setter Property="MaxHeight" Value="75" />
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Trigger.Setters>
+                                <Setter Property="Opacity" Value="1.0" />
+                            </Trigger.Setters>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+
+            </ListBox.ItemContainerStyle>
+            
+        </ListBox>
+
     </Grid>
 </Window>

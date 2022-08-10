@@ -11,3 +11,24 @@
         public string Title { get; init; }
         public int Completion { get; init; }
 
+# ColumnDefinition: percent, ...
+
+    <ColumnDefinition Width="0.5*"/>
+
+# ListBoc : selected item aspect
+
+    <ListBox.ItemContainerStyle>
+        
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="MaxHeight" Value="75" />
+            <Style.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+            <Trigger.Setters>
+                <Setter Property="Opacity" Value="1.0" />
+            </Trigger.Setters>
+        </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </ListBox.ItemContainerStyle>
