@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test0
+namespace ItemsControlLib
 {
 
     public class TodoItem
     {
-        // get requis pour le binding
-        public string Title { get; set; }
-        public int Completion { get; set; }
+        // get requis pour le data binding
+        public string Title { get; init; }
+        public int Completion { get; init; }
 
         public TodoItem(string Title, int Completion)
         {

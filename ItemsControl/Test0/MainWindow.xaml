@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Test0"
+        xmlns:lib="clr-namespace:ItemsControlLib;assembly=ItemsControlLib"
         mc:Ignorable="d"
         Title="Test0" Height="450" Width="800"
         Background="LightGray"
-        d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=local:TodoItemListTest}">
+        d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=lib:TodoItemListTest}">
 
     <Grid Margin ="16" Background="DarkGray" 
           TextElement.Foreground="White" TextElement.FontSize="16">

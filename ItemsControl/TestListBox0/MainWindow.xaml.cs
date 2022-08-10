@@ -1,19 +1,17 @@
 ﻿using ItemsControlLib;
 using System.Windows;
 
-namespace Test0
+namespace TestListBox0
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
-            ItemsControl1.ItemsSource = new TodoItemListTest();
+            this.DataContext = new TodoItemListTest();
         }
-
     }
 }
