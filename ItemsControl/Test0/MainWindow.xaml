@@ -50,12 +50,22 @@
                 </ItemsControl.ItemTemplate>
 
                 <ItemsControl.ItemContainerStyle>
-                    <Style TargetType="{x:Type FrameworkElement}">
-                        <Setter Property="Margin" Value="4" />
-                        <Setter Property="Width" Value="300"/>
+
+                    <Style TargetType="FrameworkElement">
+                        <Setter Property="Margin" Value="8"/>
+                        <Setter Property="Opacity" Value="0.5" />
+                        <Setter Property="MaxHeight" Value="75" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.Setters>
+                                    <Setter Property="Opacity" Value="1.0" />
+                                </Trigger.Setters>
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
+
                 </ItemsControl.ItemContainerStyle>
-                
+
             </ItemsControl>
             
         </ScrollViewer>

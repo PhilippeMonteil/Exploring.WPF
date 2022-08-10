@@ -15,7 +15,7 @@
 
     <ColumnDefinition Width="0.5*"/>
 
-# ListBoc : selected item aspect
+# ListBox : selected item aspect
 
     <ListBox.ItemContainerStyle>
         
