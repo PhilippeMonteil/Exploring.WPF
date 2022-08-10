@@ -33,7 +33,7 @@
     public static readonly System.Windows.DependencyProperty __ItemsSourceProperty__;
     ...
 
-## properties:
+## Properties
 
     [System.ComponentModel.Bindable(true)]
     public System.Collections.IEnumerable __ItemsSource__ { get; set; }
@@ -53,7 +53,9 @@
 > Used __within the template of an item control__ to specify the place in the control's visual tree where 
 the __ItemsPanel__ defined by the ItemsControl is to be added.
 
-## Exemple: __ItemsPanel__
+## .ItemsPanel
+
+### Exemple: __ItemsPanel__
 
     <ItemsControl x:Name="ItemsControl1" 
               ItemsSource="{Binding}"
@@ -69,14 +71,14 @@ In this case, the ItemsPanelTemplate .ItemsPanel property indicates to the ItemP
 ItemsControl ControlTemplate (see Default Template above) that it should use a UniformGrid to contain
 the UI Items produced from the .ItemsSource items using the .ItemTemplate DataTemplate.
 
-## ItemContainerStyle
+## .ItemContainerStyle
 
 The .ItemContainerStyle Style is applied to each UI Item produced from the .ItemsSource content using the .ItemTemplate DataTemplate
 so as to assign them Triggers among others.
 
 Dans le cas de ItemsControl, le TargetType du Style .ItemContainerStyle doit être ContentPresenter
 
-## Exemple
+### Exemple
 
     <ItemsControl ItemsSource="{Binding}">
         
