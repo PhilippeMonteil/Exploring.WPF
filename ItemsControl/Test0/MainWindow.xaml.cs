@@ -24,7 +24,6 @@ namespace Test0
         public MainWindow()
         {
             InitializeComponent();
-
             ItemsControl1.ItemsSource = new TodoItemListTest();
         }
 

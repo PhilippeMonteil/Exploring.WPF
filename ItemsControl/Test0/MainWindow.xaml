@@ -18,23 +18,43 @@
             <ItemsControl x:Name="ItemsControl1" 
                       ItemsSource="{Binding}"
                         Margin="4" Background="DarkBlue">
+                
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="2" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
+                
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="8">
+                        
+                        <DataTemplate.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                            </Style>
+                        </DataTemplate.Resources>
+                        
+                        <Grid Background="Red" Margin="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="100" />
                             </Grid.ColumnDefinitions>
+                            <Ellipse Grid.Column="0" Fill="Silver"/>
                             <TextBlock Grid.Column="0" Text="{Binding Title}" Margin="4" />
                             <ProgressBar Grid.Column="1" Margin="4" Minimum="0" Maximum="100" Value="{Binding Completion}"/>
                         </Grid>
+                        
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
+
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type FrameworkElement}">
+                        <Setter Property="Margin" Value="4" />
+                        <Setter Property="Width" Value="300"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                
             </ItemsControl>
             
         </ScrollViewer>
