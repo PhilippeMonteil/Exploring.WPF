@@ -76,8 +76,20 @@
             <ListBox.ItemContainerStyle>
                 
                 <Style TargetType="ListBoxItem">
+                    
                     <Setter Property="Opacity" Value="0.5" />
                     <Setter Property="MaxHeight" Value="75" />
+
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border BorderThickness="4" BorderBrush="Yellow">
+                                    <ContentPresenter/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    
                     <Style.Triggers>
                         <Trigger Property="IsSelected" Value="True">
                             <Trigger.Setters>
@@ -85,6 +97,7 @@
                             </Trigger.Setters>
                         </Trigger>
                     </Style.Triggers>
+                    
                 </Style>
 
             </ListBox.ItemContainerStyle>
