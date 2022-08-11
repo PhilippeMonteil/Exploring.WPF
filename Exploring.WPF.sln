@@ -21,11 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{B05DA53B-123
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestListBox0", "ItemsControl\TestListBox0\TestListBox0.csproj", "{3B344945-2716-4787-BE67-1767D5194ED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestListBox0", "ItemsControl\TestListBox0\TestListBox0.csproj", "{3B344945-2716-4787-BE67-1767D5194ED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsControlLib", "ItemsControl\ItemsControlLib\ItemsControlLib.csproj", "{99A157D6-C946-4364-93E8-25C0DE35478F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsControlLib", "ItemsControl\ItemsControlLib\ItemsControlLib.csproj", "{99A157D6-C946-4364-93E8-25C0DE35478F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ItemsControl1", "Test_ItemsControl1\Test_ItemsControl1.csproj", "{D3F0DB3B-1E47-434F-BDC7-2E35E3F594B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTreeView0", "ItemsControl\TestTreeView0\TestTreeView0.csproj", "{34E6167B-2957-4F1E-BEB2-C9E0BABEFAD4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_ItemsControl1", "ItemsControl\TestItemsControl1\Test_ItemsControl1.csproj", "{79A4E581-A412-47BE-AF5B-7E6077C6E352}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +51,14 @@ Global
 		{99A157D6-C946-4364-93E8-25C0DE35478F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99A157D6-C946-4364-93E8-25C0DE35478F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99A157D6-C946-4364-93E8-25C0DE35478F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3F0DB3B-1E47-434F-BDC7-2E35E3F594B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3F0DB3B-1E47-434F-BDC7-2E35E3F594B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3F0DB3B-1E47-434F-BDC7-2E35E3F594B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3F0DB3B-1E47-434F-BDC7-2E35E3F594B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E6167B-2957-4F1E-BEB2-C9E0BABEFAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E6167B-2957-4F1E-BEB2-C9E0BABEFAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E6167B-2957-4F1E-BEB2-C9E0BABEFAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E6167B-2957-4F1E-BEB2-C9E0BABEFAD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79A4E581-A412-47BE-AF5B-7E6077C6E352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79A4E581-A412-47BE-AF5B-7E6077C6E352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79A4E581-A412-47BE-AF5B-7E6077C6E352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79A4E581-A412-47BE-AF5B-7E6077C6E352}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,7 +68,8 @@ Global
 		{B05DA53B-1238-41EE-83BF-A1D75C7DB2C4} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
 		{3B344945-2716-4787-BE67-1767D5194ED2} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
 		{99A157D6-C946-4364-93E8-25C0DE35478F} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
-		{D3F0DB3B-1E47-434F-BDC7-2E35E3F594B3} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
+		{34E6167B-2957-4F1E-BEB2-C9E0BABEFAD4} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
+		{79A4E581-A412-47BE-AF5B-7E6077C6E352} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
