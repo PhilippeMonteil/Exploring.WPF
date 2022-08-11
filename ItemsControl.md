@@ -9,7 +9,7 @@
                                 System.Windows.Markup.IAddChild
     {
 
-## Default template : cf [WPF soure code](https://github.com/dotnet/wpf)
+## Default template : cf [WPF source code](https://github.com/dotnet/wpf)
 
     <Style x:Key="{x:Type ItemsControl}"
            TargetType="{x:Type ItemsControl}">
@@ -30,7 +30,7 @@
 
 ## Fields
 
-    public static readonly System.Windows.DependencyProperty __ItemsSourceProperty__;
+    public static readonly System.Windows.DependencyProperty ItemsSourceProperty;
     ...
 
 ## Properties
@@ -76,10 +76,10 @@ the UI Items produced from the .ItemsSource items using the .ItemTemplate DataTe
 The __.ItemContainerStyle__ Style is applied to each UI Item produced from the .ItemsSource content using the .ItemTemplate DataTemplate
 so as to assign them Triggers among others.
 
-Dans le cas de __ItemsControl__, le TargetType du Style .ItemContainerStyle doit être ContentPresenter
+Dans le cas de __ItemsControl__, le TargetType du Style .ItemContainerStyle doit être ContentPresenter.
 
 Dans le cas de __ListBox__, le TargetType du Style .ItemContainerStyle doit être [ListBoxItem](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.listboxitem?view=windowsdesktop-6.0):
-le Style peut assigner un ControlTemplate aux ItemContainer, de ce type ListBoxItem ...  
+le Style peut assigner un ControlTemplate aux ItemContainer de ce type ListBoxItem ...  
 Pour un Item donné, l'UI produit par l'__ItemTemplate__ apparaît dans le __ContentPresenter__ 
 du __ControlTemplate__ (assigné via le Style __.ItemContainerStyle__ de la ListBox) de son ListBoxItem hôte. 
 
