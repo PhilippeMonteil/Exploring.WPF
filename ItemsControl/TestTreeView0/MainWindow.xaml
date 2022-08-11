@@ -37,6 +37,11 @@
         </Grid.ColumnDefinitions>
 
         <TreeView Grid.Column="0" ItemsSource="{Binding}" >
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="Header" Value="{Binding Title}" />
+                </Style>
+            </TreeView.ItemContainerStyle>
         </TreeView>
 
     </Grid>

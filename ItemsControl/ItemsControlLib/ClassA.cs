@@ -11,16 +11,19 @@ namespace ItemsControlLib
     public class ClassA : List<ClassB>
     {
         public string? Name { get; init; }
+        public string Title => $"Title({Name})";
     }
 
     public class ClassB : List<ClassC>
     {
         public string? Name { get; init; }
+        public string Title => $"Title({Name})";
     }
 
     public class ClassC
     {
         public string? Name { get; init; }
+        public string Title => $"Title({Name})";
     }
 
     public class ClassATest : ClassA
