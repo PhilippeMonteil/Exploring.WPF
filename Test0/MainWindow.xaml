@@ -9,18 +9,20 @@
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=lib:TodoItemListTest}">
 
-    <Window.Resources>
-    </Window.Resources>
+    <Window.DataContext>
+        <lib:TodoItemListTest/>
+    </Window.DataContext>
 
     <StackPanel Background="DarkGray">
-        <ListBox ItemsSource="{Binding}" Background="LightGray">
+        <ListBox ItemsSource="{Binding}" Background="LightGray" TextBlock.Foreground="White">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding XPath=ID/@name}" Margin="8"/>
+                    <Grid Background="Red" >
+                        <TextBlock Text="{Binding Title}" Margin="8" />
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Width="200" Height="200" Content="{Binding XPath=ID/@name}"/>
     </StackPanel>
 
 </Window>
