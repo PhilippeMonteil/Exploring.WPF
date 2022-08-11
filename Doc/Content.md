@@ -1,3 +1,4 @@
+
 # Content
 
 ## [ContentControl](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.contentcontrol?view=windowsdesktop-6.0)
@@ -54,7 +55,6 @@ Properties:
 
     [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
     public class ContentPresenter : System.Windows.FrameworkElement
-
 
 Inheritance:
 
