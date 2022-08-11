@@ -43,6 +43,14 @@ Inheritance:
 TreeViewItem dérive de ItemsControl/HeaderedItemsControl.
 Les items qu'il liste sont de type TreeViewItem.
 
+en résumé :
+
+	TreeView : ItemsControl
+		TreeViewItem[] Items
+
+	TreeViewItem : HeaderedItemsControl
+		TreeViewItem[] Items
+
 # [HeaderedItemsControl](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.headereditemscontrol?view=windowsdesktop-6.0)
 
 		[System.Windows.Localizability(System.Windows.LocalizationCategory.Menu)]
@@ -92,6 +100,7 @@ Properties:
 
 Represents a DataTemplate that supports HeaderedItemsControl, such as TreeViewItem or MenuItem.
 
+	// Represents a DataTemplate that supports HeaderedItemsControl, such as TreeViewItem or MenuItem.
 	public class HierarchicalDataTemplate : System.Windows.DataTemplate
 
 Inheritance:

@@ -36,3 +36,11 @@
 # [Control Library](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/control-library?view=netframeworkdesktop-4.8)
 
 # [WPF Partial Trust Security](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/wpf-partial-trust-security?view=netframeworkdesktop-4.8)
+
+# TreeView, TreeViewItem
+
+	TreeView : ItemsControl
+		TreeViewItem[] Items
+
+	TreeViewItem : HeaderedItemsControl
+		TreeViewItem[] Items
