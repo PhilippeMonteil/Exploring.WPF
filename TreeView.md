@@ -111,3 +111,38 @@ Inheritance:
 	DataTemplate
 	HierarchicalDataTemplate
 
+## Exemple
+
+    <Window.Resources>
+
+        <HierarchicalDataTemplate x:Key="ClassA" DataType="lib:ClassA" ItemsSource="{Binding}">
+            <TextBlock Text="{Binding Name}"/>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ClassB" DataType="lib:ClassB" ItemsSource="{Binding}">
+            <TextBlock Text="{Binding Name}"/>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="ClassC" DataType="lib:ClassC">
+            <TextBlock Text="{Binding Name}"/>
+        </HierarchicalDataTemplate>
+
+    </Window.Resources>
+
+    <Window.DataContext>
+        <lib:ClassATest/>
+    </Window.DataContext>
+    
+    <Grid Background="DarkGray">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <TreeView Grid.Column="0" 
+				ItemsSource="{Binding}" 
+				ItemTemplate="{StaticResource ClassA}">
+        </TreeView>
+
+    </Grid>
