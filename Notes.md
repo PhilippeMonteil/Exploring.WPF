@@ -1,4 +1,6 @@
 
+# [DotNet Fundamentals](https://docs.microsoft.com/en-us/dotnet/fundamentals/)
+
 # design time data context
 
 	d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=local:TodoItemListTest}"
@@ -50,6 +52,16 @@
 Specifies which XML namespace prefixes encountered in a markup file may be ignored by a XAML processor.
 The mc:Ignorable attribute supports markup compatibility both for custom namespace mapping 
 and for XAML versioning.
+
+## Exemple:
+
+    <Window x:Class="Test0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
 
 # XmlDataProvider
 
