@@ -89,6 +89,12 @@
     [System.ComponentModel.Bindable(true)]
     public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
 
+## [ContentPropertyAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.windows.markup.contentpropertyattribute?view=windowsdesktop-6.0)
+
+Indicates which property of a type is the XAML content property. 
+A XAML processor uses this information when processing XAML child elements 
+of XAML representations of the attributed type.
+
 ## [StyleSelector](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.styleselector?view=windowsdesktop-6.0)
 
     public virtual System.Windows.Style SelectStyle (object item, System.Windows.DependencyObject container);
