@@ -12,11 +12,11 @@
     <Window.Resources>
 
         <HierarchicalDataTemplate DataType="{x:Type lib:ClassA}" ItemsSource="{Binding}">
-            <TextBlock Text="{Binding Name}"/>
+            <TextBlock Text="{Binding Title}"/>
         </HierarchicalDataTemplate>
 
         <HierarchicalDataTemplate DataType="{x:Type lib:ClassB}" ItemsSource="{Binding}">
-            <TextBlock Text="{Binding Name}"/>
+            <TextBlock Text="{Binding Title}"/>
         </HierarchicalDataTemplate>
 
         <DataTemplate DataType="{x:Type lib:ClassC}">

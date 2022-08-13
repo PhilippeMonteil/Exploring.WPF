@@ -95,27 +95,27 @@ Elaboration du VisualTree d'un ItemsControl
 
   son élaboration s'effectue, peut-être, comme ceci:
 
-    - réinitialisation du VisualTree .Children
+ - réinitialisation du VisualTree .Children
     - production du VisualTree à partir de .Template 
     - inspection de .Template à la recherche d'un ItemsPresenter
     - .ItemsPanel détermine le Panel utilisé pour acceuillir les ItemUIs de chaque Item trouvé dans .ItemsSource / .Items
     - pour chaque Item de .ItemsSource / .Items
-        - production d'un ItemUI, à partir de la classe précisée par l'attribut de classe StyleTypedProperty,
-          ContentPresenter par défaut, LitBoxItem pour une ListBox ...
-        - assignation de ItemUI.DataContext = Item
-        - détermination et application du Style de cet ItemUI :
-            - valeur de .ItemContainerStyle ou valeur retournée par .ItemContainerStyleSelector
-              pour l'Item courant
-        - détermination du Template de cet ItemUI : valeur par défaut, retournée par .ItemTemplateSelector,
-          assignée par son Style ...
-        - le template de cet ItemUI contient sans doute un ContentPresenter: 
-          détermination de son VisualTree: Content + DataTemplate
-            - le Content à prendre en compte est l'Item courant
-            - détermination du DataTemplate à prendre en compte :
-                - .ItemTemplate
-                - si null, le ContentPresenter applique ses règles : recherche dans les ressources
-                  du VisualTree d'un DataTemplate associé au type de l'Item ...
-        - insertion de l'ItemUI dans le Panel du ItemsPresenter
+    - production d'un ItemUI, à partir de la classe précisée par l'attribut de classe StyleTypedProperty,
+      ContentPresenter par défaut, LitBoxItem pour une ListBox ...
+    - assignation de ItemUI.DataContext = Item
+    - détermination et application du Style de cet ItemUI :
+        - valeur de .ItemContainerStyle ou valeur retournée par .ItemContainerStyleSelector
+          pour l'Item courant
+    - détermination du Template de cet ItemUI : valeur par défaut, retournée par .ItemTemplateSelector,
+      assignée par son Style ...
+    - le template de cet ItemUI contient sans doute un ContentPresenter: 
+      détermination de son VisualTree: Content + DataTemplate
+        - le Content à prendre en compte est l'Item courant
+        - détermination du DataTemplate à prendre en compte :
+        - .ItemTemplate
+        - si null, le ContentPresenter applique ses règles : recherche dans les ressources
+          du VisualTree d'un DataTemplate associé au type de l'Item ...
+    - insertion de l'ItemUI dans le Panel du ItemsPresenter
 
 Exemple : type de l'Item UI pour une ListBox : ListBoxItem
 
