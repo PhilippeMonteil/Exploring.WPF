@@ -71,26 +71,57 @@
 
 ### Properties
 
-    [System.ComponentModel.Bindable(true)]
+- le VisualTree
+
+    public System.Windows.Media.VisualCollection Children { get; }
+ 
+  associé à un ItemsControl dépend de ses propriétés:
+
+    public System.Windows.Controls.ControlTemplate Template { get; set; }
+
     public System.Windows.Controls.ItemCollection Items { get; }
 
-    [System.ComponentModel.Bindable(true)]
     public System.Collections.IEnumerable ItemsSource { get; set; }
 
-    [System.ComponentModel.Bindable(true)]
     public System.Windows.DataTemplate ItemTemplate { get; set; }
 
-    [System.ComponentModel.Bindable(true)]
     public System.Windows.Style ItemContainerStyle { get; set; }
 
-    [System.ComponentModel.Bindable(false)]
     public System.Windows.Controls.ItemsPanelTemplate ItemsPanel { get; set; }
 
-    [System.ComponentModel.Bindable(true)]
     public System.Windows.Controls.StyleSelector ItemContainerStyleSelector { get; set; }
 
-    [System.ComponentModel.Bindable(true)]
     public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
+
+  son élaboration s'effectue, peut-être, comme ceci:
+
+    - réinitialisation du VisualTree .Children
+    - production du VisualTree à partir de .Template 
+    - inspection de .Template à la recherche d'un ItemsPresenter
+    - .ItemsPanel détermine le Panel utilisé pour acceuillir les ItemUIs de chaque Item trouvé dans .Items
+    - pour chaque Item de .Items
+        - production d'un ItemUI, à partir de la classe précisée par l'attribut de classe StyleTypedProperty,
+          ContenPresenter par défaut, LitBoxItem pour une ListBox ...
+        - assignation de ItemUI.DataContext = Item
+        - détermination et application du Style de cet UI Item :
+            - valeur de .ItemContainerStyle ou valeur retournée par .ItemContainerStyleSelector
+              pour l'Item courant
+        - détermination du Template de cet ItemUI : valeur par défaut, retournée par .ItemTemplateSelector,
+          assignée par son Style ...
+        - le template de cet Item UI contient sans doute un ContentPresenter: 
+          détermination de son VisualTree: Content + DataTemplate
+            - le Content à prendre en compte est l'Item courant
+            - détermination du DataTemplate à prendre en compte :
+                - .ItemTemplate
+                - si null, le ContentPresenter applique ses règles : recherche dans les ressources
+                  du VisualTree d'un DataTemplate associé au type de l'Item ...
+        - insertion de l'ItemUI dans le Panel du ItemsPresenter
+
+Exemple : type de l'Item UI pour une ListBox : ListBoxItem
+    [System.Windows.Localizability(System.Windows.LocalizationCategory.ListBox)]
+    [System.Windows.StyleTypedProperty(Property="ItemContainerStyle", StyleTargetType=typeof(System.Windows.Controls.ListBoxItem))]
+    public class ListBox : System.Windows.Controls.Primitives.Selector
+  
 
 ## [ItemCollection](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemcollection?view=windowsdesktop-6.0)
 
