@@ -133,3 +133,19 @@ Exemple:
         </ListBox>
         
     </StackPanel>
+
+# Triggers
+
+    <Trigger SourceName="Bd" Property="IsMouseOver" Value="True">
+        <Setter TargetName="Border" Property="Background" Value="{StaticResource Item.MouseOver.Background}" />
+        <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Item.MouseOver.Border}" />
+    </Trigger>
+
+    <MultiTrigger>
+        <MultiTrigger.Conditions>
+            <Condition Property="IsSelectionActive" Value="False" />
+            <Condition Property="IsSelected" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter TargetName="Border" Property="Background" Value="{StaticResource Item.SelectedInactive.Background}" />
+        <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource Item.SelectedInactive.Border}" />
+    </MultiTrigger>

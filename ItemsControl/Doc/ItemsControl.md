@@ -4,12 +4,45 @@
 
 ## Class
  
+    [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
+    [System.Windows.Markup.ContentProperty("Items")]
+    [System.Windows.StyleTypedProperty(Property="ItemContainerStyle", StyleTargetType=typeof(System.Windows.FrameworkElement))]
 	public class ItemsControl : System.Windows.Controls.Control, 
                                 System.Windows.Controls.Primitives.IContainItemStorage, 
                                 System.Windows.Markup.IAddChild
     {
 
-## Default template : cf [WPF source code](https://github.com/dotnet/wpf)
+
+### Inheritance:
+    Object
+    DispatcherObject
+    DependencyObject
+    Visual
+    UIElement
+    FrameworkElement
+    Control
+    ItemsControl
+
+### Derived:
+    System.Windows.Controls.HeaderedItemsControl
+    System.Windows.Controls.Primitives.DataGridCellsPresenter
+    System.Windows.Controls.Primitives.DataGridColumnHeadersPresenter
+    System.Windows.Controls.Primitives.MenuBase
+    System.Windows.Controls.Primitives.Selector
+    System.Windows.Controls.Primitives.StatusBar
+    System.Windows.Controls.Ribbon.RibbonContextualTabGroupItemsControl
+    System.Windows.Controls.Ribbon.RibbonControlGroup
+    System.Windows.Controls.Ribbon.RibbonGallery
+    System.Windows.Controls.Ribbon.RibbonQuickAccessToolBar
+    System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
+    System.Windows.Controls.TreeView 
+
+### Notes:
+ - ItemsControl derives from Control
+ - its .Content property is 'Items' 
+ - the TargetType of the Style assigned to .ItemContainerStyle should be 'FrameworkElement'
+
+### Default template : cf [WPF source code](https://github.com/dotnet/wpf)
 
     <Style x:Key="{x:Type ItemsControl}"
            TargetType="{x:Type ItemsControl}">
@@ -28,25 +61,30 @@
         </Setter>
     </Style>
 
-## Fields
+### Fields
 
     public static readonly System.Windows.DependencyProperty ItemsSourceProperty;
     ...
 
-## Properties
+### Properties
 
     [System.ComponentModel.Bindable(true)]
-    public System.Collections.IEnumerable __ItemsSource__ { get; set; }
+    public System.Collections.IEnumerable ItemsSource { get; set; }
 
     [System.ComponentModel.Bindable(true)]
-    public System.Windows.DataTemplate __ItemTemplate__ { get; set; }
+    public System.Windows.DataTemplate ItemTemplate { get; set; }
 
-    [System.ComponentModel.Bindable(false)]
-    public System.Windows.Controls.[ItemsPanelTemplate](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemspaneltemplate?view=windowsdesktop-6.0) __ItemsPanel__ { get; set; }
-
-    // The Style that is applied to the container element generated for each item. 
     [System.ComponentModel.Bindable(true)]
     public System.Windows.Style ItemContainerStyle { get; set; }
+
+    [System.ComponentModel.Bindable(false)]
+    public System.Windows.Controls.ItemsPanelTemplate ItemsPanel { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.StyleSelector ItemContainerStyleSelector { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
 
 ## [ItemsPresenter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemspresenter?view=windowsdesktop-6.0)
 
