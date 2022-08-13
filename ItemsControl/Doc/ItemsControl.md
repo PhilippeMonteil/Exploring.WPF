@@ -72,6 +72,9 @@
 ### Properties
 
     [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.ItemCollection Items { get; }
+
+    [System.ComponentModel.Bindable(true)]
     public System.Collections.IEnumerable ItemsSource { get; set; }
 
     [System.ComponentModel.Bindable(true)]
@@ -88,6 +91,8 @@
 
     [System.ComponentModel.Bindable(true)]
     public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
+
+## [ItemCollection](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemcollection?view=windowsdesktop-6.0)
 
 ## [ContentPropertyAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.windows.markup.contentpropertyattribute?view=windowsdesktop-6.0)
 

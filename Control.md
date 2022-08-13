@@ -26,14 +26,14 @@
     [System.Windows.Markup.DictionaryKeyProperty("TargetType")]
     public class ControlTemplate : System.Windows.FrameworkTemplate
 
-Inheritance:
+### Inheritance
 
     Object
     DispatcherObject
     FrameworkTemplate
     ControlTemplate
 
-Properties:
+### Properties
 
     [System.Windows.Markup.Ambient]
     public Type TargetType { get; set; }
@@ -42,7 +42,7 @@ Properties:
     [System.Windows.Markup.DependsOn("Template")]
     public System.Windows.TriggerCollection Triggers { get; }
 
-Exemple:
+### Exemple
 
     <Style TargetType="Button">
         <!--Set to true to not get any properties from the themes.-->
@@ -69,23 +69,24 @@ Exemple:
             System.Windows.Markup.INameScope, 
             System.Windows.Markup.IQueryAmbient
 
-Inheritance:
+### Inheritance
 
     Object
     DispatcherObject
     FrameworkTemplate
 
-Derived:
+### Derived
 
     System.Windows.Controls.ControlTemplate
     System.Windows.Controls.ItemsPanelTemplate
     System.Windows.DataTemplate
 
-Implements:
+### Implements
+
     INameScope
     IQueryAmbient
 
-Properties:
+### Properties
 
     [System.Windows.Markup.Ambient]
     public System.Windows.ResourceDictionary Resources { get; set; }
