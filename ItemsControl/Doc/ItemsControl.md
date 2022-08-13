@@ -13,7 +13,8 @@
     {
 
 
-### Inheritance:
+### Inheritance
+
     Object
     DispatcherObject
     DependencyObject
@@ -23,7 +24,8 @@
     Control
     ItemsControl
 
-### Derived:
+### Derived
+
     System.Windows.Controls.HeaderedItemsControl
     System.Windows.Controls.Primitives.DataGridCellsPresenter
     System.Windows.Controls.Primitives.DataGridColumnHeadersPresenter
@@ -37,7 +39,8 @@
     System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
     System.Windows.Controls.TreeView 
 
-### Notes:
+### Notes
+
  - ItemsControl derives from Control
  - its .Content property is 'Items' 
  - the TargetType of the Style assigned to .ItemContainerStyle should be 'FrameworkElement'
@@ -85,6 +88,14 @@
 
     [System.ComponentModel.Bindable(true)]
     public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
+
+## [StyleSelector](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.styleselector?view=windowsdesktop-6.0)
+
+    public virtual System.Windows.Style SelectStyle (object item, System.Windows.DependencyObject container);
+
+## [DataTemplateSelector](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.datatemplateselector?view=windowsdesktop-6.0)
+
+    public virtual System.Windows.DataTemplate SelectTemplate (object item, System.Windows.DependencyObject container);
 
 ## [ItemsPresenter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemspresenter?view=windowsdesktop-6.0)
 
