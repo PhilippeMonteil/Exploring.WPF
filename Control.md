@@ -1,10 +1,11 @@
+
 # Control, ControlTemplate
 
 ## [Control Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.control?view=windowsdesktop-6.0)
 
 	public class Control : System.Windows.FrameworkElement
 
-Inheritance:
+### Inheritance
 
     Object
     DispatcherObject
@@ -14,9 +15,10 @@ Inheritance:
     FrameworkElement
     Control
 
-Properties:
+### Properties
 
     public System.Windows.Controls.ControlTemplate Template { get; set; }
+
 
 ## [ControlTemplate Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=windowsdesktop-6.0)
 

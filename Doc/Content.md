@@ -7,7 +7,7 @@
     [System.Windows.Markup.ContentProperty("Content")]
     public class ContentControl : System.Windows.Controls.Control, System.Windows.Markup.IAddChild
 
-Inheritance:
+### Inheritance
 
     Object
     DispatcherObject
@@ -18,7 +18,7 @@ Inheritance:
     Control
     ContentControl
 
-Derived:
+### Derived
 
     System.Activities.Presentation.View.ExpressionTextBox
     System.Activities.Presentation.View.TypePresenter
@@ -42,7 +42,7 @@ Derived:
     System.Windows.Controls.UserControl
     System.Windows.Window 
 
-Properties:
+### Properties
 
     // Gets or sets the content of a ContentControl. 
     public object Content { get; set; }
@@ -50,6 +50,13 @@ Properties:
     // Gets or sets the data template used to display the content of the ContentControl.
     // A DataTemplate that defines the visualization of the content. The default is null.
     public System.Windows.DataTemplate ContentTemplate { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.DataTemplateSelector ContentTemplateSelector { get; set; }
+
+## [DataTemplateSelector](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.datatemplateselector?view=windowsdesktop-6.0)
+
+    public virtual System.Windows.DataTemplate SelectTemplate (object item, System.Windows.DependencyObject container);
 
 ## [ContentPresenter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.contentpresenter?view=windowsdesktop-6.0)
 
