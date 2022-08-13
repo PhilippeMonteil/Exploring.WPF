@@ -71,7 +71,7 @@
 
 ### Properties
 
-- le VisualTree
+Elaboration du VisualTree d'un ItemsControl
 
     public System.Windows.Media.VisualCollection Children { get; }
  
@@ -98,17 +98,17 @@
     - réinitialisation du VisualTree .Children
     - production du VisualTree à partir de .Template 
     - inspection de .Template à la recherche d'un ItemsPresenter
-    - .ItemsPanel détermine le Panel utilisé pour acceuillir les ItemUIs de chaque Item trouvé dans .Items
-    - pour chaque Item de .Items
+    - .ItemsPanel détermine le Panel utilisé pour acceuillir les ItemUIs de chaque Item trouvé dans .ItemsSource / .Items
+    - pour chaque Item de .ItemsSource / .Items
         - production d'un ItemUI, à partir de la classe précisée par l'attribut de classe StyleTypedProperty,
-          ContenPresenter par défaut, LitBoxItem pour une ListBox ...
+          ContentPresenter par défaut, LitBoxItem pour une ListBox ...
         - assignation de ItemUI.DataContext = Item
-        - détermination et application du Style de cet UI Item :
+        - détermination et application du Style de cet ItemUI :
             - valeur de .ItemContainerStyle ou valeur retournée par .ItemContainerStyleSelector
               pour l'Item courant
         - détermination du Template de cet ItemUI : valeur par défaut, retournée par .ItemTemplateSelector,
           assignée par son Style ...
-        - le template de cet Item UI contient sans doute un ContentPresenter: 
+        - le template de cet ItemUI contient sans doute un ContentPresenter: 
           détermination de son VisualTree: Content + DataTemplate
             - le Content à prendre en compte est l'Item courant
             - détermination du DataTemplate à prendre en compte :
@@ -118,10 +118,10 @@
         - insertion de l'ItemUI dans le Panel du ItemsPresenter
 
 Exemple : type de l'Item UI pour une ListBox : ListBoxItem
+
     [System.Windows.Localizability(System.Windows.LocalizationCategory.ListBox)]
     [System.Windows.StyleTypedProperty(Property="ItemContainerStyle", StyleTargetType=typeof(System.Windows.Controls.ListBoxItem))]
     public class ListBox : System.Windows.Controls.Primitives.Selector
-  
 
 ## [ItemCollection](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemcollection?view=windowsdesktop-6.0)
 

@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{B05DA53B-1238-41EE-83BF-A1D75C7DB2C4}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml
+		HeaderedItemsControl.md = HeaderedItemsControl.md
 		ItemsControl\Doc\ItemsControl.md = ItemsControl\Doc\ItemsControl.md
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml
 		ItemsControl\Doc\ListBox.md = ItemsControl\Doc\ListBox.md
@@ -33,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_ItemsControl1", "Items
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1218B168-9157-4A2B-A4D9-F091357D52E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test0", "Test0\Test0.csproj", "{39B27CD6-9524-4F64-BE32-4CCB1C3F691E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test0", "Test0\Test0.csproj", "{39B27CD6-9524-4F64-BE32-4CCB1C3F691E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-6731-475C-96C6-D1D1F31FCE1F}"
 	ProjectSection(SolutionItems) = preProject
