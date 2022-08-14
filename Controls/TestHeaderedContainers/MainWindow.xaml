@@ -27,7 +27,31 @@
             </StackPanel>
         </GroupBox>
 
-        <Expander Header="Test0" Margin="8">
+        <Expander ExpandDirection="Down" Header="ExpandDirection=Down" Margin="8">
+            <StackPanel Margin="8">
+                <CheckBox>CB0</CheckBox>
+                <CheckBox>CB1</CheckBox>
+                <CheckBox>CB2</CheckBox>
+            </StackPanel>
+        </Expander>
+
+        <Expander ExpandDirection="Up" Header="ExpandDirection=Up" Margin="8">
+            <StackPanel Margin="8">
+                <CheckBox>CB0</CheckBox>
+                <CheckBox>CB1</CheckBox>
+                <CheckBox>CB2</CheckBox>
+            </StackPanel>
+        </Expander>
+
+        <Expander ExpandDirection="Right" Header="ExpandDirection=Right" Margin="8">
+            <StackPanel Margin="8">
+                <CheckBox>CB0</CheckBox>
+                <CheckBox>CB1</CheckBox>
+                <CheckBox>CB2</CheckBox>
+            </StackPanel>
+        </Expander>
+
+        <Expander ExpandDirection="Left" Header="ExpandDirection=Left" Margin="8">
             <StackPanel Margin="8">
                 <CheckBox>CB0</CheckBox>
                 <CheckBox>CB1</CheckBox>
