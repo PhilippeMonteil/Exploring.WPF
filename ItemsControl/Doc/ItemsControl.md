@@ -95,7 +95,7 @@ Elaboration du VisualTree d'un ItemsControl
 
   son élaboration s'effectue, peut-être, comme ceci:
 
- - réinitialisation du VisualTree .Children
+    - réinitialisation du VisualTree .Children
     - production du VisualTree à partir de .Template 
     - inspection de .Template à la recherche d'un ItemsPresenter
     - .ItemsPanel détermine le Panel utilisé pour acceuillir les ItemUIs de chaque Item trouvé dans .ItemsSource / .Items

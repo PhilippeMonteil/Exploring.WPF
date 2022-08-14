@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{B05DA53B-123
 		ItemsControl\Doc\ItemsControl.md = ItemsControl\Doc\ItemsControl.md
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml
 		ItemsControl\Doc\ListBox.md = ItemsControl\Doc\ListBox.md
+		ItemsControl\Doc\Selector.md = ItemsControl\Doc\Selector.md
 		ItemsControl\Doc\TreeView.md = ItemsControl\Doc\TreeView.md
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\TreeViewItem.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\TreeViewItem.xaml
 	EndProjectSection
