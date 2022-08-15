@@ -47,7 +47,7 @@
                 int v = d(100);
             }
         }
-	
+
 ### [Lambda expressions](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-expressions)
 
 You use a lambda expression to create an anonymous function.
@@ -81,17 +81,16 @@ as the following example shows:
 
 #### Exemple
 
-        button1.Click += async (sender, e) =>
+    public static async Task<int> Test0()
+    {
+        Func<Task<int>> d = async () =>
         {
-            await ExampleMethodAsync();
-            textBox1.Text += "\r\nControl returned to Click event handler.\n";
-        };
-
-        private async Task ExampleMethodAsync()
-        {
-            // The following line simulates a task-returning asynchronous process.
             await Task.Delay(1000);
-        }
+            return 1;
+        };
+        //
+        return await d();
+    }
 
 ### Static lambdas
 
@@ -102,3 +101,51 @@ unintentional capture of local variables or instance state by the lambda:
 
 A static lambda can't capture local variables or instance state from enclosing scopes, 
 but may reference static members and constant definitions.
+
+### Variance
+
+#### Exemple
+
+        // delegate covariant
+        public delegate T Mydelegate1<out T>();
+
+        // delegate non variant
+        public delegate T Mydelegate2<T>(out T par0);
+        // Error : public delegate T Mydelegate2A<out T>(out T par0);
+        // Error : public delegate T Mydelegate2B<out T>(ref T par0);
+
+        // delegate contravariant
+        public delegate void Mydelegate3<in T>(T par0);
+
+        static string method2(out string par0)
+        {
+            return par0 = "Test";
+        }
+
+        public static void Test1()
+        {
+            // delegate generic fermé
+            {
+                Mydelegate2<string> d0 = method2;
+            }
+
+            // Variance
+            {
+                Mydelegate1<string> d1 = () => String.Empty;
+                Mydelegate1<object> d0 = d1;
+                object v = d0();
+            }
+
+            // Contravariance
+            {
+                Mydelegate3<object> d0 = null;
+                Mydelegate3<string> d1 = d0;
+            }
+
+            {
+                Mydelegate1<int> d = delegate ()
+                {
+                    return 777;
+                };
+            }
+        }
