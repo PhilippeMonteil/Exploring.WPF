@@ -1,17 +1,13 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ConsoleApp1.Class1;
-
 namespace ConsoleApp1
 {
 
     public static class Class1
     {
-        delegate int Mydelegate(int par0);
+
+        #region --- Test0
+
+        delegate int Mydelegate0(int par0);
 
         static int method0(int par0)
         {
@@ -22,13 +18,13 @@ namespace ConsoleApp1
         {
 
             {
-                Mydelegate d = method0;
+                Mydelegate0 d = method0;
                 int v = d(100);
             }
 
             // delegate <- anonymous method
             {
-                Mydelegate d = delegate (int par)
+                Mydelegate0 d = delegate (int par)
                 {
                     return par * 10;
                 };
@@ -37,7 +33,7 @@ namespace ConsoleApp1
 
             // delegate <- lambda expression
             {
-                Mydelegate d = p => p * 100;
+                Mydelegate0 d = p => p * 100;
                 int v = d(100);
             }
 
@@ -49,20 +45,20 @@ namespace ConsoleApp1
             }
         }
 
+        #endregion
+
+        #region --- Tests Variance
+
+        // delegate covariant
         public delegate T Mydelegate1<out T>();
 
+        // delegate non variant
         public delegate T Mydelegate2<T>(out T par0);
+        // Error : public delegate T Mydelegate2A<out T>(out T par0);
+        // Error : public delegate T Mydelegate2B<out T>(ref T par0);
+
+        // delegate contravariant
         public delegate void Mydelegate3<in T>(T par0);
-
-        // Errors:
-        // public delegate T Mydelegate2<out T>(out T par0);
-        // public delegate T Mydelegate3<out T>(ref T par0);
-        // public delegate T Mydelegate4<out T>(T par0);
-
-        static T method1<T>()
-        {
-            return default(T);
-        }
 
         static string method2(out string par0)
         {
@@ -71,25 +67,7 @@ namespace ConsoleApp1
 
         public static void Test1()
         {
-
-            {
-                Mydelegate d = method0;
-                int v = d(100);
-            }
-
-            {
-                Mydelegate d = delegate (int par)
-                {
-                    return par * 10;
-                };
-                int v = d(100);
-            }
-
-            {
-                Mydelegate d = p => p * 100;
-                int v = d(100);
-            }
-
+            // delegate generic fermé
             {
                 Mydelegate2<string> d0 = method2;
             }
@@ -114,6 +92,9 @@ namespace ConsoleApp1
                 };
             }
         }
+
+        #endregion
+
 
     }
 

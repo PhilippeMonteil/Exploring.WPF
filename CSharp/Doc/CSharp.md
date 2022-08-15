@@ -67,6 +67,7 @@ A lambda expression can be of any of the following two forms:
 Any lambda expression can be __converted to a delegate type__. 
 
     Func<int, int> square = x => x * x;
+    Func<int, int, bool> testForEquality = (x, y) => x == y;
 
 Expression lambdas can also be __converted to the expression tree types__,
 as the following example shows:
@@ -76,3 +77,28 @@ as the following example shows:
     // Output:
     // x => (x * x)
 
+### Async lambdas
+
+#### Exemple
+
+        button1.Click += async (sender, e) =>
+        {
+            await ExampleMethodAsync();
+            textBox1.Text += "\r\nControl returned to Click event handler.\n";
+        };
+
+        private async Task ExampleMethodAsync()
+        {
+            // The following line simulates a task-returning asynchronous process.
+            await Task.Delay(1000);
+        }
+
+### Static lambdas
+
+Beginning with C# 9.0, you can apply the static modifier to a lambda expression to prevent 
+unintentional capture of local variables or instance state by the lambda:
+
+    Func<double, double> square = static x => x * x;
+
+A static lambda can't capture local variables or instance state from enclosing scopes, 
+but may reference static members and constant definitions.
