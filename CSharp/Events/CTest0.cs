@@ -16,7 +16,7 @@ namespace Events
 
         public delegate void MyEventHandler(object sender, MyEventArgs args);
 
-        public event MyEventHandler MyEvent;
+        public event MyEventHandler? MyEvent;
 
         public void FireEvent()
         {
@@ -27,10 +27,14 @@ namespace Events
         {
             CTest0 _pCTest0 = new CTest0();
 
-            _pCTest0.MyEvent += (sender, args) =>
+            for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"{nameof(MyEvent)} fired : sender={sender} args={args}");
-            };
+                int _index = i;
+                _pCTest0.MyEvent += (sender, args) =>
+                {
+                    Console.WriteLine($"{nameof(MyEvent)} fired : receiver[{_index}] sender={sender} args={args}");
+                };
+            }
 
             _pCTest0.FireEvent();
         }
