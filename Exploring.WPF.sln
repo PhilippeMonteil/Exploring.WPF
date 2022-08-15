@@ -41,18 +41,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-673
 		Control.md = Control.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Tests\ConsoleApp1\ConsoleApp1.csproj", "{F994E94A-642C-49E1-B540-46290E268577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "Tests\ConsoleApp1\ConsoleApp1.csproj", "{F994E94A-642C-49E1-B540-46290E268577}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test0", "Tests\Test0\Test0.csproj", "{B61E690F-4C4A-42A7-B5FD-F8239270736E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestHeaderedContainers", "Controls\TestHeaderedContainers\TestHeaderedContainers.csproj", "{3C98B564-421E-48FC-BF74-C87F457CA0D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHeaderedContainers", "Controls\TestHeaderedContainers\TestHeaderedContainers.csproj", "{3C98B564-421E-48FC-BF74-C87F457CA0D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3908CE1E-F5FF-4F3F-B350-72CAFEC44971}"
 	ProjectSection(SolutionItems) = preProject
 		Controls\Doc\Controls.md = Controls\Doc\Controls.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{EA555432-05EA-491B-B2DF-6890B12A1B68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{D38E8301-051F-45B5-831B-B89D5534838F}"
+	ProjectSection(SolutionItems) = preProject
+		CSharp\Doc\CSharp.md = CSharp\Doc\CSharp.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests_Delegates", "CSharp\Tests_Delegates\Tests_Delegates.csproj", "{79BC871D-4138-4527-9201-E890424D37C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +101,10 @@ Global
 		{3C98B564-421E-48FC-BF74-C87F457CA0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C98B564-421E-48FC-BF74-C87F457CA0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C98B564-421E-48FC-BF74-C87F457CA0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BC871D-4138-4527-9201-E890424D37C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BC871D-4138-4527-9201-E890424D37C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BC871D-4138-4527-9201-E890424D37C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BC871D-4138-4527-9201-E890424D37C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +120,8 @@ Global
 		{B61E690F-4C4A-42A7-B5FD-F8239270736E} = {1218B168-9157-4A2B-A4D9-F091357D52E8}
 		{3C98B564-421E-48FC-BF74-C87F457CA0D4} = {930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}
 		{3908CE1E-F5FF-4F3F-B350-72CAFEC44971} = {930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}
+		{D38E8301-051F-45B5-831B-B89D5534838F} = {EA555432-05EA-491B-B2DF-6890B12A1B68}
+		{79BC871D-4138-4527-9201-E890424D37C8} = {EA555432-05EA-491B-B2DF-6890B12A1B68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
