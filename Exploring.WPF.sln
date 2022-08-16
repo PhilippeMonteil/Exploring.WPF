@@ -49,6 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3908CE1E-F5F
 		Controls\Doc\HeaderedItemsControl.md = Controls\Doc\HeaderedItemsControl.md
 		Controls\Doc\ItemsControl.md = Controls\Doc\ItemsControl.md
 		Controls\Doc\ListBox.md = Controls\Doc\ListBox.md
+		Controls\Doc\ScrollViewer.md = Controls\Doc\ScrollViewer.md
 		Controls\Doc\Selector.md = Controls\Doc\Selector.md
 		Controls\Doc\TreeView.md = Controls\Doc\TreeView.md
 	EndProjectSection

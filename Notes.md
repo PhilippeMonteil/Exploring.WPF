@@ -147,3 +147,6 @@ Exemple:
 Console.WriteLine($"i='x{(int)0x12AB,-10:X8}'='{0x12AB,10}'");
 Console.WriteLine($"i='{(double)123.0123456789,10:F2}'");
 ...
+
+# TargetType : / Style, DataTemplate, ControlTemplate
+
