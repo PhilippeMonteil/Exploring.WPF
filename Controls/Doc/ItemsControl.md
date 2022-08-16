@@ -39,11 +39,41 @@
     System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
     System.Windows.Controls.TreeView 
 
+### Fields
+
+    public static readonly System.Windows.DependencyProperty ItemsSourceProperty;
+    ...
+
+### Properties
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Collections.IEnumerable __ItemsSource__ { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.DataTemplate __ItemTemplate__ { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.DataTemplateSelector __ItemTemplateSelector__ { get; set; }
+
+    [System.ComponentModel.Bindable(false)]
+    public System.Windows.Controls.ItemsPanelTemplate __ItemsPanel_ { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Style __ItemContainerStyle__ { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.StyleSelector __ItemContainerStyleSelector__ { get; set; }
+
+    [System.ComponentModel.Bindable(false)]
+    [System.ComponentModel.Browsable(false)]
+    public System.Windows.Controls.ItemContainerGenerator __ItemContainerGenerator__ { get; }
+
 ### Notes
 
  - ItemsControl derives from Control
  - its .Content property is 'Items' 
  - the TargetType of the Style assigned to .ItemContainerStyle should be 'FrameworkElement'
+ - [ItemContainerGenerator](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.itemcontainergenerator?view=windowsdesktop-6.0)
 
 ### Default template : cf [WPF source code](https://github.com/dotnet/wpf)
 
@@ -64,14 +94,7 @@
         </Setter>
     </Style>
 
-### Fields
-
-    public static readonly System.Windows.DependencyProperty ItemsSourceProperty;
-    ...
-
-### Properties
-
-Elaboration du VisualTree d'un ItemsControl
+### Elaboration du VisualTree d'un ItemsControl
 
     public System.Windows.Media.VisualCollection Children { get; }
  
