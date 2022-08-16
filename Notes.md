@@ -15,7 +15,7 @@
 
 # ColumnDefinition: percent, ...
 
-    <ColumnDefinition Width="0.5*"/>
+    <ColumnDefinition Width="*"/> // ...
 
 # ListBox : selected item aspect
 
@@ -38,14 +38,6 @@
 # [Control Library](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/control-library?view=netframeworkdesktop-4.8)
 
 # [WPF Partial Trust Security](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/wpf-partial-trust-security?view=netframeworkdesktop-4.8)
-
-# TreeView, TreeViewItem
-
-	TreeView : ItemsControl
-		TreeViewItem[] Items
-
-	TreeViewItem : HeaderedItemsControl
-		TreeViewItem[] Items
 
 # [mc:Ignorable](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/mc-ignorable-attribute?view=netframeworkdesktop-4.8)
 
