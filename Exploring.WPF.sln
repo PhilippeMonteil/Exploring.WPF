@@ -45,6 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3908CE1E-F5F
 	ProjectSection(SolutionItems) = preProject
 		Controls\Doc\Control.md = Controls\Doc\Control.md
 		Controls\Doc\Controls.md = Controls\Doc\Controls.md
+		Controls\Doc\Panels.md = Controls\Doc\Panels.md
 		Controls\Doc\HeaderedItemsControl.md = Controls\Doc\HeaderedItemsControl.md
 		Controls\Doc\ItemsControl.md = Controls\Doc\ItemsControl.md
 		Controls\Doc\ListBox.md = Controls\Doc\ListBox.md
