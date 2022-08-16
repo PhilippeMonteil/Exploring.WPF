@@ -37,8 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1218B168
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-6731-475C-96C6-D1D1F31FCE1F}"
 	ProjectSection(SolutionItems) = preProject
-		Doc\Content.md = Doc\Content.md
-		Control.md = Control.md
+		Notes.md = Notes.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}"
@@ -49,6 +48,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHeaderedContainers", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3908CE1E-F5FF-4F3F-B350-72CAFEC44971}"
 	ProjectSection(SolutionItems) = preProject
+		Doc\Content.md = Doc\Content.md
 		Controls\Doc\Controls.md = Controls\Doc\Controls.md
 	EndProjectSection
 EndProject
@@ -62,7 +62,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{D38E8301-051
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DelegatesLambdas", "Tests\DelegatesLambdas\DelegatesLambdas.csproj", "{A2ABA881-F969-42D3-B927-39C7F6CAAF22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events", "CSharp\Events\Events.csproj", "{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Events", "CSharp\Events\Events.csproj", "{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
