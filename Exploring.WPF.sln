@@ -16,7 +16,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{B05DA53B-1238-41EE-83BF-A1D75C7DB2C4}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml
-		HeaderedItemsControl.md = HeaderedItemsControl.md
 		ItemsControl\Doc\ItemsControl.md = ItemsControl\Doc\ItemsControl.md
 		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml
 		ItemsControl\Doc\ListBox.md = ItemsControl\Doc\ListBox.md
@@ -48,8 +47,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestHeaderedContainers", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3908CE1E-F5FF-4F3F-B350-72CAFEC44971}"
 	ProjectSection(SolutionItems) = preProject
-		Doc\Content.md = Doc\Content.md
+		Controls\Doc\Control.md = Controls\Doc\Control.md
 		Controls\Doc\Controls.md = Controls\Doc\Controls.md
+		Controls\Doc\HeaderedItemsControl.md = Controls\Doc\HeaderedItemsControl.md
+		Controls\Doc\ItemsControl.md = Controls\Doc\ItemsControl.md
+		Controls\Doc\ListBox.md = Controls\Doc\ListBox.md
+		Controls\Doc\Selector.md = Controls\Doc\Selector.md
+		Controls\Doc\TreeView.md = Controls\Doc\TreeView.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{EA555432-05EA-491B-B2DF-6890B12A1B68}"

@@ -94,7 +94,7 @@ Properties:
 
 Notes:
 
-You typically use the ContentPresenter in the ControlTemplate of a ContentControl to specify where the content is to be added. Every ContentControl type has a ContentPresenter in its default ControlTemplate.
+You typically use the __ContentPresenter__ in the __ControlTemplate__ of a __ContentControl__ to specify where the content is to be added. Every ContentControl type has a ContentPresenter in its default ControlTemplate.
 
 When a ContentPresenter object is in a ControlTemplate of a ContentControl, the Content, ContentTemplate, and ContentTemplateSelector properties get their values from the properties of the same names of the ContentControl. You can have the ContentPresenter property get the values of these properties from other properties of the templated parent by setting the ContentSource property or binding to them.
 
