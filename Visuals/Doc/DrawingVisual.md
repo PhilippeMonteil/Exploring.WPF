@@ -129,7 +129,7 @@
         drawingContext.DrawDrawing(drawingGroup);
     }
 
-## Rendering d'un DrawingGroup, d'un DrawingVisual
+## Rendering d'un DrawingGroup, d'un DrawingVisual, d'un UIElement
 
 - DrawingGroup
 
@@ -138,6 +138,10 @@
 - DrawingVisual
 
 	public System.Windows.Media.DrawingContext RenderOpen();
+
+- UIElement
+
+	protected virtual void OnRender (System.Windows.Media.DrawingContext drawingContext);
 
 puis:
 
