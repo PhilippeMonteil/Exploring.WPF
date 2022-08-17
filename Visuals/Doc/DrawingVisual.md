@@ -52,13 +52,44 @@
 							System.Windows.Rect rect);
 	}
 
+
+# [DrawingContext](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.drawingcontext?view=windowsdesktop-6.0)
+
+## Class
+
+	public abstract class DrawingContext : System.Windows.Threading.DispatcherObject, IDisposable
+
+## Inheritance
+
+- Object
+- DispatcherObject
+- DrawingContext
+
+## Implements
+
+- IDisposable
+
+## Methods
+
+	public abstract void DrawDrawing (System.Windows.Media.Drawing drawing);
+
+	public abstract void DrawGeometry (System.Windows.Media.Brush brush, 
+							System.Windows.Media.Pen pen, 
+							System.Windows.Media.Geometry geometry);
+
+	public abstract void DrawImage (System.Windows.Media.ImageSource imageSource, 
+							System.Windows.Rect rectangle);
+
+	public abstract void Close ();
+
+
 # [DrawingVisual](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.drawingvisual?view=windowsdesktop-6.0)
 
-#### Class
+## Class
 
 	public class DrawingVisual : System.Windows.Media.ContainerVisual
 
-#### Inheritance
+## Inheritance
 
 - Object
 - DispatcherObject
@@ -67,15 +98,15 @@
   - ContainerVisual
   - DrawingVisual
 
-#### Properties
+## Properties
 
 	public System.Windows.Media.DrawingGroup Drawing { get; }
 
-#### Methods
+## Methods
 
 	public System.Windows.Media.DrawingContext RenderOpen ();
 
-#### Exemple
+## Exemple
 
     DrawingGroup drawingGroup = new DrawingGroup();
     {
