@@ -104,7 +104,7 @@
 
 ## Methods
 
-	public System.Windows.Media.DrawingContext RenderOpen ();
+	public System.Windows.Media.DrawingContext RenderOpen();
 
 ## Exemple
 
@@ -128,3 +128,22 @@
 
         drawingContext.DrawDrawing(drawingGroup);
     }
+
+## Rendering d'un DrawingGroup, d'un DrawingVisual
+
+- DrawingGroup
+
+	public System.Windows.Media.DrawingContext Open ();
+
+- DrawingVisual
+
+	public System.Windows.Media.DrawingContext RenderOpen();
+
+puis:
+
+- DrawDrawing
+- DrawGeometry
+- DrawImage
+- ...
+- Close
+	
