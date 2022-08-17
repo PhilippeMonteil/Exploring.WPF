@@ -13,9 +13,45 @@
 
 ### [How to: Improve Rendering Performance by Caching an Element](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/graphics-multimedia/how-to-improve-rendering-performance-by-caching-an-element?view=netframeworkdesktop-4.8)
 
-## UIElement / DrawingVisual
+## Visual / UIElement / DrawingVisual
+
+### [Visual](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.visual?view=windowsdesktop-6.0)
+
+#### Class
+
+	public abstract class Visual : System.Windows.DependencyObject
+
+#### Inheritance
+
+- Object
+- DispatcherObject
+- DependencyObject
+- Visual
+
+#### Derived
+
+- System.Windows.Media.ContainerVisual
+- System.Windows.Media.Media3D.Viewport3DVisual
+- System.Windows.UIElement
+
+#### Properties
+
+	protected System.Windows.DependencyObject VisualParent { get; }
+
+	protected virtual int VisualChildrenCount { get; }
+
+	public System.Windows.Media.Transform VisualTransform { protected internal get; protected set; }
+
+#### Methods
+
+	protected void AddVisualChild (System.Windows.Media.Visual child);
+	protected void RemoveVisualChild (System.Windows.Media.Visual child);
+	protected virtual System.Windows.Media.Visual GetVisualChild (int index);
+
 
 ### [UIElement](https://docs.microsoft.com/en-us/dotnet/api/system.windows.uielement?view=windowsdesktop-6.0)
+
+#### Inheritance
 
 - Object
 - DispatcherObject
@@ -24,6 +60,8 @@
   - UIElement
 
 ### [DrawingVisual](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.drawingvisual?view=windowsdesktop-6.0)
+
+#### Inheritance
 
 - Object
 - DispatcherObject
