@@ -71,13 +71,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{5AB7A0EA-A6C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{0FC144ED-D990-4F56-82F1-32C670AE8CC2}"
 	ProjectSection(SolutionItems) = preProject
-		WPF\Doc\UIElment.md = WPF\Doc\UIElment.md
+		WPF\Doc\UIElement.md = WPF\Doc\UIElement.md
 		WPF\Doc\WPF.md = WPF\Doc\WPF.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visuals", "Visuals", "{7C6A6A38-F481-4C26-B617-D7B320197705}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDrawingVisual", "Visuals\TestDrawingVisual\TestDrawingVisual.csproj", "{5E2FAB95-5F19-4471-9E61-49BB49475A96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{C3115468-F025-4544-B779-576A9E760785}"
+	ProjectSection(SolutionItems) = preProject
+		Visuals\Doc\DrawingVisual.md = Visuals\Doc\DrawingVisual.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,6 +149,7 @@ Global
 		{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15} = {EA555432-05EA-491B-B2DF-6890B12A1B68}
 		{0FC144ED-D990-4F56-82F1-32C670AE8CC2} = {5AB7A0EA-A6C9-4F0A-AAFE-D3F751BD3E4B}
 		{5E2FAB95-5F19-4471-9E61-49BB49475A96} = {7C6A6A38-F481-4C26-B617-D7B320197705}
+		{C3115468-F025-4544-B779-576A9E760785} = {7C6A6A38-F481-4C26-B617-D7B320197705}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
