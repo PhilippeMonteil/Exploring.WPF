@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1218B168
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-6731-475C-96C6-D1D1F31FCE1F}"
 	ProjectSection(SolutionItems) = preProject
-		Notes.md = Notes.md
+		Doc\Notes.md = Doc\Notes.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}"
@@ -46,10 +46,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3908CE1E-F5F
 		Controls\Doc\Control.md = Controls\Doc\Control.md
 		Controls\Doc\Controls.md = Controls\Doc\Controls.md
 		Controls\Doc\DataGrid.md = Controls\Doc\DataGrid.md
-		Controls\Doc\Panels.md = Controls\Doc\Panels.md
 		Controls\Doc\HeaderedItemsControl.md = Controls\Doc\HeaderedItemsControl.md
 		Controls\Doc\ItemsControl.md = Controls\Doc\ItemsControl.md
 		Controls\Doc\ListBox.md = Controls\Doc\ListBox.md
+		Controls\Doc\Panels.md = Controls\Doc\Panels.md
 		Controls\Doc\ScrollViewer.md = Controls\Doc\ScrollViewer.md
 		Controls\Doc\Selector.md = Controls\Doc\Selector.md
 		Controls\Doc\TreeView.md = Controls\Doc\TreeView.md
