@@ -42,11 +42,18 @@
 
 	public System.Windows.Media.Transform VisualTransform { protected internal get; protected set; }
 
+	public System.Windows.Media.Geometry VisualClip { protected internal get; protected set; 
+	public System.Windows.Media.Effects.Effect VisualEffect { protected internal get; protected set; }
+
 #### Methods
 
 	protected void AddVisualChild (System.Windows.Media.Visual child);
 	protected void RemoveVisualChild (System.Windows.Media.Visual child);
+
 	protected virtual System.Windows.Media.Visual GetVisualChild (int index);
+
+	protected internal virtual void OnVisualChildrenChanged (System.Windows.DependencyObject visualAdded, System.Windows.DependencyObject visualRemoved);
+	protected internal virtual void OnVisualParentChanged (System.Windows.DependencyObject oldParent);
 
 
 ### [UIElement](https://docs.microsoft.com/en-us/dotnet/api/system.windows.uielement?view=windowsdesktop-6.0)
@@ -59,7 +66,39 @@
 - Visual
   - UIElement
 
+
+### [ContainerVisual](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.containervisual?view=windowsdesktop-6.0)
+
+Manages a collection of Visual objects.
+
+#### Inheritance
+
+- Object
+- DispatcherObject
+- DependencyObject
+- Visual
+- ContainerVisual
+
+#### Derived
+
+- System.Windows.Media.DrawingVisual
+- System.Windows.Media.HostVisual
+
+#### Properties
+
+	public System.Windows.Media.VisualCollection Children { get; }
+	protected override sealed int VisualChildrenCount { get; }
+
+#### Methods
+
+	protected override sealed System.Windows.Media.Visual GetVisualChild (int index);
+
+
 ### [DrawingVisual](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.drawingvisual?view=windowsdesktop-6.0)
+
+#### Class
+
+	public class DrawingVisual : System.Windows.Media.ContainerVisual
 
 #### Inheritance
 
@@ -70,7 +109,40 @@
   - ContainerVisual
   - DrawingVisual
 
-### Render
+#### Properties
+
+	public System.Windows.Media.DrawingGroup Drawing { get; }
+
+#### Methods
+
+	public System.Windows.Media.DrawingContext RenderOpen ();
+
+#### Exemple
+
+	DrawingGroup drawing = FindResource("MyDrawing") as DrawingGroup; 
+
+
+### [HostVisual](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.hostvisual?view=windowsdesktop-6.0)
+
+Represents a Visual object that can be connected anywhere to a parent visual tree.
+
+#### Class
+
+	public class HostVisual : System.Windows.Media.ContainerVisual
+
+#### Inheritance
+
+- Object
+- DispatcherObject
+- DependencyObject
+- Visual
+- ContainerVisual
+- HostVisual
+
+
+
+
+### DrawingVisual / UIElement Rendering
 
 #### DrawingVisual
 

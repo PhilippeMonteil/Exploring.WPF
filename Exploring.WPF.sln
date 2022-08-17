@@ -75,6 +75,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{0FC144ED-D99
 		WPF\Doc\WPF.md = WPF\Doc\WPF.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visuals", "Visuals", "{7C6A6A38-F481-4C26-B617-D7B320197705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDrawingVisual", "Visuals\TestDrawingVisual\TestDrawingVisual.csproj", "{5E2FAB95-5F19-4471-9E61-49BB49475A96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,10 @@ Global
 		{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2FAB95-5F19-4471-9E61-49BB49475A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2FAB95-5F19-4471-9E61-49BB49475A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2FAB95-5F19-4471-9E61-49BB49475A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2FAB95-5F19-4471-9E61-49BB49475A96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -135,6 +143,7 @@ Global
 		{A2ABA881-F969-42D3-B927-39C7F6CAAF22} = {EA555432-05EA-491B-B2DF-6890B12A1B68}
 		{0F53A9B1-DC5A-4385-BA3F-90B4193C7E15} = {EA555432-05EA-491B-B2DF-6890B12A1B68}
 		{0FC144ED-D990-4F56-82F1-32C670AE8CC2} = {5AB7A0EA-A6C9-4F0A-AAFE-D3F751BD3E4B}
+		{5E2FAB95-5F19-4471-9E61-49BB49475A96} = {7C6A6A38-F481-4C26-B617-D7B320197705}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
