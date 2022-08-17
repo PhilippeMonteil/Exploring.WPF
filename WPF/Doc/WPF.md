@@ -13,7 +13,7 @@
 
 ### [How to: Improve Rendering Performance by Caching an Element](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/graphics-multimedia/how-to-improve-rendering-performance-by-caching-an-element?view=netframeworkdesktop-4.8)
 
-## Classes
+## UIElement / DrawingVisual
 
 ### [UIElement](https://docs.microsoft.com/en-us/dotnet/api/system.windows.uielement?view=windowsdesktop-6.0)
 
@@ -32,5 +32,18 @@
   - ContainerVisual
   - DrawingVisual
 
+### Render
 
+#### DrawingVisual
 
+Opens the DrawingVisual object for rendering. The returned DrawingContext value can be used to render into the DrawingVisual.
+
+	public System.Windows.Media.DrawingContext RenderOpen ();
+
+#### UIElement
+
+When overridden in a derived class, participates in rendering operations that are directed by the 
+layout system. The rendering instructions for this element are not used directly when this method 
+is invoked, and are instead preserved for later asynchronous use by layout and drawing.
+
+	protected virtual void OnRender (System.Windows.Media.DrawingContext drawingContext);
