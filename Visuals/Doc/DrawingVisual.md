@@ -129,7 +129,7 @@
         drawingContext.DrawDrawing(drawingGroup);
     }
 
-## Rendering d'un DrawingGroup, d'un DrawingVisual, d'un UIElement
+## Rendering d'un DrawingGroup, d'un DrawingVisual, du fond d'un UIElement (OnRender)
 
 - DrawingGroup
 
@@ -141,7 +141,7 @@
 
 - UIElement
 
-	protected virtual void OnRender (System.Windows.Media.DrawingContext drawingContext);
+	protected virtual void OnRender(System.Windows.Media.DrawingContext drawingContext);
 
 puis:
 

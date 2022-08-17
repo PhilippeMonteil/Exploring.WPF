@@ -50,9 +50,24 @@ namespace TestDrawingVisual
 
         protected override int VisualChildrenCount => drawingVisual != null ? 1 : 0;
 
+        // Overrides System.Windows.FrameworkElement.GetVisualChild(System.Int32)
+        // qui 
+        // Overrides System.Windows.Media.Visual.GetVisualChild(System.Int32)
         protected override Visual GetVisualChild(int index)
         {
             return index == 0 ? drawingVisual : null;
+        }
+
+        // rendu du fond du FrameworkElement this
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            //base.OnRender(drawingContext);
+
+            drawingContext.DrawRectangle(new SolidColorBrush(Colors.Red),
+                new Pen(new SolidColorBrush(Colors.Green), 5),
+                new Rect(0, 0, 60, 600));
+
+            //base.OnRender(drawingContext);
         }
 
     }
