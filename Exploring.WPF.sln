@@ -32,6 +32,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-6731-475C-96C6-D1D1F31FCE1F}"
 	ProjectSection(SolutionItems) = preProject
 		Doc\Notes.md = Doc\Notes.md
+		Doc\URLs.md = Doc\URLs.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}"
