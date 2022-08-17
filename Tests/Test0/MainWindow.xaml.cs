@@ -23,6 +23,10 @@ namespace Test0
         public MainWindow()
         {
             InitializeComponent();
+
+            {
+                IItemsProvider<int> _i = null;
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 
 # [Panel](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.panel?view=windowsdesktop-6.0)
 
+## [Panels Overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/panels-overview?view=netframeworkdesktop-4.8)
+
 ## Class
 
 	[System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
@@ -42,6 +44,11 @@ System.Windows.Controls.WrapPanel
 
 IAddChild
 
+## Methods
+
+	protected override void OnRender (System.Windows.Media.DrawingContext dc);
+
+### [How to: Override the Panel OnRender Method](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/how-to-override-the-panel-onrender-method?view=netframeworkdesktop-4.8)
 
 # [VirtualizingPanel](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.virtualizingpanel?view=windowsdesktop-6.0)
 
@@ -69,6 +76,8 @@ System.Windows.Controls.VirtualizingStackPanel
 
 
 # [VirtualizingStackPanel](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.virtualizingstackpanel?view=windowsdesktop-6.0)
+
+## [Overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/panels-overview?view=netframeworkdesktop-4.8#virtualizingstackpanel)
 
 ## Class
 
