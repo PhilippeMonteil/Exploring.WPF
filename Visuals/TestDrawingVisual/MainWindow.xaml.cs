@@ -20,6 +20,7 @@ namespace TestDrawingVisual
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Remplace l'UI mise en place par InitializeComponent
         DrawingVisual drawingVisual;
 
         public MainWindow()
