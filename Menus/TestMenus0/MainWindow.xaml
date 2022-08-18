@@ -1,0 +1,73 @@
+﻿<Window x:Class="TestMenus0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestMenus0"
+        mc:Ignorable="d"
+        Title="MainWindow 1.000" Height="400" Width="800" Background="DarkGray"
+        d:Width="800" d:Height="800">
+
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
+    </Window.CommandBindings>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Control" Command="{Binding Command}" CommandParameter="O"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding Command}" CommandParameter="S"/>
+    </Window.InputBindings>
+    
+    <Grid Margin="16" Background="Gray">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Column="2" Grid.Row="2">
+
+            <Menu.Resources>
+                <Style TargetType="{x:Type MenuItem}">
+                    <Setter Property="Command" Value="{Binding Command}" />
+                    <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}}" />
+                </Style>
+            </Menu.Resources>
+
+            <MenuItem Header="_File" >
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save">
+                    <MenuItem Header="_Save0"/>
+                    <MenuItem Header="_Save1" />
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Exi_t"/>
+            </MenuItem>
+
+            <MenuItem Header="_File2">
+                <MenuItem Command="New"/>
+                <MenuItem Command="Copy" CommandTarget="{Binding ElementName=tb0}"/>
+                <MenuItem Command="Cut" CommandTarget="{Binding ElementName=tb0}"/>
+                <MenuItem Command="Paste" CommandTarget="{Binding ElementName=tb0}"/>
+            </MenuItem>
+
+        </Menu>
+
+        <TextBox x:Name="tb0" Grid.Column="1" Grid.Row="1" Margin="16" Text="Test"/>
+
+        <Button Grid.Column="2" Grid.Row="1" Margin="16" Content="Test" 
+                Command="{Binding Command}" 
+                CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+
+    </Grid>
+</Window>
