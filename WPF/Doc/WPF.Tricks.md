@@ -1,0 +1,52 @@
+
+# WPF Tricks
+
+## Windows : CommandBindings, InputBindings:
+
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="NewCommand_CanExecute" Executed="NewCommand_Executed" />
+    </Window.CommandBindings>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Control" Command="{Binding Command}" CommandParameter="O"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding Command}" CommandParameter="S"/>
+    </Window.InputBindings>
+
+## Menus
+
+- mettre en oeuvre le Nuget CommunityToolkit.MVVM : RelayCommand, ...
+- Brancher tous les MenuItems d'un Menu sur une commande, en lui passant this comme paramètre
+- Brancher un MenuItem sur une commande standard ("Copy", "Cut") envoyée à un contrôle particulier
+- MenuItem.InputGestureText
+
+    <Menu>
+
+        <Menu.Resources>
+            <Style TargetType="{x:Type MenuItem}">
+                <Setter Property="Command" Value="{Binding Command}" />
+                <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}}" />
+            </Style>
+        </Menu.Resources>
+
+        <MenuItem Header="_File" >
+            <MenuItem Header="_Open" InputGestureText="Ctrl+O"/>
+            <MenuItem Header="_Save">
+                <MenuItem Header="_Save0"/>
+                <MenuItem Header="_Save1" />
+            </MenuItem>
+            <Separator/>
+            <MenuItem Header="Exi_t"/>
+        </MenuItem>
+
+        <MenuItem Header="_File2">
+            <MenuItem Command="New" CommandTarget="{Binding ElementName=bn0}"/>
+            <MenuItem Command="Copy" CommandTarget="{Binding ElementName=tb0}"/>
+            <MenuItem Command="Cut" CommandTarget="{Binding ElementName=tb0}"/>
+            <MenuItem Command="Paste" CommandTarget="{Binding ElementName=tb0}"/>
+        </MenuItem>
+
+    </Menu>

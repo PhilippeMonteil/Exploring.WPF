@@ -45,7 +45,7 @@
             </Menu.Resources>
 
             <MenuItem Header="_File" >
-                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Open" InputGestureText="Ctrl+O"/>
                 <MenuItem Header="_Save">
                     <MenuItem Header="_Save0"/>
                     <MenuItem Header="_Save1" />

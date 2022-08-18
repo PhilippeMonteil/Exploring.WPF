@@ -73,7 +73,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{0FC144ED-D99
 	ProjectSection(SolutionItems) = preProject
 		WPF\Doc\FrameworkElement.md = WPF\Doc\FrameworkElement.md
 		WPF\Doc\UIElement.md = WPF\Doc\UIElement.md
+		WPF\Doc\Visual.md = WPF\Doc\Visual.md
 		WPF\Doc\WPF.md = WPF\Doc\WPF.md
+		WPF\Doc\WPF.Tricks.md = WPF\Doc\WPF.Tricks.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Visuals", "Visuals", "{7C6A6A38-F481-4C26-B617-D7B320197705}"
@@ -87,7 +89,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{C3115468-F02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Menus", "Menus", "{730D570F-284D-4391-97F6-A86537CE4B29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMenus0", "Menus\TestMenus0\TestMenus0.csproj", "{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMenus0", "Menus\TestMenus0\TestMenus0.csproj", "{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{D3C1D9BB-D2E9-4D5B-8D94-3C5D367DC7CA}"
 EndProject
