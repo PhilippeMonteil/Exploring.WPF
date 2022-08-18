@@ -55,7 +55,7 @@
             </MenuItem>
 
             <MenuItem Header="_File2">
-                <MenuItem Command="New"/>
+                <MenuItem Command="New" CommandTarget="{Binding ElementName=bn0}"/>
                 <MenuItem Command="Copy" CommandTarget="{Binding ElementName=tb0}"/>
                 <MenuItem Command="Cut" CommandTarget="{Binding ElementName=tb0}"/>
                 <MenuItem Command="Paste" CommandTarget="{Binding ElementName=tb0}"/>
@@ -65,9 +65,17 @@
 
         <TextBox x:Name="tb0" Grid.Column="1" Grid.Row="1" Margin="16" Text="Test"/>
 
-        <Button Grid.Column="2" Grid.Row="1" Margin="16" Content="Test" 
+        <Button x:Name="bn0"  Grid.Column="2" Grid.Row="1" Margin="16" Content="Test" 
                 Command="{Binding Command}" 
-                CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+                CommandParameter="{Binding RelativeSource={RelativeSource Self}}">
+
+            <Button.CommandBindings>
+                <CommandBinding Command="New" 
+                                CanExecute="CommandBinding_CanExecute" 
+                                Executed="CommandBinding_Executed" />
+            </Button.CommandBindings>
+
+        </Button>
 
     </Grid>
 </Window>

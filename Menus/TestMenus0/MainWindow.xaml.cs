@@ -36,5 +36,17 @@ namespace TestMenus0
         {
             Debug.WriteLine($"NewCommand_Executed");
         }
+
+        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            Debug.WriteLine($"CommandBinding_CanExecute");
+            e.CanExecute = true;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Debug.WriteLine($"CommandBinding_Executed");
+        }
+
     }
 }
