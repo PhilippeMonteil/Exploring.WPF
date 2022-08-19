@@ -1,9 +1,16 @@
 
-# Binding
+# [Binding](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
-## URLs
+## Class
 
-- [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
+	public class Binding : System.Windows.Data.BindingBase
+
+## Inheritance
+
+- Object
+- MarkupExtension
+- BindingBase
+- Binding
 
 ## Binding.Source
 
@@ -437,5 +444,9 @@ public class NameMultiValueConverter : IMultiValueConverter
    }
 }
 
+
+## URLs
+
+- [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
 
 
