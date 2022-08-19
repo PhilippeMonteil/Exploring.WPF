@@ -1,6 +1,22 @@
 
 # [MarkupExtension](https://docs.microsoft.com/en-us/dotnet/api/system.windows.markup.markupextension?view=windowsdesktop-6.0)
 
+A markup extension can be implemented to provide values for properties in an attribute usage, 
+properties in a property element usage, or both.
+
+## XAML-Defined Markup Extensions : "x:" ...
+
+- [x:Type](https://docs.microsoft.com/en-us/dotnet/desktop/xaml-services/xtype-markup-extension)
+- [x:Static](https://docs.microsoft.com/en-us/dotnet/desktop/xaml-services/xstatic-markup-extension)
+- [x:Null](https://docs.microsoft.com/en-us/dotnet/desktop/xaml-services/xnull-markup-extension)
+- [x:Array](https://docs.microsoft.com/en-us/dotnet/desktop/xaml-services/xarray-markup-extension)
+
+## WPF-Specific Markup Extensions
+
+- [StaticResource](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/staticresource-markup-extension?view=netframeworkdesktop-4.8)
+- [DynamicResource](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dynamicresource-markup-extension?view=netframeworkdesktop-4.8)
+- 
+
 ## [Overview of markup extensions for XAML](https://docs.microsoft.com/en-us/dotnet/desktop/xaml-services/markup-extensions-overview)
 
 ## [Markup Extensions and WPF XAML](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/markup-extensions-and-wpf-xaml?view=netframeworkdesktop-4.8)
