@@ -87,3 +87,21 @@
 
 ### Default / Custom Control
 
+## [WPF Merged Dictionary problems and solutions](https://michaelscodingspot.com/wpf-merged-dictionary-problemsandsolutions/)
+
+## [ThemeInfoAttribute ](https://docs.microsoft.com/en-us/dotnet/api/system.windows.themeinfoattribute?view=windowsdesktop-6.0)
+
+    public ThemeInfoAttribute (System.Windows.ResourceDictionaryLocation themeDictionaryLocation, 
+                            System.Windows.ResourceDictionaryLocation genericDictionaryLocation);
+
+public enum ResourceDictionaryLocation
+
+ExternalAssembly 	2 	
+
+Theme dictionaries exist in assemblies external to the one defining the types being themed. They are named based on the original assembly with the theme name appended to it; for example, PresentationFramework.Luna.dll. These dictionaries share the same version and key as the original assembly.
+None 	0 	
+
+No theme dictionaries exist.
+SourceAssembly 	1 	
+
+Theme dictionaries exist in the assembly that defines the types being themed.
