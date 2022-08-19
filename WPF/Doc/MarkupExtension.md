@@ -4,6 +4,14 @@
 A markup extension can be implemented to provide values for properties in an attribute usage, 
 properties in a property element usage, or both.
 
+	<object property="{DynamicResource key}" ... />  
+	
+	<object>  
+		<object.property>  
+			<DynamicResource ResourceKey="key" ... />  
+		</object.property>  
+	</object>  
+
 ## [XAML-Defined Markup Extensions](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/markup-extensions-and-wpf-xaml?view=netframeworkdesktop-4.8#xaml-defined-markup-extensions)
 
 - [x:Type](https://docs.microsoft.com/en-us/dotnet/desktop/xaml-services/xtype-markup-extension)
