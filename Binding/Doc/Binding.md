@@ -1,6 +1,17 @@
 
 # [Binding](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
+## [Binding Markup Extension](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/binding-markup-extension?view=netframeworkdesktop-4.8)
+
+### Usage
+
+	<object property="{Binding}" .../>  
+	<object property="{Binding  bindProp1=value1[, bindPropN=valueN]*}" ...  />
+	<object property="{Binding path}" .../>  
+	<object property="{Binding path[, bindPropN=valueN]*}" .../>
+
+## [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8)
+
 ## Class
 
 	public class Binding : System.Windows.Data.BindingBase
@@ -20,7 +31,7 @@
 
 ### Source
 
-ex: Binding Source="{StaticResource data}" Path="Age"
+	Binding Source="{StaticResource data}" Path="Age"
 
 ### RelativeSource : Self / TemplatedParent / FindAncestor / PreviousData
 
@@ -444,6 +455,17 @@ public class NameMultiValueConverter : IMultiValueConverter
    }
 }
 
+## Exemple
+
+	<Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+		<Style.Triggers>
+			<Trigger Property="Validation.HasError" Value="true">
+				<Setter Property="ToolTip"
+					Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)/ErrorContent}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 
 ## URLs
 

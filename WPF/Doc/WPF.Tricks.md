@@ -50,3 +50,40 @@
         </MenuItem>
 
     </Menu>
+
+## [Explicit, Implicit and Default styles in WPF](https://michaelscodingspot.com/explicit-implicit-and-default-styles-in-wpf/)
+
+### Explicit (Style x:Key= ...)
+
+    <Application.Resources>
+        <Style x:Key=“BaseButtonStyle” TargetType=“Button”>
+            <Setter Property=“Background” Value=“Black”/>
+            <Setter Property=“Foreground” Value=“White”/>
+        </Style>
+    </Application.Resources>
+
+    <Button Style=”{StaticResource BaseButtonStyle}“>Hello world</Button>
+
+### Implicit
+
+    <Application.Resources>
+        <Style TargetType=“Button”>
+            <Setter Property=“Background” Value=“Black”/>
+            <Setter Property=“Foreground” Value=“White”/>
+        </Style>
+    </Application.Resources>
+
+    <Button>Hello world</Button>
+
+    // Implicit, particularisé localement
+    <Button>
+        <Button.Style>
+            <Style TargetType=“Button” BasedOn=”{StaticResource {x:Type Button}}“>
+                <Setter Property=“Padding” Value=“20”/>
+            </Style>
+        </Button.Style>
+        Hello world
+    </Button>
+
+### Default / Custom Control
+

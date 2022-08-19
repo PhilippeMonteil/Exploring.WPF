@@ -15,3 +15,5 @@
 
 ### [How to: Improve Rendering Performance by Caching an Element](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/graphics-multimedia/how-to-improve-rendering-performance-by-caching-an-element?view=netframeworkdesktop-4.8)
 
+### [Control authoring overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/control-authoring-overview?view=netframeworkdesktop-4.8#defining-resources-at-the-theme-level)
+
