@@ -5,85 +5,93 @@
 
 - [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
 
-## Sources:
+## Binding.Source
 
-  Binding.Source
+	public object Source { get; set; }
 
-  -  public object Source { get; set; }
+### Default: DataContext
 
-  - diverses sources:
-    - default: DataContext
+### Source
 
-	- Source
-	  ex: <Binding Source="{StaticResource data}" Path="Age" />
+ex: Binding Source="{StaticResource data}" Path="Age"
 
-	- RelativeSource
-	  ex:
-      - Binding RelativeSource={RelativeSource Self}
-      - Binding RelativeSource={RelativeSource TemplatedParent}
-      - Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}, Path=Orientation
-      - Binding RelativeSource={RelativeSource PreviousData}
+### RelativeSource : Self / TemplatedParent / FindAncestor / PreviousData
 
-	- ElementName
-	  ex:
-      - <Binding ElementName="ValueSlider" Path="Value"/>
+ - Binding RelativeSource=\{RelativeSource Self}
+ - Binding RelativeSource=\{RelativeSource TemplatedParent}
+ - Binding RelativeSource=\{RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}, Path=Orientation
+ - Binding RelativeSource=\{RelativeSource PreviousData}
 
-## Paths:
+### ElementName
 
-  - Path
+Exemple: 
 
-    ex:
-		<TextBox x:Name="myTextBox" Text="Hello world!" />
-		<TextBox Text="{Binding ElementName=myTextBox, Path=Text.Length}" />
-		<TextBox Text="{Binding ElementName=myTextBox, Path=Text[0]}" />
+	<Binding ElementName="ValueSlider" Path="Value"/>
 
-  - XPath
+## Binding.Path
 
-    ex:
-<Grid>
-	<Grid.RowDefinitions>
-		<RowDefinition Height="Auto" />
-		<RowDefinition Height="Auto" />
-	</Grid.RowDefinitions>
-	<Grid.Resources>
-		<XmlDataProvider x:Key="Movies">
-			<x:XData>
-				<Movies>
-					<Movie title="Top Gun">
-						<Actor>Tom Cruise</Actor>
-					</Movie>
-				</Movies>
-			</x:XData>
-		</XmlDataProvider>
-	</Grid.Resources>
-	<TextBox Grid.Row="0"
+### Exemple
+
+	<TextBox x:Name="myTextBox" Text="Hello world!" />
+	<TextBox Text="{Binding ElementName=myTextBox, Path=Text.Length}" />
+	<TextBox Text="{Binding ElementName=myTextBox, Path=Text[0]}" />
+
+## Binding.XPath
+
+### Exemple
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<Grid.Resources>
+			<XmlDataProvider x:Key="Movies">
+				<x:XData>
+					<Movies>
+						<Movie title="Top Gun">
+							<Actor>Tom Cruise</Actor>
+						</Movie>
+					</Movies>
+				</x:XData>
+			</XmlDataProvider>
+		</Grid.Resources>
+
+		<TextBox Grid.Row="0"
 			 Text="{Binding Source={StaticResource Movies}, XPath=Movies/Movie[1]/@title}" />
-	<TextBox Grid.Row="1"
+		<TextBox Grid.Row="1"
 			 Text="{Binding Source={StaticResource Movies}, XPath=Movies/Movie[1]/Actor[1]}" />
-</Grid>
 
-  - BindsDirectlyToSource: Path est interprété directement comme une propriété de l'objet source
+	</Grid>
 
-ex:
+- BindsDirectlyToSource: Path est interprété directement comme une propriété de l'objet source
 
-<Grid>
-	<Grid.RowDefinitions>
-		<RowDefinition Height="Auto" />
-		<RowDefinition Height="Auto" />
-	</Grid.RowDefinitions>
-	<Grid.Resources>
-		<ObjectDataProvider x:Key="Movies">
-			<ObjectDataProvider.ObjectInstance>
-				<WpfApplication2:Movies>
-					<WpfApplication2:Movie Title="Top Gun" />
-					<WpfApplication2:Movie Title="Star Wars: A new hope" />
-				</WpfApplication2:Movies>
-			</ObjectDataProvider.ObjectInstance>
-		</ObjectDataProvider>
-	</Grid.Resources>
-	<TextBox Grid.Row="0" Text="{Binding Source={StaticResource Movies}, Path=[0].Title}" />
-	<TextBox Grid.Row="1" Text="{Binding Source={StaticResource Movies}, BindsDirectlyToSource=True, Path=ObjectType}" />
-</Grid>
+### Exemple
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<Grid.Resources>
+			<ObjectDataProvider x:Key="Movies">
+				<ObjectDataProvider.ObjectInstance>
+					<WpfApplication2:Movies>
+						<WpfApplication2:Movie Title="Top Gun" />
+						<WpfApplication2:Movie Title="Star Wars: A new hope" />
+					</WpfApplication2:Movies>
+				</ObjectDataProvider.ObjectInstance>
+			</ObjectDataProvider>
+		</Grid.Resources>
+
+		<TextBox Grid.Row="0" Text="{Binding Source={StaticResource Movies}, Path=[0].Title}" />
+		<TextBox Grid.Row="1" Text="{Binding Source={StaticResource Movies}, BindsDirectlyToSource=True, Path=ObjectType}" />
+
+	</Grid>
 
 ## Conversions
 
