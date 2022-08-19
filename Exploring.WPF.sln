@@ -99,6 +99,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{43C8F0C3-27C
 		Binding\Doc\Binding.md = Binding\Doc\Binding.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBinding0", "Binding\TestBinding0\TestBinding0.csproj", "{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,10 @@ Global
 		{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -172,6 +178,7 @@ Global
 		{1A99D893-85D1-4323-9A5F-803C3F0DC1CE} = {730D570F-284D-4391-97F6-A86537CE4B29}
 		{D3C1D9BB-D2E9-4D5B-8D94-3C5D367DC7CA} = {730D570F-284D-4391-97F6-A86537CE4B29}
 		{43C8F0C3-27C3-4035-AD4F-2F7E01656B6A} = {F9C66C17-FA2E-49D2-8DCD-EDC0770C71BC}
+		{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93} = {F9C66C17-FA2E-49D2-8DCD-EDC0770C71BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
