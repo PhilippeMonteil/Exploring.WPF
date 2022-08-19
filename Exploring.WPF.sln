@@ -32,7 +32,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-6731-475C-96C6-D1D1F31FCE1F}"
 	ProjectSection(SolutionItems) = preProject
 		Doc\Notes.md = Doc\Notes.md
-		Doc\URLs.md = Doc\URLs.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}"
@@ -92,6 +91,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMenus0", "Menus\TestMenus0\TestMenus0.csproj", "{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{D3C1D9BB-D2E9-4D5B-8D94-3C5D367DC7CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Binding", "Binding", "{F9C66C17-FA2E-49D2-8DCD-EDC0770C71BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{43C8F0C3-27C3-4035-AD4F-2F7E01656B6A}"
+	ProjectSection(SolutionItems) = preProject
+		Binding\Doc\Binding.md = Binding\Doc\Binding.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +171,7 @@ Global
 		{C3115468-F025-4544-B779-576A9E760785} = {7C6A6A38-F481-4C26-B617-D7B320197705}
 		{1A99D893-85D1-4323-9A5F-803C3F0DC1CE} = {730D570F-284D-4391-97F6-A86537CE4B29}
 		{D3C1D9BB-D2E9-4D5B-8D94-3C5D367DC7CA} = {730D570F-284D-4391-97F6-A86537CE4B29}
+		{43C8F0C3-27C3-4035-AD4F-2F7E01656B6A} = {F9C66C17-FA2E-49D2-8DCD-EDC0770C71BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}

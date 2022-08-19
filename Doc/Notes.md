@@ -174,5 +174,3 @@ Exemple
         /// <returns></returns>
         IList<T> FetchRange(int startIndex, int count);
     }
-
-# DrawingVisual.md
