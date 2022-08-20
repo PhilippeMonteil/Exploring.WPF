@@ -16,9 +16,16 @@
 - Path / XPath
 - UpdateSourceTrigger : Defaut (cd metadata) / PropertyChanged / LostFocus / Explicit
 - Mode : Default (cf metadata) / OneTime / OneWay / OneWayToSource / TwoWay
+- Validation:
+    - dépend de 
+        - Binding.ValidationRules
+        - Binding.ValidatesOnDataErrors
+        - Binding.ValidatesOnExceptions
+        - Binding.ValidatesOnNotifyDataErrors
+    - appelle Binding.UpdateSourceExceptionFilter en cas d'exception déclenchée par la Source lors d'un update 
+    - met à jour BoundElement.Validation.HasErrors, BoundElement.Validation.Errors
+    - produit un UI d'adffichage des erreurs de validation avec BoundElement.Validation.ErrorTemplate
 - Converter, ConverterCulture , ConverterParameter
-- Validation.Errors Attached Property
-- ValidatesOnDataErrors (si la Source du Binding expose IDataErrorInfo)
 
 ## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
