@@ -27,7 +27,7 @@
 - BindingBase
 - Binding
 
-### 2.2) Properties : Source, RelativeSource, ElementName
+### 2.2) [Source](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.source?view=windowsdesktop-6.0), [RelativeSource](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.relativesource?view=windowsdesktop-6.0), [ElementName](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.elementname?view=windowsdesktop-6.0)
 
 	public object Source { get; set; }
 	public System.Windows.Data.RelativeSource RelativeSource { get; set; }
@@ -88,7 +88,7 @@ Self / TemplatedParent / FindAncestor / PreviousData
 
 	{Binding ElementName=ValueSlider Path=Value}
 
-### 2.4) Property : Path
+### 2.3) [Path](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.path?view=windowsdesktop-6.0)
 
 	public System.Windows.PropertyPath Path { get; set; }
 
@@ -141,7 +141,7 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 	<Rectangle Fill="{Binding ColorGrid[20,30].SolidColorBrushResult}" ... />
 
-### 2.5) Property : BindsDirectlyToSource
+### 2.4) [BindsDirectlyToSource](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.bindsdirectlytosource?view=windowsdesktop-6.0)
 
 	// Gets or sets a value that indicates whether to evaluate the Path relative to 
 	// the data item or the DataSourceProvider object.
@@ -193,7 +193,7 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 	</Grid>
 
-### 2.6) Property : XPath
+### 2.6) [XPath](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.xpath?view=windowsdesktop-6.0)
 
 #### Exemple
 
@@ -223,7 +223,7 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 	</Grid>
 
-## 3) UpdateSourceTrigger : Mise à jour du binding
+## 3) [UpdateSourceTrigger](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.updatesourcetrigger?view=windowsdesktop-6.0) : Mise à jour du binding
 
  - UpdateSourceTrigger: 
 
