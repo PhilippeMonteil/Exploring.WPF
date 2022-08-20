@@ -10,6 +10,17 @@
 
 ### [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8)
 
+## En résumé
+
+- Source / RelativeSource / ElementName
+- Path / XPath
+- UpdateSourceTrigger : PropertyChanged / LostFocus / Explicit
+
+	- Default / contrôle: ex: perte de focus
+	- PropertyChanged
+	- LostFocus
+	- Explicit
+
 ## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
 	public class Binding : System.Windows.Data.BindingBase
@@ -34,6 +45,18 @@
 #### Source
 
 	{Binding Source={StaticResource data} Path=Age}
+
+#### [FrameworkElement.DataContext](https://docs.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.datacontext?view=windowsdesktop-6.0) 
+
+	[System.Windows.Localizability(System.Windows.LocalizationCategory.NeverLocalize)]
+	public object DataContext { get; set; }
+
+> Data context is a concept that allows elements to inherit information from their parent elements about the data source that is used for binding, as well as other characteristics of the binding, such as the path.
+
+> Data context can be set directly to a .NET object, with the bindings evaluating to properties of that object. Alternatively, you can set the data context to a DataSourceProvider object.
+
+> This dependency property inherits property values. If there are child elements without other values for DataContext established through local values or styles, then the property system will set the value to be the DataContext value of the nearest parent element with this value assigned.
+
 
 #### RelativeSource
 
@@ -125,15 +148,14 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 ### 2.5) Property : BindsDirectlyToSource
 
+	// Gets or sets a value that indicates whether to evaluate the Path relative to 
+	// the data item or the DataSourceProvider object.
 	public bool BindsDirectlyToSource { get; set; }
-
-> Gets or sets a value that indicates whether to evaluate the Path relative to the data item or the DataSourceProvider object.
 
 #### [DataSourceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.datasourceprovider?view=windowsdesktop-6.0)
 
 	public abstract class DataSourceProvider : System.ComponentModel.INotifyPropertyChanged, 
 											System.ComponentModel.ISupportInitialize
-
 
 ##### Inheritance
 
@@ -206,7 +228,32 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 	</Grid>
 
-## 3) Conversions
+## 3) UpdateSourceTrigger : Mise à jour du binding
+
+ - UpdateSourceTrigger: 
+
+	- Default / contrôle: ex: perte de focus
+	- PropertyChanged
+	- LostFocus
+	- Explicit
+	  ex: monTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource() .
+
+- modification de la valeur par défaut : cf FrameworkPropertyMetadata.DefaultUpdateSourceTrigger 
+
+  exemple :
+
+	static MainWindow() 
+	{
+        FrameworkPropertyMetadata fpm = new FrameworkPropertyMetadata(string.Empty, 
+    		FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, 
+    		null, 
+    		null, 
+    		true, 
+    		UpdateSourceTrigger.PropertyChanged);
+        TextEdit.EditValueProperty.OverrideMetadata(typeof(TextEdit), fpm);
+    }
+
+## 4) Conversions
 
   - using System.Windows.Data;
   - IValueConverter
@@ -226,6 +273,32 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 	</Grid>
 
 ## 4) Validation
+
+### UpdateSourceExceptionFilter 
+
+Définition d'une callback qui sera appelée en cas d'erreur de validation. 
+
+#### Exemple
+
+	<TextBox Grid.Row="0" Margin="2">
+		<TextBox.Text>
+			<Binding Path="Value"
+				 UpdateSourceTrigger="PropertyChanged"
+				 UpdateSourceExceptionFilter="OnUpdateSourceExceptionFilter">
+				<Binding.ValidationRules>
+					<ExceptionValidationRule />
+				</Binding.ValidationRules>
+			</Binding>
+		</TextBox.Text>
+	</TextBox>
+
+	public partial class MainWindow
+
+		object OnUpdateSourceExceptionFilter(object bindingExpression, Exception exception)
+		{
+			Debug.WriteLine(exception);
+			return exception;
+		}
 
 ### ValidatesOnDataErrors: si l'objet source du binding expose IDataErrorInfo
 
@@ -436,43 +509,6 @@ Mise en oeuvre de INotifyDataErrorInfo
 				Margin="2"
 				Text="{Binding Path=Value, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
 				Validation.Error="OnError" />
-
-## 6) Mise à jour du binding
-
- - UpdateSourceTrigger: 
-
-	- Default / contrôle: ex: perte de focus
-	- PropertyChanged
-	- LostFocus
-	- Explicit
-	  ex: monTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource() .
-
-  - UpdateSourceExceptionFilter 
-
-    définition d'un callback qui sera appelé en cas d'erreur de validation. 
-
-    ex:
-
-  <TextBox Grid.Row="0"
-		 Margin="2">
-	<TextBox.Text>
-		<Binding Path="Value"
-				 UpdateSourceTrigger="PropertyChanged"
-				 UpdateSourceExceptionFilter="OnUpdateSourceExceptionFilter">
-			<Binding.ValidationRules>
-				<ExceptionValidationRule />
-			</Binding.ValidationRules>
-		</Binding>
-	</TextBox.Text>
-</TextBox>
-
-	public partial class MainWindow
-
-		object OnUpdateSourceExceptionFilter(object bindingExpression, Exception exception)
-		{
-			Debug.WriteLine(exception);
-			return exception;
-		}
 
 ## 7) Options
 
