@@ -17,6 +17,8 @@
 - UpdateSourceTrigger : Defaut (cd metadata) / PropertyChanged / LostFocus / Explicit
 - Mode : Default (cf metadata) / OneTime / OneWay / OneWayToSource / TwoWay
 - Converter, ConverterCulture , ConverterParameter
+- Validation.Errors Attached Property
+- ValidatesOnDataErrors (si la Source du Binding expose IDataErrorInfo)
 
 ## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
@@ -271,8 +273,10 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 ## 5) Conversion : [Converter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.converter?view=windowsdesktop-6.0), [ConverterCulture](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.converterculture?view=windowsdesktop-6.0), [ConverterParameter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.converterparameter?view=windowsdesktop-6.0)
 
-  - [IValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter?view=windowsdesktop-6.0)
-  - [ValueConversionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.valueconversionattribute?view=windowsdesktop-6.0)
+> A binding implicitly uses a default converter that tries to do a type conversion between the source value and the target value. If a conversion cannot be made, the default converter returns null.
+
+- [IValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter?view=windowsdesktop-6.0)
+- [ValueConversionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.valueconversionattribute?view=windowsdesktop-6.0)
 
 ### Exemple
 
@@ -293,11 +297,17 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 						Mode=OneWay}" />
 	</Grid>
 
-## 4) Validation
+## 6) Validation
 
-### UpdateSourceExceptionFilter 
+### 6.1) [ValidationRules](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validationrules?view=windowsdesktop-6.0)
 
-Définition d'une callback qui sera appelée en cas d'erreur de validation. 
+	public System.Collections.ObjectModel.Collection<System.Windows.Controls.ValidationRule> ValidationRules { get; }
+
+> The WPF data binding model enables you to associate ValidationRules with your Binding or MultiBinding object. You can create custom rules by deriving from the ValidationRule class and implementing the Validate method, or you can use the built-in ExceptionValidationRule, which invalidates a value if there are exceptions during source updates.
+
+### 6.2) [UpdateSourceExceptionFilter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter?view=windowsdesktop-6.0) 
+
+> Gets or sets a handler you can use to provide custom logic for handling exceptions that the binding engine encounters during the update of the binding source value. This is only applicable if you have associated an __ExceptionValidationRule__ with your binding in its __ValidationRules__ property.
 
 #### Exemple
 
@@ -321,7 +331,15 @@ Définition d'une callback qui sera appelée en cas d'erreur de validation.
 			return exception;
 		}
 
-### ValidatesOnDataErrors: si l'objet source du binding expose IDataErrorInfo
+### 6.3) [Validation.HasError, .Errors, .Error, .ErrorTemplate Attached Properties and Event](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errors?view=windowsdesktop-6.0)
+
+> The WPF data binding model enables you to associate ValidationRules with your Binding object. Validation occurs during binding target-to-binding source value transfer before the converter is called.
+
+### 6.4) [ValidatesOnDataErrors](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validatesondataerrors?view=windowsdesktop-6.0)
+
+	public bool ValidatesOnDataErrors { get; set; }
+
+Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.idataerrorinfo?view=net-6.0)
 
 	namespace System.ComponentModel
 	{
