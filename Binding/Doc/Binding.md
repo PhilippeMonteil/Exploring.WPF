@@ -305,6 +305,39 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 > The WPF data binding model enables you to associate ValidationRules with your Binding or MultiBinding object. You can create custom rules by deriving from the ValidationRule class and implementing the Validate method, or you can use the built-in ExceptionValidationRule, which invalidates a value if there are exceptions during source updates.
 
+- clause AND entre les Validation rules
+- appelées dans le sens Target -> Source, avant la conversion, ssi la validation réussit
+
+	<TextBox Grid.Row="0" Margin="2">
+    	<TextBox.Text>
+    		<Binding Path="Value"
+				 UpdateSourceTrigger="PropertyChanged">
+    			<Binding.ValidationRules>
+    				<WpfApplication2:RangeRule Min="0" Max="100" />
+    				<WpfApplication2:EvenRule />
+    			</Binding.ValidationRules>
+    		</Binding>
+    	</TextBox.Text>
+	</TextBox>
+
+	using System.Windows.Controls;
+
+	public class RangeRule : ValidationRule
+    {
+    	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+    	{
+    		int valueToCheck;
+
+    		if (!(value is String) || !int.TryParse(value as String, out valueToCheck))
+    			return new ValidationResult(false, "Value is not in a valid integer");
+
+    		if (valueToCheck < Min || valueToCheck > Max)
+    			return new ValidationResult(false, String.Format("Value must be between {0} and {1}", Min, Max));
+
+    		return new ValidationResult(true, null);
+    	}
+	}
+
 ### 6.2) [UpdateSourceExceptionFilter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter?view=windowsdesktop-6.0) 
 
 > Gets or sets a handler you can use to provide custom logic for handling exceptions that the binding engine encounters during the update of the binding source value. This is only applicable if you have associated an __ExceptionValidationRule__ with your binding in its __ValidationRules__ property.
@@ -428,42 +461,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 		}
 	}
 
-#### ValidationRules 
-
-- clause AND entre les Validation rules
-- appelées dans le sens Target -> Source, avant la conversion, ssi la validation réussit
-
-	<TextBox Grid.Row="0" Margin="2">
-    	<TextBox.Text>
-    		<Binding Path="Value"
-				 UpdateSourceTrigger="PropertyChanged">
-    			<Binding.ValidationRules>
-    				<WpfApplication2:RangeRule Min="0" Max="100" />
-    				<WpfApplication2:EvenRule />
-    			</Binding.ValidationRules>
-    		</Binding>
-    	</TextBox.Text>
-	</TextBox>
-
-	using System.Windows.Controls;
-
-	public class RangeRule : ValidationRule
-    {
-    	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
-    	{
-    		int valueToCheck;
-
-    		if (!(value is String) || !int.TryParse(value as String, out valueToCheck))
-    			return new ValidationResult(false, "Value is not in a valid integer");
-
-    		if (valueToCheck < Min || valueToCheck > Max)
-    			return new ValidationResult(false, String.Format("Value must be between {0} and {1}", Min, Max));
-
-    		return new ValidationResult(true, null);
-    	}
-	}
-
-#### BindingGroupName 
+## 7) BindingGroupName 
 
  	<Grid.BindingGroup>
 		<BindingGroup Name="DateGroup" NotifyOnValidationError="True">
@@ -527,7 +525,7 @@ Mise en oeuvre de INotifyDataErrorInfo
     	}
 	}
 
-## 5) Notifications
+## 8) Notifications
 
 - NotifyOnSourceUpdated  / NotifyOnTargetUpdated 
 
@@ -549,7 +547,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 				Text="{Binding Path=Value, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
 				Validation.Error="OnError" />
 
-## 7) Options
+## 9) Options
 
 - FallbackValue 
 
@@ -581,25 +579,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 
 - TargetNullValue 
 
-## 8) Les Converters
-
-- IValueConverter
-
-	namespace System.Windows.Data
-    {
-        public interface IValueConverter
-        {
-            object Convert(object value, Type targetType, object parameter, CultureInfo culture);
-            object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
-        }
-    }
-
-- Converter et Markup extension
- - using System.Windows.Markup;
- - MarkupExtension
- - [MarkupExtensionReturnType(typeof(IValueConverter))]
-
-## 9) Multibinding et multivalue converters
+## 10) Multibinding et multivalue converters
 
 	<Window xmlns:local="clr-namespace:BlogIMultiValueConverter">
 		<Window.Resources>
@@ -637,7 +617,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 		</Style.Triggers>
 	</Style>
 
-## 10) URLs
+## 11) URLs
 
 - [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
 
