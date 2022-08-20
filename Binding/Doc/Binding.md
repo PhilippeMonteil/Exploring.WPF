@@ -299,6 +299,20 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 ## 6) Validation
 
+### 6.0) [Validation.Errors Attached Property](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errors?view=windowsdesktop-6.0)
+
+When a value is being transferred from the target property to the source property:
+- clear BoundElement[Validation.Errors]
+- if Binding.ValidationRules != null
+    - call the Validate method on each of the ValidationRules until one of them runs into an error or until all of them pass.
+	- once there is a custom rule that does not pass, create a ValidationError object and add it to BoundElement[Validation.Errors]
+    - if BoundElement[Validation.Errors] not empty then raise the BoundElement[Validation.Error] attached event
+- if no error then call the Binding.Converter, if one exists.
+- if the Binding.Converter passes, call the setter of the Source property.
+- if the Binding.ValidationRules has an ExceptionValidationRule and an exception is thrown during the setter call: 
+  - if there is a Binding.UpdateSourceExceptionFilter call it 
+  - else create a ValidationError with the exception and add it to Target[Validation.Errors].
+
 ### 6.1) [ValidationRules](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validationrules?view=windowsdesktop-6.0)
 
 	public System.Collections.ObjectModel.Collection<System.Windows.Controls.ValidationRule> ValidationRules { get; }
