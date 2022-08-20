@@ -1,62 +1,58 @@
+# Binding
 
-# [Binding](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
+## Documentation
 
-## [Binding Markup Extension](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/binding-markup-extension?view=netframeworkdesktop-4.8)
+### [Data binding overview (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/data/?view=netdesktop-6.0#basic-data-binding-concepts)
 
-### Usage
+### [Binding declarations overview (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/data/binding-declarations-overview?view=netdesktop-6.0)
 
-	<object property="{Binding}" .../>  
-	<object property="{Binding  bindProp1=value1[, bindPropN=valueN]*}" ...  />
-	<object property="{Binding path}" .../>  
-	<object property="{Binding path[, bindPropN=valueN]*}" .../>
+### [Binding Markup Extension](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/binding-markup-extension?view=netframeworkdesktop-4.8)
 
-## [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8)
+### [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8)
 
-## Class
+## [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
 	public class Binding : System.Windows.Data.BindingBase
 
-## Inheritance
+### Inheritance
 
 - Object
 - MarkupExtension
 - BindingBase
 - Binding
 
-## Binding.Source
+### Binding .Source, .RelativeSource, .ElementName
 
 	public object Source { get; set; }
 
-### Default: DataContext
+#### Default: DataContext
 
-### Source
+#### Source
 
-	Binding Source="{StaticResource data}" Path="Age"
+	{Binding Source={StaticResource data} Path=Age}
 
-### RelativeSource : Self / TemplatedParent / FindAncestor / PreviousData
+#### RelativeSource : Self / TemplatedParent / FindAncestor / PreviousData
 
- - Binding RelativeSource=\{RelativeSource Self}
- - Binding RelativeSource=\{RelativeSource TemplatedParent}
- - Binding RelativeSource=\{RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}, Path=Orientation
- - Binding RelativeSource=\{RelativeSource PreviousData}
+	{Binding RelativeSource={RelativeSource Self}}
+	{Binding RelativeSource={RelativeSource TemplatedParent}}
+	{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type StackPanel}}, Path=Orientation}
+	{Binding RelativeSource={RelativeSource PreviousData}}
 
-### ElementName
+#### ElementName
 
-Exemple: 
+	{Binding ElementName=ValueSlider Path=Value}
 
-	<Binding ElementName="ValueSlider" Path="Value"/>
+### .Path
 
-## Binding.Path
-
-### Exemple
+#### Exemple
 
 	<TextBox x:Name="myTextBox" Text="Hello world!" />
 	<TextBox Text="{Binding ElementName=myTextBox, Path=Text.Length}" />
 	<TextBox Text="{Binding ElementName=myTextBox, Path=Text[0]}" />
 
-## Binding.XPath
+### .XPath
 
-### Exemple
+#### Exemple
 
 	<Grid>
 
@@ -86,7 +82,7 @@ Exemple:
 
 - BindsDirectlyToSource: Path est interprété directement comme une propriété de l'objet source
 
-### Exemple
+#### Exemple
 
 	<Grid>
 
@@ -111,152 +107,155 @@ Exemple:
 
 	</Grid>
 
-## Conversions
+### Conversions
 
   - using System.Windows.Data;
   - IValueConverter
   - [ValueConversion(typeof(string), typeof(string))]
 
-  ex:
+#### Exemple
 
-<Grid x:Name="LayoutRoot">
-	<Grid.Resources>
-		<WpfApplication2:MyConverter x:Key="MyConverter" />
-	</Grid.Resources>
-	<TextBox Text="{Binding ElementName=LayoutRoot, Path=ActualWidth, 
+	<Grid x:Name="LayoutRoot">
+		<Grid.Resources>
+			<WpfApplication2:MyConverter x:Key="MyConverter" />
+		</Grid.Resources>
+		<TextBox Text="{Binding ElementName=LayoutRoot, Path=ActualWidth, 
 						Converter={StaticResource MyConverter}, 
 						ConverterParameter=2, 
 						ConverterCulture=en-US, 
 						Mode=OneWay}" />
-</Grid>
+	</Grid>
 
-## Validation
+### Validation
 
-  i) ValidatesOnDataErrors: si l'objet source du binding expose IDataErrorInfo
+#### ValidatesOnDataErrors: si l'objet source du binding expose IDataErrorInfo
 
-namespace System.ComponentModel
-{
-    public interface IDataErrorInfo
-    {
-        string this[string columnName] { get; }
-        string Error { get; }
-    }
-}
+	namespace System.ComponentModel
+	{
+		public interface IDataErrorInfo
+		{
+			string this[string columnName] { get; }
+			string Error { get; }
+		}
+	}
 
-  ex: Text="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,
-                            ValidatesOnDataErrors=True, ValidatesOnExceptions=True, NotifyOnValidationError=True}" 
+##### Exemple
 
-  - trigger / Validation.HasError == true
+	Text="{Binding Path=FirstName, 
+			Mode=TwoWay, 
+			UpdateSourceTrigger=PropertyChanged,
+			ValidatesOnDataErrors=True, 
+			ValidatesOnExceptions=True, 
+			NotifyOnValidationError=True}" 
 
-<Style x:Key="textBoxInError" TargetType="TextBox">
-    <Style.Triggers>
-        <Trigger Property="Validation.HasError" Value="true">
-            <Setter Property="ToolTip"
+#### Trigger / Validation.HasError == true
+
+	<Style x:Key="textBoxInError" TargetType="TextBox">
+		<Style.Triggers>
+			<Trigger Property="Validation.HasError" Value="true">
+				<Setter Property="ToolTip"
                     Value="{Binding RelativeSource={x:Static RelativeSource.Self},
 					Path=(Validation.Errors)[0].ErrorContent}"/>
-        </Trigger>
-    </Style.Triggers>
-</Style>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 
-  - Validation.ErrorTemplate
+#### Validation.ErrorTemplate
 
-        <ControlTemplate x:Key="validationTemplate">
-            <DockPanel>
-                <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
-                <AdornedElementPlaceholder/>
-            </DockPanel>
-        </ControlTemplate>
+    <ControlTemplate x:Key="validationTemplate">
+        <DockPanel>
+        <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
+        <AdornedElementPlaceholder/>
+        </DockPanel>
+    </ControlTemplate>
 
-        <TextBox Name="textBox1" Width="50" FontSize="10" Foreground="Red" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Top"
-                 Validation.ErrorTemplate="{StaticResource validationTemplate}"
-                 Style="{StaticResource textBoxInError}">
-            <TextBox.Text>
-                <Binding Source="{StaticResource Data0}" Path="Age" UpdateSourceTrigger="PropertyChanged" >
-                    <Binding.ValidationRules>
-                        <localvr:ValidationRule0 Min="7" Max="77"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+    <TextBox Name="textBox1" Width="50" FontSize="10" Foreground="Red" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Top"
+         Validation.ErrorTemplate="{StaticResource validationTemplate}"
+         Style="{StaticResource textBoxInError}">
+        <TextBox.Text>
+        <Binding Source="{StaticResource Data0}" Path="Age" UpdateSourceTrigger="PropertyChanged" >
+            <Binding.ValidationRules>
+            <localvr:ValidationRule0 Min="7" Max="77"/>
+            </Binding.ValidationRules>
+        </Binding>
+        </TextBox.Text>
+    </TextBox>
 
-  ii) ValidatesOnExceptions
+#### ValidatesOnExceptions
 
-        <!-- pas de 'boîte rouge' -->
-        <TextBox Text="{Binding Name, ValidatesOnExceptions=False,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="8"/>
-        <!-- pas de 'boîte rouge' -->
-        <TextBox Text="{Binding Name, ValidatesOnExceptions=True,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="8"/>
+    <!-- pas de 'boîte rouge' -->
+    <TextBox Text="{Binding Name, ValidatesOnExceptions=False,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="8"/>
+    <!-- pas de 'boîte rouge' -->
+    <TextBox Text="{Binding Name, ValidatesOnExceptions=True,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="8"/>
 
-        public string Name
-        {
-            get
-            {
-                Debug.WriteLine($"get {nameof(Name)} -> m_Name={m_Name}");
-                return m_Name;
-            }
-            set
-            {
-                Debug.WriteLine($"set {nameof(Name)} value={value}");
-                throw new Exception($"set {nameof(ViewModel)}.{nameof(Name)}");
-                m_Name = value;
-            }
-        }
-
-  iii) ValidatesOnNotifyDataErrors 
-
-  mise en oeuvre de INotifyDataErrorInfo
-
-namespace System.ComponentModel
-{
-    public interface INotifyDataErrorInfo
+    public string Name
     {
-        bool HasErrors { get; }
-        event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
-        IEnumerable GetErrors(string propertyName);
+        get
+        {
+			Debug.WriteLine($"get {nameof(Name)} -> m_Name={m_Name}");
+			return m_Name;
+        }
+        set
+        {
+			Debug.WriteLine($"set {nameof(Name)} value={value}");
+			throw new Exception($"set {nameof(ViewModel)}.{nameof(Name)}");
+			m_Name = value;
+        }
     }
-}
 
- iiii) ValidationRules 
+#### ValidatesOnNotifyDataErrors 
 
- - clause AND entre les Validation rules
- - appelées dans le sens Target -> Source, avant la conversion, ssi la validation réussit
+Mise en oeuvre de INotifyDataErrorInfo
 
-<TextBox Grid.Row="0"
-		 Margin="2">
-	<TextBox.Text>
-		<Binding Path="Value"
-				 UpdateSourceTrigger="PropertyChanged">
-			<Binding.ValidationRules>
-				<WpfApplication2:RangeRule Min="0" Max="100" />
-				<WpfApplication2:EvenRule />
-			</Binding.ValidationRules>
-		</Binding>
-	</TextBox.Text>
-</TextBox>
-
-using System.Windows.Controls;
-
-public class RangeRule : ValidationRule
-{
-
-	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+	namespace System.ComponentModel
 	{
-		int valueToCheck;
-
-		if (!(value is String) || !int.TryParse(value as String, out valueToCheck))
-			return new ValidationResult(false, "Value is not in a valid integer");
-
-		if (valueToCheck < Min || valueToCheck > Max)
-			return new ValidationResult(false, String.Format("Value must be between {0} and {1}", Min, Max));
-
-		return new ValidationResult(true, null);
+		public interface INotifyDataErrorInfo
+		{
+			bool HasErrors { get; }
+			event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+			IEnumerable GetErrors(string propertyName);
+		}
 	}
-}
 
- iiiii) BindingGroupName 
+#### ValidationRules 
+
+- clause AND entre les Validation rules
+- appelées dans le sens Target -> Source, avant la conversion, ssi la validation réussit
+
+	<TextBox Grid.Row="0" Margin="2">
+    	<TextBox.Text>
+    		<Binding Path="Value"
+				 UpdateSourceTrigger="PropertyChanged">
+    			<Binding.ValidationRules>
+    				<WpfApplication2:RangeRule Min="0" Max="100" />
+    				<WpfApplication2:EvenRule />
+    			</Binding.ValidationRules>
+    		</Binding>
+    	</TextBox.Text>
+	</TextBox>
+
+	using System.Windows.Controls;
+
+	public class RangeRule : ValidationRule
+    {
+    	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+    	{
+    		int valueToCheck;
+
+    		if (!(value is String) || !int.TryParse(value as String, out valueToCheck))
+    			return new ValidationResult(false, "Value is not in a valid integer");
+
+    		if (valueToCheck < Min || valueToCheck > Max)
+    			return new ValidationResult(false, String.Format("Value must be between {0} and {1}", Min, Max));
+
+    		return new ValidationResult(true, null);
+    	}
+	}
+
+#### BindingGroupName 
 
  	<Grid.BindingGroup>
-		<BindingGroup Name="DateGroup"
-					  NotifyOnValidationError="True">
+		<BindingGroup Name="DateGroup" NotifyOnValidationError="True">
 			<BindingGroup.ValidationRules>
 				<WpfApplication2:DateRule ValidatesOnTargetUpdated="True" />
 			</BindingGroup.ValidationRules>
@@ -271,7 +270,7 @@ public class RangeRule : ValidationRule
 			 Margin="2"
 			 Text="{Binding Path=Month, BindingGroupName=DateGroup, UpdateSourceTrigger=Explicit}" />
 
-   - dans le code:
+- Dans le code:
 
 	LayoutRoot.BindingGroup.BeginEdit();
 
@@ -289,33 +288,33 @@ public class RangeRule : ValidationRule
 		LayoutRoot.BindingGroup.BeginEdit();
 	}
 
-	- ValidationRule:
+- ValidationRule:
 
-public class DateRule : ValidationRule
-{
-	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
-	{
-		if (!(value is BindingGroup))
-			return new ValidationResult(false, "Invalid group");
+	public class DateRule : ValidationRule
+    {
+    	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+    	{
+    		if (!(value is BindingGroup))
+    			return new ValidationResult(false, "Invalid group");
 
-		var group = value as BindingGroup;
+    		var group = value as BindingGroup;
 		
-		var day = Convert.ToInt32(group.GetValue(group.Items[0], "Day"));
-		var month = Convert.ToInt32(group.GetValue(group.Items[0], "Month"));
-		var year = Convert.ToInt32(group.GetValue(group.Items[0], "Year"));
+    		var day = Convert.ToInt32(group.GetValue(group.Items[0], "Day"));
+    		var month = Convert.ToInt32(group.GetValue(group.Items[0], "Month"));
+    		var year = Convert.ToInt32(group.GetValue(group.Items[0], "Year"));
 
-		try
-		{
-			new DateTime(year, month, day);
-		}
-		catch (Exception)
-		{
-			return new ValidationResult(false, "This is not a valid date");
-		}
+    		try
+    		{
+    			new DateTime(year, month, day);
+    		}
+    		catch (Exception)
+    		{
+    			return new ValidationResult(false, "This is not a valid date");
+    		}
 
-		return new ValidationResult(true, null);
+    		return new ValidationResult(true, null);
+    	}
 	}
-}
 
 ## Notifications
 
