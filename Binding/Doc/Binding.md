@@ -49,7 +49,15 @@
 - MarkupExtension
 - RelativeSource
 
+#### Properties
+
+	public System.Windows.Data.RelativeSourceMode Mode { get; set; }
+	public Type AncestorType { get; set; }
+	...
+
 #### [RelativeSourceMode](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.relativesourcemode?view=windowsdesktop-6.0)
+
+Self / TemplatedParent / FindAncestor / PreviousData
 
 ##### Self / TemplatedParent / FindAncestor / PreviousData
 
@@ -63,6 +71,25 @@
 	{Binding ElementName=ValueSlider Path=Value}
 
 ### 2.4) Property : Path
+
+	public System.Windows.PropertyPath Path { get; set; }
+
+#### [PropertyPath](https://docs.microsoft.com/en-us/dotnet/api/system.windows.propertypath?view=windowsdesktop-6.0)
+
+>PropertyPath supports two modes of behavior:
+
+>__Source mode__ describes a path to a property that is used as a source for some other operation. This mode is used by the Binding class to support data binding.
+
+>__Target mode__ describes a path to a property that will be set as a target property. This mode is used by animation in support of storyboard and timeline setters.
+
+	[System.ComponentModel.TypeConverter(typeof(System.Windows.PropertyPathConverter))]
+	public sealed class PropertyPath
+
+	public PropertyPath (object parameter);
+	public PropertyPath (string path, params object[] pathParameters);
+
+	public string Path { get; set; }
+	public System.Collections.ObjectModel.Collection<object> PathParameters { get; }
 
 #### Exemple
 
