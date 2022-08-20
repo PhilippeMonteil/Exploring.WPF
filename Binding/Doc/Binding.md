@@ -14,12 +14,7 @@
 
 - Source / RelativeSource / ElementName
 - Path / XPath
-- UpdateSourceTrigger : PropertyChanged / LostFocus / Explicit
-
-	- Default / contrôle: ex: perte de focus
-	- PropertyChanged
-	- LostFocus
-	- Explicit
+- UpdateSourceTrigger : Defaut (cd metadata) / PropertyChanged / LostFocus / Explicit
 
 ## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
