@@ -21,19 +21,37 @@
 - BindingBase
 - Binding
 
-### 2.2) Property : Source
+### 2.2) Properties : Source, RelativeSource, ElementName
 
 	public object Source { get; set; }
+	public System.Windows.Data.RelativeSource RelativeSource { get; set; }
+	public string ElementName { get; set; }
 
-Default: DataContext
+> By default, bindings inherit the data context specified by the DataContext property, if one has been set. However, the Source property is one of the ways you can explicitly set the source of a Binding and override the inherited data context.
 
-### 2.3) Source / RelativeSource / ElementName
+> The Binding.ElementName and Binding.RelativeSource properties also enable you to set the source of the binding explicitly. However, only one of the three properties, ElementName, Source, and RelativeSource, should be set for each binding, or a conflict can occur. This property throws an exception if there is a binding source conflict.
 
 #### Source
 
 	{Binding Source={StaticResource data} Path=Age}
 
-#### RelativeSource : Self / TemplatedParent / FindAncestor / PreviousData
+#### RelativeSource
+
+##### [RelativeSource Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.relativesource?view=windowsdesktop-6.0)
+
+	[System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.Data.RelativeSource))]
+	public class RelativeSource : System.Windows.Markup.MarkupExtension, 
+									System.ComponentModel.ISupportInitialize
+
+##### Inheritance
+
+- Object
+- MarkupExtension
+- RelativeSource
+
+#### [RelativeSourceMode](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.relativesourcemode?view=windowsdesktop-6.0)
+
+##### Self / TemplatedParent / FindAncestor / PreviousData
 
 	{Binding RelativeSource={RelativeSource Self}}
 	{Binding RelativeSource={RelativeSource TemplatedParent}}
