@@ -76,6 +76,7 @@ Self / TemplatedParent / FindAncestor / PreviousData
 
 #### [PropertyPath](https://docs.microsoft.com/en-us/dotnet/api/system.windows.propertypath?view=windowsdesktop-6.0)
 
+cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8)
 >PropertyPath supports two modes of behavior:
 
 >__Source mode__ describes a path to a property that is used as a source for some other operation. This mode is used by the Binding class to support data binding.
@@ -91,13 +92,91 @@ Self / TemplatedParent / FindAncestor / PreviousData
 	public string Path { get; set; }
 	public System.Collections.ObjectModel.Collection<object> PathParameters { get; }
 
-#### Exemple
+#### [PropertyPath for Objects in Data Binding](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8#propertypath-for-objects-in-data-binding)
 
-	<TextBox x:Name="myTextBox" Text="Hello world!" />
-	<TextBox Text="{Binding ElementName=myTextBox, Path=Text.Length}" />
-	<TextBox Text="{Binding ElementName=myTextBox, Path=Text[0]}" />
+- Single Property on the Immediate Object as Data Context
 
-### 2.5) Property : XPath
+	<Binding Path="propertyName" ... />
+
+- Single Indexer on the Immediate Object as Data Context
+
+    <Binding Path="[key]" ... />
+
+- Multiple Property (Indirect Property Targeting)
+
+    <Binding Path="propertyName.propertyName2" ... />
+
+- Single Property, Attached or Otherwise Type-Qualified
+
+    <object property="(ownerType.propertyName)" ... />
+
+- Source Traversal (Binding to Hierarchies of Collections)
+
+	<object Path="propertyName/propertyNameX" ... />
+
+- Multiple Indexers
+
+    <object Path="[index1,index2...]" ... />
+	<object Path="propertyName[index,index2...]" ... />
+
+- Mixing Syntaxes
+
+	<Rectangle Fill="{Binding ColorGrid[20,30].SolidColorBrushResult}" ... />
+
+### 2.5) Property : BindsDirectlyToSource
+
+	public bool BindsDirectlyToSource { get; set; }
+
+> Gets or sets a value that indicates whether to evaluate the Path relative to the data item or the DataSourceProvider object.
+
+#### [DataSourceProvider](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.datasourceprovider?view=windowsdesktop-6.0)
+
+	public abstract class DataSourceProvider : System.ComponentModel.INotifyPropertyChanged, 
+											System.ComponentModel.ISupportInitialize
+
+
+##### Inheritance
+
+- Object
+- DataSourceProvider
+
+##### Derived
+
+- System.Windows.Data.ObjectDataProvider
+- System.Windows.Data.XmlDataProvider
+
+##### Properties
+
+	// When the DataSourceProvider is used as the source of a binding, 
+	// this is the resulting binding source object.
+	public object Data { get; }
+
+##### Exemple
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<Grid.Resources>
+			<ObjectDataProvider x:Key="Movies">
+				<ObjectDataProvider.ObjectInstance>
+					<WpfApplication2:Movies>
+						<WpfApplication2:Movie Title="Top Gun" />
+						<WpfApplication2:Movie Title="Star Wars: A new hope" />
+					</WpfApplication2:Movies>
+				</ObjectDataProvider.ObjectInstance>
+			</ObjectDataProvider>
+		</Grid.Resources>
+
+		<TextBox Grid.Row="0" Text="{Binding Source={StaticResource Movies}, Path=[0].Title}" />
+		<TextBox Grid.Row="1" Text="{Binding Source={StaticResource Movies}, BindsDirectlyToSource=True, Path=ObjectType}" />
+
+	</Grid>
+
+### 2.6) Property : XPath
 
 #### Exemple
 
@@ -124,33 +203,6 @@ Self / TemplatedParent / FindAncestor / PreviousData
 			 Text="{Binding Source={StaticResource Movies}, XPath=Movies/Movie[1]/@title}" />
 		<TextBox Grid.Row="1"
 			 Text="{Binding Source={StaticResource Movies}, XPath=Movies/Movie[1]/Actor[1]}" />
-
-	</Grid>
-
-- BindsDirectlyToSource: Path est interprété directement comme une propriété de l'objet source
-
-#### Exemple
-
-	<Grid>
-
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
-
-		<Grid.Resources>
-			<ObjectDataProvider x:Key="Movies">
-				<ObjectDataProvider.ObjectInstance>
-					<WpfApplication2:Movies>
-						<WpfApplication2:Movie Title="Top Gun" />
-						<WpfApplication2:Movie Title="Star Wars: A new hope" />
-					</WpfApplication2:Movies>
-				</ObjectDataProvider.ObjectInstance>
-			</ObjectDataProvider>
-		</Grid.Resources>
-
-		<TextBox Grid.Row="0" Text="{Binding Source={StaticResource Movies}, Path=[0].Title}" />
-		<TextBox Grid.Row="1" Text="{Binding Source={StaticResource Movies}, BindsDirectlyToSource=True, Path=ObjectType}" />
 
 	</Grid>
 
