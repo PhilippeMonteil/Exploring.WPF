@@ -15,6 +15,8 @@
 - Source / RelativeSource / ElementName
 - Path / XPath
 - UpdateSourceTrigger : Defaut (cd metadata) / PropertyChanged / LostFocus / Explicit
+- Mode : Default (cf metadata) / OneTime / OneWay / OneWayToSource / TwoWay
+- Converter, ConverterCulture , ConverterParameter
 
 ## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
@@ -253,13 +255,32 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
         TextEdit.EditValueProperty.OverrideMetadata(typeof(TextEdit), fpm);
     }
 
-## 4) Conversions
+## 4) [Mode](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.mode?view=windowsdesktop-6.0)
 
-  - using System.Windows.Data;
-  - IValueConverter
-  - [ValueConversion(typeof(string), typeof(string))]
+	public System.Windows.Data.BindingMode Mode { get; set; }
+
+### [BindingMode](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.mode?view=windowsdesktop-6.0)
+
+- Default
+- OneTime
+- OneWay
+- OneWayToSource
+- TwoWay
+
+> Default : a programmatic way to determine whether a dependency property binds one-way or two-way by default is to get the property metadata of the property using GetMetadata(Type) and then check the Boolean value of the BindsTwoWayByDefault property.
+
+## 5) Conversion : [Converter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.converter?view=windowsdesktop-6.0), [ConverterCulture](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.converterculture?view=windowsdesktop-6.0), [ConverterParameter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.converterparameter?view=windowsdesktop-6.0)
+
+  - [IValueConverter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter?view=windowsdesktop-6.0)
+  - [ValueConversionAttribute](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.valueconversionattribute?view=windowsdesktop-6.0)
 
 ### Exemple
+
+	[ValueConversion( typeof( string ), typeof( ProcessingState ) )]
+	public class IntegerStringToProcessingStateConverter : IValueConverter
+	{
+		...
+	}
 
 	<Grid x:Name="LayoutRoot">
 		<Grid.Resources>
