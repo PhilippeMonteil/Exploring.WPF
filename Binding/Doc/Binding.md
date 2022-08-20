@@ -236,11 +236,16 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 	- PropertyChanged
 	- LostFocus
 	- Explicit
-	  ex: monTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource() .
 
-- modification de la valeur par défaut : cf FrameworkPropertyMetadata.DefaultUpdateSourceTrigger 
+ Exemple: 
 
-  exemple :
+	monTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource() .
+
+- Modification de la valeur par défaut de UpdateSourceTrigger de la DependencyProperty d'un Contrôle: 
+ 
+ Cf FrameworkPropertyMetadata.DefaultUpdateSourceTrigger 
+
+ Exemple :
 
 	static MainWindow() 
 	{
