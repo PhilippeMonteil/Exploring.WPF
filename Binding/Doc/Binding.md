@@ -24,7 +24,7 @@
         - Binding.ValidatesOnNotifyDataErrors
     - appelle Binding.UpdateSourceExceptionFilter en cas d'exception déclenchée par la Source lors d'un update 
     - met à jour BoundElement.Validation.HasErrors, BoundElement.Validation.Errors
-    - produit un UI d'adffichage des erreurs de validation avec BoundElement.Validation.ErrorTemplate
+    - produit un UI d'affichage des erreurs de validation avec BoundElement.Validation.ErrorTemplate
 - Converter, ConverterCulture , ConverterParameter
 
 ## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
@@ -488,7 +488,22 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 		}
 	}
 
-## 7) BindingGroupName 
+## 7) [FrameworkElement.BindingGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.bindinggroup?view=windowsdesktop-6.0)
+
+	[System.Windows.Localizability(System.Windows.LocalizationCategory.NeverLocalize)]
+	public System.Windows.Data.BindingGroup BindingGroup { get; set; }
+
+### [BindingGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindinggroup?view=windowsdesktop-6.0)
+
+> Contains a collection of bindings and ValidationRule objects that are used to validate an object.
+
+Un ensemble de Bindings peuvent faire référence à un __BindingGroup__ par son nom en assignant leur 
+propriété __BindingGroupName__.
+
+Ce BindingGroup doit être explicitement initié (__BeginEdit__) puis commité (__CommitEdit__) ou abandonné (__CancelEdit__)
+pour que les Bindings qui s'y sont rattachés soient exécutés. 
+
+#### Exemple
 
  	<Grid.BindingGroup>
 		<BindingGroup Name="DateGroup" NotifyOnValidationError="True">
@@ -506,12 +521,12 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 			 Margin="2"
 			 Text="{Binding Path=Month, BindingGroupName=DateGroup, UpdateSourceTrigger=Explicit}" />
 
-- Dans le code:
+Code:
 
-	LayoutRoot.BindingGroup.BeginEdit();
+    LayoutRoot.BindingGroup.BeginEdit();
 
-	private void SubmitClick(object sender, RoutedEventArgs e)
-	{
+    private void SubmitClick(object sender, RoutedEventArgs e)
+    {
 		if (LayoutRoot.BindingGroup.CommitEdit())
 		{
 			LayoutRoot.BindingGroup.BeginEdit();
@@ -524,7 +539,7 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 		LayoutRoot.BindingGroup.BeginEdit();
 	}
 
-- ValidationRule:
+ValidationRule:
 
 	public class DateRule : ValidationRule
     {
