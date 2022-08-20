@@ -299,7 +299,7 @@ cf [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wp
 
 ## 6) Validation
 
-### 6.0) [Validation.Errors Attached Property](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errors?view=windowsdesktop-6.0)
+### 6.1) [Validation.HasError, .Errors, .Error, .ErrorTemplate Attached Properties and Event](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errors?view=windowsdesktop-6.0)
 
 When a value is being transferred from the target property to the source property:
 - clear BoundElement[Validation.Errors]
@@ -313,7 +313,7 @@ When a value is being transferred from the target property to the source propert
   - if there is a Binding.UpdateSourceExceptionFilter call it 
   - else create a ValidationError with the exception and add it to Target[Validation.Errors].
 
-### 6.1) [ValidationRules](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validationrules?view=windowsdesktop-6.0)
+### 6.2) [ValidationRules](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validationrules?view=windowsdesktop-6.0)
 
 	public System.Collections.ObjectModel.Collection<System.Windows.Controls.ValidationRule> ValidationRules { get; }
 
@@ -352,7 +352,7 @@ When a value is being transferred from the target property to the source propert
     	}
 	}
 
-### 6.2) [UpdateSourceExceptionFilter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter?view=windowsdesktop-6.0) 
+### 6.3) [UpdateSourceExceptionFilter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter?view=windowsdesktop-6.0) 
 
 > Gets or sets a handler you can use to provide custom logic for handling exceptions that the binding engine encounters during the update of the binding source value. This is only applicable if you have associated an __ExceptionValidationRule__ with your binding in its __ValidationRules__ property.
 
@@ -378,13 +378,11 @@ When a value is being transferred from the target property to the source propert
 			return exception;
 		}
 
-### 6.3) [Validation.HasError, .Errors, .Error, .ErrorTemplate Attached Properties and Event](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errors?view=windowsdesktop-6.0)
-
-> The WPF data binding model enables you to associate ValidationRules with your Binding object. Validation occurs during binding target-to-binding source value transfer before the converter is called.
-
 ### 6.4) [ValidatesOnDataErrors](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validatesondataerrors?view=windowsdesktop-6.0)
 
 	public bool ValidatesOnDataErrors { get; set; }
+
+> Setting this property provides an alternative to using the DataErrorValidationRule element explicitly. The DataErrorValidationRule is a built-in validation rule that checks for errors that are raised by the IDataErrorInfo implementation of the source object. If an error is raised, the binding engine creates a ValidationError with the error and adds it to the Validation.Errors collection of the bound element. The lack of an error clears this validation feedback, unless another rule raises a validation issue.
 
 Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.idataerrorinfo?view=net-6.0)
 
@@ -441,6 +439,12 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 
 ### 6.5) [ValidatesOnExceptions](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validatesonexceptions?view=windowsdesktop-6.0)
 
+	public bool ValidatesOnExceptions { get; set; }
+
+> Setting this property provides an alternative to using the ExceptionValidationRule element explicitly. The ExceptionValidationRule is a built-in validation rule that checks for exceptions that are thrown during the update of the source property. If an exception is thrown, the binding engine creates a ValidationError with the exception and adds it to the Validation.Errors collection of the bound element. The lack of an error clears this validation feedback, unless another rule raises a validation issue.
+
+#### Exemple
+
     <!-- pas de 'boîte rouge' -->
     <TextBox Text="{Binding Name, ValidatesOnExceptions=False,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="8"/>
     <!-- pas de 'boîte rouge' -->
@@ -463,7 +467,9 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 
 ### 6.6) [ValidatesOnNotifyDataErrors](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validatesonnotifydataerrors?view=windowsdesktop-6.0)
 
-Mise en oeuvre de INotifyDataErrorInfo
+	public bool ValidatesOnNotifyDataErrors { get; set; }
+
+> When ValidatesOnNotifyDataErrors is true, the binding checks for and reports errors that are raised by a data source that implements INotifyDataErrorInfo.
 
 	namespace System.ComponentModel
 	{
