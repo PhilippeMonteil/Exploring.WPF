@@ -488,6 +488,18 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 		}
 	}
 
+### Exemple
+
+	<Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
+		<Style.Triggers>
+			<Trigger Property="Validation.HasError" Value="true">
+				<Setter Property="ToolTip"
+					Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)/ErrorContent}"/>
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+
 ## 7) [FrameworkElement.BindingGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.bindinggroup?view=windowsdesktop-6.0)
 
 	[System.Windows.Localizability(System.Windows.LocalizationCategory.NeverLocalize)]
@@ -569,59 +581,77 @@ ValidationRule:
 
 ## 8) Notifications
 
-- NotifyOnSourceUpdated  / NotifyOnTargetUpdated 
+### Binding.NotifyOnSourceUpdated  / NotifyOnTargetUpdated 
 
-  Si NotifyOnSourceUpdated / NotifyOnTargetUpdated == true: un évènement SourceUpdated / TargetUpdated est généré
+  Si __NotifyOnSourceUpdated__ / __NotifyOnTargetUpdated__ == true un évènement __SourceUpdated__ / __TargetUpdated__ est généré
 
 	<TextBox x:Name="day"
 			 Grid.Row="0"
 			 Margin="2"
-			 Text="{Binding Path=Value, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+			 Text="{Binding Path=Value, 
+					NotifyOnSourceUpdated=True, 
+					NotifyOnTargetUpdated=True, 
+					UpdateSourceTrigger=PropertyChanged}"
 			 SourceUpdated="OnSourceUpdated"
 			 TargetUpdated="OnTargetUpdated" />
 
-- NotifyOnValidationError 
+### Binding.NotifyOnValidationError 
 
-   détermine si l'event Validation.Error doit être déclenché en cas d'ereur de validation
+   détermine si l'Attached Event Validation.Error doit être déclenché en cas d'erreur de validation
 
 	<TextBox Grid.Row="0"
 				Margin="2"
-				Text="{Binding Path=Value, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+				Text="{Binding Path=Value, 
+						NotifyOnValidationError=True, 
+						UpdateSourceTrigger=PropertyChanged, 
+						ValidatesOnExceptions=True}"
 				Validation.Error="OnError" />
 
-## 9) Options
+## 10) [BindingBase.StringFormat](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.stringformat?view=windowsdesktop-6.0)
 
-- FallbackValue 
+	public string StringFormat { get; set; }
 
-- IsAsync
+> Gets or sets a string that specifies how to format the binding if it displays the bound value as a string.
 
-  ex:
-
-  <TextBox x:Name="textbox" Text="{Binding Path=Value, IsAsync=True, FallbackValue=Loading...}" />
-
-- Mode
-
-  - TwoWay
-  - OneWay (source -> cible)
-  - OneTime
-  - OneWayToSource
-  - Default	: une des valeurs précédentes, précisée par le contrôle
-
-- StringFormat 
+### Exemple 
 
 	<TextBox x:Name="textbox" Grid.Row="0" Margin="2">
-	<TextBox.Text>
-		<Binding Path="Now" StringFormat="HH:mm:ss.ff">
-			<Binding.Source>
-				<System:DateTime />
-			</Binding.Source>
-		</Binding>
-	</TextBox.Text>
-</TextBox>
+		<TextBox.Text>
+			<Binding Path="Now" StringFormat="HH:mm:ss.ff">
+				<Binding.Source>
+					<System:DateTime />
+				</Binding.Source>
+			</Binding>
+		</TextBox.Text>
+	</TextBox>
 
-- TargetNullValue 
+## 9) [BindingBase.FallbackValue](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.fallbackvalue?view=windowsdesktop-6.0)
 
-## 10) Multibinding et multivalue converters
+	public object FallbackValue { get; set; }
+
+> Gets or sets the value to use when the binding is unable to return a value.
+
+## 11) [Binding.IsAsync](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.isasync?view=windowsdesktop-6.0)
+
+	public bool IsAsync { get; set; }
+
+> Gets or sets a value that indicates whether the Binding should get and set values asynchronously.
+
+cf [Binding.AsyncState Property](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.asyncstate?view=windowsdesktop-6.0)
+
+### Exemple
+
+	<TextBox x:Name="textbox" Text="{Binding Path=Value, IsAsync=True, FallbackValue=Loading...}" />
+
+## 12) [TargetNullValue](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.targetnullvalue?view=windowsdesktop-6.0)
+
+	public object TargetNullValue { get; set; }
+
+> Gets or sets the value that is used in the target when the value of the source is null.
+
+## 13) Multibinding et multivalue converters
+
+### Exemple
 
 	<Window xmlns:local="clr-namespace:BlogIMultiValueConverter">
 		<Window.Resources>
@@ -643,23 +673,15 @@ ValidationRule:
 
 	public class NameMultiValueConverter : IMultiValueConverter
 	{
-		public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
-       return String.Format("{0} {1}", values[0], values[1]);
+
+		public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			return String.Format("{0} {1}", values[0], values[1]);
+		}
+
 	}
 
-### Exemple
-
-	<Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
-		<Style.Triggers>
-			<Trigger Property="Validation.HasError" Value="true">
-				<Setter Property="ToolTip"
-					Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                        Path=(Validation.Errors)/ErrorContent}"/>
-			</Trigger>
-		</Style.Triggers>
-	</Style>
-
-## 11) URLs
+## 14) URLs
 
 - [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
 
