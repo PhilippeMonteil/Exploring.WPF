@@ -392,7 +392,7 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
         </TextBox.Text>
     </TextBox>
 
-#### ValidatesOnExceptions
+### 6.5) [ValidatesOnExceptions](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validatesonexceptions?view=windowsdesktop-6.0)
 
     <!-- pas de 'boîte rouge' -->
     <TextBox Text="{Binding Name, ValidatesOnExceptions=False,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="8"/>
@@ -414,7 +414,7 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
         }
     }
 
-#### ValidatesOnNotifyDataErrors 
+### 6.6) [ValidatesOnNotifyDataErrors](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validatesonnotifydataerrors?view=windowsdesktop-6.0)
 
 Mise en oeuvre de INotifyDataErrorInfo
 
