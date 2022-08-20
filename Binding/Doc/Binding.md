@@ -1,6 +1,6 @@
 # Binding
 
-## Documentation
+## 1) Documentation
 
 ### [Data binding overview (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/data/?view=netdesktop-6.0#basic-data-binding-concepts)
 
@@ -10,22 +10,24 @@
 
 ### [PropertyPath XAML Syntax](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/propertypath-xaml-syntax?view=netframeworkdesktop-4.8)
 
-## [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
+## 2) [Binding Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-6.0)
 
 	public class Binding : System.Windows.Data.BindingBase
 
-### Inheritance
+### 2.1) Inheritance
 
 - Object
 - MarkupExtension
 - BindingBase
 - Binding
 
-### Binding .Source, .RelativeSource, .ElementName
+### 2.2) Property : Source
 
 	public object Source { get; set; }
 
-#### Default: DataContext
+Default: DataContext
+
+### 2.3) Source / RelativeSource / ElementName
 
 #### Source
 
@@ -42,7 +44,7 @@
 
 	{Binding ElementName=ValueSlider Path=Value}
 
-### .Path
+### 2.4) Property : Path
 
 #### Exemple
 
@@ -50,7 +52,7 @@
 	<TextBox Text="{Binding ElementName=myTextBox, Path=Text.Length}" />
 	<TextBox Text="{Binding ElementName=myTextBox, Path=Text[0]}" />
 
-### .XPath
+### 2.5) Property : XPath
 
 #### Exemple
 
@@ -107,13 +109,13 @@
 
 	</Grid>
 
-### Conversions
+## 3) Conversions
 
   - using System.Windows.Data;
   - IValueConverter
   - [ValueConversion(typeof(string), typeof(string))]
 
-#### Exemple
+### Exemple
 
 	<Grid x:Name="LayoutRoot">
 		<Grid.Resources>
@@ -126,9 +128,9 @@
 						Mode=OneWay}" />
 	</Grid>
 
-### Validation
+## 4) Validation
 
-#### ValidatesOnDataErrors: si l'objet source du binding expose IDataErrorInfo
+### ValidatesOnDataErrors: si l'objet source du binding expose IDataErrorInfo
 
 	namespace System.ComponentModel
 	{
@@ -139,7 +141,7 @@
 		}
 	}
 
-##### Exemple
+#### Exemple
 
 	Text="{Binding Path=FirstName, 
 			Mode=TwoWay, 
@@ -316,7 +318,7 @@ Mise en oeuvre de INotifyDataErrorInfo
     	}
 	}
 
-## Notifications
+## 5) Notifications
 
 - NotifyOnSourceUpdated  / NotifyOnTargetUpdated 
 
@@ -338,7 +340,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 				Text="{Binding Path=Value, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
 				Validation.Error="OnError" />
 
-## Mise à jour du binding
+## 6) Mise à jour du binding
 
  - UpdateSourceTrigger: 
 
@@ -375,7 +377,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 			return exception;
 		}
 
-## Options
+## 7) Options
 
 - FallbackValue 
 
@@ -395,9 +397,7 @@ Mise en oeuvre de INotifyDataErrorInfo
 
 - StringFormat 
 
-<TextBox x:Name="textbox"
-		Grid.Row="0"
-		Margin="2">
+	<TextBox x:Name="textbox" Grid.Row="0" Margin="2">
 	<TextBox.Text>
 		<Binding Path="Now" StringFormat="HH:mm:ss.ff">
 			<Binding.Source>
@@ -409,52 +409,51 @@ Mise en oeuvre de INotifyDataErrorInfo
 
 - TargetNullValue 
 
-## Les Converters
+## 8) Les Converters
 
-  - IValueConverter
+- IValueConverter
 
-namespace System.Windows.Data
-{
-    public interface IValueConverter
+	namespace System.Windows.Data
     {
-        object Convert(object value, Type targetType, object parameter, CultureInfo culture);
-        object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
+        public interface IValueConverter
+        {
+            object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+            object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
+        }
     }
-}
 
-  - Converter et Markup extension
-    - using System.Windows.Markup;
-    - MarkupExtension
-    - [MarkupExtensionReturnType(typeof(IValueConverter))]
+- Converter et Markup extension
+ - using System.Windows.Markup;
+ - MarkupExtension
+ - [MarkupExtensionReturnType(typeof(IValueConverter))]
 
-## Multibinding et multivalue converters
+## 9) Multibinding et multivalue converters
 
-<Window xmlns:local="clr-namespace:BlogIMultiValueConverter">
-    <Window.Resources>
-        <local:NameMultiValueConverter x:Key="NameMultiValueConverter" />
-    </Window.Resources>
-    <Grid>
-        <TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" />
-        <TextBox Text="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}" />
-        <TextBlock>
-            <TextBlock.Text>
-                <MultiBinding Converter="{StaticResource MultiValueConverter}">
-                    <Binding Path="FirstName" />
-                    <Binding Path="Surname" />
-                </MultiBinding>
-            </TextBlock.Text>
-        </TextBlock>
-    </Grid>
-</Window>
+	<Window xmlns:local="clr-namespace:BlogIMultiValueConverter">
+		<Window.Resources>
+			<local:NameMultiValueConverter x:Key="NameMultiValueConverter" />
+		</Window.Resources>
+		<Grid>
+			<TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" />
+			<TextBox Text="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}" />
+			<TextBlock>
+				<TextBlock.Text>
+					<MultiBinding Converter="{StaticResource MultiValueConverter}">
+						<Binding Path="FirstName" />
+						<Binding Path="Surname" />
+					</MultiBinding>
+				</TextBlock.Text>
+			</TextBlock>
+		</Grid>
+	</Window>
 
-public class NameMultiValueConverter : IMultiValueConverter
-{
-   public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
+	public class NameMultiValueConverter : IMultiValueConverter
+	{
+		public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture) {
        return String.Format("{0} {1}", values[0], values[1]);
-   }
-}
+	}
 
-## Exemple
+### Exemple
 
 	<Style x:Key="textBoxInError" TargetType="{x:Type TextBox}">
 		<Style.Triggers>
@@ -466,7 +465,7 @@ public class NameMultiValueConverter : IMultiValueConverter
 		</Style.Triggers>
 	</Style>
 
-## URLs
+## 10) URLs
 
 - [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
 
