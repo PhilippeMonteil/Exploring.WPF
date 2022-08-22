@@ -70,6 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{5AB7A0EA-A6C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{0FC144ED-D990-4F56-82F1-32C670AE8CC2}"
 	ProjectSection(SolutionItems) = preProject
+		WPF\Doc\Application Management.md = WPF\Doc\Application Management.md
 		WPF\Doc\FrameworkElement.md = WPF\Doc\FrameworkElement.md
 		WPF\Doc\MarkupExtension.md = WPF\Doc\MarkupExtension.md
 		WPF\Doc\TypeConverter.md = WPF\Doc\TypeConverter.md

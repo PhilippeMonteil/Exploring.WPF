@@ -105,3 +105,12 @@ No theme dictionaries exist.
 SourceAssembly 	1 	
 
 Theme dictionaries exist in the assembly that defines the types being themed.
+
+#Resources
+
+    //
+    Uri pageUri = new Uri("/PageResourceFile.xaml", UriKind.Relative);
+    this.pageFrame.Source = pageUri;
+
+    //
+    <Frame Name="pageFrame" Source="PageResourceFile.xaml" />
