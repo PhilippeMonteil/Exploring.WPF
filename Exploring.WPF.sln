@@ -111,7 +111,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727
 		Resources\Doc\Resources.md = Resources\Doc\Resources.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestResources0", "Resources\TestResources0\TestResources0.csproj", "{58365CEF-03E1-4B81-9A06-A89A8EF1ED41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestResources0", "Resources\TestResources0\TestResources0.csproj", "{58365CEF-03E1-4B81-9A06-A89A8EF1ED41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VisualStudio", "VisualStudio", "{0428AA0E-1D7D-4F69-9FFB-AA0BCCDC5EF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{8F4B4010-6059-4CF0-9454-88521221A4EB}"
+	ProjectSection(SolutionItems) = preProject
+		VisualStudio\Doc\VisualStudio.md = VisualStudio\Doc\VisualStudio.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -197,6 +204,7 @@ Global
 		{A944EE8F-1B31-432C-AF74-DEC5BEDE7B93} = {F9C66C17-FA2E-49D2-8DCD-EDC0770C71BC}
 		{869CBA54-727E-46E0-BA85-B46EE06560F5} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
 		{58365CEF-03E1-4B81-9A06-A89A8EF1ED41} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
+		{8F4B4010-6059-4CF0-9454-88521221A4EB} = {0428AA0E-1D7D-4F69-9FFB-AA0BCCDC5EF5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
