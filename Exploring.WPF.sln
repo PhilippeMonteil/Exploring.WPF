@@ -117,6 +117,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VisualStudio", "VisualStudi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{8F4B4010-6059-4CF0-9454-88521221A4EB}"
 	ProjectSection(SolutionItems) = preProject
+		VisualStudio\Doc\ProjectFiles_MSBuild.md = VisualStudio\Doc\ProjectFiles_MSBuild.md
 		VisualStudio\Doc\VisualStudio.md = VisualStudio\Doc\VisualStudio.md
 	EndProjectSection
 EndProject
