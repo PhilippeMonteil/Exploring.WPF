@@ -1,8 +1,8 @@
 # VisualStudio
 
-## Project files, MSBuild ...
+## 1) Project files, MSBuild ...
 
-### [Understanding the Project File](https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file)
+### 1.1) [Understanding the Project File](https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file)
 
 #### key elements in an MSBuild project file
 ![key elements in an MSBuild project file](https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file/_static/image2.png)
@@ -47,7 +47,9 @@ To retrieve a property value, use the format $(PropertyName).
 
 - [MSBuild Reserved and Well-Known Properties](https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/msbuild/msbuild-reserved-and-well-known-properties?view=vs-2015&redirectedfrom=MSDN)
 
-##### Conditions
+##### [MSBuild Conditions](https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/msbuild/msbuild-conditions?view=vs-2015&redirectedfrom=MSDN)
+
+Most MSBuild elements support the Condition attribute, which lets you specify the criteria upon which MSBuild should evaluate the element. 
 
     <PropertyGroup>
         <OutputRoot Condition=" '$(OutputRoot)'=='' ">..\Publish\Out\</OutputRoot>
@@ -55,9 +57,9 @@ To retrieve a property value, use the format $(PropertyName).
 
 
 
-### [.NET project SDKs](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview)
+### 1.2) [.NET project SDKs](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview)
 
-### [Common MSBuild project items](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items?view=vs-2022#compile)
+### 1.3) [Common MSBuild project items](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items?view=vs-2022#compile)
 
 ### [EmbeddedResource](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items?view=vs-2022#embeddedresource)
 
