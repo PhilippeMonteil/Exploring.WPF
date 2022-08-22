@@ -55,6 +55,32 @@ Most MSBuild elements support the Condition attribute, which lets you specify th
         <OutputRoot Condition=" '$(OutputRoot)'=='' ">..\Publish\Out\</OutputRoot>
     </PropertyGroup>
 
+#### Items and Item Groups
+
+One of the important roles of the project file is to define the inputs to the build process. 
+In the MSBuild project schema, these inputs are represented by Item elements.
+In a project file, items must be defined within an ItemGroup element.
+You must specify an Include attribute to identify the file or wildcard that the item represents.
+
+    <ItemGroup>
+        <ProjectsToBuild Include="$(SourceRoot)ContactManager-WCF.sln"/>
+    </ItemGroup>
+
+    // 'Reference' : list of files 
+    <ItemGroup>
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.ServiceModel" />
+        ...
+    </ItemGroup>
+
+##### Item Metadata
+
+Item elements can also include ItemMetadata child elements. 
+
+    <Compile Include="Global.asax.cs">
+    <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
 
 
 ### 1.2) [.NET project SDKs](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview)
