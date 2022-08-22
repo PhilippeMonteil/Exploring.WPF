@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UserSecretsId>e993b5f2-bc69-4165-98a9-25055f51a730</UserSecretsId>
+    <StartupObject>TestResources0.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
