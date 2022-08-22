@@ -103,7 +103,52 @@ For example:
 
 #### [MSBuild Task Reference](https://docs.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2015/msbuild/msbuild-task-reference?view=vs-2015&redirectedfrom=MSDN)
 
+### Targets
 
+Tasks must always be contained within Target elements
+A Target element is a set of one or more tasks that are executed sequentially.
+
+    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+        <Target Name="LogMessage">
+            <Message Text="Hello world!" />
+        </Target>
+    </Project>
+
+You can invoke the target from the command line, by using the /t switch to specify the target.
+
+    msbuild.exe Publish.proj /t:LogMessage
+
+Alternatively, you can add a __DefaultTargets__ attribute to the __Project__ element, 
+to specify the targets that you want to invoke.
+
+    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" 
+            DefaultTargets="FullPublish">
+        <Target Name="LogMessage">
+            <Message Text="Hello world!" />
+        </Target>
+    </Project>
+
+### Conditions
+
+Both targets and tasks can include Condition attributes. 
+
+### Properties and tems
+
+Generally speaking, when you create useful tasks and targets, you'll need to refer to the properties and items that you've defined elsewhere in the project file:
+
+- To use a property value, type $(PropertyName), where PropertyName is the name of the Property element or the name of the parameter.
+- To use an item, type @(ItemName), where ItemName is the name of the Item element.
+
+### Exemple
+
+    <Target Name="BuildProjects" Condition=" '$(BuildingInTeamBuild)'!='true' ">
+        <MSBuild Projects="@(ProjectsToBuild)"           
+            Properties="OutDir=$(OutputRoot);
+                        Configuration=$(Configuration);
+                        DeployOnBuild=true;
+                        DeployTarget=Package"
+            Targets="Build" />
+    </Target>
 
 
 ## [.NET project SDKs](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview)
