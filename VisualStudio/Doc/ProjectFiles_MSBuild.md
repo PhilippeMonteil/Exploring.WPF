@@ -1,5 +1,5 @@
 
-# .Net Core Project files, MSBuild
+# .Net Core MSBuild Project files
 
 ## Key elements in an MSBuild project file
 
@@ -132,7 +132,7 @@ to specify the targets that you want to invoke.
 
 Both targets and tasks can include Condition attributes. 
 
-### Properties and tems
+### Properties and Items
 
 Generally speaking, when you create useful tasks and targets, you'll need to refer to the properties and items that you've defined elsewhere in the project file:
 
@@ -150,8 +150,28 @@ Generally speaking, when you create useful tasks and targets, you'll need to ref
             Targets="Build" />
     </Target>
 
+## Splitting Project Files to Support Multiple Environments
+
+MSBuild lets you split your build configuration across multiple project files.
+
+    <Import Project="$(TargetEnvPropsFile)"/>
+
+    msbuild.exe Publish.proj /p:TargetEnvPropsFile=EnvConfig\Env-Dev.proj
 
 ## [.NET project SDKs](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview)
+
+.NET Core and .NET 5 and later projects are associated with a software development kit (SDK). 
+Each project SDK is a set of MSBuild targets and associated tasks that are responsible for compiling, 
+packing, and publishing code. 
+
+A project that references a project SDK is sometimes referred to as an SDK-style project.
+
+
+| ID | Description | Repo |
+|-|-|-|
+| Microsoft.NET.Sdk | The .NET SDK |https://github.com/dotnet/sdk
+| Microsoft.NET.Sdk.WindowsDesktop | The .NET Desktop SDK, which includes Windows Forms (WinForms) and Windows Presentation Foundation (WPF). |https://github.com/dotnet/winforms and https://github.com/dotnet/wpf
+
 
 ## [Common MSBuild project items](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-items?view=vs-2022#compile)
 
@@ -161,3 +181,5 @@ Generally speaking, when you create useful tasks and targets, you'll need to ref
 
 ## [Default includes and excludes](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview#default-includes-and-excludes)
 ## [WPF default includes and excludes](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props-desktop#wpf-default-includes-and-excludes)
+
+## Book [Inside the Microsoft® Build Engine: Using MSBuild and Team Foundation Build](https://www.amazon.com/Inside-Microsoft%C2%AE-Build-Engine-Foundation/dp/0735626286)
