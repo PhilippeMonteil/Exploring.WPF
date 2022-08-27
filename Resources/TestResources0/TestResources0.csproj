@@ -40,4 +40,12 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Solal\Solal.Experiments\Exploring.WPF\Resources\TestResources0\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Solal\Solal.Experiments\Exploring.WPF\Resources\TestResources0\.editorconfig" />
+  </ItemGroup>
+
 </Project>

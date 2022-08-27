@@ -1,11 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Events
+﻿namespace Events
 {
 
     /**
@@ -24,7 +17,7 @@ namespace Events
         {
             add
             {
-                lock(m_lock)
+                lock (m_lock)
                 {
                     m_MyEvent0 += value;
                 }

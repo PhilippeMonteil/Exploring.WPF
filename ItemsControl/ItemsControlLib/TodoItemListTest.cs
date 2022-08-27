@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ItemsControlLib
 {
@@ -12,7 +8,7 @@ namespace ItemsControlLib
 
         public TodoItemListTest()
         {
-            for (int i=0;i < 100; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Add(new TodoItem($"TestItem0[{i}]", 90));
             }
