@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
         Background="DarkGray">
+    
     <StackPanel Margin="8" Background="Gray">
         <!--Build Action = Resource-->
         <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder0/Image0.jpg"></Image>
@@ -14,5 +15,8 @@
         <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder1/Image0.jpg"></Image>
         <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="c:/TEMP/Image0.jpg"></Image>
         <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"></Image>
+        <Button Width="200" Margin="4" Content="Test" Click="Button_Click"/>
+        <Image x:Name="imTest" Width="200" Height="100" Margin="4" />
     </StackPanel>
+    
 </Window>

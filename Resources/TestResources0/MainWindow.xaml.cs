@@ -1,5 +1,7 @@
 ﻿using ResourceAssembly;
+using System;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace TestResources0
 {
@@ -12,6 +14,11 @@ namespace TestResources0
         {
             Class1.Test0();
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
         }
     }
 }
