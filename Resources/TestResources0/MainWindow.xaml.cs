@@ -1,7 +1,11 @@
 ﻿using ResourceAssembly;
 using System;
+using System.Diagnostics;
+using System.Reflection;
+using System.Resources;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Windows.Resources;
 
 namespace TestResources0
 {
@@ -19,6 +23,27 @@ namespace TestResources0
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
+
+            {
+                string[] resourceDictionaries = Application.ResourceAssembly.GetManifestResourceNames();
+                foreach (var res in resourceDictionaries)
+                {
+                    Console.WriteLine(res);
+                }
+            }
+
+//            TestResources0.g.resources
+//TestResources0.Properties.Resources.resources
+
+            try
+            {
+                Uri uri = new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg");
+                StreamResourceInfo info = Application.GetResourceStream(uri);
+            }
+            catch
+            {
+            }
+
         }
     }
 }

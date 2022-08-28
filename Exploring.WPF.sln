@@ -124,6 +124,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{8F4B4010-605
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceAssembly", "ResourceAssembly\ResourceAssembly.csproj", "{0E6109D3-47A2-4756-A45F-E19D64D09613}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{70886A09-CC92-4B78-AE7F-8E8E0ECFD944}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{99E61ADC-D67B-4746-AFD7-017D46FA8D15}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\Doc\Assemblies.md = Assemblies\Doc\Assemblies.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -387,6 +394,7 @@ Global
 		{58365CEF-03E1-4B81-9A06-A89A8EF1ED41} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
 		{8F4B4010-6059-4CF0-9454-88521221A4EB} = {0428AA0E-1D7D-4F69-9FFB-AA0BCCDC5EF5}
 		{0E6109D3-47A2-4756-A45F-E19D64D09613} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
+		{99E61ADC-D67B-4746-AFD7-017D46FA8D15} = {70886A09-CC92-4B78-AE7F-8E8E0ECFD944}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
