@@ -42,7 +42,7 @@
         resource.Key=[String1] .Value='Value1'
         resource.Key=[String2] .Value='Value2'
 
-__Remarque__ : les 'ressources' __Content__ et __Resource__ d'une assembly, TestResources0 ici, apparaissent comme des entrées
+__Remarque__ : les 'ressources binaires' __Content__ et __Resource__ d'une assembly, TestResources0 ici, apparaissent comme des entrées
 dans le __ResourceSet__ TestResources0.g.resources.
 
 ### Localisation de ressources .resx
