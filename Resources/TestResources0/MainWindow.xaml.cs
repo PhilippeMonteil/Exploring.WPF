@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ResourceAssembly;
+using System.Windows;
 
 namespace TestResources0
 {
@@ -9,6 +10,7 @@ namespace TestResources0
     {
         public MainWindow()
         {
+            Class1.Test0();
             InitializeComponent();
         }
     }

@@ -36,6 +36,15 @@
     //
     <Frame Name="pageFrame" Source="PageResourceFile.xaml" />
 
+### Example :
+
+    <!--Build Action = Resource-->
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder0/Image0.jpg"></Image>
+    <!--Build Action = Content + Copy to Output = true-->
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder1/Image0.jpg"></Image>
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="c:/TEMP/Image0.jpg"></Image>
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"></Image>
+
 ## [WPF Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
 ## [Pack URIs in WPF](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/pack-uris-in-wpf?view=netframeworkdesktop-4.8)
