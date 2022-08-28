@@ -61,6 +61,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ResourceAssembly\ResourceAssembly.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Folder0\Image0.jpg" />
   </ItemGroup>
 
