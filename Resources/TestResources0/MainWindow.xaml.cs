@@ -1,5 +1,6 @@
 ﻿using ResourceAssembly;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Resources;
@@ -20,23 +21,24 @@ namespace TestResources0
             InitializeComponent();
         }
 
+        ResourceManager rm = new ResourceManager(typeof(Properties.Resources));
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
-
-
-            {
-                Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
-            }
+            //            imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
 
             System.Threading.Thread.CurrentThread.CurrentUICulture =
                         new System.Globalization.CultureInfo("es");
 
-            Properties.Resources.Culture = new System.Globalization.CultureInfo("es");
+            // Properties.Resources.Culture = new System.Globalization.CultureInfo("es");
+            Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
+            Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
 
-            {
-                Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
-            }
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        new System.Globalization.CultureInfo("fr");
+
+            Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
+            Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
 
         }
     }

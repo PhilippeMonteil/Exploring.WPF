@@ -42,12 +42,16 @@
         resource.Key=[String1] .Value='Value1'
         resource.Key=[String2] .Value='Value2'
 
+__Remarque__ : les 'ressources' __Content__ et __Resource__ d'une assembly, TestResources0 ici, apparaissent comme des entrées
+dans le __ResourceSet__ TestResources0.g.resources.
+
 ### Localisation de ressources .resx
 
-#### créer une ressource <resource>.resx
-#### créer des ressources <resource>.<culture>.resx
+- Créer une ressource __\<resource>.resx__
+- Créer des ressources __\<resource>.\<culture>.resx__
 
-Le 'CustomTool' (ResXFileCodeGenerator) associé à <resource>.resx génère une classe :100:
+Le 'CustomTool' (ResXFileCodeGenerator) associé à \<resource>.resx génère une classe
+__TestResources0.Properties.Resources__
 
     namespace TestResources0.Properties 
     {
@@ -66,19 +70,24 @@ Le 'CustomTool' (ResXFileCodeGenerator) associé à <resource>.resx génère une cla
         internal class Resources {
 
 qui expose des propriétés statiques:
+
     internal static global::System.Globalization.CultureInfo Culture
     internal static string String1 // pour chaque Key
 
-Pour chaque <Culture> un assembly satellite de même nom, TestResources0.resources.dll,
-est créé et copié dans un sous-répertoire <Culture>
+Pour chaque \<Culture> un assembly satellite de même nom, __TestResources0.resources.dll__,
+est créé et copié dans un sous-répertoire \<Culture>.
 
-L'assignation de la propriété .Culture provoque le basculement de langue 
+L'assignation de la propriété __CurrentThread.CurrentUICulture__ est prise en compte par 
+la classe __Properties.Resources__ et par le __ResourceManager__ :
 
-    Properties.Resources.Culture = new System.Globalization.CultureInfo("es");
+            ResourceManager rm = new ResourceManager(typeof(Properties.Resources));
 
-    {
-        Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
-    }
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        new System.Globalization.CultureInfo("es");
+
+            // Properties.Resources.Culture = new System.Globalization.CultureInfo("es");
+            Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
+            Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
 
 ## [ResourceManager Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager?view=net-6.0)
 
