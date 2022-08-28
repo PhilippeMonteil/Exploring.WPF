@@ -24,24 +24,18 @@ namespace TestResources0
         {
             imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
 
+
             {
-                string[] resourceDictionaries = Application.ResourceAssembly.GetManifestResourceNames();
-                foreach (var res in resourceDictionaries)
-                {
-                    Console.WriteLine(res);
-                }
+                Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
             }
 
-//            TestResources0.g.resources
-//TestResources0.Properties.Resources.resources
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        new System.Globalization.CultureInfo("es");
 
-            try
+            Properties.Resources.Culture = new System.Globalization.CultureInfo("es");
+
             {
-                Uri uri = new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg");
-                StreamResourceInfo info = Application.GetResourceStream(uri);
-            }
-            catch
-            {
+                Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
             }
 
         }

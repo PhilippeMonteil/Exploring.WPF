@@ -22,22 +22,18 @@ namespace TestResources0
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
 
-            // assembly = Application.ResourceAssembly;
-
+            foreach (var resourceName in assembly.GetManifestResourceNames())
             {
-                foreach (var resourceName in assembly.GetManifestResourceNames())
+                Debug.WriteLine($"resourceName={resourceName}");
+
+                ResourceSet set = new ResourceSet(Application.ResourceAssembly.GetManifestResourceStream(resourceName));
+
+                foreach (DictionaryEntry resource in set)
                 {
-                    Debug.WriteLine($"resourceName={resourceName}");
-
-                    ResourceSet set = new ResourceSet(Application.ResourceAssembly.GetManifestResourceStream(resourceName));
-
-                    foreach (DictionaryEntry resource in set)
-                    {
-                        Debug.WriteLine("  resource=[{0}] \t{1}", resource.Key, resource.Value);
-                    }
-
-                    Debug.WriteLine("--------------");
+                    Debug.WriteLine("  resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
                 }
+
+                Debug.WriteLine("--------------");
             }
 
         }
