@@ -7,6 +7,7 @@
     <UseWPF>true</UseWPF>
     <UserSecretsId>e993b5f2-bc69-4165-98a9-25055f51a730</UserSecretsId>
     <StartupObject>TestResources0.App</StartupObject>
+    <Platforms>AnyCPU;ARM64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,7 +46,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Folder0\Image0.jpg" />
+    <None Remove="Resources\Folder1\Image0.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Folder1\Image0.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="C:\Solal\Solal.Experiments\Exploring.WPF\Resources\TestResources0\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Folder0\Image0.jpg" />
   </ItemGroup>
 
 </Project>

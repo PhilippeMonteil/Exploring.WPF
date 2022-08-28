@@ -3,7 +3,7 @@
 
 ## [Binary Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
-###  Application data file types
+### Application data file types
 
 - Resource Files: Data files that are compiled into either an executable or library WPF assembly.
 
