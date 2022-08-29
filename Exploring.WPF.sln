@@ -109,6 +109,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727E-46E0-BA85-B46EE06560F5}"
 	ProjectSection(SolutionItems) = preProject
+		Resources\Doc\BinaryResources.md = Resources\Doc\BinaryResources.md
 		Resources\Doc\Resources.md = Resources\Doc\Resources.md
 	EndProjectSection
 EndProject
@@ -122,7 +123,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{8F4B4010-605
 		VisualStudio\Doc\VisualStudio.md = VisualStudio\Doc\VisualStudio.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceAssembly", "ResourceAssembly\ResourceAssembly.csproj", "{0E6109D3-47A2-4756-A45F-E19D64D09613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceAssembly", "ResourceAssembly\ResourceAssembly.csproj", "{0E6109D3-47A2-4756-A45F-E19D64D09613}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{70886A09-CC92-4B78-AE7F-8E8E0ECFD944}"
 EndProject
