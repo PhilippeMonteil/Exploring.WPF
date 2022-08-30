@@ -12,7 +12,18 @@
 - In-memory .NET objects
 - Third-party providers
 
-## ConfigurationManager.AppSettings
+## [ConfigurationManager](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager?view=dotnet-plat-ext-6.0)
+
+## ConfigurationManager.AppSettings : Section appSettings dans App.config
+
+### Class
+
+	public static class ConfigurationManager
+
+### Properties
+
+	public static NameValueCollection AppSettings { get; }
+	public static ConnectionStringSettingsCollection ConnectionStrings { get; }
 
 ### Exemple
 
@@ -39,17 +50,6 @@
 
 	ConfigurationManager.AppSettings.Keys.Count=1
 	ConfigurationManager.AppSettings name=occupation value=dentist
-
-## [ConfigurationManager](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager?view=dotnet-plat-ext-6.0)
-
-### Class
-
-	public static class ConfigurationManager
-
-### Properties
-
-	public static NameValueCollection AppSettings { get; }
-	public static ConnectionStringSettingsCollection ConnectionStrings { get; }
 
 ### ConfigurationUserLevel
 
