@@ -51,7 +51,12 @@
 	ConfigurationManager.AppSettings.Keys.Count=1
 	ConfigurationManager.AppSettings name=occupation value=dentist
 
-### ConfigurationUserLevel
+### Methods
+
+	public static Configuration OpenExeConfiguration (System.Configuration.ConfigurationUserLevel userLevel);
+	public static Configuration OpenExeConfiguration (string exePath);
+
+## ConfigurationUserLevel
 
 	public enum ConfigurationUserLevel
 
@@ -61,8 +66,25 @@
 | PerUserRoaming | Gets the roaming Configuration that applies to the current user.|
 | PerUserRoamingAndLocal | Gets the local Configuration that applies to the current user.|
 
+## [Configuration](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configuration?view=dotnet-plat-ext-6.0)
+
+### Class
+
+	public sealed class Configuration
+
+### Properties
+
+	public string FilePath { get; }
+
+	public System.Configuration.AppSettingsSection AppSettings { get; }
+	public System.Configuration.ConnectionStringsSection ConnectionStrings { get; }
+
+	public System.Configuration.ConfigurationSectionCollection Sections { get; }
+	public System.Configuration.ConfigurationSectionGroupCollection SectionGroups { get; }
+	public System.Configuration.ConfigurationSectionGroup RootSectionGroup { get; }
+
 ### Methods
 
-	public static Configuration OpenExeConfiguration (System.Configuration.ConfigurationUserLevel userLevel);
-	public static Configuration OpenExeConfiguration (string exePath);
+	public void Save (System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll);
+	public void SaveAs (string filename, System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll);
 

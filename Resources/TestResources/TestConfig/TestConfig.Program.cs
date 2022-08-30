@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Configuration;
+using System.Reflection.Metadata.Ecma335;
 
 namespace TestConfig
 {
@@ -11,9 +12,18 @@ namespace TestConfig
             ReadAllSettings();
             ReadSetting("Setting1");
             ReadSetting("NotValid");
-            AddUpdateAppSettings("NewSetting", "May 7, 2014");
-            AddUpdateAppSettings("Setting1", "May 8, 2014");
-            ReadAllSettings();
+
+            foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
+            {
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
+                Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
+
+                AddUpdateAppSettings(configurationUserLevel, "NewSetting", "May 7, 2014");
+                AddUpdateAppSettings(configurationUserLevel, "Setting1", "May 8, 2014");
+
+                ReadAllSettings();
+            }
+
         }
 
         static void ReadAllSettings()
@@ -54,12 +64,13 @@ namespace TestConfig
             }
         }
 
-        static void AddUpdateAppSettings(string key, string value)
+        static void AddUpdateAppSettings(ConfigurationUserLevel configurationUserLevel, string key, string value)
         {
             try
             {
-                Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configuration.AppSettings.Settings;
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
+
+                KeyValueConfigurationCollection settings = configuration.AppSettings.Settings;
                 if (settings[key] == null)
                 {
                     settings.Add(key, value);
@@ -68,12 +79,14 @@ namespace TestConfig
                 {
                     settings[key].Value = value;
                 }
+
                 configuration.Save(ConfigurationSaveMode.Modified);
+
                 ConfigurationManager.RefreshSection(configuration.AppSettings.SectionInformation.Name);
             }
-            catch (ConfigurationErrorsException)
+            catch (ConfigurationErrorsException e)
             {
-                Console.WriteLine("Error writing app settings");
+                Console.WriteLine($"configurationUserLevel={configurationUserLevel} Exception={e}");
             }
         }
     }
