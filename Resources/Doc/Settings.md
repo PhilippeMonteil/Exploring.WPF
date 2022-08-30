@@ -1,10 +1,7 @@
 
-# [Manage application settings](https://docs.microsoft.com/en-us/visualstudio/ide/managing-application-settings-dotnet?view=vs-2022)
+# Settings
 
-# [Configuration in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration)
-# [Configuration providers in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration-providers)
-
-## Settings
+## [Manage application settings](https://docs.microsoft.com/en-us/visualstudio/ide/managing-application-settings-dotnet?view=vs-2022)
 
 ### Tests
 
@@ -149,3 +146,10 @@ Code:
 ### Class
 
 	public abstract class ApplicationSettingsBase : System.Configuration.SettingsBase, System.ComponentModel.INotifyPropertyChanged
+
+
+# Configuration
+
+## [Configuration in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration)
+## [Configuration providers in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration-providers)
+
