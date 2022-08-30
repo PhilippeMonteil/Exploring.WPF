@@ -27,6 +27,12 @@
 
 	public enum ConfigurationUserLevel
 
+| Value | Description |
+| ----------- | ----------- |
+| None | Gets the Configuration that applies to all users. |
+| PerUserRoaming | Gets the roaming Configuration that applies to the current user.|
+| PerUserRoamingAndLocal | Gets the local Configuration that applies to the current user.|
+
 ### Methods
 
 	public static Configuration OpenExeConfiguration (System.Configuration.ConfigurationUserLevel userLevel);

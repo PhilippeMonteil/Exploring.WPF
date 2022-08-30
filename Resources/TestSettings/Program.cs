@@ -1,6 +1,7 @@
 ﻿
 using System.Configuration;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace TestSettings
 {
@@ -9,21 +10,38 @@ namespace TestSettings
     {
         static void Main(string[] args)
         {
-            Settings1 settings1 = Settings1.Default;
 
-            settings1.PropertyChanged += Settings1_PropertyChanged;
-            settings1.SettingChanging += Settings1_SettingChanging;
-            settings1.SettingsLoaded += Settings1_SettingsLoaded;
-            settings1.SettingsSaving += Settings1_SettingsSaving;
+            if (false)
+            {
+                Settings1 settings1 = Settings1.Default;
 
-            Test0(settings1);
+                settings1.PropertyChanged += Settings1_PropertyChanged;
+                settings1.SettingChanging += Settings1_SettingChanging;
+                settings1.SettingsLoaded += Settings1_SettingsLoaded;
+                settings1.SettingsSaving += Settings1_SettingsSaving;
+
+                TestSettings0(settings1);
+            }
+
+            if (true)
+            {
+                Debug.WriteLine($"ConfigurationManager.AppSettings.Keys.Count={ConfigurationManager.AppSettings.Keys.Count}");
+                foreach (string name in ConfigurationManager.AppSettings.Keys)
+                {
+                    string? value = ConfigurationManager.AppSettings[name];
+                    Debug.WriteLine($"ConfigurationManager.AppSettings name={name} value={value}");
+                }
+            }
+
         }
 
-        static void Test0(Settings1 settings1)
+        #region --- TestSettings0
+
+        static void TestSettings0(Settings1 settings1)
         {
             try
             {
-                Debug.WriteLine($"{nameof(Test0)}(-) settings1={settings1}");
+                Debug.WriteLine($"{nameof(TestSettings0)}(-) settings1={settings1}");
 
                 {
                     SettingsContext _context = settings1.Context;
@@ -55,7 +73,7 @@ namespace TestSettings
             }
             finally
             {
-                Debug.WriteLine($"{nameof(Test0)}(+)");
+                Debug.WriteLine($"{nameof(TestSettings0)}(+)");
             }
         }
 
@@ -63,10 +81,10 @@ namespace TestSettings
         {
             Debug.WriteLine($">> {nameof(Settings1_PropertyChanged)}");
         }
+
         private static void Settings1_SettingsLoaded(object sender, SettingsLoadedEventArgs e)
         {
             Debug.WriteLine($">> {nameof(Settings1_SettingsLoaded)} e.Provider=<<{e.Provider}>>");
-            LocalFileSettingsProvider _p = e.Provider as LocalFileSettingsProvider;
         }
 
         private static void Settings1_SettingsSaving(object sender, System.ComponentModel.CancelEventArgs e)
@@ -78,6 +96,8 @@ namespace TestSettings
         {
             Debug.WriteLine($">> {nameof(Settings1_SettingChanging)}");
         }
+
+        #endregion
 
     }
 

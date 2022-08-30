@@ -13,11 +13,11 @@ namespace TestSettings {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
-    public sealed partial class Settings1 : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings2 : global::System.Configuration.ApplicationSettingsBase {
         
-        private static Settings1 defaultInstance = ((Settings1)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings1())));
+        private static Settings2 defaultInstance = ((Settings2)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings2())));
         
-        public static Settings1 Default {
+        public static Settings2 Default {
             get {
                 return defaultInstance;
             }
@@ -35,33 +35,12 @@ namespace TestSettings {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Value1")]
         public string Setting1 {
             get {
                 return ((string)(this["Setting1"]));
-            }
-            set {
-                this["Setting1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Value2")]
-        public string Setting2 {
-            get {
-                return ((string)(this["Setting2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Value3")]
-        public string Setting3 {
-            get {
-                return ((string)(this["Setting3"]));
             }
         }
     }

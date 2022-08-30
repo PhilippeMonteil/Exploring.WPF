@@ -9,7 +9,6 @@
 ### Tests
 
 - ajouter le Nuget 'System.Configuration.ConfigurationManager'
-
 - ajouter un 'New Item' / 'Settings Files' : Settings.settings
 - modifier sa visibilité : 'internal' -> 'public'
 - effets de l'ajout:
@@ -51,6 +50,7 @@
     - les valeurs de scope 'User' sont modifiables, pas celles de scope 'Application',
       elles sont enregistrées dans un fichier user.config dans un répertoire 
       C:\Users\[Philippe]\AppData\Local\[TestSettings]\... comme : 
+
     	C:\Users\Philippe\AppData\Local\TestSettings\TestSettings_Url_bfuncae2vcw4t22bfmcatpz2ll2ijfdq\1.0.0.0
 
 ```
@@ -66,29 +66,86 @@
 </configuration>
 ```
 
+Code:
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Settings1 settings1 = Settings1.Default;
+
+            settings1.PropertyChanged += Settings1_PropertyChanged;
+            settings1.SettingChanging += Settings1_SettingChanging;
+            settings1.SettingsLoaded += Settings1_SettingsLoaded;
+            settings1.SettingsSaving += Settings1_SettingsSaving;
+
+            Test0(settings1);
+        }
+
+        static void Test0(Settings1 settings1)
+        {
+            try
+            {
+                Debug.WriteLine($"{nameof(Test0)}(-) settings1={settings1}");
+
+                {
+                    SettingsContext _context = settings1.Context;
+                    Debug.WriteLine($"_context={_context}");
+                }
+
+                foreach (SettingsProperty property in settings1.Properties)
+                {
+                    Debug.WriteLine($"    property={property}");
+                    Debug.WriteLine($"    .Provider={property.Provider}");
+                    Debug.WriteLine($"    .PropertyType={property.PropertyType}");
+                    Debug.WriteLine($"    '{settings1[property.Name]}'");
+                }
+
+                Debug.WriteLine($".Setting0={settings1.Setting0}");
+
+                {
+                    Debug.WriteLine($"settings1.Setting0(-)");
+                    settings1.Setting0 = $"Setting0 {DateTime.Now}";
+                    Debug.WriteLine($"settings1.Setting0(+)");
+                }
+
+                {
+                    Debug.WriteLine($"settings1.Save(-)");
+                    settings1.Save();
+                    Debug.WriteLine($"settings1.Save(+)");
+                }
+
+            }
+            finally
+            {
+                Debug.WriteLine($"{nameof(Test0)}(+)");
+            }
+        }
+
+        private static void Settings1_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            Debug.WriteLine($">> {nameof(Settings1_PropertyChanged)}");
+        }
+
+        private static void Settings1_SettingsLoaded(object sender, SettingsLoadedEventArgs e)
+        {
+            Debug.WriteLine($">> {nameof(Settings1_SettingsLoaded)} e.Provider=<<{e.Provider}>>");
+        }
+
+        private static void Settings1_SettingsSaving(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Debug.WriteLine($">> {nameof(Settings1_SettingsSaving)}");
+        }
+
+        private static void Settings1_SettingChanging(object sender, SettingChangingEventArgs e)
+        {
+            Debug.WriteLine($">> {nameof(Settings1_SettingChanging)}");
+        }
+
+    }
+
 ## [ApplicationSettingsBase](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.applicationsettingsbase?view=dotnet-plat-ext-6.0)
 
 ### Class
 
 	public abstract class ApplicationSettingsBase : System.Configuration.SettingsBase, System.ComponentModel.INotifyPropertyChanged
-
-## [SettingsProperty](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.settingsproperty?view=dotnet-plat-ext-6.0)
-
-### Class
-
-	public class SettingsProperty
-
-###  Inheritance
-
-- Object
-- SettingsProperty
-
-### Events
-
-	public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-	public event System.Configuration.SettingChangingEventHandler SettingChanging;
-	public event System.Configuration.SettingsLoadedEventHandler SettingsLoaded;
-	public event System.Configuration.SettingsSavingEventHandler SettingsSaving;
-
-## [SettingsProperty](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.settingsproperty?view=dotnet-plat-ext-6.0)
-
