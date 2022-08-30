@@ -13,9 +13,12 @@ namespace TestConfiguration
             // Build a config object, using env vars and JSON providers.
             IConfiguration config = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddXmlFile("app.config")
                 .Build();
 
             Console.WriteLine($"KeyOne = {config["KeyOne"]}");
+
+            IConfigurationSection section = config.GetSection("");
 
             //// Get values from the config given their key and their target type.
             //Settings settings = config.GetRequiredSection("Settings").Get<Settings>();
