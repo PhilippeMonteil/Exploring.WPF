@@ -12,6 +12,34 @@
 - In-memory .NET objects
 - Third-party providers
 
+## ConfigurationManager.AppSettings
+
+### Exemple
+
+#### Section appSettings dans App.config
+
+```
+	<appSettings>
+		<add key="occupation" value="dentist"/>
+	</appSettings>
+```
+
+#### Source
+
+     {
+         Debug.WriteLine($"ConfigurationManager.AppSettings.Keys.Count={ConfigurationManager.AppSettings.Keys.Count}");
+         foreach (string name in ConfigurationManager.AppSettings.Keys)
+         {
+             string? value = ConfigurationManager.AppSettings[name];
+             Debug.WriteLine($"ConfigurationManager.AppSettings name={name} value={value}");
+         }
+     }
+
+#### Debug
+
+	ConfigurationManager.AppSettings.Keys.Count=1
+	ConfigurationManager.AppSettings name=occupation value=dentist
+
 ## [ConfigurationManager](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager?view=dotnet-plat-ext-6.0)
 
 ### Class
