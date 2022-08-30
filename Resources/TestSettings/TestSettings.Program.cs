@@ -23,17 +23,21 @@ namespace TestSettings
                 TestSettings0(settings1);
             }
 
-            if (true)
-            {
-                Debug.WriteLine($"ConfigurationManager.AppSettings.Keys.Count={ConfigurationManager.AppSettings.Keys.Count}");
-                foreach (string name in ConfigurationManager.AppSettings.Keys)
-                {
-                    string? value = ConfigurationManager.AppSettings[name];
-                    Debug.WriteLine($"ConfigurationManager.AppSettings name={name} value={value}");
-                }
-            }
-
         }
+
+        #region --- TestAppSettings0
+
+        static void TestAppSettings0()
+        {
+            Debug.WriteLine($"ConfigurationManager.AppSettings.Keys.Count={ConfigurationManager.AppSettings.Keys.Count}");
+            foreach (string name in ConfigurationManager.AppSettings.Keys)
+            {
+                string? value = ConfigurationManager.AppSettings[name];
+                Debug.WriteLine($"ConfigurationManager.AppSettings name={name} value={value}");
+            }
+        }
+
+        #endregion
 
         #region --- TestSettings0
 
