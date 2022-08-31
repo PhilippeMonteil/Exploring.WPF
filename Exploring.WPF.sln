@@ -140,7 +140,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1DFDC413-E64B-48CF-AD3A-69F758439D67}"
 	ProjectSection(SolutionItems) = preProject
-		Configuration\Doc\Config.md = Configuration\Doc\Config.md
+		Configuration\Doc\Configuration.md = Configuration\Doc\Configuration.md
 		Configuration\Doc\ConfigurationFiles.md = Configuration\Doc\ConfigurationFiles.md
 		Configuration\Doc\Settings.md = Configuration\Doc\Settings.md
 	EndProjectSection
