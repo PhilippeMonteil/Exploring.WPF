@@ -1,5 +1,8 @@
 
-# [Configuration in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration)
+# Configuration
+
+## [Configuration in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration)
+## [Configuration providers in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration-providers)
 
 > Configuration in .NET is performed using one or more configuration providers. Configuration providers read configuration data from key-value pairs using a variety of configuration sources:
 - Settings files, such as appsettings.json

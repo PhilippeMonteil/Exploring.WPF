@@ -3,6 +3,60 @@
 
 ## [Manage application settings](https://docs.microsoft.com/en-us/visualstudio/ide/managing-application-settings-dotnet?view=vs-2022)
 
+### En résumé
+
+- l'ajout d'un ou plusieurs .settings crée automatiquement un fichier App.config
+- les settings peuvent être de scope 'User' ou 'Application'
+- ils se retrouvent dans des tags userSettings et applicationSettings dans App.config
+- à chaque fichier .settings correspond une classe 
+    public sealed partial class Settings1 : global::System.Configuration.ApplicationSettingsBase
+
+- à chaque setting correspond une propriété :
+ 
+    - get / set pour les scope 'User' 
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Value0")]
+        public string Setting0 {
+            get {
+                return ((string)(this["Setting0"]));
+            }
+            set {
+                this["Setting0"] = value;
+            }
+        }
+ 
+    - get pour les scope 'Application' 
+
+        public string Setting2 {
+            get {
+                return ((string)(this["Setting2"]));
+            }
+        }
+
+- inspection d'un Settings
+
+     foreach (SettingsProperty property in settings1.Properties)
+     {
+         Debug.WriteLine($"    property={property}");
+         Debug.WriteLine($"    .Provider={property.Provider}");
+         Debug.WriteLine($"    .PropertyType={property.PropertyType}");
+         Debug.WriteLine($"    '{settings1[property.Name]}'");
+     }
+
+- modification et sauvegarde d'un Settings de scope 'User'
+
+    settings1.Setting0 = $"Setting0 {DateTime.Now}";
+    settings1.Save();
+
+- fichier de sauvegarde d'un Settings de scope 'User'
+
+Elles sont enregistrées dans un fichier user.config dans un répertoire 
+C:\Users\[Philippe]\AppData\Local\[TestSettings]\... comme : 
+
+    C:\Users\Philippe\AppData\Local\TestSettings\TestSettings_Url_bfuncae2vcw4t22bfmcatpz2ll2ijfdq\1.0.0.0
+
 ### Tests
 
 - ajouter le Nuget 'System.Configuration.ConfigurationManager'
@@ -146,10 +200,4 @@ Code:
 ### Class
 
 	public abstract class ApplicationSettingsBase : System.Configuration.SettingsBase, System.ComponentModel.INotifyPropertyChanged
-
-
-# Configuration
-
-## [Configuration in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration)
-## [Configuration providers in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration-providers)
 
