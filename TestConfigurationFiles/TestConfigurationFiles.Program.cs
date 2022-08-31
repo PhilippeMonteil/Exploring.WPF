@@ -1,46 +1,50 @@
 ﻿
-using System;
 using System.Configuration;
-using System.Reflection.Metadata.Ecma335;
 
-namespace TestConfig
+namespace TestConfigurationFiles
 {
-    class Program
+
+    internal class Program
     {
+
         static void Main(string[] args)
         {
             ReadAllSettings();
-            ReadSetting("Setting1");
-            ReadSetting("NotValid");
 
             foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
             {
                 Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
                 Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
-
-                AddUpdateAppSettings(configurationUserLevel, "NewSetting", "May 7, 2014");
-                AddUpdateAppSettings(configurationUserLevel, "Setting1", "May 8, 2014");
-
-                ReadAllSettings();
             }
 
+            //foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
+            //{
+            //    Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
+            //    Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
+
+            //    AddUpdateAppSettings(configurationUserLevel, "NewSetting", "May 7, 2014");
+            //    AddUpdateAppSettings(configurationUserLevel, "Setting1", "May 8, 2014");
+
+            //    ReadAllSettings();
+            //}
+
         }
+
 
         static void ReadAllSettings()
         {
             try
             {
-                var appSettings = ConfigurationManager.AppSettings;
 
-                if (appSettings.Count == 0)
+                if (ConfigurationManager.AppSettings.Count == 0)
                 {
                     Console.WriteLine("AppSettings is empty.");
                 }
                 else
                 {
-                    foreach (var key in appSettings.AllKeys)
+                    foreach (string? key in ConfigurationManager.AppSettings.AllKeys)
                     {
-                        Console.WriteLine("Key: {0} Value: {1}", key, appSettings[key]);
+                        Console.WriteLine("Key: {0} Value: {1}", key, ConfigurationManager.AppSettings[key]);
                     }
                 }
             }
