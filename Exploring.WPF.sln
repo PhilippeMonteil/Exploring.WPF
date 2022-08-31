@@ -108,10 +108,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727E-46E0-BA85-B46EE06560F5}"
 	ProjectSection(SolutionItems) = preProject
 		Resources\Doc\BinaryResources.md = Resources\Doc\BinaryResources.md
-		Resources\Doc\Config.md = Resources\Doc\Config.md
-		Configuration\Doc\ConfigurationFiles.md = Configuration\Doc\ConfigurationFiles.md
 		Resources\Doc\Resources.md = Resources\Doc\Resources.md
-		Resources\Doc\Settings.md = Resources\Doc\Settings.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestResources0", "Resources\TestResources0\TestResources0.csproj", "{58365CEF-03E1-4B81-9A06-A89A8EF1ED41}"
@@ -145,6 +142,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1DFDC413-E64B-48CF-AD3A-69F758439D67}"
 	ProjectSection(SolutionItems) = preProject
+		Resources\Doc\Config.md = Resources\Doc\Config.md
 		Resources\Doc\ConfigurationFiles.md = Resources\Doc\ConfigurationFiles.md
 		Configuration\Doc\Settings.md = Configuration\Doc\Settings.md
 	EndProjectSection
