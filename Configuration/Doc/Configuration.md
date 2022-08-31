@@ -2,96 +2,66 @@
 # Configuration
 
 ## [Configuration in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration)
-## [Configuration providers in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/configuration-providers)
 
-## [Configure apps by using configuration files](https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/)
+## Packages
 
-> Configuration in .NET is performed using one or more configuration providers. Configuration providers read configuration data from key-value pairs using a variety of configuration sources:
-- Settings files, such as appsettings.json
-- Environment variables
-- Azure Key Vault
-- Azure App Configuration
-- Command-line arguments
-- Custom providers, installed or created
-- Directory files
-- In-memory .NET objects
-- Third-party providers
+	<ItemGroup>
 
-## [ConfigurationManager](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager?view=dotnet-plat-ext-6.0)
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0" />
 
-## ConfigurationManager.AppSettings : Section appSettings dans App.config
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
 
-### Class
+	</ItemGroup>
 
-	public static class ConfigurationManager
+## [ConfigurationBuilder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.configurationbuilder?view=dotnet-plat-ext-6.0)
 
-### Properties
+## Exemple : extraction d'une instance de classe d'un .json de configuration
 
-	public static NameValueCollection AppSettings { get; }
-	public static ConnectionStringSettingsCollection ConnectionStrings { get; }
-
-### Exemple
-
-#### Section appSettings dans App.config
+- ajout d'un appsettings.json dans le projet, Copy To Output = yes
 
 ```
-	<appSettings>
-		<add key="occupation" value="dentist"/>
-	</appSettings>
+{
+  "Settings": {
+    "KeyOne": 1,
+    "KeyTwo": true,
+    "KeyThree": {
+      "Message": "Oh, that's nice...",
+      "SupportedVersions": {
+        "v1": "1.0.0",
+        "v3": "3.0.7"
+      }
+    },
+    "IPAddressRange": [
+      "46.36.198.121",
+      "46.36.198.122",
+      "46.36.198.123",
+      "46.36.198.124",
+      "46.36.198.125"
+    ]
+  }
+}
 ```
+- source
 
-#### Source
+    // Build a config object, using env vars and JSON providers.
+    IConfiguration config = new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json") // nécessite la présence du fichier dans le répertoire courant
+        .AddEnvironmentVariables()
+        .Build();
 
-     {
-         Debug.WriteLine($"ConfigurationManager.AppSettings.Keys.Count={ConfigurationManager.AppSettings.Keys.Count}");
-         foreach (string name in ConfigurationManager.AppSettings.Keys)
-         {
-             string? value = ConfigurationManager.AppSettings[name];
-             Debug.WriteLine($"ConfigurationManager.AppSettings name={name} value={value}");
-         }
-     }
+    // Get values from the config given their key and their target type.
+    Settings settings = config.GetRequiredSection("Settings").Get<Settings>();
 
-#### Debug
+    // Write the values to the console.
+    Console.WriteLine($"KeyOne = {settings.KeyOne}");
+    Console.WriteLine($"KeyTwo = {settings.KeyTwo}");
+    Console.WriteLine($"KeyThree:Message = {settings.KeyThree.Message}");
 
-	ConfigurationManager.AppSettings.Keys.Count=1
-	ConfigurationManager.AppSettings name=occupation value=dentist
+## Exemple : idem avec Hosting
 
-### Methods
-
-	public static Configuration OpenExeConfiguration (System.Configuration.ConfigurationUserLevel userLevel);
-	public static Configuration OpenExeConfiguration (string exePath);
-
-## ConfigurationUserLevel
-
-	public enum ConfigurationUserLevel
-
-| Value | Description |
-| ----------- | ----------- |
-| None | Gets the Configuration that applies to all users. |
-| PerUserRoaming | Gets the roaming Configuration that applies to the current user.|
-| PerUserRoamingAndLocal | Gets the local Configuration that applies to the current user.|
-
-## [Configuration](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configuration?view=dotnet-plat-ext-6.0)
-
-### Class
-
-	public sealed class Configuration
-
-### Properties
-
-	public string FilePath { get; }
-
-	public System.Configuration.AppSettingsSection AppSettings { get; }
-	public System.Configuration.ConnectionStringsSection ConnectionStrings { get; }
-
-	public System.Configuration.ConfigurationSectionCollection Sections { get; }
-	public System.Configuration.ConfigurationSectionGroupCollection SectionGroups { get; }
-	public System.Configuration.ConfigurationSectionGroup RootSectionGroup { get; }
-
-### Methods
-
-	public void Save (System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll);
-	public void SaveAs (string filename, System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll);
+## Eample : with hosting and using the indexer API
 
 
-https://www.c-sharpcorner.com/article/options-pattern-in-net-6-0/
+## [IConfiguration ](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-6.0)
