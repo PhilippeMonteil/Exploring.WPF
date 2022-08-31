@@ -68,7 +68,7 @@ configurationUserLevel=PerUserRoamingAndLocal
 configuration.FilePath=C:\Users\Philippe\AppData\Local\TestConfigurationFiles\TestConfigurationFiles_Url_rpwlvac4grq4t2vftnfbgar5uh1sia5l\1.0.0.0\user.config
 ```
 
-Résumé : 
+## ConfigurationUserLevel 
 
 | Valeur      | Emplacement |
 | ----------- | ----------- |

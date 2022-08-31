@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Configuration;
 
 namespace TestConfigurationFiles
@@ -14,12 +15,13 @@ namespace TestConfigurationFiles
             foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
             {
                 Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
-                Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
+                Console.WriteLine($"configurationUserLevel={configurationUserLevel}");
+                Console.WriteLine($"  configuration.FilePath={configuration.FilePath}");
             }
 
             {
-                string _path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                Console.WriteLine($"ApplicationData={_path}");
+                string _path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                Console.WriteLine($"LocalApplicationData={_path}");
             }
 
             foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
