@@ -109,6 +109,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727
 	ProjectSection(SolutionItems) = preProject
 		Resources\Doc\BinaryResources.md = Resources\Doc\BinaryResources.md
 		Resources\Doc\Config.md = Resources\Doc\Config.md
+		Configuration\Doc\ConfigurationFiles.md = Configuration\Doc\ConfigurationFiles.md
 		Resources\Doc\Resources.md = Resources\Doc\Resources.md
 		Resources\Doc\Settings.md = Resources\Doc\Settings.md
 	EndProjectSection
@@ -136,9 +137,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConfig", "Resources\TestResources\TestConfig\TestConfig.csproj", "{6B47F0C5-9B54-43DA-BDE7-19767C1B55E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConfiguration", "Resources\TestConfiguration\TestConfiguration.csproj", "{2BFFB769-83BE-4C4C-8802-2CABAE92910A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConfiguration", "Resources\TestConfiguration\TestConfiguration.csproj", "{2BFFB769-83BE-4C4C-8802-2CABAE92910A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSettings", "Resources\TestSettings\TestSettings.csproj", "{5EB83A88-585C-46C3-A40D-2949B31B7A96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSettings", "Resources\TestSettings\TestSettings.csproj", "{5EB83A88-585C-46C3-A40D-2949B31B7A96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{460F3D2F-1B87-41E1-B703-F4CE608DA2A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1DFDC413-E64B-48CF-AD3A-69F758439D67}"
+	ProjectSection(SolutionItems) = preProject
+		Resources\Doc\ConfigurationFiles.md = Resources\Doc\ConfigurationFiles.md
+		Configuration\Doc\Settings.md = Configuration\Doc\Settings.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -455,6 +464,7 @@ Global
 		{6B47F0C5-9B54-43DA-BDE7-19767C1B55E3} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
 		{2BFFB769-83BE-4C4C-8802-2CABAE92910A} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
 		{5EB83A88-585C-46C3-A40D-2949B31B7A96} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
+		{1DFDC413-E64B-48CF-AD3A-69F758439D67} = {460F3D2F-1B87-41E1-B703-F4CE608DA2A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
