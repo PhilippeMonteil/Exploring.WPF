@@ -17,6 +17,11 @@ namespace TestConfigurationFiles
                 Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
             }
 
+            {
+                string _path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                Console.WriteLine($"ApplicationData={_path}");
+            }
+
             foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
             {
                 Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
