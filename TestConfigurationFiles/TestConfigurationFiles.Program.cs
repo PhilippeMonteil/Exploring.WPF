@@ -17,16 +17,16 @@ namespace TestConfigurationFiles
                 Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
             }
 
-            //foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
-            //{
-            //    Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
-            //    Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
+            foreach (ConfigurationUserLevel configurationUserLevel in Enum.GetValues(typeof(ConfigurationUserLevel)))
+            {
+                Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
+                Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
 
-            //    AddUpdateAppSettings(configurationUserLevel, "NewSetting", "May 7, 2014");
-            //    AddUpdateAppSettings(configurationUserLevel, "Setting1", "May 8, 2014");
+                AddUpdateAppSettings(configurationUserLevel, "NewSetting", "May 7, 2014");
+                AddUpdateAppSettings(configurationUserLevel, "Setting1", "May 8, 2014");
 
-            //    ReadAllSettings();
-            //}
+                ReadAllSettings();
+            }
 
         }
 
@@ -73,6 +73,8 @@ namespace TestConfigurationFiles
             try
             {
                 Configuration configuration = ConfigurationManager.OpenExeConfiguration(configurationUserLevel);
+
+                Console.WriteLine($"configurationUserLevel={configurationUserLevel} configuration.FilePath={configuration.FilePath}");
 
                 KeyValueConfigurationCollection settings = configuration.AppSettings.Settings;
                 if (settings[key] == null)

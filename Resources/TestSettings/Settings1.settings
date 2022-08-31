@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TestSettings" GeneratedClassName="Settings1">
   <Profiles />
   <Settings>
-    <Setting Name="Setting0" Type="System.String" Scope="User">
+    <Setting Name="Setting0" Roaming="true" Type="System.String" Scope="User">
       <Value Profile="(Default)">Value0</Value>
     </Setting>
     <Setting Name="Setting1" Type="System.String" Scope="User">
