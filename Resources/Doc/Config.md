@@ -88,3 +88,5 @@
 	public void Save (System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll);
 	public void SaveAs (string filename, System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll);
 
+
+https://www.c-sharpcorner.com/article/options-pattern-in-net-6-0/

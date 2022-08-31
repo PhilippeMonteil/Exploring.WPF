@@ -73,7 +73,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ResourceAssembly\ResourceAssembly.csproj" />
+    <ProjectReference Include="..\ResourceAssembly\ResourceAssembly.csproj" />
   </ItemGroup>
 
   <ItemGroup>
