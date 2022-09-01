@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TestHosting0": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

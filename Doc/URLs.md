@@ -1,3 +1,10 @@
+# .Net 6
+
+## [.Net Fundamentals](https://docs.microsoft.com/en-us/dotnet/fundamentals/)
+
+### [.NET Generic Host](https://docs.microsoft.com/en-us/dotnet/core/extensions/generic-host)
+
+
 # WPF
 
 ## [Optimizing performance: Controls](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/optimizing-performance-controls?view=netframeworkdesktop-4.8)
