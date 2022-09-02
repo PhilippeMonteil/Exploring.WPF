@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
@@ -22,7 +23,7 @@ namespace TestLocalization0
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return $"ID={ID}";
+            return $"ID[{Thread.CurrentThread.CurrentUICulture.ToString()}]={ID}";
         }
 
     }
