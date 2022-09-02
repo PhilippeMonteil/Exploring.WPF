@@ -56,3 +56,70 @@ The following defaults are applied to the returned HostBuilder:
 
 	public Task StartAsync (System.Threading.CancellationToken cancellationToken);
 	public Task StopAsync (System.Threading.CancellationToken cancellationToken);
+
+## [Building a Console App with .NET Generic Host](https://dfederm.com/building-a-console-app-with-.net-generic-host/)
+
+- créer une classe ConsoleHostedService exposant IHostedService
+
+- enregistrer une instance de cette classe comme 'Hosted Service'
+
+     static async Task Main(string[] args)
+     {
+         Console.WriteLine("Hello, World!");
+
+         await Host.CreateDefaultBuilder(args)
+          .ConfigureServices((hostContext, services) =>
+          {
+              services.AddHostedService<ConsoleHostedService>();
+          })
+          .RunConsoleAsync();
+
+         // Test0(args);
+     }
+
+- les méthodes IHostedService exposées par ConsoleHostedService sont appelées :
+
+	public Task StartAsync (System.Threading.CancellationToken cancellationToken);
+
+	public Task StopAsync (System.Threading.CancellationToken cancellationToken);
+
+- StartAsync enregistre des handlers auprès des CancellationToken exposés par IHostApplicationLifetime :
+
+```
+    CancellationToken ApplicationStarted { get; }
+
+    CancellationToken ApplicationStopping { get; }
+
+    CancellationToken ApplicationStopped { get; }
+```
+
+comme :
+
+```
+     _appLifetime.ApplicationStarted.Register(() =>
+     {
+         Task.Run(async () =>
+         {
+             try
+             {
+                _logger.LogInformation("ConsoleHostedService : Hello World!");
+
+                // Simulate real work is being done
+                await Task.Delay(1000);
+             }
+             catch (Exception ex)
+             {
+                _logger.LogError(ex, "Unhandled exception!");
+             }
+             finally
+             {
+                // Stop the application once the work is done
+                _appLifetime.StopApplication();
+             }
+         });
+     });
+```
+
+- le code enregistré auprès de .ApplicationStarted doit déclencher la fin de l'appication :
+
+    _appLifetime.StopApplication();

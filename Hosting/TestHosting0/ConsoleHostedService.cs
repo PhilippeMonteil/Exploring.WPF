@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Runtime.CompilerServices;
 
 namespace TestHosting0
 {
@@ -19,9 +20,14 @@ namespace TestHosting0
             _appLifetime = appLifetime;
         }
 
+        void log(string Txt, [CallerMemberName] string? Member = null)
+        {
+            _logger.LogInformation($"[{Thread.CurrentThread.ManagedThreadId}] >>> {GetType().Name}.{Member}{Member} '{Txt}'");
+        }
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogDebug($"Starting with arguments: {string.Join(" ", Environment.GetCommandLineArgs())}");
+            log($"StartAsync with arguments: {string.Join(" ", Environment.GetCommandLineArgs())}");
 
             _appLifetime.ApplicationStarted.Register(() =>
             {
@@ -29,7 +35,7 @@ namespace TestHosting0
                 {
                     try
                     {
-                        _logger.LogInformation("ConsoleHostedService : Hello World!");
+                        log("Task.Run(-)");
 
                         // Simulate real work is being done
                         await Task.Delay(1000);
@@ -40,10 +46,22 @@ namespace TestHosting0
                     }
                     finally
                     {
+                        log("Task.Run(+)");
                         // Stop the application once the work is done
                         _appLifetime.StopApplication();
+                        log("Task.Run(++)");
                     }
                 });
+            });
+
+            _appLifetime.ApplicationStopping.Register(() =>
+            {
+                log($"ApplicationStopping");
+            });
+
+            _appLifetime.ApplicationStopped.Register(() =>
+            {
+                log($"ApplicationStopped");
             });
 
             return Task.CompletedTask;
@@ -51,6 +69,7 @@ namespace TestHosting0
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
+            log($"ConsoleHostedService.StopAsync");
             return Task.CompletedTask;
         }
     }
