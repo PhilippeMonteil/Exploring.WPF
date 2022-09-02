@@ -39,3 +39,20 @@ The following defaults are applied to the returned HostBuilder:
 
 ## [IConfigurationBuilder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-6.0)
 
+## [IHost Interface](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihost?view=dotnet-plat-ext-6.0)
+
+### Parameters
+
+	public IServiceProvider Services { get; }
+
+### Methods
+
+	public Task StartAsync (CancellationToken cancellationToken = default);
+	public Task StopAsync (CancellationToken cancellationToken = default);
+
+## [IHostedService](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostedservice?view=dotnet-plat-ext-6.0)
+
+### Methods
+
+	public Task StartAsync (System.Threading.CancellationToken cancellationToken);
+	public Task StopAsync (System.Threading.CancellationToken cancellationToken);
