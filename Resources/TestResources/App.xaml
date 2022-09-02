@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:TestResources"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Image x:Key="Image0" Source="BinaryResources/Folder0/ContentImage.PNG" />
+        <Image x:Key="Image1" Source="BinaryResources/Folder0/ResourceImage.PNG" />
     </Application.Resources>
 </Application>

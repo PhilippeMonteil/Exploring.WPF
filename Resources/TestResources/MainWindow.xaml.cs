@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,14 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Resources;
+using System.Diagnostics;
+
+using TestResources.Resources;
 
 namespace TestResources
 {
@@ -23,6 +29,24 @@ namespace TestResources
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        ResourceManager rm = new ResourceManager(typeof(Resource1));
+
+        private void bnTest_Click(object sender, RoutedEventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        new System.Globalization.CultureInfo("es");
+
+            Debug.WriteLine($"Properties.Resources.String1={Resource1.String1}");
+            Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        new System.Globalization.CultureInfo("fr");
+
+            Debug.WriteLine($"Properties.Resources.String1={Resource1.String1}");
+            Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
+
         }
     }
 }

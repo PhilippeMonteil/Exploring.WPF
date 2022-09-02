@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -22,11 +23,15 @@ namespace TestResources.Classes
             {
                 Debug.WriteLine($"  resourceName={resourceName}");
 
-                ResourceSet set = new ResourceSet(assembly.GetManifestResourceStream(resourceName));
+                Stream? stream = assembly.GetManifestResourceStream(resourceName);
+                ResourceSet set = new ResourceSet(stream);
+
+                Debug.WriteLine($"    stream={stream}");
+                Debug.WriteLine($"    set={set}");
 
                 foreach (DictionaryEntry resource in set)
                 {
-                    Debug.WriteLine("    resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                    Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
                 }
 
                 Debug.WriteLine("  --------------");

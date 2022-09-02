@@ -13,43 +13,53 @@
 
      public static void DebugResources(Assembly assembly)
      {
-         Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
+        Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
 
-         foreach (var resourceName in assembly.GetManifestResourceNames())
-         {
-          Debug.WriteLine($"  resourceName={resourceName}");
+        foreach (var resourceName in assembly.GetManifestResourceNames())
+        {
+            Debug.WriteLine($"  resourceName={resourceName}");
 
-          ResourceSet set = new ResourceSet(assembly.GetManifestResourceStream(resourceName));
+            ResourceSet set = new ResourceSet(assembly.GetManifestResourceStream(resourceName));
 
-          foreach (DictionaryEntry resource in set)
-          {
-              Debug.WriteLine("    resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
-          }
+            foreach (DictionaryEntry resource in set)
+            {
+                Debug.WriteLine("    resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+            }
 
-          Debug.WriteLine("  --------------");
-         }
+            Debug.WriteLine("  --------------");
+        }
 
-         Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
+        Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
      }
 
 #### Debug
 
-    ResourceUtilsDebugResources(-)
-
-        resourceName=TestResources.g.resources
-            resource.Key=[binaryresources/folder0/resourceimage.png] .Value='System.IO.UnmanagedMemoryStream'
-            resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
-        --------------
-
-        resourceName=TestResources.Resources.Resource1.resources
-        --------------
-
+```
+ResourceUtilsDebugResources(-)
+  resourceName=TestResources.g.resources
+    stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
+    set=System.Resources.ResourceSet
+      resource.Key=[binaryresources/folder0/resourceimage.png] .Value='System.IO.UnmanagedMemoryStream'
+      resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
+      resource.Key=[app.baml] .Value='System.IO.UnmanagedMemoryStream'
+  --------------
+  resourceName=TestResources.Resources.Resource1.resources
+    stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
+    set=System.Resources.ResourceSet
+      resource.Key=[String1] .Value='Value1'
+  --------------
 ResourceUtilsDebugResources(+)
+```
 
-__Remarque__ : 
+__Remarque__ : TestResources.g.resources
 
-Les 'ressources binaires' __Content__ et __Resource__ d'une assembly, TestResources0 ici, apparaissent comme des entrées
-dans le __ResourceSet__ TestResources0.g.resources.
+- Les 'ressources binaires' __Resource__ d'une assembly, TestResources0 ici, apparaissent comme des entrées
+dans le __ResourceSet__ TestResources.g.resources.
+- les .xaml : App, MainWindow, ... apparaissent sous leur forme compilée, .balm, dans le __ResourceSet__ TestResources.g.resources.  
+
+__Remarque__ : TestResources.Resources.Resource1.resources
+
+- chaque .resx fait l'objet d'un ResourceSet séparé : TestResources.Resources.Resource1.resources ici.
 
 ### Localisation de ressources .resx
 
@@ -57,9 +67,9 @@ dans le __ResourceSet__ TestResources0.g.resources.
 - Créer des ressources __\<resource>.\<culture>.resx__
 
 Le 'CustomTool' (ResXFileCodeGenerator) associé à \<resource>.resx génère une classe
-__TestResources0.Properties.Resources__
+__TestResources.Resources.Resource1
 
-    namespace TestResources0.Properties 
+    namespace TestResources.Resources 
     {
         using System;
     
@@ -73,30 +83,44 @@ __TestResources0.Properties.Resources__
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        internal class Resources {
+        internal class Resource1 {
 
 qui expose des propriétés statiques:
 
     internal static global::System.Globalization.CultureInfo Culture
     internal static string String1 // pour chaque Key
 
-Pour chaque \<Culture> un assembly satellite de même nom, __TestResources0.resources.dll__,
+Pour chaque \<Culture> un assembly satellite de même nom, __TestResources.resources.dll__,
 est créé et copié dans un sous-répertoire \<Culture>.
 
 L'assignation de la propriété __CurrentThread.CurrentUICulture__ est prise en compte par 
 la classe __Properties.Resources__ et par le __ResourceManager__ :
 
-            ResourceManager rm = new ResourceManager(typeof(Properties.Resources));
+        ResourceManager rm = new ResourceManager(typeof(Resource1));
 
+        private void bnTest_Click(object sender, RoutedEventArgs e)
+        {
             System.Threading.Thread.CurrentThread.CurrentUICulture =
                         new System.Globalization.CultureInfo("es");
 
-            // Properties.Resources.Culture = new System.Globalization.CultureInfo("es");
-            Debug.WriteLine($"Properties.Resources.String1={Properties.Resources.String1}");
+            Debug.WriteLine($"Properties.Resources.String1={Resource1.String1}");
             Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
 
-## [ResourceManager Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager?view=net-6.0)
+            System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        new System.Globalization.CultureInfo("fr");
 
-## [ResourceReader Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourcereader?view=net-6.0)
+            Debug.WriteLine($"Properties.Resources.String1={Resource1.String1}");
+            Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
+        }
+
+Debug :
+
+    Properties.Resources.String1=ES.Value1
+    rm.String1=ES.Value1
+
+    Properties.Resources.String1=FR.Value1
+    rm.String1=FR.Value1
+
+## [ResourceManager Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager?view=net-6.0)
 
 ## [WPF Globalization and Localization Overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/wpf-globalization-and-localization-overview?view=netframeworkdesktop-4.8)
