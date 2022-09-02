@@ -17,7 +17,7 @@
         <ItemGroup>  
             <Resource Include="ResourceFile.xaml" />  
         </ItemGroup>  
-  ...  
+    ...  
     </Project>  
 
     // Navigate to xaml page

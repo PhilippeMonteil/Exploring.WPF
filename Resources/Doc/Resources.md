@@ -11,36 +11,40 @@
 
 ### Example : GetManifestResourceNames, GetManifestResourceStream, ResourceSet
 
-    Assembly assembly = Assembly.GetExecutingAssembly();
+     public static void DebugResources(Assembly assembly)
+     {
+         Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
 
-    foreach (var resourceName in assembly.GetManifestResourceNames())
-    {
-        Debug.WriteLine($"resourceName={resourceName}");
+         foreach (var resourceName in assembly.GetManifestResourceNames())
+         {
+          Debug.WriteLine($"  resourceName={resourceName}");
 
-        ResourceSet set = new ResourceSet(Application.ResourceAssembly.GetManifestResourceStream(resourceName));
+          ResourceSet set = new ResourceSet(assembly.GetManifestResourceStream(resourceName));
 
-        foreach (DictionaryEntry resource in set)
-        {
-            Debug.WriteLine("  resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
-        }
+          foreach (DictionaryEntry resource in set)
+          {
+              Debug.WriteLine("    resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+          }
 
-        Debug.WriteLine("--------------");
-    }
+          Debug.WriteLine("  --------------");
+         }
+
+         Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
+     }
 
 #### Debug
 
-    resourceName=TestResources0.g.resources
-        resource.Key=[resources/folder0/image0.jpg] .Value='System.IO.UnmanagedMemoryStream'
-        resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
-    --------------
+    ResourceUtilsDebugResources(-)
 
-    resourceName=TestResources0.Properties.Resources.resources
-        resource.Key=[String1] .Value='String1:Value1'
-    --------------
+        resourceName=TestResources.g.resources
+            resource.Key=[binaryresources/folder0/resourceimage.png] .Value='System.IO.UnmanagedMemoryStream'
+            resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
+        --------------
 
-    resourceName=TestResources0.Resource1.resources
-        resource.Key=[String1] .Value='Value1'
-        resource.Key=[String2] .Value='Value2'
+        resourceName=TestResources.Resources.Resource1.resources
+        --------------
+
+ResourceUtilsDebugResources(+)
 
 __Remarque__ : 
 
