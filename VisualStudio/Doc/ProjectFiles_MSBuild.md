@@ -1,5 +1,56 @@
 
+# [Solution (.sln) file](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/solution-dot-sln-file?view=vs-2022)
+
+.suo : C:\Solal\Solal.Experiments\Exploring.WPF\.vs\Exploring.WPF\v17
+
+## 'Active Solution Configuration' / 'Active Solution Platform' / 'Projet Solution Platform'
+
+- 'Active Solution Configuration' : Debug / Relase / ...
+- 'Active Solution Platform' : AnyCPU, x64, ...
+- 'Project Platform' : AnyCPU, x64, ...
+
+L'ajout d'une 'Active Solution Configuration' peut optionellement se répercuter vers les projets de la solution.
+et apparaître dans leur property 'Configurations' :
+
+    <Configurations>Debug;Release;Test</Configurations>
+
+L'ajout d'une 'Active Solution Platform' peut optionellement se répercuter vers les projets de la solution.
+et apparaître dans leur property 'Platforms' :
+
+    <Platforms>AnyCPU;ARM64;x86</Platforms>
+
+La suppression d'une 'Active Solution Configuration' ne se propage pas aux projets.
+La suppression d'une 'Active Solution Platform' ne se propage pas aux projets.
+
+Pour une combinaison donnée de 'Active Solution Configuration' et 'Active Solution Platform'
+on peut choisir pour chaque projet sa plateforme, qui n'est pas forcément 'Active Solution Platform'
+
+Le fichier .sln enregistre, pour chaque projet, les liens entre 'Solution Configuration'/'Solution Platform'
+et 'Project Configuration'/'Project Platform'
+
+Exemple :
+
+	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Test|Any CPU.ActiveCfg = Test|x86
+	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Test|Any CPU.Build.0 = Test|x86
+
+Les propriétés d'un projet saisies dans l'IDE de VS se répercutent dans son .csproj
+
+# [Inside the Visual Studio SDK](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/inside-the-visual-studio-sdk?view=vs-2022)
+
+# [Tools and diagnostics in .NET](https://docs.microsoft.com/en-us/dotnet/fundamentals/tools-and-productivity)
+
+# [MSBuild](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild?view=vs-2022)
+
 # .Net Core MSBuild Project files
+
+## [.NET project SDKs](https://docs.microsoft.com/en-us/dotnet/core/project-sdk/overview)
+
+On a Windows machine, the Sdk.props and Sdk.targets files can be found in the %ProgramFiles%\dotnet\sdk\[version]\Sdks\Microsoft.NET.Sdk\Sdk folder.
+Exemple : C:\Program Files\dotnet\sdk\6.0.400\Sdks
 
 ## [MSBuild concepts](https://docs.microsoft.com/en-us/visualstudio/msbuild/msbuild-concepts?view=vs-2022)
 

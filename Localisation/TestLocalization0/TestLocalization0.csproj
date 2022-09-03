@@ -5,6 +5,9 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <SignAssembly>True</SignAssembly>
+    <Configurations>Debug;Release;Test</Configurations>
+    <Platforms>AnyCPU;ARM64;x86;ARM32</Platforms>
   </PropertyGroup>
 
 </Project>
