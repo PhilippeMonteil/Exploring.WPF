@@ -61,3 +61,26 @@ Classe exposant des extensions de l'interface IConfiguration
          }
 
      }
+
+### Exemple : ConfigureServices, Configure/GetSection
+
+     using IHost host = Host.CreateDefaultBuilder(args)
+         .ConfigureAppConfiguration((context, configuration) =>
+         {
+             configuration.Sources.Clear();
+             configuration
+          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+         })
+         .ConfigureServices((context, services) =>
+         {
+             var configuration = context.Configuration;
+             services.Configure<TransientFaultHandlingOptions>(
+          configuration.GetSection(nameof(TransientFaultHandlingOptions)));
+         })
+         .Build();
+
+     {
+         IOptions<TransientFaultHandlingOptions> options = host.Services.GetService<IOptions<TransientFaultHandlingOptions>>();
+         Console.WriteLine($"options.Value.Enabled={options.Value.Enabled}");
+         Console.WriteLine($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
+     }

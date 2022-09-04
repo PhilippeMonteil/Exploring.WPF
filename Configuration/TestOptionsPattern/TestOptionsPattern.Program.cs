@@ -73,13 +73,25 @@ namespace TestOptionsPattern
                     var configuration = context.Configuration;
                     services.Configure<TransientFaultHandlingOptions>(
                         configuration.GetSection(nameof(TransientFaultHandlingOptions)));
+                    services.AddTransient<Client>();
                 })
                 .Build();
 
+            // IOptions
+            for (int i = 0; i < 2; i++)
             {
                 IOptions<TransientFaultHandlingOptions> options = host.Services.GetService<IOptions<TransientFaultHandlingOptions>>();
+                Console.WriteLine($"options={options.GetHashCode()}");
                 Console.WriteLine($"options.Value.Enabled={options.Value.Enabled}");
                 Console.WriteLine($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
+            }
+
+            // IOptionsSnapshot
+            for (int i = 0; i < 2; i++)
+            {
+                Client client = host.Services.GetService<Client>();
+                Console.WriteLine($"client={client} ...");
+                Console.ReadLine();
             }
 
         }
