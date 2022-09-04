@@ -38,6 +38,26 @@ Exemple :
 	{1A99D893-85D1-4323-9A5F-803C3F0DC1CE}.Test|Any CPU.Build.0 = Test|x86
 
 Les propriétés d'un projet saisies dans l'IDE de VS se répercutent dans son .csproj
+de façon identique pour toutes les Configuration/Plateforme.
+Pour particulariser une propriété pour une Configuration/Plateforme donnée il faut modifier
+le .csproj
+
+Exemple :
+
+```
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1703</NoWarn>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702</NoWarn>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+```
+
+Ce qui se répercute dans la page 'Propriétés' du projet
+
 
 # [Inside the Visual Studio SDK](https://docs.microsoft.com/en-us/visualstudio/extensibility/internals/inside-the-visual-studio-sdk?view=vs-2022)
 
