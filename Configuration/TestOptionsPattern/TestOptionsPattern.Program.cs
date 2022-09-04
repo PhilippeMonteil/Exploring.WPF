@@ -13,7 +13,12 @@ namespace TestOptionsPattern
         static void Main(string[] args)
         {
             log("Hello, World!");
-            Test1(args);
+            Test2(args);
+        }
+
+        static void log(string Txt)
+        {
+            Console.WriteLine($"[{Thread.CurrentThread.ManagedThreadId}]:'{Txt}'");
         }
 
         static void Test0(string[] args)
@@ -59,11 +64,6 @@ namespace TestOptionsPattern
 
         }
 
-        static void log(string Txt)
-        {
-            Console.WriteLine($"[{Thread.CurrentThread.ManagedThreadId}]:'{Txt}'");
-        }
-
         static void Test1(string[] args)
         {
             using IHost host = Host.CreateDefaultBuilder(args)
@@ -97,17 +97,49 @@ namespace TestOptionsPattern
             // IOptionsSnapshot
             for (int i = 0; i < 2; i++)
             {
-                Client1 client = host.Services.GetService<Client1>();
-                log($"client={client} ...");
+                Client1 client1 = host.Services.GetService<Client1>();
+                log($"client1={client1} ...");
                 //Console.ReadLine();
             }
 
             // IOptionsMonitor
             for (int i = 0; i < 2; i++)
             {
-                Client2 client = host.Services.GetService<Client2>();
-                log($"client={client} ...");
+                Client2 client2 = host.Services.GetService<Client2>();
+                log($"client2={client2} ...");
                 Console.ReadLine();
+            }
+
+        }
+
+        static void Test2(string[] args)
+        {
+            using IHost host = Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, configuration) =>
+                {
+                    configuration.Sources.Clear();
+                    configuration
+                        .AddJsonFile("appsettings2.json", optional: true, reloadOnChange: true);
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    var configuration = context.Configuration;
+
+                    services.Configure<Features>(
+                        Features.Personalize,
+                        configuration.GetSection("Features:Personalize"));
+
+                    services.Configure<Features>(
+                        Features.WeatherStation,
+                        configuration.GetSection("Features:WeatherStation"));
+
+                    services.AddTransient<Service>();
+                })
+                .Build();
+
+            {
+                IServiceProvider serviceProvider = host.Services;
+                Service service = serviceProvider.GetService<Service>();
             }
 
         }

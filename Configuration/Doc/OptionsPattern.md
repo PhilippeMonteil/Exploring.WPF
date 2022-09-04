@@ -90,4 +90,3 @@ Classe exposant des extensions de l'interface IConfiguration
 ## [IOptionsSnapshot<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1?view=dotnet-plat-ext-6.0)
 
 ## [IOptionsMonitor<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1?view=dotnet-plat-ext-6.0)
-

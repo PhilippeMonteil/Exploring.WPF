@@ -15,7 +15,7 @@ namespace TestOptionsPattern
 
         public override string ToString()
         {
-            return $"{GetType().Name}[{GetHashCode()}] Enabled={Enabled} AutoRetryDelay={AutoRetryDelay}";
+            return $"{GetType().Name}[{GetHashCode()}] .Enabled={Enabled} .AutoRetryDelay={AutoRetryDelay}";
         }
 
     }
