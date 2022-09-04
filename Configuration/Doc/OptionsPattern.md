@@ -98,7 +98,25 @@ Classe exposant des extensions de l'interface IConfiguration
         public string ApiKey { get; set; }
     }
 
-    ConfigureServices(services =>   
+    public class Service
+    {
+        private readonly Features _personalizeFeature;
+        private readonly Features _weatherStationFeature;
+
+        public Service(IOptionsSnapshot<Features> namedOptionsAccessor)
+        {
+            _personalizeFeature = namedOptionsAccessor.Get(Features.Personalize);
+            _weatherStationFeature = namedOptionsAccessor.Get(Features.WeatherStation);
+        }
+
+        public override string ToString()
+        {
+            return $"{GetType().Name}[{GetHashCode()}] _personalizeFeature={_personalizeFeature} _weatherStationFeature={_weatherStationFeature}";
+        }
+
+    }
+
+    ConfigureServices(services =>
     {
         services.Configure<Features>(
             Features.Personalize,
@@ -107,7 +125,14 @@ Classe exposant des extensions de l'interface IConfiguration
         services.Configure<Features>(
             Features.WeatherStation,
             Configuration.GetSection("Features:WeatherStation"));
+
+        services.AddTransient<Service>();
     });
+
+    {
+        IServiceProvider serviceProvider = host.Services;
+        Service service = serviceProvider.GetService<Service>();
+    }
 
 ## [IOptions<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptions-1?view=dotnet-plat-ext-6.0) 
 
