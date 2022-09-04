@@ -29,8 +29,7 @@ Classe exposant des extensions de l'interface IConfiguration
          .ConfigureAppConfiguration((hostingContext, configuration) =>
          {
              configuration.Sources.Clear();
-             configuration
-          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+             configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
          })
          .Build();
 
@@ -68,8 +67,7 @@ Classe exposant des extensions de l'interface IConfiguration
          .ConfigureAppConfiguration((context, configuration) =>
          {
              configuration.Sources.Clear();
-             configuration
-          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+             configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
          })
          .ConfigureServices((context, services) =>
          {
@@ -148,6 +146,33 @@ puis :
         IServiceProvider serviceProvider = host.Services;
         Service service = serviceProvider.GetService<Service>();
     }
+
+## [OptionsServiceCollectionExtensions Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions?view=dotnet-plat-ext-6.0)
+
+Extension methods for adding options services to the DI container.
+
+### [OptionsServiceCollectionExtensions.AddOptions<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.addoptions?view=dotnet-plat-ext-6.0#microsoft-extensions-dependencyinjection-optionsservicecollectionextensions-addoptions(microsoft-extensions-dependencyinjection-iservicecollection)) 
+
+    public static OptionsBuilder<TOptions> AddOptions<TOptions> (this IServiceCollection services) where TOptions : class;
+
+## [OptionsBuilder<TOptions> Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.optionsbuilder-1?view=dotnet-plat-ext-6.0)
+
+Classe ajoutant des Options à une IServiceCollection.
+
+### Constructeur
+
+    public OptionsBuilder (IServiceCollection services, string name);
+
+- services : The IServiceCollection for the options being configured.
+
+- name : The default name of the TOptions instance, if null DefaultName is used.
+
+### Methods
+
+    public virtual OptionsBuilder<TOptions> Configure (Action<TOptions> configureOptions);
+
+    public virtual OptionsBuilder<TOptions> PostConfigure (Action<TOptions> configureOptions);
+
 
 ## [IOptions<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptions-1?view=dotnet-plat-ext-6.0) 
 
