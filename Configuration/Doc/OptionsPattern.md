@@ -85,6 +85,30 @@ Classe exposant des extensions de l'interface IConfiguration
          Console.WriteLine($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
      }
 
+## Named options support using IConfigureNamedOptions
+
+### Exemple
+
+    public class Features
+    {
+        public const string Personalize = nameof(Personalize);
+        public const string WeatherStation = nameof(WeatherStation);
+
+        public bool Enabled { get; set; }
+        public string ApiKey { get; set; }
+    }
+
+    ConfigureServices(services =>   
+    {
+        services.Configure<Features>(
+            Features.Personalize,
+            Configuration.GetSection("Features:Personalize"));
+
+        services.Configure<Features>(
+            Features.WeatherStation,
+            Configuration.GetSection("Features:WeatherStation"));
+    });
+
 ## [IOptions<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptions-1?view=dotnet-plat-ext-6.0) 
 
 ## [IOptionsSnapshot<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1?view=dotnet-plat-ext-6.0)
