@@ -87,6 +87,21 @@ Classe exposant des extensions de l'interface IConfiguration
 
 ## Named options support using IConfigureNamedOptions
 
+Association d'un Type (Features), d'un nom (Features.Personalize) 
+et d'une section de configuration ("Features:Personalize")
+
+     services.Configure<Features>(
+         Features.Personalize,
+         Configuration.GetSection("Features:Personalize"));
+
+puis :
+
+     readonly Features _personalizeFeature;
+
+     public Service(IOptionsSnapshot<Features> namedOptionsAccessor)
+     {
+         _personalizeFeature = namedOptionsAccessor.Get(Features.Personalize);
+
 ### Exemple
 
     public class Features
