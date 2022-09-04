@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
 namespace TestOptionsPattern
 {
@@ -12,7 +13,11 @@ namespace TestOptionsPattern
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
+            Test1(args);
+        }
 
+        static void Test0(string[] args)
+        {
             using IHost host = Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingContext, configuration) =>
                 {
@@ -33,7 +38,7 @@ namespace TestOptionsPattern
                 {
                     Console.WriteLine($"options.Enabled={options.Enabled}");
                     Console.WriteLine($"options.AutoRetryDelay={options.AutoRetryDelay}");
-//                    Console.ReadLine();
+                    //                    Console.ReadLine();
                 }
             }
 
@@ -50,6 +55,31 @@ namespace TestOptionsPattern
                     Console.ReadLine();
                 }
 
+            }
+
+        }
+
+        static void Test1(string[] args)
+        {
+            using IHost host = Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, configuration) =>
+                {
+                    configuration.Sources.Clear();
+                    configuration
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    var configuration = context.Configuration;
+                    services.Configure<TransientFaultHandlingOptions>(
+                        configuration.GetSection(nameof(TransientFaultHandlingOptions)));
+                })
+                .Build();
+
+            {
+                IOptions<TransientFaultHandlingOptions> options = host.Services.GetService<IOptions<TransientFaultHandlingOptions>>();
+                Console.WriteLine($"options.Value.Enabled={options.Value.Enabled}");
+                Console.WriteLine($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
             }
 
         }

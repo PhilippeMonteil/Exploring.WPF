@@ -23,7 +23,7 @@ Classe exposant des extensions de l'interface IConfiguration
     public static object Get (this IConfiguration configuration, Type type);
     public static object GetValue (this IConfiguration configuration, Type type, string key);
 
-## Exemple : 'Bind'/'Get' d'une instance à une section de configuration
+### Exemple : 'Bind'/'Get' d'une instance à une section de configuration
 
      using IHost host = Host.CreateDefaultBuilder(args)
          .ConfigureAppConfiguration((hostingContext, configuration) =>
