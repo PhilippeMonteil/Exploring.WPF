@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 namespace TestOptionsPattern
 {
 
-    internal class Client1
+    internal class Client0
     {
-        readonly IOptionsSnapshot<TransientFaultHandlingOptions> options;
+        readonly IOptions<TransientFaultHandlingOptions> options;
 
-        public Client1(IOptionsSnapshot<TransientFaultHandlingOptions> options)
+        public Client0(IOptions<TransientFaultHandlingOptions> options)
         {
             this.options = options;
         }
 
         public override string ToString()
         {
-            return $"{GetType().Name}[{GetHashCode()}] options[{options.GetHashCode()}] .CurrentValue.AutoRetryDelay={options.Value.AutoRetryDelay}";
+            return $"{GetType().Name}[{GetHashCode()}] options[{options.GetHashCode()}] .Value.AutoRetryDelay={options.Value.AutoRetryDelay}";
         }
 
     }
