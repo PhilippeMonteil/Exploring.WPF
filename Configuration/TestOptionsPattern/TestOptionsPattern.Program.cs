@@ -73,7 +73,9 @@ namespace TestOptionsPattern
                     var configuration = context.Configuration;
                     services.Configure<TransientFaultHandlingOptions>(
                         configuration.GetSection(nameof(TransientFaultHandlingOptions)));
-                    services.AddTransient<Client>();
+
+                    services.AddTransient<Client1>();
+                    services.AddTransient<Client2>();
                 })
                 .Build();
 
@@ -89,7 +91,15 @@ namespace TestOptionsPattern
             // IOptionsSnapshot
             for (int i = 0; i < 2; i++)
             {
-                Client client = host.Services.GetService<Client>();
+                Client1 client = host.Services.GetService<Client1>();
+                Console.WriteLine($"client={client} ...");
+                //Console.ReadLine();
+            }
+
+            // IOptionsMonitor
+            for (int i = 0; i < 2; i++)
+            {
+                Client2 client = host.Services.GetService<Client2>();
                 Console.WriteLine($"client={client} ...");
                 Console.ReadLine();
             }

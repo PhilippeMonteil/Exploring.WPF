@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 namespace TestOptionsPattern
 {
 
-    internal class Client
+    internal class Client1
     {
         readonly IOptionsSnapshot<TransientFaultHandlingOptions> optionsSnapshot;
 
-        public Client(IOptionsSnapshot<TransientFaultHandlingOptions> optionsSnapshot)
+        public Client1(IOptionsSnapshot<TransientFaultHandlingOptions> optionsSnapshot)
         {
             this.optionsSnapshot = optionsSnapshot;
         }

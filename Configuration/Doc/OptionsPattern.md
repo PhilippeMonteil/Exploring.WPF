@@ -84,3 +84,4 @@ Classe exposant des extensions de l'interface IConfiguration
          Console.WriteLine($"options.Value.Enabled={options.Value.Enabled}");
          Console.WriteLine($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
      }
+
