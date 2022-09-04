@@ -173,9 +173,95 @@ Classe ajoutant des Options à une IServiceCollection.
 
     public virtual OptionsBuilder<TOptions> PostConfigure (Action<TOptions> configureOptions);
 
+## [Options validation](https://docs.microsoft.com/en-us/dotnet/core/extensions/options#options-validation)
+
+### AddOptions / Bind / ValidateDataAnnotations
+
+#### Example
+
+    {
+        "MyCustomSettingsSection": 
+        {
+            "SiteTitle": "Amazing docs from Awesome people!",
+            "Scale": 10,
+            "VerbosityLevel": 32
+        }
+    }
+
+
+    using System.ComponentModel.DataAnnotations;
+
+    namespace ConsoleJson.Example;
+
+    public class SettingsOptions
+    {
+        public const string ConfigurationSectionName = "MyCustomSettingsSection";
+
+        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$")]
+        public string SiteTitle { get; set; } = null!;
+
+        [Range(0, 1000, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
+        public int Scale { get; set; }
+
+        public int VerbosityLevel { get; set; }
+    }
+
+    services.AddOptions<SettingsOptions>()
+        .Bind(Configuration.GetSection(SettingsOptions.ConfigurationSectionName))
+        .ValidateDataAnnotations();
+
+### [IValidateOptions for complex validation](https://docs.microsoft.com/en-us/dotnet/core/extensions/options#ivalidateoptions-for-complex-validation)
+
+- création d'une classe ValidateSettingsOptions exposant IValidateOptions
+
+- mise en oeuvre :
+
+    // connexion de la classe SettingsOptions avec la section nommée SettingsOptions.ConfigurationSectionName de Configuration 
+    services.Configure<SettingsOptions>(Configuration.GetSection(SettingsOptions.ConfigurationSectionName));
+
+    // ajout à services d'un ServiceDescriptor :
+    // - Singleton
+    // - interface IValidateOptions<SettingsOptions>
+    // - type l'implémentant : ValidateSettingsOptions
+    services.TryAddEnumerable(ServiceDescriptor.Singleton<IValidateOptions<SettingsOptions>,ValidateSettingsOptions>());
+
+On suppose que les interfaces IValidateOptions<TOptions> enregistrées dans l'injection de dépendance 
+sont parcourues et invoquées lors de chaque production d'une instance de TOptions 
+
+#### [ServiceCollectionDescriptorExtensions.TryAddEnumerable](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.extensions.servicecollectiondescriptorextensions.tryaddenumerable?view=dotnet-plat-ext-6.0)
+
+### [Options post-configuration](https://docs.microsoft.com/en-us/dotnet/core/extensions/options#options-post-configuration)
+
+Associer à un type TOptions une Action<TOptions> qui sera appliquée à chaque instance de TOptions produite, éventuellement nommé,
+voire à toutes.
+
+#### [OptionsServiceCollectionExtensions.PostConfigure](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions.postconfigure?view=dotnet-plat-ext-6.0)
+
+    public static IServiceCollection PostConfigure<TOptions> (this IServiceCollection services, Action<TOptions> configureOptions) where TOptions : class;
+
+#### Examples
+
+    services.PostConfigure<CustomOptions>(customOptions =>
+    {
+        customOptions.Option1 = "post_configured_option1_value";
+    });
+
+    services.PostConfigure<CustomOptions>("named_options_1", customOptions =>
+    {
+        customOptions.Option1 = "post_configured_option1_value";
+    });
+
+    services.PostConfigureAll<CustomOptions>(customOptions =>
+    {   
+        customOptions.Option1 = "post_configured_option1_value";
+    });
+
+
+
 
 ## [IOptions<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptions-1?view=dotnet-plat-ext-6.0) 
 
 ## [IOptionsSnapshot<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionssnapshot-1?view=dotnet-plat-ext-6.0)
 
 ## [IOptionsMonitor<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptionsmonitor-1?view=dotnet-plat-ext-6.0)
+
