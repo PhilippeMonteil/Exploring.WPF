@@ -12,7 +12,7 @@ namespace TestOptionsPattern
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            log("Hello, World!");
             Test1(args);
         }
 
@@ -36,8 +36,8 @@ namespace TestOptionsPattern
 
                 for (int i = 0; i < 1; i++)
                 {
-                    Console.WriteLine($"options.Enabled={options.Enabled}");
-                    Console.WriteLine($"options.AutoRetryDelay={options.AutoRetryDelay}");
+                    log($"options.Enabled={options.Enabled}");
+                    log($"options.AutoRetryDelay={options.AutoRetryDelay}");
                     //                    Console.ReadLine();
                 }
             }
@@ -50,13 +50,18 @@ namespace TestOptionsPattern
                                      .Get<TransientFaultHandlingOptions>();
 
                 {
-                    Console.WriteLine($"options.Enabled={options.Enabled}");
-                    Console.WriteLine($"options.AutoRetryDelay={options.AutoRetryDelay}");
+                    log($"options.Enabled={options.Enabled}");
+                    log($"options.AutoRetryDelay={options.AutoRetryDelay}");
                     Console.ReadLine();
                 }
 
             }
 
+        }
+
+        static void log(string Txt)
+        {
+            Console.WriteLine($"[{Thread.CurrentThread.ManagedThreadId}]:'{Txt}'");
         }
 
         static void Test1(string[] args)
@@ -76,6 +81,7 @@ namespace TestOptionsPattern
 
                     services.AddTransient<Client1>();
                     services.AddTransient<Client2>();
+                    services.AddTransient<Client2>();
                 })
                 .Build();
 
@@ -83,16 +89,16 @@ namespace TestOptionsPattern
             for (int i = 0; i < 2; i++)
             {
                 IOptions<TransientFaultHandlingOptions> options = host.Services.GetService<IOptions<TransientFaultHandlingOptions>>();
-                Console.WriteLine($"options={options.GetHashCode()}");
-                Console.WriteLine($"options.Value.Enabled={options.Value.Enabled}");
-                Console.WriteLine($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
+                log($"options={options.GetHashCode()}");
+                log($"options.Value.Enabled={options.Value.Enabled}");
+                log($"options.Value.AutoRetryDelay={options.Value.AutoRetryDelay}");
             }
 
             // IOptionsSnapshot
             for (int i = 0; i < 2; i++)
             {
                 Client1 client = host.Services.GetService<Client1>();
-                Console.WriteLine($"client={client} ...");
+                log($"client={client} ...");
                 //Console.ReadLine();
             }
 
@@ -100,7 +106,7 @@ namespace TestOptionsPattern
             for (int i = 0; i < 2; i++)
             {
                 Client2 client = host.Services.GetService<Client2>();
-                Console.WriteLine($"client={client} ...");
+                log($"client={client} ...");
                 Console.ReadLine();
             }
 

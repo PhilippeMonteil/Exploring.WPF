@@ -12,10 +12,17 @@ namespace TestOptionsPattern
     internal class Client2
     {
         readonly IOptionsMonitor<TransientFaultHandlingOptions> options;
+        IDisposable onChange;
 
         public Client2(IOptionsMonitor<TransientFaultHandlingOptions> optionsSnapshot)
         {
             this.options = optionsSnapshot;
+            onChange = this.options.OnChange(onChangeAction);
+        }
+
+        void onChangeAction(TransientFaultHandlingOptions options, string name)
+        {
+            Console.WriteLine($"[{Thread.CurrentThread.ManagedThreadId}]:{GetType().Name}.{nameof(onChangeAction)} options={options} name={name}");
         }
 
         public override string ToString()
