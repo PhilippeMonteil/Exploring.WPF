@@ -15,11 +15,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="BinaryResources\Folder0\ContentImage.PNG" />
+    <Content Include="BinaryResources\Folder0\ContentImage.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResourceAssembly\ResourceAssembly.csproj" />
   </ItemGroup>
 
   <ItemGroup>

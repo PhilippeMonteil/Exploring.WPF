@@ -26,12 +26,36 @@ namespace TestResources.Resources {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Value1")]
-        public string Setting {
+        public string Setting1 {
             get {
-                return ((string)(this["Setting"]));
+                return ((string)(this["Setting1"]));
             }
             set {
-                this["Setting"] = value;
+                this["Setting1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("777")]
+        public int Setting2 {
+            get {
+                return ((int)(this["Setting2"]));
+            }
+            set {
+                this["Setting2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Value3")]
+        public string Setting3 {
+            get {
+                return ((string)(this["Setting3"]));
+            }
+            set {
+                this["Setting3"] = value;
             }
         }
     }

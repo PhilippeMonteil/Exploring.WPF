@@ -2,8 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TestResources.Resources" GeneratedClassName="Settings1">
   <Profiles />
   <Settings>
-    <Setting Name="Setting" Type="System.String" Scope="User">
+    <Setting Name="Setting1" Type="System.String" Scope="User">
       <Value Profile="(Default)">Value1</Value>
+    </Setting>
+    <Setting Name="Setting2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">777</Value>
+    </Setting>
+    <Setting Name="Setting3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Value3</Value>
     </Setting>
   </Settings>
 </SettingsFile>

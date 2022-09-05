@@ -121,4 +121,7 @@
     <value>Value1</value>
     <comment>Comment1</comment>
   </data>
+  <data name="String2" xml:space="preserve">
+    <value>Value2</value>
+  </data>
 </root>
