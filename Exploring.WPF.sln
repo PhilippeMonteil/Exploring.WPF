@@ -140,7 +140,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1DFDC413-E64
 		Configuration\Doc\Configuration.md = Configuration\Doc\Configuration.md
 		Configuration\Doc\ConfigurationFiles.md = Configuration\Doc\ConfigurationFiles.md
 		Configuration\Doc\OptionsPattern.md = Configuration\Doc\OptionsPattern.md
-		Configuration\Doc\OptionsPattern.summary.md = Configuration\Doc\OptionsPattern.summary.md
 		Configuration\Doc\Settings.md = Configuration\Doc\Settings.md
 	EndProjectSection
 EndProject
