@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BinaryResources\Folder0\ContentImage.PNG" />
+    <None Remove="BinaryResources\Folder0\ResourceImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="BinaryResources\Folder0\ContentImage.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResourceAssembly\ResourceAssembly.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="BinaryResources\Folder0\ResourceImage.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

@@ -9,8 +9,5 @@
         Background="DarkGray" >
     <StackPanel>
         <Button x:Name="bnTest" Content="Test Resource1" Width="200" Height="50" Click="bnTest_Click"/>
-        <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
-        <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
-        <Image Source="ResourceAssembly;Component/Folder0/Image0.jpg" Height="100" Margin="8"/>
-   </StackPanel>
+    </StackPanel>
 </Window>

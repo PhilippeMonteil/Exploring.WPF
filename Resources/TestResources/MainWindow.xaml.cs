@@ -29,6 +29,7 @@ namespace TestResources
         public MainWindow()
         {
             InitializeComponent();
+            ResourceAssembly.Class1.Test0();
         }
 
         ResourceManager rm = new ResourceManager(typeof(Resource1));

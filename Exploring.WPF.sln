@@ -175,6 +175,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLocalization0", "Locali
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOptionsPattern", "Configuration\TestOptionsPattern\TestOptionsPattern.csproj", "{CE6A90B4-A627-44C2-BEFA-531E765B57CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXAMLBinaryResources", "Resources\TestXAMLBinaryResources\TestXAMLBinaryResources.csproj", "{16FD3B92-BF76-47DA-91FD-0A222B1A3573}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -306,6 +308,12 @@ Global
 		{CE6A90B4-A627-44C2-BEFA-531E765B57CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE6A90B4-A627-44C2-BEFA-531E765B57CC}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE6A90B4-A627-44C2-BEFA-531E765B57CC}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -345,6 +353,7 @@ Global
 		{4F9CAA2C-92D3-4FCE-ADDC-4B07AC2606E2} = {C8ECFDC8-7FDC-4D13-B9C5-E03CB4D65218}
 		{070F0B57-A1AB-4073-A359-0C82EB0E2E85} = {C8ECFDC8-7FDC-4D13-B9C5-E03CB4D65218}
 		{CE6A90B4-A627-44C2-BEFA-531E765B57CC} = {460F3D2F-1B87-41E1-B703-F4CE608DA2A4}
+		{16FD3B92-BF76-47DA-91FD-0A222B1A3573} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}

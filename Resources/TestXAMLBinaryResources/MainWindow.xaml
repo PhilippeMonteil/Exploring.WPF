@@ -1,0 +1,14 @@
+﻿<Window x:Class="TestXAMLBinaryResources.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestXAMLBinaryResources"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel Background="DarkGray">
+        <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
+        <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
+        <Image Source="ResourceAssembly;component/Folder0/Image0.jpg" Height="100" Margin="8"/>
+    </StackPanel>
+</Window>

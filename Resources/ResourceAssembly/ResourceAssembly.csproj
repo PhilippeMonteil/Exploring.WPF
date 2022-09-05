@@ -13,7 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Folder0\Image0.jpg" />
+    <Resource Include="Folder0\Image0.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
