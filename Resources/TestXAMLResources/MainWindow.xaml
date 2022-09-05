@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:TestXAMLResources"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <Window.Resources>
+        <Style x:Key="Style0" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Blue" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="8" />
+        </Style>
+    </Window.Resources>
+    <StackPanel Background="DarkGray">
+        <TextBlock Text="Text0" Style="{StaticResource Style0}"/>
+        <TextBlock Text="Text1" Style="{StaticResource Dictionary1.Style0}"/>
+        <TextBlock Text="Text1" Style="{StaticResource Dictionary2.Style0}"/>
+    </StackPanel>
 </Window>
