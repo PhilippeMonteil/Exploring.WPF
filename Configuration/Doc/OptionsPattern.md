@@ -51,6 +51,9 @@ Classe exposant des extensions de l'interface IConfiguration
 
 ## [OptionsConfigurationServiceCollectionExtensions](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsconfigurationservicecollectionextensions?view=dotnet-plat-ext-6.0)
 
+Extensions de l'interface IServiceCollection permettant de configurer 
+les Options portant sur un type \<TOptions> donné'.
+
 Extension methods for adding configuration related options services to the DI container.
 
 ### Methods
@@ -63,6 +66,27 @@ Registers a configuration instance that TOptions will bind against,
 and updates the options when the configuration changes.
 
 ### Exemple : ConfigureServices, Configure/GetSection
+
+#### appsettins.json :
+
+```
+{
+  "SecretKey": "Secret key value",
+  "TransientFaultHandlingOptions": {
+    "Enabled": true,
+    "AutoRetryDelay": "00:00:07"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  }
+}
+```
+
+#### source code :
 
      public class TransientFaultHandlingOptions
      {
@@ -96,11 +120,11 @@ et d'une section de configuration ("Features:Personalize")
 
 ### Exemple
 
-    public class Features
-    {
+     public class Features
+     {
         public const string Personalize = nameof(Personalize);
         ...
-    }
+     }
 
      services.Configure<Features>(
          Features.Personalize,
@@ -114,17 +138,17 @@ puis :
      {
          _personalizeFeature = namedOptionsAccessor.Get(Features.Personalize);
 
-    public class Features
-    {
+     public class Features
+     {
         public const string Personalize = nameof(Personalize);
         public const string WeatherStation = nameof(WeatherStation);
 
         public bool Enabled { get; set; }
         public string ApiKey { get; set; }
-    }
+     }
 
-    public class Service
-    {
+     public class Service
+     {
         private readonly Features _personalizeFeature;
         private readonly Features _weatherStationFeature;
 
@@ -139,10 +163,10 @@ puis :
             return $"{GetType().Name}[{GetHashCode()}] _personalizeFeature={_personalizeFeature} _weatherStationFeature={_weatherStationFeature}";
         }
 
-    }
+     }
 
-    ConfigureServices(services =>
-    {
+     ConfigureServices(services =>
+     {
         services.Configure<Features>(
             Features.Personalize,
             Configuration.GetSection("Features:Personalize"));
@@ -152,12 +176,12 @@ puis :
             Configuration.GetSection("Features:WeatherStation"));
 
         services.AddTransient<Service>();
-    });
+     });
 
-    {
+     {
         IServiceProvider serviceProvider = host.Services;
         Service service = serviceProvider.GetService<Service>();
-    }
+     }
 
 ## [OptionsServiceCollectionExtensions Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsservicecollectionextensions?view=dotnet-plat-ext-6.0)
 
@@ -183,7 +207,7 @@ Classe ajoutant des Options à une IServiceCollection.
 
 ### Methods
 
-    public virtual OptionsBuilder<TOptions> Configure (Action<TOptions> configureOptions);
+     public virtual OptionsBuilder<TOptions> Configure (Action<TOptions> configureOptions);
 
 Registers an action used to configure a particular type of options. 
 These are run before all PostConfigure(Action\<TOptions>).

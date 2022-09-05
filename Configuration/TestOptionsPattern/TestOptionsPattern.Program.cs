@@ -13,12 +13,27 @@ namespace TestOptionsPattern
         static void Main(string[] args)
         {
             log("Hello, World!");
-            Test2(args);
+            Test1(args);
         }
 
         static void log(string Txt)
         {
             Console.WriteLine($"[{Thread.CurrentThread.ManagedThreadId}]:'{Txt}'");
+        }
+
+        static List<ServiceDescriptor> Diff(List<ServiceDescriptor> services0, List<ServiceDescriptor> services1)
+        {
+            List < ServiceDescriptor > vret= new List < ServiceDescriptor >();
+
+            foreach (var service in services1)
+            {
+                if (services0.IndexOf(service) < 0)
+                {
+                    vret.Add(service);
+                }
+            }
+
+            return vret;
         }
 
         static void Test0(string[] args)
@@ -75,10 +90,8 @@ namespace TestOptionsPattern
                 })
                 .ConfigureServices((context, services) =>
                 {
-                    var configuration = context.Configuration;
                     services.Configure<TransientFaultHandlingOptions>(
-                        configuration.GetSection(nameof(TransientFaultHandlingOptions)));
-
+                        context.Configuration.GetSection(nameof(TransientFaultHandlingOptions)));
                     services.AddTransient<Client1>();
                     services.AddTransient<Client2>();
                     services.AddTransient<Client2>();
