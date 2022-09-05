@@ -1,22 +1,6 @@
 
 # [Options pattern in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/options)
 
-En résumé:
-
-- ConfigurationBinder expose des extensions à IConfiguration qui permettent à partir d'une section
-de configuration (un appsettings.json enregistré au préalable) de :
-
-    - 'remplir' une instance (Bind)
-    - créer et initialiser une instance (Get)
-    - créer et initialiser une instance à partir d'une sous section nommée (GetValue)
-
-- OptionsConfigurationServiceCollectionExtensions expose des extensions à IServiceCollection
-(Configure ...) qui permettent d'enregistrer dans un IServiceCollection des associations entre types à produire
-et noms de sections de configuration sous forme de services IOptions/IOptionsSnapshot/IOptionsMonitor\<TOptions>, 
-
-- OptionsServiceCollectionExtensions expose des extensions à IServiceCollection
-telle AddOptions qui retourne une instance de OptionsBuilder\<TOptions>. 
-
 ## [ConfigurationBinder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.configurationbinder?view=dotnet-plat-ext-6.0)
 
 Classe exposant des extensions de l'interface IConfiguration

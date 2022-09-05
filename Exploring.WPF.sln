@@ -140,6 +140,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1DFDC413-E64
 		Configuration\Doc\Configuration.md = Configuration\Doc\Configuration.md
 		Configuration\Doc\ConfigurationFiles.md = Configuration\Doc\ConfigurationFiles.md
 		Configuration\Doc\OptionsPattern.md = Configuration\Doc\OptionsPattern.md
+		Configuration\Doc\OptionsPattern.summary.md = Configuration\Doc\OptionsPattern.summary.md
 		Configuration\Doc\Settings.md = Configuration\Doc\Settings.md
 	EndProjectSection
 EndProject
@@ -173,7 +174,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{4F9CAA2C-92D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLocalization0", "Localisation\TestLocalization0\TestLocalization0.csproj", "{070F0B57-A1AB-4073-A359-0C82EB0E2E85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestOptionsPattern", "Configuration\TestOptionsPattern\TestOptionsPattern.csproj", "{CE6A90B4-A627-44C2-BEFA-531E765B57CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOptionsPattern", "Configuration\TestOptionsPattern\TestOptionsPattern.csproj", "{CE6A90B4-A627-44C2-BEFA-531E765B57CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
