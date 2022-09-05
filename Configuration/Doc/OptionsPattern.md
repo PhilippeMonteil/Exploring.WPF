@@ -1,17 +1,21 @@
 
 # [Options pattern in .NET](https://docs.microsoft.com/en-us/dotnet/core/extensions/options)
 
-## [IConfigurationRoot](https://docs.microsoft.com/fr-fr/dotnet/api/microsoft.extensions.configuration.iconfigurationroot?view=dotnet-plat-ext-6.0)
+En résumé:
 
-### Methods
+- ConfigurationBinder expose des extensions à IConfiguration qui permettent à partir d'une section
+de configuration (un appsettings.json enregistré au préalable) de :
 
-    public void Reload ();
+    - 'remplir' une instance (Bind)
+    - créer et initialiser une instance (Get)
+    - créer et initialiser une instance à partir d'une sous section nommée (GetValue)
 
-## [IConfiguration](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-6.0)
+- OptionsConfigurationServiceCollectionExtensions expose des extensions à IServiceCollection
+(Configure ...) qui permettent d'enregistrer dans un IServiceCollection des associations entre types à produire
+et noms de sections de configuration sous forme de services IOptions/IOptionsSnapshot/IOptionsMonitor\<TOptions>, 
 
-### Methods
-
-	public IConfigurationSection GetSection (string key);
+- OptionsServiceCollectionExtensions expose des extensions à IServiceCollection
+telle AddOptions qui retourne une instance de OptionsBuilder\<TOptions>. 
 
 ## [ConfigurationBinder](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.configurationbinder?view=dotnet-plat-ext-6.0)
 
@@ -33,7 +37,7 @@ Classe exposant des extensions de l'interface IConfiguration
          })
          .Build();
 
-     // Bind
+     // Bind / Section
      {
          IConfiguration configuration = host.Services.GetService<IConfiguration>();
 
@@ -45,7 +49,7 @@ Classe exposant des extensions de l'interface IConfiguration
          Console.WriteLine($"TransientFaultHandlingOptions.AutoRetryDelay={options.AutoRetryDelay}");
      }
 
-     // Get<T>
+     // Get<T> / Section
      {
          IConfiguration configuration = host.Services.GetService<IConfiguration>();
 
@@ -61,7 +65,25 @@ Classe exposant des extensions de l'interface IConfiguration
 
      }
 
+## [OptionsConfigurationServiceCollectionExtensions](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.optionsconfigurationservicecollectionextensions?view=dotnet-plat-ext-6.0)
+
+Extension methods for adding configuration related options services to the DI container.
+
+### Methods
+
+    public static IServiceCollection Configure<TOptions> (this IServiceCollection services, 
+                                                        IConfiguration config) 
+                                                        where TOptions : class;
+
+Registers a configuration instance that TOptions will bind against, 
+and updates the options when the configuration changes.
+
 ### Exemple : ConfigureServices, Configure/GetSection
+
+     public class TransientFaultHandlingOptions
+     {
+        ...
+     }
 
      using IHost host = Host.CreateDefaultBuilder(args)
          .ConfigureAppConfiguration((context, configuration) =>
@@ -73,7 +95,7 @@ Classe exposant des extensions de l'interface IConfiguration
          {
              var configuration = context.Configuration;
              services.Configure<TransientFaultHandlingOptions>(
-          configuration.GetSection(nameof(TransientFaultHandlingOptions)));
+                configuration.GetSection(nameof(TransientFaultHandlingOptions)));
          })
          .Build();
 
@@ -88,6 +110,14 @@ Classe exposant des extensions de l'interface IConfiguration
 Association d'un Type (Features), d'un nom (Features.Personalize) 
 et d'une section de configuration ("Features:Personalize")
 
+### Exemple
+
+    public class Features
+    {
+        public const string Personalize = nameof(Personalize);
+        ...
+    }
+
      services.Configure<Features>(
          Features.Personalize,
          Configuration.GetSection("Features:Personalize"));
@@ -99,8 +129,6 @@ puis :
      public Service(IOptionsSnapshot<Features> namedOptionsAccessor)
      {
          _personalizeFeature = namedOptionsAccessor.Get(Features.Personalize);
-
-### Exemple
 
     public class Features
     {
@@ -155,6 +183,8 @@ Extension methods for adding options services to the DI container.
 
     public static OptionsBuilder<TOptions> AddOptions<TOptions> (this IServiceCollection services) where TOptions : class;
 
+Gets an options builder that forwards Configure calls for the same named TOptions to the underlying service collection.
+
 ## [OptionsBuilder<TOptions> Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.optionsbuilder-1?view=dotnet-plat-ext-6.0)
 
 Classe ajoutant des Options à une IServiceCollection.
@@ -171,13 +201,25 @@ Classe ajoutant des Options à une IServiceCollection.
 
     public virtual OptionsBuilder<TOptions> Configure (Action<TOptions> configureOptions);
 
+Registers an action used to configure a particular type of options. 
+These are run before all PostConfigure(Action\<TOptions>).
+
     public virtual OptionsBuilder<TOptions> PostConfigure (Action<TOptions> configureOptions);
+
+Registers an action used to configure a particular type of options. 
+These are run after all Configure(Action\<TOptions>).
+
+    public virtual OptionsBuilder<TOptions> Validate (Func<TOptions,bool> validation);
+
+Register a validation action for an options type using a default failure message.
 
 ## [Options validation](https://docs.microsoft.com/en-us/dotnet/core/extensions/options#options-validation)
 
 ### AddOptions / Bind / ValidateDataAnnotations
 
 #### Example
+
+appsettings.json:
 
     {
         "MyCustomSettingsSection": 
@@ -188,6 +230,7 @@ Classe ajoutant des Options à une IServiceCollection.
         }
     }
 
+source:
 
     using System.ComponentModel.DataAnnotations;
 
@@ -216,7 +259,8 @@ Classe ajoutant des Options à une IServiceCollection.
 
 - mise en oeuvre :
 
-    // connexion de la classe SettingsOptions avec la section nommée SettingsOptions.ConfigurationSectionName de Configuration 
+    // connexion de la classe SettingsOptions avec la section nommée 
+    // SettingsOptions.ConfigurationSectionName de Configuration 
     services.Configure<SettingsOptions>(Configuration.GetSection(SettingsOptions.ConfigurationSectionName));
 
     // ajout à services d'un ServiceDescriptor :
@@ -255,9 +299,6 @@ voire à toutes.
     {   
         customOptions.Option1 = "post_configured_option1_value";
     });
-
-
-
 
 ## [IOptions<TOptions>](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.options.ioptions-1?view=dotnet-plat-ext-6.0) 
 
