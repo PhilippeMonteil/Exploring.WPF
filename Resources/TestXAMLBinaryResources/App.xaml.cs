@@ -21,7 +21,6 @@ namespace TestXAMLBinaryResources
 
         public App()
         {
-            Class1.Test0();
         }
 
     }
