@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-673
 	ProjectSection(SolutionItems) = preProject
 		Doc\Notes.md = Doc\Notes.md
 		Doc\URLs.md = Doc\URLs.md
+		Doc\WPF.Tricks.md = Doc\WPF.Tricks.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{930F0DBF-1870-46EA-8C3E-0ABB20DB7F5A}"
@@ -175,9 +176,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestLocalization0", "Locali
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOptionsPattern", "Configuration\TestOptionsPattern\TestOptionsPattern.csproj", "{CE6A90B4-A627-44C2-BEFA-531E765B57CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXAMLBinaryResources", "Resources\TestXAMLBinaryResources\TestXAMLBinaryResources.csproj", "{16FD3B92-BF76-47DA-91FD-0A222B1A3573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestXAMLBinaryResources", "Resources\TestXAMLBinaryResources\TestXAMLBinaryResources.csproj", "{16FD3B92-BF76-47DA-91FD-0A222B1A3573}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestXAMLResources", "Resources\TestXAMLResources\TestXAMLResources.csproj", "{2CF38DF1-5D61-4714-94C8-D38F7664F0A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestXAMLResources", "Resources\TestXAMLResources\TestXAMLResources.csproj", "{2CF38DF1-5D61-4714-94C8-D38F7664F0A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

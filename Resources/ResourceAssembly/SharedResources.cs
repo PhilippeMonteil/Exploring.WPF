@@ -10,10 +10,9 @@ namespace ResourceAssembly
 
     public static class SharedResources
     {
-        public static ComponentResourceKey RedBrushKey
-        {
-            get { return new ComponentResourceKey(typeof(SharedResources), "RedSolidBrush"); }
-        }
+        static ComponentResourceKey s_RedBrushKey = new ComponentResourceKey(typeof(SharedResources), "RedBrushKey");
+
+        public static ComponentResourceKey RedBrushKey => s_RedBrushKey;
 
     }
 

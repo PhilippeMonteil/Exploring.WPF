@@ -6,5 +6,9 @@
         x:Key="{ComponentResourceKey {x:Type local:SharedResources}, RedBrushKey}" 
         Color="Red"/>
     
+    <SolidColorBrush 
+        x:Key="DarkRedKey" 
+        Color="DarkRed"/>
+
 </ResourceDictionary>
     

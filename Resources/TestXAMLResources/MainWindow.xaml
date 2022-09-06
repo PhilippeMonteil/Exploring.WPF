@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TestXAMLResources"
         xmlns:ra="clr-namespace:ResourceAssembly;assembly=ResourceAssembly"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
     
     <Window.Resources>
         
@@ -24,14 +25,18 @@
         <TextBlock Text="Text0" Style="{StaticResource Style0}"/>
         <TextBlock Text="Text1" Style="{StaticResource Dictionary1.Style0}"/>
         <TextBlock Text="Text2" Style="{StaticResource Dictionary2.Style0}"/>
-        
+
         <TextBlock Text="Text3" 
+                   FontSize="32" 
+                   Foreground="{DynamicResource PurpleBrushKey}"/>
+
+        <TextBlock x:Name="tbTest4" Text="Text4" 
                    FontSize="32" 
                    Foreground="{DynamicResource {ComponentResourceKey {x:Type ra:SharedResources}, RedBrushKey}}"/>
 
-        <TextBlock Text="Text4" 
+        <TextBlock Text="Text5" 
                    FontSize="32" 
-                   Foreground="{DynamicResource PurpleBrushKey}"/>
+                   Foreground="{DynamicResource DarkRedKey}"/>
 
     </StackPanel>
     

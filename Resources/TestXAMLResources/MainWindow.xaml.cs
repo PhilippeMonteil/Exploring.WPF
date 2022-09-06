@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ResourceAssembly;
+
 namespace TestXAMLResources
 {
     /// <summary>
@@ -23,6 +25,19 @@ namespace TestXAMLResources
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                tbTest4.SetResourceReference(Button.ForegroundProperty, SharedResources.RedBrushKey);
+                tbTest4.SetResourceReference(Button.ForegroundProperty, "PurpleBrushKey");
+                tbTest4.Foreground = (Brush)(this.FindResource("PurpleBrushKey"));
+            }
+            catch (Exception E)
+            {
+            }
         }
     }
 }

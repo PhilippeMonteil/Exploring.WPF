@@ -6,6 +6,8 @@
     <UseWPF>true</UseWPF>
     <Configurations>Debug;Release;Test</Configurations>
     <Platforms>AnyCPU;ARM64;x86;ARM32</Platforms>
+    <Title>Title</Title>
+    <Copyright>Copyright ...</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
