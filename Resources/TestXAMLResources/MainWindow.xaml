@@ -21,7 +21,7 @@
 
     </Window.Resources>
     
-    <!--<StackPanel Background="DarkGray">
+    <StackPanel Background="DarkGray">
         <TextBlock Text="Text0" Style="{StaticResource Style0}"/>
         <TextBlock Text="Text1" Style="{StaticResource Dictionary1.Style0}"/>
         <TextBlock Text="Text2" Style="{StaticResource Dictionary2.Style0}"/>
@@ -32,42 +32,12 @@
         
         <TextBlock x:Name="tbTest4" Text="Text4" 
                    FontSize="32" 
-                   Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:SharedResources}, DarkGreen}}"/>
-
-        <TextBlock Text="Text5" 
-                   FontSize="32" 
-                   Foreground="{DynamicResource DarkRedKey}"/>
-
+                   Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/>
         
-    </StackPanel>-->
-    
-    <GroupBox Header="Resources from external libraries">
-        <GroupBox.Resources>
-            <SolidColorBrush x:Key="redColor" Color="Red"/>
-        </GroupBox.Resources>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Button Grid.Row="0" Content="Backgroundcolor from this application" 
-			Background="{StaticResource redColor}"/>
-            <Button Grid.Row="1" Content="Backgroundcolor from external library using DummyClass type" 
-			Background="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type rlib:DummyClass}, ResourceId=MyComponentLibBrush}}"/>
-            <Button Grid.Row="2" Content="Backgroundcolor from external library using OtherDummyClass type" 
-			Background="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type rlib:OtherDummyClass}, ResourceId=MyComponentLibBrush}}"/>
-
-            <!-- allthough these compile, they will make your application crash --><!--
-            <Button Grid.Row="3" Content="Backgroundcolor from external library using regular key" 
-			Background="{StaticResource myLibBrush}"/>
-            <Button Grid.Row="4" Content="Backgroundcolor from external library using regular key" 
-			Background="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type rlib:DummyClass}, ResourceId=myLibBrush}}"/>-->
-            
-        </Grid>
-    </GroupBox>
+        <TextBlock x:Name="tbTest5" Text="Text5" 
+                   FontSize="32" 
+                   Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:OtherDummyClass}, MyComponentLibBrush}}"/>
+        
+    </StackPanel>
     
 </Window>
