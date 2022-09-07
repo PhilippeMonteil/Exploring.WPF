@@ -10,5 +10,8 @@
         x:Key="{ComponentResourceKey {x:Type local:OtherDummyClass}, MyComponentLibBrush}" 
         Color="DarkBlue"/>
 
+    <SolidColorBrush 
+        x:Key="{x:Static local:DummyClass.Key0}" Color="DarkGreen"/>
+
 </ResourceDictionary>
     

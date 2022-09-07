@@ -16,7 +16,11 @@ using System.Windows;
 
 namespace WPFResourceAssembly
 {
+
     public class DummyClass
     {
+        static ComponentResourceKey key0 = new ComponentResourceKey(typeof(DummyClass), "Key0");
+        public static ComponentResourceKey Key0 => key0;
     }
+
 }

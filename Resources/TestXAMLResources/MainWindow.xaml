@@ -37,7 +37,11 @@
         <TextBlock x:Name="tbTest5" Text="Text5" 
                    FontSize="32" 
                    Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:OtherDummyClass}, MyComponentLibBrush}}"/>
-        
+
+        <TextBlock x:Name="tbTest6" Text="Text7" 
+                   FontSize="32" 
+                   Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/>
+
     </StackPanel>
     
 </Window>
