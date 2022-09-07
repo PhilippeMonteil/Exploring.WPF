@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ResourceAssembly\ResourceAssembly.csproj" />
+    <ProjectReference Include="..\WPFResourceAssembly\WPFResourceAssembly.csproj" />
   </ItemGroup>
 
 </Project>

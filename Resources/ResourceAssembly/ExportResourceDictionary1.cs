@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
-[assembly: XmlnsDefinitionAttribute("http://my.schemas.com/ResourceAssembly", "ResourceAssembly")]
+[assembly: XmlnsDefinition("http://my.schemas.com/ResourceAssembly", "ResourceAssembly")]
 
 namespace ResourceAssembly
 {
