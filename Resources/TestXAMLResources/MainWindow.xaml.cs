@@ -31,9 +31,12 @@ namespace TestXAMLResources
         {
             try
             {
-                tbTest4.SetResourceReference(Button.ForegroundProperty, SharedResources.RedBrushKey);
-                tbTest4.SetResourceReference(Button.ForegroundProperty, "PurpleBrushKey");
-                tbTest4.Foreground = (Brush)(this.FindResource("PurpleBrushKey"));
+                //tbTest4.SetResourceReference(Button.ForegroundProperty, SharedResources.DarkGreenKey);
+
+                //tbTest4.Foreground = (Brush)(this.FindResource(SharedResources.DarkGreenKey)); // SharedResources.DarkGreenKey;
+
+                //tbTest4.SetResourceReference(Button.ForegroundProperty, "PurpleBrushKey");
+                //tbTest4.Foreground = (Brush)(this.FindResource("PurpleBrushKey"));
             }
             catch (Exception E)
             {

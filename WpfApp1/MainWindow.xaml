@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
+        xmlns:WpfLibrary1="clr-namespace:WpfLibrary1;assembly=WpfLibrary1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="DarkGray">
-        <TextBlock Text="Test" FontSize="32" Foreground="{StaticResource DarkBlue}" />
-    </Grid>
+    <StackPanel Background="DarkGray">
+        <TextBlock Text="Test0" FontSize="32" Foreground="{StaticResource DarkBlue}" />
+        <TextBlock Text="Test1" FontSize="32" Foreground="{DynamicResource {ComponentResourceKey {x:Type WpfLibrary1:SharedResources}, MyKey0}}" />
+    </StackPanel>
 </Window>

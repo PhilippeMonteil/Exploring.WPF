@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ResourceAssembly">
+
+    <SolidColorBrush 
+        x:Key="{ComponentResourceKey 
+                    {x:Type local:SharedResources}, 
+                    DarkGreen}" 
+        Color="DarkGreen"/>
+
+    <SolidColorBrush 
+        x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+        Color="DarkRed"/>
+
+    <SolidColorBrush 
+        x:Key="{ComponentResourceKey {x:Type local:OtherDummyClass}, MyComponentLibBrush}" 
+        Color="DarkBlue"/>
+
+</ResourceDictionary>
