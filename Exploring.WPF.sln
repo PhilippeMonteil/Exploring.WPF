@@ -111,6 +111,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727
 	ProjectSection(SolutionItems) = preProject
 		Resources\Doc\Resources.md = Resources\Doc\Resources.md
 		Resources\Doc\XAMLBinaryResources.md = Resources\Doc\XAMLBinaryResources.md
+		Resources\Doc\XAMLResources.md = Resources\Doc\XAMLResources.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VisualStudio", "VisualStudio", "{0428AA0E-1D7D-4F69-9FFB-AA0BCCDC5EF5}"

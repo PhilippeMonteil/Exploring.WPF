@@ -1,3 +1,4 @@
+
 # WPF Tricks
 
 ## Resources at runtime
@@ -91,3 +92,7 @@ est ainsi utilisable :
 
     <x:Static Member="rax:ExportResourceDictionary1.Instance" />
 
+## Themes : 
+
+- themes/\<ThemeName>.\<ThemeColor>.xaml
+- fallback : themes/generic.xaml
