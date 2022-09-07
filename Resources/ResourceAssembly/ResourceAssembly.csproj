@@ -12,12 +12,17 @@
 
   <ItemGroup>
     <None Remove="Folder0\Image0.jpg" />
+    <None Remove="Folder0\Image1.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Folder0\Image0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Folder0\Image1.jpg" />
   </ItemGroup>
 
 </Project>
