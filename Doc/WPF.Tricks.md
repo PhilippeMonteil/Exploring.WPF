@@ -30,6 +30,7 @@ avec :
 
 ### .xaml -> .cs : 'x:Class'
 
+    // ATTENTION : namespace dans x:Class
     <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     x:Class="ResourceAssembly.ExportResourceDictionary1">
