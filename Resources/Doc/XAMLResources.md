@@ -95,6 +95,14 @@
 
 ### Compiled and Static 
 
+#### Notes
+
+- un ResourceDictionary expose à la fois:
+    -  MergedDictionaries, collection de sous ResourceDictionary
+    -  un ensemble Keys, Values, Item[]
+- si un ResourceDictionary inscrit dans MergedDictionaries est modifié,
+  assignation de sa .Source par exemple, son ResourceDictionary l'est aussi
+
 #### classe SkinResourceDictionary
 
 SkinResourceDictionary expose deux Uris : RedSource et BlueSource et les redirige vers
@@ -133,5 +141,6 @@ base.Source (UpdateSource)
                 base.Source = val;
             }
         }
+
     }
 ````
