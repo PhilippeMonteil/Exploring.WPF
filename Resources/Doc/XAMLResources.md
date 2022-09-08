@@ -1,6 +1,26 @@
 
 # [Overview of XAML resources (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&redirectedfrom=MSDN&viewFallbackFrom=netdesktop-6.0)
 
+# [ResourceDictionary Class](https://docs.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionary?view=windowsdesktop-6.0)
+
+## Class
+
+    [System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
+    [System.Windows.Markup.Ambient]
+    [System.Windows.Markup.UsableDuringInitialization(true)]
+    public class ResourceDictionary : System.Collections.IDictionary, 
+                                        System.ComponentModel.ISupportInitialize, 
+                                        System.Windows.Markup.INameScope, 
+                                        System.Windows.Markup.IUriContext
+
+## Properties
+
+    public Uri Source { get; set; }
+    public System.Collections.ICollection Keys { get; }
+    public System.Collections.ICollection Values { get; }
+    public object this[object key] { get; set; }
+    public Collection<ResourceDictionary> MergedDictionaries { get; }
+
 # [ComponentResourceKey Markup Extension](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/componentresourcekey-markup-extension?view=netframeworkdesktop-4.8)
 
 ## Première méthode
@@ -8,7 +28,7 @@
 ### dans l'assembly de ressources
 
 - créer un Folder Themes et un ResourceDictionary generix.xaml
-- crééer une classe 'Dummy', y inscrire l'attribut
+- créer une classe 'Dummy', y inscrire l'attribut
 
     [assembly: ThemeInfo(
         ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -68,3 +88,10 @@
         FontSize="32" 
         Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/>
 ````
+
+## Skinning
+
+### [WPF complete guide to Themes and Skins](https://michaelscodingspot.com/wpf-complete-guide-themes-skins/)
+
+### Compiled and Static 
+
