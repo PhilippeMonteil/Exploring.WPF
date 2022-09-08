@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:TestSkinning"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <local:SkinResourceDictionary RedSource="/Resources/RedColors.xaml" BlueSource="/Resources/BlueColors.xaml"/>
+                <local:SkinResourceDictionary RedSource="/Resources/RedSizes.xaml" BlueSource="/Resources/BlueSizes.xaml"/>
+                <ResourceDictionary Source="/Resources/MyBorderStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

@@ -36,7 +36,9 @@ namespace TestSkinning
         {
             var val = App.Skin == Skin.Red ? RedSource : BlueSource;
             if (val != null && base.Source != val)
+            {
                 base.Source = val;
+            }
         }
     }
 
