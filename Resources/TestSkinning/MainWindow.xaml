@@ -6,5 +6,8 @@
         xmlns:local="clr-namespace:TestSkinning"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <local:NiceSquare/>
+    <StackPanel Background="DarkGray">
+        <local:NiceSquare Margin="8"/>
+        <Button Content="Test" Margin="8" Click="Button_Click"/>
+    </StackPanel>
 </Window>

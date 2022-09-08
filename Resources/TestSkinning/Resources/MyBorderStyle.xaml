@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="MyBorderStyle" TargetType="Border">
-        <Setter Property="Background" Value="{StaticResource NormalBackground}"/>
-        <Setter Property="CornerRadius" Value="{StaticResource NormalCornerRadius}"/>
+        <Setter Property="Background" Value="{DynamicResource NormalBackground}"/>
+        <Setter Property="CornerRadius" Value="{DynamicResource NormalCornerRadius}"/>
     </Style>
 
 </ResourceDictionary>

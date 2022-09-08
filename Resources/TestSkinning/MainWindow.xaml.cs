@@ -24,5 +24,13 @@ namespace TestSkinning
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current is App app)
+            {
+                app.UpdateSkin();
+            }
+        }
     }
 }

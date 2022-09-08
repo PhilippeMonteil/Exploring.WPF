@@ -19,7 +19,7 @@ namespace TestSkinning
             set
             {
                 _redSource = value;
-                UpdateSource();
+                updateSource();
             }
         }
         public Uri BlueSource
@@ -28,18 +28,24 @@ namespace TestSkinning
             set
             {
                 _blueSource = value;
-                UpdateSource();
+                updateSource();
             }
         }
 
-        private void UpdateSource()
+        private void updateSource()
         {
-            var val = App.Skin == Skin.Red ? RedSource : BlueSource;
+            UpdateSource(App.Skin);
+        }
+
+        public void UpdateSource(Skin skin)
+        {
+            var val = skin == Skin.Red ? RedSource : BlueSource;
             if (val != null && base.Source != val)
             {
                 base.Source = val;
             }
         }
+
     }
 
 }
