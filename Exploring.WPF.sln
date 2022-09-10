@@ -187,7 +187,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfApp1", "WpfApp1\WpfApp1.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFResourceAssembly", "Resources\WPFResourceAssembly\WPFResourceAssembly.csproj", "{9C2125E4-6C32-40EB-9104-C581AB0580C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSkinning", "Resources\TestSkinning\TestSkinning.csproj", "{B69A41E1-515C-4085-81AC-6606C02B6169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSkinning", "Resources\TestSkinning\TestSkinning.csproj", "{B69A41E1-515C-4085-81AC-6606C02B6169}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomControls", "CustomControls", "{3FBB56CE-7388-4671-9871-46E6E60FFAE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{3BD062CA-89B6-4A85-B298-619779BBBD36}"
+	ProjectSection(SolutionItems) = preProject
+		CustomControls\Doc\CustomControls.md = CustomControls\Doc\CustomControls.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCustomControl", "CustomControls\TestCustomControl\TestCustomControl.csproj", "{E1A1B355-0C9D-4B93-8408-7457F585E4A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -356,6 +365,12 @@ Global
 		{B69A41E1-515C-4085-81AC-6606C02B6169}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B69A41E1-515C-4085-81AC-6606C02B6169}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{B69A41E1-515C-4085-81AC-6606C02B6169}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -401,6 +416,8 @@ Global
 		{BB6A2D09-2079-47B5-BEB5-FCCC649193FD} = {1218B168-9157-4A2B-A4D9-F091357D52E8}
 		{9C2125E4-6C32-40EB-9104-C581AB0580C8} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
 		{B69A41E1-515C-4085-81AC-6606C02B6169} = {19866333-0B00-4A08-AF5C-8CAA3244021B}
+		{3BD062CA-89B6-4A85-B298-619779BBBD36} = {3FBB56CE-7388-4671-9871-46E6E60FFAE9}
+		{E1A1B355-0C9D-4B93-8408-7457F585E4A2} = {3FBB56CE-7388-4671-9871-46E6E60FFAE9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
