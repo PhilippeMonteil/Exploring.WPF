@@ -6,9 +6,14 @@
         xmlns:local="clr-namespace:TestCustomControl"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="DarkBlue">
-        <local:MyUserControl Margin="8" Width="200" Height="100" 
+    <StackPanel Background="DarkBlue">
+        <local:MyUserControl x:Name="myUserControl" Margin="8" Padding="8" 
+                             Width="200" Height="100" 
                              BorderThickness="4" BorderBrush="Orange"
-                             HorizontalAlignment="Right"/>
-    </Grid>
+                             HorizontalAlignment="Center">
+            <local:MyUserControl.FileName>Test</local:MyUserControl.FileName>
+        </local:MyUserControl>
+        <TextBlock Text="{Binding FileName, ElementName=myUserControl}"
+                   Foreground="White" FontSize="32"/>
+    </StackPanel>
 </Window>
