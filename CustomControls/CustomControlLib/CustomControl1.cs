@@ -50,7 +50,8 @@ namespace CustomControlLib
     {
         static DependencyProperty FileNameProperty = DependencyProperty.Register(nameof(FileName), 
                                                                                     typeof(string), 
-                                                                                    typeof(CustomControl1));
+                                                                                    typeof(CustomControl1),
+                                                                                    new PropertyMetadata(null, propertyChangedCallback));
         static RoutedEvent FileNameChangedEvent = EventManager.RegisterRoutedEvent(nameof(FileNameChanged),
                                                                 RoutingStrategy.Bubble,
                                                                 typeof(RoutedEventHandler), 
@@ -59,6 +60,16 @@ namespace CustomControlLib
         static CustomControl1()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl1), new FrameworkPropertyMetadata(typeof(CustomControl1)));
+        }
+
+        static void propertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as CustomControl1)?._propertyChangedCallback(e);
+        }
+
+        void _propertyChangedCallback(DependencyPropertyChangedEventArgs e)
+        {
+            this.RaiseEvent(new RoutedEventArgs(FileNameChangedEvent));
         }
 
         public override void OnApplyTemplate()

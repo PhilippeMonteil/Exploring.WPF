@@ -26,7 +26,8 @@
 
         <lib:CustomControl1 Width="300" Height="200" Margin="8"
                                        BorderBrush="Orange" BorderThickness="8" Padding="32"
-                            FileName="FileName0">
+                            FileName="FileName0"
+                            FileNameChanged="CustomControl1_FileNameChanged">
             
         </lib:CustomControl1>
         
