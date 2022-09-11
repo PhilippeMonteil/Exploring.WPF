@@ -36,6 +36,16 @@ namespace TestCustomControl
         {
             Debug.WriteLine($"{nameof(CustomControl1_FileNameChanged)} {e.Source}");
         }
+
+        private void CustomControl1_FileNameChanged_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CustomControl2_FileNameChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

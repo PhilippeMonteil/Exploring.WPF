@@ -46,9 +46,47 @@ namespace CustomControlLib
     /// </summary>
     public class CustomControl2 : Control
     {
+        static DependencyProperty FileNameProperty = DependencyProperty.Register(nameof(FileName),
+                                                            typeof(string),
+                                                            typeof(CustomControl2),
+                                                            new PropertyMetadata(null, onFileNameChanged));
+
+        static RoutedEvent FileNameChangedEvent = EventManager.RegisterRoutedEvent(nameof(FileNameChanged),
+                                                            RoutingStrategy.Bubble,
+                                                            typeof(RoutedEventHandler),
+                                                            typeof(CustomControl2));
+
         static CustomControl2()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl2), new FrameworkPropertyMetadata(typeof(CustomControl2)));
         }
+
+        static void onFileNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as CustomControl2)?.onFileNameChanged(e);
+        }
+
+        void onFileNameChanged(DependencyPropertyChangedEventArgs e)
+        {
+        }
+
+        public string FileName
+        {
+            get; set;
+        }
+
+        public event RoutedEventHandler FileNameChanged
+        {
+            add
+            {
+                this.AddHandler(FileNameChangedEvent, value);
+            }
+            remove
+            {
+                this.RemoveHandler(FileNameChangedEvent, value);
+            }
+        }
+
     }
+
 }
