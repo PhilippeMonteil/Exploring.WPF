@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace TestCustomControl
                                                         typeof(MyUserControl),
                                                         new PropertyMetadata(null, fileName_ChangedCallback));
 
+        static RoutedEvent FileNameChangedEvent = EventManager.RegisterRoutedEvent("FileNameChanged",
+                                                        RoutingStrategy.Bubble,
+                                                        typeof(RoutedEventHandler),
+                                                        typeof(MyUserControl));
+
         static void fileName_ChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             (d as MyUserControl)?._fileName_ChangedCallback(e);
@@ -37,7 +43,8 @@ namespace TestCustomControl
 
         void _fileName_ChangedCallback(DependencyPropertyChangedEventArgs e)
         {
-            // this.theTextBox.Text = e.NewValue as string;
+            RoutedEventArgs args = new RoutedEventArgs(FileNameChangedEvent);
+            RaiseEvent(args);
         }
 
         public MyUserControl()
@@ -57,9 +64,26 @@ namespace TestCustomControl
             }
         }
 
+        public event RoutedEventHandler FileNameChanged
+        {
+            add
+            {
+                AddHandler(FileNameChangedEvent, value);
+            }
+            remove
+            {
+                RemoveHandler(FileNameChangedEvent, value);
+            }
+        }
+
         private void theButton_Click(object sender, RoutedEventArgs e)
         {
-            this.FileName += "+";
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.FileName = this.FileName;
+            if (ofd.ShowDialog() == true)
+            {
+                this.FileName = ofd.FileName;
+            }
         }
     }
 

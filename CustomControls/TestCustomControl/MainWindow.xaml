@@ -10,10 +10,11 @@
         <local:MyUserControl x:Name="myUserControl" Margin="8" Padding="8" 
                              Width="200" Height="100" 
                              BorderThickness="4" BorderBrush="Orange"
-                             HorizontalAlignment="Center">
+                             HorizontalAlignment="Center"
+                             FileNameChanged="myUserControl_FileNameChanged">
             <local:MyUserControl.FileName>Test</local:MyUserControl.FileName>
         </local:MyUserControl>
         <TextBlock Text="{Binding FileName, ElementName=myUserControl}"
-                   Foreground="White" FontSize="32"/>
+                   Foreground="White" FontSize="16" Margin="8" />
     </StackPanel>
 </Window>
