@@ -62,3 +62,48 @@
                 RemoveHandler(FileNameChangedEvent, value);
             }
         }
+
+# CustomControl1
+
+- en résumé :
+
+    - Name="PART_Browse"
+    - [TemplatePart(Name = "PART_Browse", Type = typeof(Button))]
+    - OnApplyTemplate / GetTemplateChild
+
+- Generic.xaml :
+
+````
+    <Button x:Name="PART_Browse" Content="Browse ..." 
+                DockPanel.Dock="Right" />
+    <TextBlock x:Name="theTextBox" Margin="0,0,2,0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Text="{Binding FileName, RelativeSource={RelativeSource AncestorType=local:CustomControl1}}"/>
+````
+
+- Source code :
+ 
+````
+    [TemplatePart(Name = "PART_Browse", Type = typeof(Button))]
+    public class CustomControl1 : Control
+    {
+        static DependencyProperty FileNameProperty = DependencyProperty.Register(nameof(FileName), 
+                                                                                    typeof(string), 
+                                                                                    typeof(CustomControl1),
+                                                                                    new PropertyMetadata(null, propertyChangedCallback));
+        static RoutedEvent FileNameChangedEvent = EventManager.RegisterRoutedEvent(nameof(FileNameChanged),
+                                                                RoutingStrategy.Bubble,
+                                                                typeof(RoutedEventHandler), 
+                                                                typeof(CustomControl1));
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            Button _button = base.GetTemplateChild("PART_Browse") as Button;
+            if (_button != null)
+            {
+                _button.Click += _button_Click;
+            }
+        }
+
+````
+
