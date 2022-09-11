@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 
 namespace TestCustomControl
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -36,4 +37,5 @@ namespace TestCustomControl
             Debug.WriteLine($"{nameof(CustomControl1_FileNameChanged)} {e.Source}");
         }
     }
+
 }
