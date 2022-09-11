@@ -65,11 +65,12 @@ namespace CustomControlLib
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl2), 
                                                     new FrameworkPropertyMetadata(typeof(CustomControl2)));
 
-            CommandManager.RegisterClassInputBinding(typeof(CustomControl2), 
-                                                    new InputBinding(browseCommand, 
-                                                                        new MouseGesture(MouseAction.LeftClick)));
             CommandManager.RegisterClassCommandBinding(typeof(CustomControl2),
                 new CommandBinding(browseCommand, browseCommandHandler));
+
+            //CommandManager.RegisterClassInputBinding(typeof(CustomControl2), 
+            //                                        new InputBinding(browseCommand, 
+            //                                                            new MouseGesture(MouseAction.LeftClick)));
         }
 
         static void browseCommandHandler(object sender, ExecutedRoutedEventArgs e)
