@@ -56,7 +56,7 @@ namespace CustomControlLib
                                                             typeof(RoutedEventHandler),
                                                             typeof(CustomControl2));
 
-        static RoutedUICommand browseCommand = new RoutedUICommand("Browse ...", "BrowseCommand", typeof(CustomControl2));
+        static RoutedUICommand browseCommand;
 
         public static RoutedUICommand BrowseCommand => browseCommand;
 
@@ -65,8 +65,11 @@ namespace CustomControlLib
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl2), 
                                                     new FrameworkPropertyMetadata(typeof(CustomControl2)));
 
+            browseCommand = new RoutedUICommand("Browse ...", "BrowseCommand", 
+                                                typeof(CustomControl2));
+
             CommandManager.RegisterClassCommandBinding(typeof(CustomControl2),
-                new CommandBinding(browseCommand, browseCommandHandler));
+                                                new CommandBinding(browseCommand, browseCommandHandler));
 
             //CommandManager.RegisterClassInputBinding(typeof(CustomControl2), 
             //                                        new InputBinding(browseCommand, 

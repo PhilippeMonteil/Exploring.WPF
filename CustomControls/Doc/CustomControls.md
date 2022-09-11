@@ -109,3 +109,33 @@
 
 # CustomControl2
 
+- en résumé
+
+- generic.xaml :
+
+````
+     <Button x:Name="PART_Browse" Content="Browse ..." 
+                 DockPanel.Dock="Right" 
+             Command="{x:Static local:CustomControl2.BrowseCommand}"/>
+````
+
+- Source code :
+
+     static RoutedUICommand browseCommand;
+
+     browseCommand = new RoutedUICommand("Browse ...", "BrowseCommand", 
+                              typeof(CustomControl2));
+
+     CommandManager.RegisterClassCommandBinding(typeof(CustomControl2),
+                              new CommandBinding(browseCommand, browseCommandHandler));
+
+     static void browseCommandHandler(object sender, ExecutedRoutedEventArgs e)
+     {
+         (sender as CustomControl2)?.browseCommandHandler(e);
+     }
+
+     void browseCommandHandler(ExecutedRoutedEventArgs e)
+     {
+         this.FileName += "+";
+     }
+
