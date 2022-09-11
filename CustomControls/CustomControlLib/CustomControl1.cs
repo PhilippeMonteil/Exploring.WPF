@@ -48,6 +48,14 @@ namespace CustomControlLib
     [TemplatePart(Name = "PART_Browse", Type = typeof(Button))]
     public class CustomControl1 : Control
     {
+        static DependencyProperty FileNameProperty = DependencyProperty.Register(nameof(FileName), 
+                                                                                    typeof(string), 
+                                                                                    typeof(CustomControl1));
+        static RoutedEvent FileNameChangedEvent = EventManager.RegisterRoutedEvent(nameof(FileNameChanged),
+                                                                RoutingStrategy.Bubble,
+                                                                typeof(RoutedEventHandler), 
+                                                                typeof(CustomControl1));
+
         static CustomControl1()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl1), new FrameworkPropertyMetadata(typeof(CustomControl1)));
@@ -65,6 +73,31 @@ namespace CustomControlLib
 
         private void _button_Click(object sender, RoutedEventArgs e)
         {
+            this.FileName += "+";
+        }
+
+        public string FileName
+        {
+            set
+            {
+                this.SetValue(FileNameProperty, value);
+            }
+            get
+            {
+                return this.GetValue(FileNameProperty) as string;
+            }
+        }
+
+        public event RoutedEventHandler FileNameChanged
+        {
+            add
+            {
+                this.AddHandler(FileNameChangedEvent, value);
+            }
+            remove
+            {
+                this.RemoveHandler(FileNameChangedEvent, value);
+            }
         }
 
     }
