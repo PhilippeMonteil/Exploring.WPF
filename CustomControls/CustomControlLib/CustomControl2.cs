@@ -56,9 +56,30 @@ namespace CustomControlLib
                                                             typeof(RoutedEventHandler),
                                                             typeof(CustomControl2));
 
+        static RoutedUICommand browseCommand = new RoutedUICommand("Browse ...", "BrowseCommand", typeof(CustomControl2));
+
+        public static RoutedUICommand BrowseCommand => browseCommand;
+
         static CustomControl2()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl2), new FrameworkPropertyMetadata(typeof(CustomControl2)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(CustomControl2), 
+                                                    new FrameworkPropertyMetadata(typeof(CustomControl2)));
+
+            CommandManager.RegisterClassInputBinding(typeof(CustomControl2), 
+                                                    new InputBinding(browseCommand, 
+                                                                        new MouseGesture(MouseAction.LeftClick)));
+            CommandManager.RegisterClassCommandBinding(typeof(CustomControl2),
+                new CommandBinding(browseCommand, browseCommandHandler));
+        }
+
+        static void browseCommandHandler(object sender, ExecutedRoutedEventArgs e)
+        {
+            (sender as CustomControl2)?.browseCommandHandler(e);
+        }
+
+        void browseCommandHandler(ExecutedRoutedEventArgs e)
+        {
+            this.FileName += "+";
         }
 
         static void onFileNameChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -72,7 +93,14 @@ namespace CustomControlLib
 
         public string FileName
         {
-            get; set;
+            get
+            {
+                return GetValue(FileNameProperty) as string;
+            }
+            set
+            {
+                SetValue(FileNameProperty, value);
+            }
         }
 
         public event RoutedEventHandler FileNameChanged
