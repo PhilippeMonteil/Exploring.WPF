@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TestCustomControl"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel Background="DarkBlue">
+    <StackPanel Background="LightGray">
         <local:MyUserControl x:Name="myUserControl" Margin="8" Padding="8" 
                              Width="200" Height="100" 
                              BorderThickness="4" BorderBrush="Orange"
@@ -16,5 +16,9 @@
         </local:MyUserControl>
         <TextBlock Text="{Binding FileName, ElementName=myUserControl}"
                    Foreground="White" FontSize="16" Margin="8" />
+        <local:MyCustomControl Width="300" Height="200" 
+                               Face="F2"
+                               Background="DarkGray"
+                               BorderBrush="Orange" BorderThickness="8" Padding="32"/>
     </StackPanel>
 </Window>
