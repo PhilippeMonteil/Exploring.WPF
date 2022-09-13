@@ -33,10 +33,14 @@ namespace TestMVVM0
         static void Test1()
         {
             log("(-)");
+
             MyModel myModel = new MyModel();
+
             myModel.PropertyChanging += _instance_PropertyChanging;
             myModel.PropertyChanged += _instance_PropertyChanged;
+
             myModel.RequestValue();
+
             log("(+)");
         }
 

@@ -61,3 +61,35 @@
 
     }
 ````
+
+#### Handling Task<T> properties
+
+````
+    public class MyModel : ObservableObject
+    {
+        private TaskNotifier<int>? requestTask;
+
+        public Task<int>? RequestTask
+        {
+            get => requestTask;
+            set => SetPropertyAndNotifyOnCompletion(ref requestTask, value);
+        }
+
+        public void RequestValue()
+        {
+            RequestTask = Task<int>.Run(() =>
+            {
+                Thread.Sleep(1000);
+                return 777;
+            });
+        }
+
+    }
+````
+
+#### [ObservableObject.TaskNotifier<T> Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.toolkit.mvvm.componentmodel.ObservableObject.TaskNotifier-1?view=win-comm-toolkit-dotnet-7.0)
+
+##### Operators
+
+    Implicit(ObservableObject.TaskNotifier to Task<T>) 
+
