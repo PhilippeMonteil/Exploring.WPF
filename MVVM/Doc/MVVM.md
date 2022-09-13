@@ -13,8 +13,9 @@
 - using CommunityToolkit.Mvvm.ComponentModel;
 - ObservableObject
     - SetProperty(ref name, value);
+    - SetProperty(this.user.Name, value, user, (u, n) => u.Name = n);
 
-### Example
+### Examples
 
 ````
     internal class ObservableObject0 : ObservableObject
@@ -37,3 +38,26 @@
     }
 ````
 
+#### Wrapping a non-observable model
+
+````
+    internal class ObservableObjectUser : ObservableObject
+    {
+        readonly User user;
+
+        public ObservableObjectUser(User user)
+        {
+            this.user = user;
+        }
+
+        public string Name
+        {
+            get => this.user.Name;
+            set
+            {
+                SetProperty(this.user.Name, value, user, (u, n) => u.Name = n);
+            }
+        }
+
+    }
+````

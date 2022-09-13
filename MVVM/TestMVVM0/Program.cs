@@ -11,7 +11,7 @@ namespace TestMVVM0
         {
             Console.WriteLine("Hello, World!");
 
-            Test0();
+            Test1();
 
             Console.WriteLine("...");
             Console.ReadLine();
@@ -28,6 +28,16 @@ namespace TestMVVM0
             _instance.PropertyChanging += _instance_PropertyChanging;
             _instance.PropertyChanged += _instance_PropertyChanged;
             _instance.Name = $"Name={DateTime.Now}";
+        }
+
+        static void Test1()
+        {
+            log("(-)");
+            MyModel myModel = new MyModel();
+            myModel.PropertyChanging += _instance_PropertyChanging;
+            myModel.PropertyChanged += _instance_PropertyChanged;
+            myModel.RequestValue();
+            log("(+)");
         }
 
         private static void _instance_PropertyChanging(object? sender, System.ComponentModel.PropertyChangingEventArgs e)
