@@ -200,7 +200,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCustomControl", "Custom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControlLib", "CustomControls\CustomControlLib\CustomControlLib.csproj", "{F13B5DF6-0422-428D-A528-8BA190714C7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualMethodsInConstructors", "CSharp\VirtualMethodsInConstructors\VirtualMethodsInConstructors.csproj", "{18F0B379-EF45-4BB8-A2A5-E432FC48D5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualMethodsInConstructors", "CSharp\VirtualMethodsInConstructors\VirtualMethodsInConstructors.csproj", "{18F0B379-EF45-4BB8-A2A5-E432FC48D5DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVVM", "MVVM", "{A17FB263-4072-4A8C-822F-20A8153399F1}"
 EndProject
@@ -208,6 +208,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{6D48AEE2-EDC
 	ProjectSection(SolutionItems) = preProject
 		MVVM\Doc\MVVM.md = MVVM\Doc\MVVM.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMVVM0", "MVVM\TestMVVM0\TestMVVM0.csproj", "{2C763552-246F-4B0C-BE87-3AB9D944B1A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -394,6 +396,12 @@ Global
 		{18F0B379-EF45-4BB8-A2A5-E432FC48D5DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{18F0B379-EF45-4BB8-A2A5-E432FC48D5DB}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{18F0B379-EF45-4BB8-A2A5-E432FC48D5DB}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -444,6 +452,7 @@ Global
 		{F13B5DF6-0422-428D-A528-8BA190714C7D} = {3FBB56CE-7388-4671-9871-46E6E60FFAE9}
 		{18F0B379-EF45-4BB8-A2A5-E432FC48D5DB} = {EA555432-05EA-491B-B2DF-6890B12A1B68}
 		{6D48AEE2-EDCA-444B-94F7-8EC58C3DF024} = {A17FB263-4072-4A8C-822F-20A8153399F1}
+		{2C763552-246F-4B0C-BE87-3AB9D944B1A4} = {A17FB263-4072-4A8C-822F-20A8153399F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
