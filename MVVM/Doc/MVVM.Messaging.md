@@ -56,3 +56,4 @@
 
          WeakReferenceMessenger.Default.Unregister<UserRequestMessage>(recipient0);
      }
+
