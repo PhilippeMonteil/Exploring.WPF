@@ -31,3 +31,41 @@ The RelayCommand and RelayCommand\<T\> are ICommand implementations that can exp
 A generic command whose sole purpose is to relay its functionality to other objects by invoking delegates. 
 The default return value for the CanExecute method is true. 
 This class allows you to accept command parameters in the Execute(T) and CanExecute(T) callback methods.
+
+## [IAsyncRelayCommand<T> Interface](https://docs.microsoft.com/en-us/dotnet/api/communitytoolkit.mvvm.input.iasyncrelaycommand-1?view=win-comm-toolkit-dotnet-7.0)
+
+	public interface IAsyncRelayCommand<in T> : 
+				IAsyncRelayCommand, 
+				IRelayCommand<in T>, 
+				INotifyPropertyChanged, 
+				ICommand
+
+	public System.Threading.Tasks.Task ExecuteAsync (T? parameter);
+
+## [AsyncRelayCommand and AsyncRelayCommand<T>](https://docs.microsoft.com/en-us/dotnet/communitytoolkit/mvvm/asyncrelaycommand)
+
+## [AsyncRelayCommand<T> Class](https://docs.microsoft.com/en-us/dotnet/api/communitytoolkit.mvvm.input.AsyncRelayCommand-1?view=win-comm-toolkit-dotnet-7.0)
+
+	public sealed class AsyncRelayCommand<T> : ObservableObject, 
+								IAsyncRelayCommand<T>, 
+								IRelayCommand<T>,
+								INotifyPropertyChanged, 
+								ICommand
+
+### Constructors
+
+	public AsyncRelayCommand (Func<T?, CancellationToken, Task> cancelableExecute, 
+								Predicate<T?> canExecute);
+
+### Properties
+
+	public bool CanBeCanceled { get; }
+	public Task? ExecutionTask { get; }
+	public bool IsCancellationRequested { get; }
+	public bool IsRunning { get; }
+
+### Methods
+
+	public void Cancel ();
+	public Task ExecuteAsync (T? parameter);
+
