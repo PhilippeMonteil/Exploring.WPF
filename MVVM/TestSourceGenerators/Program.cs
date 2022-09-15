@@ -21,7 +21,7 @@ namespace TestSourceGenerators
 
         private static void Class1_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            Console.WriteLine($"{nameof(Class1_PropertyChanged)}");
+            Console.WriteLine($"{nameof(Class1_PropertyChanged)} e.PropertyName={e.PropertyName}");
         }
     }
 

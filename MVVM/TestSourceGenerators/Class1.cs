@@ -17,19 +17,32 @@ namespace TestSourceGenerators
     {
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(FullName))]
         private string? name0;
 
         [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(FullName))]
         private string? name1;
 
-        partial void OnNameChanging(string? value)
+        public string FullName => $"{name0}:{name1}";
+
+        partial void OnName0Changing(string? value)
         {
-            Console.WriteLine($"Name is about to change to {value}");
+            Console.WriteLine($"Name0 is about to change to {value}");
+        }
+        partial void OnName1Changing(string? value)
+        {
+            Console.WriteLine($"Name1 is about to change to {value}");
         }
 
-        partial void OnNameChanged(string? value)
+        partial void OnName0Changed(string? value)
         {
-            Console.WriteLine($"Name has changed to {value}");
+            Console.WriteLine($"Name0 has changed to {value}");
+        }
+
+        partial void OnName1Changed(string? value)
+        {
+            Console.WriteLine($"Name1 has changed to {value}");
         }
 
     }
