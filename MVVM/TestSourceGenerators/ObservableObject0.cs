@@ -13,8 +13,10 @@ using CommunityToolkit.Mvvm.Input;
 namespace TestSourceGenerators
 {
 
-    internal partial class Class1 : ObservableObject
+    internal partial class ObservableObject0 : ObservableObject
     {
+
+        #region --- ObservableProperty, NotifyPropertyChangedFor, ...
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(FullName))]
@@ -44,6 +46,8 @@ namespace TestSourceGenerators
         {
             Console.WriteLine($"Name1 has changed to {value}");
         }
+
+        #endregion
 
     }
 

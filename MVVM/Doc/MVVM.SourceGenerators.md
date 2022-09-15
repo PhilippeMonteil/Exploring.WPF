@@ -9,7 +9,7 @@
 - attribut ObservableProperty / property \<Name>
 - on peut implémenter On\<Name>Changing et On\<Name>Changed
 
-### Notifying dependent properties : attribut NotifyPropertyChangedFor
+### NotifyPropertyChangedFor : Notifying dependent properties 
  
 #### Example
 
@@ -28,6 +28,7 @@
         {
             Console.WriteLine($"Name0 is about to change to {value}");
         }
+
         partial void OnName1Changing(string? value)
         {
             Console.WriteLine($"Name1 is about to change to {value}");
@@ -44,3 +45,5 @@
         }
 
     }
+
+## RelayCommand attribute

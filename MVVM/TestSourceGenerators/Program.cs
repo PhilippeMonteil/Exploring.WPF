@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Input;
+
 namespace TestSourceGenerators
 {
 
@@ -8,15 +10,30 @@ namespace TestSourceGenerators
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
-            Test1();
+            Test2();
         }
 
         static void Test1()
         {
-            Class1 class1 = new Class1();
-            class1.PropertyChanged += Class1_PropertyChanged;
-            class1.Name0 = $"Name0 / Test1";
-            class1.Name1 = $"Name1 / Test1";
+            ObservableObject0 observableObject = new ObservableObject0();
+            observableObject.PropertyChanged += Class1_PropertyChanged;
+            observableObject.Name0 = $"Name0 / Test1";
+            observableObject.Name1 = $"Name1 / Test1";
+        }
+
+        static void Test2()
+        {
+            Class0 class0 = new Class0();
+
+            {
+                bool _ok = class0.Method0Command.CanExecute(null);
+                class0.Method0Command.Execute(null);
+            }
+            {
+                bool _ok = class0.Method1Command.CanExecute("par0");
+                class0.Method1Command.Execute("par1");
+            }
+
         }
 
         private static void Class1_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
