@@ -209,6 +209,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{6D48AEE2-EDC
 		MVVM\Doc\MVVM.Commanding.md = MVVM\Doc\MVVM.Commanding.md
 		MVVM\Doc\MVVM.Messaging.md = MVVM\Doc\MVVM.Messaging.md
 		MVVM\Doc\MVVM.Observable.md = MVVM\Doc\MVVM.Observable.md
+		MVVM\Doc\MVVM.SourceGenerators.md = MVVM\Doc\MVVM.SourceGenerators.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMVVM0", "MVVM\TestMVVM0\TestMVVM0.csproj", "{2C763552-246F-4B0C-BE87-3AB9D944B1A4}"
@@ -216,6 +217,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMessaging0", "MVVM\TestMessaging0\TestMessaging0.csproj", "{D405245D-70A0-4FE1-A17C-A5163E4CED4C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMVVM1", "MVVM\TestMVVM1\TestMVVM1.csproj", "{C34448A4-7C9A-41EE-B398-4A1C857B218F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSourceGenerators", "MVVM\TestSourceGenerators\TestSourceGenerators.csproj", "{D43994B3-A769-4936-A05E-C8C0FD1E5A74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -420,6 +423,12 @@ Global
 		{C34448A4-7C9A-41EE-B398-4A1C857B218F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C34448A4-7C9A-41EE-B398-4A1C857B218F}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{C34448A4-7C9A-41EE-B398-4A1C857B218F}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -473,6 +482,7 @@ Global
 		{2C763552-246F-4B0C-BE87-3AB9D944B1A4} = {A17FB263-4072-4A8C-822F-20A8153399F1}
 		{D405245D-70A0-4FE1-A17C-A5163E4CED4C} = {A17FB263-4072-4A8C-822F-20A8153399F1}
 		{C34448A4-7C9A-41EE-B398-4A1C857B218F} = {A17FB263-4072-4A8C-822F-20A8153399F1}
+		{D43994B3-A769-4936-A05E-C8C0FD1E5A74} = {A17FB263-4072-4A8C-822F-20A8153399F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
