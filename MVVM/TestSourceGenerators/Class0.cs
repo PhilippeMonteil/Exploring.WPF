@@ -25,6 +25,14 @@ namespace TestSourceGenerators
             Console.WriteLine($"{nameof(Method1)} par0={par0}");
         }
 
+        [RelayCommand]
+        private async Task Method2(string par0)
+        {
+            Console.WriteLine($"{nameof(Method1)}(-) par0={par0}");
+            await Task.Delay(1000);
+            Console.WriteLine($"{nameof(Method1)}(+) par0={par0}");
+        }
+
     }
 
 }

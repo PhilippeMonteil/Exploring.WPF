@@ -34,6 +34,11 @@ namespace TestSourceGenerators
                 class0.Method1Command.Execute("par1");
             }
 
+            {
+                Task _t = class0.Method2Command.ExecuteAsync("par2");
+                _t.Wait();
+            }
+
         }
 
         private static void Class1_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
