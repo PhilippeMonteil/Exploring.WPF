@@ -1,4 +1,5 @@
 ﻿
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 using System;
@@ -25,12 +26,23 @@ namespace TestSourceGenerators
             Console.WriteLine($"{nameof(Method1)} par0={par0}");
         }
 
-        [RelayCommand]
+        [RelayCommand] // IAsyncRelayCommand Method2Command
         private async Task Method2(string par0)
         {
             Console.WriteLine($"{nameof(Method1)}(-) par0={par0}");
             await Task.Delay(1000);
             Console.WriteLine($"{nameof(Method1)}(+) par0={par0}");
+        }
+
+        [RelayCommand(CanExecute = nameof(CanExecuteMethod3))]
+        private void Method3(string? par0)
+        {
+            Console.WriteLine($"{nameof(Method3)} par0={par0}!");
+        }
+
+        private bool CanExecuteMethod3(string? par0)
+        {
+            return par0 is not null;
         }
 
     }

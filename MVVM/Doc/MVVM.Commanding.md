@@ -32,6 +32,20 @@ A generic command whose sole purpose is to relay its functionality to other obje
 The default return value for the CanExecute method is true. 
 This class allows you to accept command parameters in the Execute(T) and CanExecute(T) callback methods.
 
+## [IAsyncRelayCommand Interface](https://docs.microsoft.com/en-us/dotnet/api/communitytoolkit.mvvm.input.iasyncrelaycommand?view=win-comm-toolkit-dotnet-7.0)
+
+### Properties
+
+	public bool CanBeCanceled { get; }
+	public System.Threading.Tasks.Task? ExecutionTask { get; }
+	public bool IsCancellationRequested { get; }
+	public bool IsRunning { get; }
+
+### Methods
+
+	public void Cancel ();
+	public System.Threading.Tasks.Task ExecuteAsync (object? parameter);
+
 ## [IAsyncRelayCommand\<T> Interface](https://docs.microsoft.com/en-us/dotnet/api/communitytoolkit.mvvm.input.iasyncrelaycommand-1?view=win-comm-toolkit-dotnet-7.0)
 
 	public interface IAsyncRelayCommand<in T> : 
