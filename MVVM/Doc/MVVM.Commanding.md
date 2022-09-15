@@ -32,7 +32,7 @@ A generic command whose sole purpose is to relay its functionality to other obje
 The default return value for the CanExecute method is true. 
 This class allows you to accept command parameters in the Execute(T) and CanExecute(T) callback methods.
 
-## [IAsyncRelayCommand<T> Interface](https://docs.microsoft.com/en-us/dotnet/api/communitytoolkit.mvvm.input.iasyncrelaycommand-1?view=win-comm-toolkit-dotnet-7.0)
+## [IAsyncRelayCommand\<T> Interface](https://docs.microsoft.com/en-us/dotnet/api/communitytoolkit.mvvm.input.iasyncrelaycommand-1?view=win-comm-toolkit-dotnet-7.0)
 
 	public interface IAsyncRelayCommand<in T> : 
 				IAsyncRelayCommand, 
