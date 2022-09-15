@@ -47,3 +47,28 @@
     }
 
 ## RelayCommand attribute
+
+### En résumé
+
+- partial class
+- attribut RelayCommand / méthode privée \<MethodName> -> ICommand \<MethodName>Command
+ 
+### Example
+
+    public partial class Class0
+    {
+
+        [RelayCommand] // -> IRelayCommand GreetUserCommand
+        private void Method0()
+        {
+            Console.WriteLine($"{nameof(Method0)}");
+        }
+
+        [RelayCommand]
+        private void Method1(string par0)
+        {
+            Console.WriteLine($"{nameof(Method1)} par0={par0}");
+        }
+
+    }
+
