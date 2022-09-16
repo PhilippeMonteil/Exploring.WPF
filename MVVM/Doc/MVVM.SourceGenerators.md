@@ -5,8 +5,8 @@
 
 ### En résumé
 
-- la classe doit dériver de ObservableObject
-- attribut ObservableProperty / property \<Name>
+- la classe doit être partial et dériver de ObservableObject
+- attribut ObservableProperty / private property \<name> -> public property \<Name>
 - on peut implémenter On\<Name>Changing et On\<Name>Changed
 - attribut NotifyPropertyChangedFor : 'coupler' une autre property
 
@@ -52,14 +52,16 @@
 ### En résumé
 
 - partial class
-- attribut RelayCommand / méthode privée \<MethodName> -> ICommand \<MethodName>Command
-- attribut RelayCommand / méthode privée 'Task \<MethodName>' -> IAsyncRelayCommand \<MethodName>Command
-- MethodName : doit débuter par une majuscule ... 
-- CanExecute : [RelayCommand(CanExecute = nameof(CanGreetUser))
-- NotifyCanExecuteChangedFor : ObservableProperty + NotifyCanExecuteChangedFor(nameof(GreetUserCommand))
+- attribut RelayCommand / méthode privée \<MethodName> -> ajout d'un ICommand \<MethodName>Command
+- attribut RelayCommand / méthode privée 'Task \<MethodName>' -> ajout d'un IAsyncRelayCommand \<MethodName>Command
+- MethodName : doit débuter par une majuscule, sinon problème de compilation du code généré ... 
+- CanExecute : [RelayCommand(CanExecute = nameof(CanGreetUser)) : CanExecute -> appel de la méthode nommée  
+- NotifyCanExecuteChangedFor : attribut sur une ObservableProperty : chaque modification provoque l'appel de NotifyCanExecuteChanged / Command nommée
 - AllowConcurrentExecutions : seulement pour une méthode asynchrone
-  
-### Example
+- FlowExceptionsToTaskScheduler
+- IncludeCancelCommand : ajout à la ICommand d'une méthode CreatedCancelCommand produisant une ICommand en charge d'annuler ladite ICommand (.Method2Command.CreateCancelCommand)
+
+#### Example
 
     public partial class Class0
     {
@@ -80,7 +82,7 @@
 
 ### Asynchronous commands
 
-### Example
+#### Example
 
      [RelayCommand] // IAsyncRelayCommand Method2Command
      private async Task Method2(string par0)
