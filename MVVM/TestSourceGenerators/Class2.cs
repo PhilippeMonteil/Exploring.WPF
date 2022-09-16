@@ -13,7 +13,7 @@ namespace TestSourceGenerators
     internal partial class Class2
     {
 
-        [RelayCommand]
+        [RelayCommand(AllowConcurrentExecutions = true)]
         async Task Method0()
         {
             await Task.Delay(1000);
