@@ -114,3 +114,12 @@ Theme dictionaries exist in the assembly that defines the types being themed.
 
     //
     <Frame Name="pageFrame" Source="PageResourceFile.xaml" />
+
+## SplashScreen
+
+     {
+         SplashScreen splashScreen = new SplashScreen("LeGeographe.PNG");
+         splashScreen.Show(false, true);
+         await Task.Delay(1000);
+         splashScreen.Close(TimeSpan.FromSeconds(0.5d));
+     }
