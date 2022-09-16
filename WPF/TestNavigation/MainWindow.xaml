@@ -25,8 +25,8 @@
 
     <DockPanel LastChildFill="True">
         <StackPanel Background="DarkBlue">
-            <Button Command="{Binding SetView0Command}" Content="View0" Padding="8" Margin="4"/>
-            <Button Command="{Binding SetView1Command}" Content="View1" Padding="8" Margin="4"/>
+            <Button Command="{Binding SetViewCommand}" CommandParameter="View0" Content="View0" Padding="8" Margin="4"/>
+            <Button Command="{Binding SetViewCommand}" CommandParameter="View1" Content="View1" Padding="8" Margin="4"/>
         </StackPanel>
         <ContentControl Content="{Binding ViewContent}" Margin="4" Background="Azure" />
     </DockPanel>

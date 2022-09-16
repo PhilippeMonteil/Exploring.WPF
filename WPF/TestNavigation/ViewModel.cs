@@ -24,15 +24,19 @@ namespace TestNavigation
         Object viewContent;
 
         [RelayCommand]
-        void SetView0()
+        void SetView(string viewName)
         {
-            this.ViewContent = new ViewModel0();
-        }
-
-        [RelayCommand]
-        void SetView1()
-        {
-            this.ViewContent = new ViewModel1();
+            if (string.Compare(viewName, "View0", true) == 0)
+            {
+                this.ViewContent = new ViewModel0();
+                return;
+            }
+            if (string.Compare(viewName, "View1", true) == 0)
+            {
+                this.ViewContent = new ViewModel1();
+                return;
+            }
+            this.ViewContent = null;
         }
 
     }
