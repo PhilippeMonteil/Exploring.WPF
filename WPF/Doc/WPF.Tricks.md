@@ -123,3 +123,12 @@ Theme dictionaries exist in the assembly that defines the types being themed.
          await Task.Delay(1000);
          splashScreen.Close(TimeSpan.FromSeconds(0.5d));
      }
+
+## Navigation
+
+- utiliser des UserControls pour les Views
+- inscrire les correspondances ViewModel / View sous forme de DataTemplate dans les Ressources
+- utiliser un ContentControl pour acceuillir les Views
+- utiliser un DockPanel avec LastChildFill="True" pour le ContentControl des Views
+
+  

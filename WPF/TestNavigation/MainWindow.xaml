@@ -24,11 +24,11 @@
     </Window.DataContext>
 
     <DockPanel LastChildFill="True">
-        <StackPanel Grid.Column="0" Background="DarkBlue">
+        <StackPanel Background="DarkBlue">
             <Button Command="{Binding SetView0Command}" Content="View0" Padding="8" Margin="4"/>
             <Button Command="{Binding SetView1Command}" Content="View1" Padding="8" Margin="4"/>
         </StackPanel>
-        <ContentControl Content="{Binding ViewContent}" Grid.Column="1" Margin="4" Background="Azure" />
+        <ContentControl Content="{Binding ViewContent}" Margin="4" Background="Azure" />
     </DockPanel>
     
 </Window>
