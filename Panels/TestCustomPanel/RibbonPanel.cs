@@ -50,13 +50,13 @@ namespace TestCustomPanel
             Size firstChildSize = new Size(firstChild.DesiredSize.Width, finalSize.Height);
 
             firstChild.Arrange(new Rect(childOrigin, firstChildSize));
-            childOrigin.X += firstChildSize.Width;
 
             if (Children.Count < 2) return finalSize;
 
             double numCol = Math.Ceiling((Children.Count - 1) / 3d);
-            Size childSize = new Size((finalSize.Width - firstChild.DesiredSize.Width) / numCol,
+            Size childSize = new Size((finalSize.Width - firstChildSize.Width) / numCol,
                                         finalSize.Height / 3);
+            childOrigin.X += firstChildSize.Width;
 
             for (int i = 1; i < Children.Count; i++)
             {
