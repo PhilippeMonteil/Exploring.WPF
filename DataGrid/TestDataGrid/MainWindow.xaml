@@ -36,10 +36,6 @@
                   CanUserReorderColumns="True"
                   CanUserResizeColumns="True"
                   AutoGenerateColumns="True">
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="Birthday" Binding="{Binding Birthday}" />
-            </DataGrid.Columns>-->
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Details}" Margin="10" />

@@ -72,6 +72,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{0FC144ED-D990-4F56-82F1-32C670AE8CC2}"
 	ProjectSection(SolutionItems) = preProject
 		WPF\Doc\Application Management.md = WPF\Doc\Application Management.md
+		WPF\Doc\ControlStylesAndTemplates.md = WPF\Doc\ControlStylesAndTemplates.md
 		WPF\Doc\FrameworkElement.md = WPF\Doc\FrameworkElement.md
 		WPF\Doc\MarkupExtension.md = WPF\Doc\MarkupExtension.md
 		WPF\Doc\TypeConverter.md = WPF\Doc\TypeConverter.md
@@ -230,6 +231,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{9A5B889C-12D
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataGrid", "DataGrid\TestDataGrid\TestDataGrid.csproj", "{FED8B173-4A0B-4995-96E8-D6B96307C6C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Panels", "Panels", "{551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{E94F58F3-8F0D-45AE-8DE6-083E8EC27245}"
+	ProjectSection(SolutionItems) = preProject
+		Panels\Doc\Panels.md = Panels\Doc\Panels.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCustomPanel", "Panels\TestCustomPanel\TestCustomPanel.csproj", "{B9C80511-9166-498E-B43F-3590638DDE9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -452,6 +462,12 @@ Global
 		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{B9C80511-9166-498E-B43F-3590638DDE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C80511-9166-498E-B43F-3590638DDE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C80511-9166-498E-B43F-3590638DDE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C80511-9166-498E-B43F-3590638DDE9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9C80511-9166-498E-B43F-3590638DDE9D}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C80511-9166-498E-B43F-3590638DDE9D}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -509,6 +525,8 @@ Global
 		{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2} = {5AB7A0EA-A6C9-4F0A-AAFE-D3F751BD3E4B}
 		{9A5B889C-12D8-4356-820F-DE7806BDFF67} = {B20D5748-C018-42A2-8BC1-F426771400F5}
 		{FED8B173-4A0B-4995-96E8-D6B96307C6C5} = {B20D5748-C018-42A2-8BC1-F426771400F5}
+		{E94F58F3-8F0D-45AE-8DE6-083E8EC27245} = {551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}
+		{B9C80511-9166-498E-B43F-3590638DDE9D} = {551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
