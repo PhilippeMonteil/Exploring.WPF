@@ -25,36 +25,55 @@ namespace TestCustomPanel
                 return _firstChild.DesiredSize;
             }
 
-            double _child0_Width = _firstChild.DesiredSize.Width;
+            double _numCol = Math.Ceiling((Children.Count - 1) / 3d);
 
             double _child_MaxWidth = 0;
             for (int i = 1; i < Children.Count; i++)
             {
-                Children[i].Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-                if (_child_MaxWidth < Children[i].DesiredSize.Width)
-                {
-                    _child_MaxWidth = Children[i].DesiredSize.Width;
-                }
+                UIElement child = Children[i];
+                child.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                _child_MaxWidth = Math.Max(_child_MaxWidth, child.DesiredSize.Width);
             }
 
-            foreach (UIElement child in Children)
-            {
-                child.Measure(availableSize);
-            }
+            Size vret = new Size(_firstChild.DesiredSize.Width + _numCol * _child_MaxWidth,
+                                    _firstChild.DesiredSize.Height);
 
-            return base.MeasureOverride(availableSize);
+            return vret;
         }
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            int _im = this.Children.Count;
+            if (Children.Count < 1) return finalSize;
 
-            for (int i = 0; i < Children.Count; i++)
+            UIElement firstChild = (UIElement)Children[0];
+            Point childOrigin = new Point(0, 0);
+            Size firstChildSize = new Size(firstChild.DesiredSize.Width, finalSize.Height);
+
+            firstChild.Arrange(new Rect(childOrigin, firstChildSize));
+            childOrigin.X += firstChildSize.Width;
+
+            if (Children.Count < 2) return finalSize;
+
+            double numCol = Math.Ceiling((Children.Count - 1) / 3d);
+            Size childSize = new Size((finalSize.Width - firstChild.DesiredSize.Width) / numCol,
+                                        finalSize.Height / 3);
+
+            for (int i = 1; i < Children.Count; i++)
             {
-                Children[i].Arrange(new Rect(new Point(i * 100, i * 50), finalSize));
+                UIElement child = Children[i];
+                child.Arrange(new Rect(childOrigin, childSize));
+                if (i % 3 == 0)
+                {
+                    childOrigin.X += childSize.Width;
+                    childOrigin.Y = 0;
+                }
+                else
+                {
+                    childOrigin.Y += childSize.Height;
+                }
             }
 
-            return base.ArrangeOverride(finalSize);
+            return finalSize;
         }
 
     }
