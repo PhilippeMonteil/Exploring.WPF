@@ -220,7 +220,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMVVM1", "MVVM\TestMVVM1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSourceGenerators", "MVVM\TestSourceGenerators\TestSourceGenerators.csproj", "{D43994B3-A769-4936-A05E-C8C0FD1E5A74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNavigation", "WPF\TestNavigation\TestNavigation.csproj", "{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestNavigation", "WPF\TestNavigation\TestNavigation.csproj", "{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataGrid", "DataGrid", "{B20D5748-C018-42A2-8BC1-F426771400F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{9A5B889C-12D8-4356-820F-DE7806BDFF67}"
+	ProjectSection(SolutionItems) = preProject
+		DataGrid\Doc\DataGrid.md = DataGrid\Doc\DataGrid.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataGrid", "DataGrid\TestDataGrid\TestDataGrid.csproj", "{FED8B173-4A0B-4995-96E8-D6B96307C6C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -437,6 +446,12 @@ Global
 		{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -492,6 +507,8 @@ Global
 		{C34448A4-7C9A-41EE-B398-4A1C857B218F} = {A17FB263-4072-4A8C-822F-20A8153399F1}
 		{D43994B3-A769-4936-A05E-C8C0FD1E5A74} = {A17FB263-4072-4A8C-822F-20A8153399F1}
 		{8014C2B4-FA72-45FE-99C4-5A9FD7C5A3D2} = {5AB7A0EA-A6C9-4F0A-AAFE-D3F751BD3E4B}
+		{9A5B889C-12D8-4356-820F-DE7806BDFF67} = {B20D5748-C018-42A2-8BC1-F426771400F5}
+		{FED8B173-4A0B-4995-96E8-D6B96307C6C5} = {B20D5748-C018-42A2-8BC1-F426771400F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
