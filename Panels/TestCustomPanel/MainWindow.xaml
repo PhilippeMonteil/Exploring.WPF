@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:TestCustomPanel"
         mc:Ignorable="d"
         Title="MainWindow" Height="Auto" Width="Auto">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
     
-    <local:RibbonPanel Height="300"
+    <local:RibbonPanel Height="Auto"
                        Background="DarkGray" 
                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8"
                        ClipToBounds="True">
@@ -19,18 +21,18 @@
             </Style>
         </local:RibbonPanel.Resources>
         
-        <!--<Rectangle Fill="Red" Width="300" Height="200" Margin="4"/>
-        <Rectangle Fill="Blue" Width="200" Height="200" Margin="4"/>
-        <Rectangle Fill="Green" Width="100" Height="100" Margin="4"/>
-        <Rectangle Fill="DarkRed" Width="280" Height="180" Margin="4"/>
-        <Rectangle Fill="DarkBlue" Width="180" Height="180" Margin="4"/>
-        <Rectangle Fill="DarkGreen" Width="80" Height="80" Margin="4"/>-->
+        <Rectangle Fill="Red" Height="100" Width="300" Margin="4"/>
+        <Rectangle Fill="Blue" Width="200" Margin="4"/>
+        <Rectangle Fill="Green" Width="100" Margin="4"/>
+        <Rectangle Fill="DarkRed" Width="280" Margin="4"/>
+        <Rectangle Fill="DarkBlue" Width="180" Margin="4"/>
+        <Rectangle Fill="DarkGreen" Width="80" Margin="4"/>
 
-        <Button>Button0</Button>
+        <!--<Button>Button0</Button>
         <Button>Button1__</Button>
         <Button>Button2____</Button>
         <Button>Button3______</Button>
-        <Button>Button4________</Button>
+        <Button>Button4________</Button>-->
 
     </local:RibbonPanel>
 
@@ -41,5 +43,7 @@
         <Button DockPanel.Dock="Bottom" Padding="8">Bottom</Button>
         <Button>Center</Button>
     </DockPanel>-->
-    
+
+    </ScrollViewer>
+
 </Window>
