@@ -13,6 +13,9 @@ namespace TestCustomPanel
     public class RibbonPanel : Panel
     {
 
+        /***
+         * 
+        ***/
         protected override Size MeasureOverride(Size availableSize)
         {
             if (Children.Count <= 0) return new Size(0, 0);
