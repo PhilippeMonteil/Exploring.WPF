@@ -3,6 +3,13 @@
 
 # TestCustomPanel
 
+## En résumé
+
+### MeasureOverride
+
+- protected override Size MeasureOverride(Size availableSize)
+
+
 ## [Control.Padding Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.control.padding?view=windowsdesktop-6.0)
 
 ## [FrameworkElement.Margin Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.margin?view=windowsdesktop-6.0)
@@ -10,6 +17,13 @@
 ## [FrameworkElement.MeasureOverride(Size)](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.measureoverride?view=windowsdesktop-6.0) 
 
 ````
+    <local:RibbonPanel Width="700" Height="300"
+                       MinWidth="500"  MinHeight="200"
+                       Margin="10"
+                       Background="DarkGray" 
+                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                       ClipToBounds="True">
+
      <!-- First Child -->
      <Rectangle Fill="Red" Width="50" MinWidth="100"/>
      <!-- ... -->
@@ -26,6 +40,7 @@
 
 - protected override Size MeasureOverride(Size availableSize)
 
+````
 MeasureOverride(-) availableSize=700;300
 
   ui.DesiredSize=108;8
@@ -38,6 +53,7 @@ MeasureOverride(-) availableSize=700;300
   ui.DesiredSize=108;8
   ui.DesiredSize=108;8
   ui.DesiredSize=8;8
+````
 
 MeasureOverride(+) vret=756;8
 

@@ -1,0 +1,45 @@
+﻿<Window x:Class="TestCustomPanel.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestCustomPanel"
+        mc:Ignorable="d"
+        Title="Window3" Height="450" Width="800" Background="DarkGray">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <local:RibbonPanel  
+                       Margin="5"
+                       Background="LightGray" 
+                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                       ClipToBounds="True">
+
+            <local:RibbonPanel.Resources>
+
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Padding" Value="4" />
+                    <Setter Property="Margin" Value="8" />
+                </Style>
+
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="Margin" Value="7" />
+                </Style>
+
+            </local:RibbonPanel.Resources>
+
+            <!-- First Child -->
+            <Rectangle Fill="Red" Width="50" MinWidth="100" MinHeight="150"/>
+            <!-- ... -->
+            <Button >Button0</Button>
+            <Button Width="200">Button1</Button>
+            <Button MinWidth="200">Button1</Button>
+            <Button Width="100" MinWidth="200">Button1</Button>
+            <Rectangle Fill="Blue" />
+            <Rectangle Fill="Green" Width="100" />
+            <Rectangle Fill="DarkRed" MinWidth="100" />
+            <Rectangle Fill="DarkBlue" Width="50" MinWidth="100"/>
+            <Rectangle Fill="DarkGreen" />
+
+        </local:RibbonPanel>
+
+    </ScrollViewer>
+</Window>

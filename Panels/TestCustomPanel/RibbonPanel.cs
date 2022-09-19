@@ -69,7 +69,11 @@ namespace TestCustomPanel
                 Point childOrigin = new Point(0, 0);
                 Size firstChildSize = new Size(firstChild.DesiredSize.Width, finalSize.Height);
 
-                firstChild.Arrange(new Rect(childOrigin, firstChildSize));
+                Debug.WriteLine($"ArrangeOverride() firstChild.DesiredSize={firstChild.DesiredSize}");
+
+                Rect rect = new Rect(childOrigin, firstChildSize);
+                Debug.WriteLine($"  firstChild.Arrange({rect})");
+                firstChild.Arrange(rect);
 
                 if (Children.Count < 2) return finalSize;
 
@@ -81,7 +85,12 @@ namespace TestCustomPanel
                 for (int i = 1; i < Children.Count; i++)
                 {
                     UIElement child = Children[i];
+
+                    rect = new Rect(childOrigin, firstChildSize);
+                    Debug.WriteLine($"  child.Arrange({rect})");
+
                     child.Arrange(new Rect(childOrigin, childSize));
+
                     if (i % 3 == 0)
                     {
                         childOrigin.X += childSize.Width;
