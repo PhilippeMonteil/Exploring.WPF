@@ -14,8 +14,8 @@
         </Style>
 
         <Style TargetType="{x:Type Button}">
-            <Setter Property="Padding" Value="4" />
-            <Setter Property="Margin" Value="8" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="Margin" Value="4" />
         </Style>
 
     </Window.Resources>
@@ -29,7 +29,7 @@
         <!-- First Child -->
         <Rectangle Fill="Red" Width="50" MinWidth="100" MinHeight="150"/>
         <!-- ... -->
-        <Button >Button0</Button>
+        <Button Padding="10">Button0</Button>
         <Button Width="200">Button1</Button>
         <Button MinWidth="200">Button1</Button>
         <Button Width="100" MinWidth="200">Button1</Button>

@@ -5,71 +5,37 @@
 
 ## En résumé
 
-### MeasureOverride
+### FrameworkElement : Width/Height, MinWidth/Height, Margin, MeasureOverride, ArrangeOverride ...
+
+#### [FrameworkElement.WidthProperty Field](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.widthproperty?view=windowsdesktop-6.0)
+
+#### [FrameworkElement.Margin Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.margin?view=windowsdesktop-6.0)
+
+#### [Control.Padding Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.control.padding?view=windowsdesktop-6.0)
+
+#### [FrameworkElement.MeasureOverride(Size)](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.measureoverride?view=windowsdesktop-6.0) 
 
 - protected override Size MeasureOverride(Size availableSize)
 
+    - si le Panel est contenu dans une fenêtre ou dans une Grid.Cell, availableSize correspond
+      à la totalité de l'espace disponible : zone client, cellule.
+    - si le Panel est contenu dans un ScrollViewer : la taille est infinie : pas de contrainte.
+    - si le Panel indique une MinWidth/Height, cette valeur est appliquée au paramètre availableSize
+      avant l'appel de MeasureOverride
+    - la valeur retournée représente le minimum pour l'intérieur : contenu et padding (Control), plus la marge
 
-## [Control.Padding Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.control.padding?view=windowsdesktop-6.0)
+#### [FrameworkElement.ArrangeOverride(Size)](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.arrangeoverride?view=windowsdesktop-6.0)
 
-## [FrameworkElement.Margin Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.margin?view=windowsdesktop-6.0)
+    protected virtual System.Windows.Size ArrangeOverride (System.Windows.Size finalSize);
 
-## [FrameworkElement.MeasureOverride(Size)](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.measureoverride?view=windowsdesktop-6.0) 
+Parameters
 
-````
-    <local:RibbonPanel Width="700" Height="300"
-                       MinWidth="500"  MinHeight="200"
-                       Margin="10"
-                       Background="DarkGray" 
-                       HorizontalAlignment="Left" VerticalAlignment="Top"
-                       ClipToBounds="True">
+    finalSize    Size 
 
-     <!-- First Child -->
-     <Rectangle Fill="Red" Width="50" MinWidth="100"/>
-     <!-- ... -->
-     <Button >Button0</Button>
-     <Button Width="200">Button1</Button>
-     <Button MinWidth="200">Button1</Button>
-     <Button Width="100" MinWidth="200">Button1</Button>
-     <Rectangle Fill="Blue" />
-     <Rectangle Fill="Green" Width="100" />
-     <Rectangle Fill="DarkRed" MinWidth="100" />
-     <Rectangle Fill="DarkBlue" Width="50" MinWidth="100"/>
-     <Rectangle Fill="DarkGreen" />
-````
+The final area within the parent that this element should use to arrange itself and its children.
 
-- protected override Size MeasureOverride(Size availableSize)
+Returns
 
-````
-MeasureOverride(-) availableSize=700;300
+    Size
 
-  ui.DesiredSize=108;8
-  ui.DesiredSize=68,09333333333333;41,96
-  ui.DesiredSize=216;41,96
-  ui.DesiredSize=216;41,96
-  ui.DesiredSize=216;41,96
-  ui.DesiredSize=8;8
-  ui.DesiredSize=108;8
-  ui.DesiredSize=108;8
-  ui.DesiredSize=108;8
-  ui.DesiredSize=8;8
-````
-
-MeasureOverride(+) vret=756;8
-
-- Min/Max Width/Height : appliqués à availableSize à l'appel de MeasureOverride
-
-- détermination de la taille requise par un UI ELement
-
-    ui.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-
-  - Measure retourne :
-    - si Width assigné
-        - vret = Width + Margin
-    - sinon
-        - vret = calcul de la valeur minimale requise par le contenu de l'UIElement + Margin
-    - si MinWidth assigné : vret = Max(vret, MinWidth)
-    - si MaxWidth assigné : vret = Min(vret, MaxWidth)
- 
-- MeasureOverride ne doit pas prendre en compte Margin, valeur appliquée par Measure
- 
+The actual size used.
