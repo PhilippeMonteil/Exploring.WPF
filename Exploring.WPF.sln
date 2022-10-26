@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-673
 	ProjectSection(SolutionItems) = preProject
 		Doc\Notes.md = Doc\Notes.md
 		Doc\URLs.md = Doc\URLs.md
-		WPF.Essentials.md = WPF.Essentials.md
+		Doc\WPF.Essentials.XAML.md = Doc\WPF.Essentials.XAML.md
 		Doc\WPF.Tricks.md = Doc\WPF.Tricks.md
 	EndProjectSection
 EndProject
@@ -241,6 +241,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{E94F58F3-8F0
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCustomPanel", "Panels\TestCustomPanel\TestCustomPanel.csproj", "{B9C80511-9166-498E-B43F-3590638DDE9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", "{F06EEA09-4DC9-4397-96D7-5C3D3552C778}"
+	ProjectSection(SolutionItems) = preProject
+		Doc\WPF.Essentials.XAML.md = Doc\WPF.Essentials.XAML.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -528,6 +533,7 @@ Global
 		{FED8B173-4A0B-4995-96E8-D6B96307C6C5} = {B20D5748-C018-42A2-8BC1-F426771400F5}
 		{E94F58F3-8F0D-45AE-8DE6-083E8EC27245} = {551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}
 		{B9C80511-9166-498E-B43F-3590638DDE9D} = {551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}
+		{F06EEA09-4DC9-4397-96D7-5C3D3552C778} = {042CBC3D-6731-475C-96C6-D1D1F31FCE1F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}
