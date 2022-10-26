@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-673
 	ProjectSection(SolutionItems) = preProject
 		Doc\Notes.md = Doc\Notes.md
 		Doc\URLs.md = Doc\URLs.md
+		WPF.Essentials.md = WPF.Essentials.md
 		Doc\WPF.Tricks.md = Doc\WPF.Tricks.md
 	EndProjectSection
 EndProject
@@ -230,7 +231,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{9A5B889C-12D
 		DataGrid\Doc\DataGrid.md = DataGrid\Doc\DataGrid.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestDataGrid", "DataGrid\TestDataGrid\TestDataGrid.csproj", "{FED8B173-4A0B-4995-96E8-D6B96307C6C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDataGrid", "DataGrid\TestDataGrid\TestDataGrid.csproj", "{FED8B173-4A0B-4995-96E8-D6B96307C6C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Panels", "Panels", "{551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}"
 EndProject
@@ -239,7 +240,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{E94F58F3-8F0
 		Panels\Doc\Panels.md = Panels\Doc\Panels.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCustomPanel", "Panels\TestCustomPanel\TestCustomPanel.csproj", "{B9C80511-9166-498E-B43F-3590638DDE9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCustomPanel", "Panels\TestCustomPanel\TestCustomPanel.csproj", "{B9C80511-9166-498E-B43F-3590638DDE9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
