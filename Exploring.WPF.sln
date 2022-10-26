@@ -33,7 +33,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{042CBC3D-673
 	ProjectSection(SolutionItems) = preProject
 		Doc\Notes.md = Doc\Notes.md
 		Doc\URLs.md = Doc\URLs.md
-		Doc\WPF.Essentials.XAML.md = Doc\WPF.Essentials.XAML.md
 		Doc\WPF.Tricks.md = Doc\WPF.Tricks.md
 	EndProjectSection
 EndProject
@@ -244,7 +243,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCustomPanel", "Panels\T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", "{F06EEA09-4DC9-4397-96D7-5C3D3552C778}"
 	ProjectSection(SolutionItems) = preProject
-		Doc\WPF.Essentials.XAML.md = Doc\WPF.Essentials.XAML.md
+		Doc\Essentials\WPF.Essentials.Resources.md = Doc\Essentials\WPF.Essentials.Resources.md
+		Doc\Essentials\WPF.Essentials.XAML.md = Doc\Essentials\WPF.Essentials.XAML.md
 	EndProjectSection
 EndProject
 Global
