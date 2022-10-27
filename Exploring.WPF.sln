@@ -245,6 +245,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", 
 	ProjectSection(SolutionItems) = preProject
 		Doc\Essentials\WPF.Essentials.Binding.md = Doc\Essentials\WPF.Essentials.Binding.md
 		Doc\Essentials\WPF.Essentials.Resources.md = Doc\Essentials\WPF.Essentials.Resources.md
+		Doc\Essentials\WPF.Essentials.Styles.md = Doc\Essentials\WPF.Essentials.Styles.md
 		Doc\Essentials\WPF.Essentials.XAML.md = Doc\Essentials\WPF.Essentials.XAML.md
 	EndProjectSection
 EndProject
