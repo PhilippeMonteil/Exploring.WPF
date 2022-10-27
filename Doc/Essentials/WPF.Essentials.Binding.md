@@ -92,7 +92,25 @@
 						Mode=OneWay}" />
 	</Grid>
 
-## ValidationRules
+## Validation
+
+### Validation.ErrorTemplate
+
+	Validation.ErrorTemplate Attached Property
+
+    <TextBox Name="textBox1" Width="50" FontSize="10" Foreground="Red" Margin="8" HorizontalAlignment="Left" VerticalAlignment="Top"
+         Validation.ErrorTemplate="{StaticResource validationTemplate}"
+         Style="{StaticResource textBoxInError}">
+        <TextBox.Text>
+        <Binding Source="{StaticResource Data0}" Path="Age" UpdateSourceTrigger="PropertyChanged" >
+            <Binding.ValidationRules>
+            <localvr:ValidationRule0 Min="7" Max="77"/>
+            </Binding.ValidationRules>
+        </Binding>
+        </TextBox.Text>
+    </TextBox>
+
+### ValidationRules
 
 	public System.Collections.ObjectModel.Collection<System.Windows.Controls.ValidationRule> ValidationRules { get; }
 

@@ -427,6 +427,8 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 
 #### Validation.ErrorTemplate
 
+[Validation.ErrorTemplate Attached Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errortemplate?view=windowsdesktop-6.0)
+
     <ControlTemplate x:Key="validationTemplate">
         <DockPanel>
         <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
