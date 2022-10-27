@@ -12,9 +12,9 @@
 
 ## En résumé
 
-- Source / RelativeSource / ElementName
+- Source (Defaut : DataContext) / RelativeSource / ElementName (exclusifs)
 - Path / XPath
-- UpdateSourceTrigger : Defaut (cd metadata) / PropertyChanged / LostFocus / Explicit
+- UpdateSourceTrigger : Defaut (cf metadata) / PropertyChanged / LostFocus / Explicit
 - Mode : Default (cf metadata) / OneTime / OneWay / OneWayToSource / TwoWay
 - Validation:
     - dépend de 
@@ -44,9 +44,11 @@
 	public System.Windows.Data.RelativeSource RelativeSource { get; set; }
 	public string ElementName { get; set; }
 
-> By default, bindings inherit the data context specified by the DataContext property, if one has been set. However, the Source property is one of the ways you can explicitly set the source of a Binding and override the inherited data context.
+> By default, bindings inherit the data context specified by the DataContext property, if one has been set. 
+However, the Source property is one of the ways you can explicitly set the source of a Binding and override the inherited data context.
 
-> The Binding.ElementName and Binding.RelativeSource properties also enable you to set the source of the binding explicitly. However, only one of the three properties, ElementName, Source, and RelativeSource, should be set for each binding, or a conflict can occur. This property throws an exception if there is a binding source conflict.
+> The Binding.ElementName and Binding.RelativeSource properties also enable you to set the source of the binding explicitly. 
+However, only one of the three properties, ElementName, Source, and RelativeSource, should be set for each binding, or a conflict can occur. This property throws an exception if there is a binding source conflict.
 
 #### Source
 
@@ -62,7 +64,6 @@
 > Data context can be set directly to a .NET object, with the bindings evaluating to properties of that object. Alternatively, you can set the data context to a DataSourceProvider object.
 
 > This dependency property inherits property values. If there are child elements without other values for DataContext established through local values or styles, then the property system will set the value to be the DataContext value of the nearest parent element with this value assigned.
-
 
 #### RelativeSource
 
@@ -361,7 +362,8 @@ When a value is being transferred from the target property to the source propert
 
 ### 6.3) [UpdateSourceExceptionFilter](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.updatesourceexceptionfilter?view=windowsdesktop-6.0) 
 
-> Gets or sets a handler you can use to provide custom logic for handling exceptions that the binding engine encounters during the update of the binding source value. This is only applicable if you have associated an __ExceptionValidationRule__ with your binding in its __ValidationRules__ property.
+> Gets or sets a handler you can use to provide custom logic for handling exceptions that the binding engine encounters during the update of the binding source value. 
+This is only applicable if you have associated an __ExceptionValidationRule__ with your binding in its __ValidationRules__ property.
 
 #### Exemple
 
