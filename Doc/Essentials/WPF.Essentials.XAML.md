@@ -159,3 +159,18 @@ Example
   x:Static
   x:Type
 
+## Attached Properties
+
+### Exemple
+
+     <DockPanel>
+       <TextBox DockPanel.Dock="Top">Enter text</TextBox>
+     </DockPanel>
+
+### Exemple
+
+    <Grid >
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+
+

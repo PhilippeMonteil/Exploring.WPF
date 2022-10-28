@@ -246,6 +246,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", 
 		Doc\Essentials\WPF.Essentials.Binding.md = Doc\Essentials\WPF.Essentials.Binding.md
 		Doc\Essentials\WPF.Essentials.Resources.md = Doc\Essentials\WPF.Essentials.Resources.md
 		Doc\Essentials\WPF.Essentials.Styles.md = Doc\Essentials\WPF.Essentials.Styles.md
+		Doc\Essentials\WPF.Essentials.Templates.md = Doc\Essentials\WPF.Essentials.Templates.md
 		Doc\Essentials\WPF.Essentials.XAML.md = Doc\Essentials\WPF.Essentials.XAML.md
 	EndProjectSection
 EndProject
@@ -481,6 +482,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{639D957A-7DB1-46A8-B51A-C221B805F3ED} = {1218B168-9157-4A2B-A4D9-F091357D52E8}
 		{DA33A8B6-2173-42CF-B858-757423A9581B} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
 		{B05DA53B-1238-41EE-83BF-A1D75C7DB2C4} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
 		{3B344945-2716-4787-BE67-1767D5194ED2} = {8CC1E22F-E912-480C-878E-C5DD45A3771D}
