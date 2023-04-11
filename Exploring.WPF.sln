@@ -14,9 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test0", "ItemsControl\Test0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{B05DA53B-1238-41EE-83BF-A1D75C7DB2C4}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml
-		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml
-		..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\TreeViewItem.xaml = ..\..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\TreeViewItem.xaml
+		..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml = ..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ContentControl.xaml
+		..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml = ..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\ItemsControl.xaml
+		..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\TreeViewItem.xaml = ..\..\TEMP\wpf-main\src\Microsoft.DotNet.Wpf\src\Themes\XAML\TreeViewItem.xaml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestListBox0", "ItemsControl\TestListBox0\TestListBox0.csproj", "{3B344945-2716-4787-BE67-1767D5194ED2}"
@@ -120,8 +120,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{8F4B4010-6059-4CF0-9454-88521221A4EB}"
 	ProjectSection(SolutionItems) = preProject
 		VisualStudio\Doc\DelaySigning.md = VisualStudio\Doc\DelaySigning.md
-		..\..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props = ..\..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props
-		..\..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets = ..\..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets
+		..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props = ..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.props
+		..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets = ..\..\Program Files\dotnet\sdk\6.0.400\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets
 		VisualStudio\Doc\ProjectFiles_MSBuild.md = VisualStudio\Doc\ProjectFiles_MSBuild.md
 		Tests\ConsoleApp1\bin\Debug\net6.0\sn.txt = Tests\ConsoleApp1\bin\Debug\net6.0\sn.txt
 		VisualStudio\Doc\VisualStudio.md = VisualStudio\Doc\VisualStudio.md
@@ -249,6 +249,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", 
 		Doc\Essentials\WPF.Essentials.Templates.md = Doc\Essentials\WPF.Essentials.Templates.md
 		Doc\Essentials\WPF.Essentials.XAML.md = Doc\Essentials\WPF.Essentials.XAML.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMarkupExtension", "WPF\TestMarkupExtension\TestMarkupExtension.csproj", "{A175357F-6399-410F-8403-6F8D98982C5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -477,6 +479,12 @@ Global
 		{B9C80511-9166-498E-B43F-3590638DDE9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9C80511-9166-498E-B43F-3590638DDE9D}.Test|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9C80511-9166-498E-B43F-3590638DDE9D}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{A175357F-6399-410F-8403-6F8D98982C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A175357F-6399-410F-8403-6F8D98982C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A175357F-6399-410F-8403-6F8D98982C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A175357F-6399-410F-8403-6F8D98982C5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A175357F-6399-410F-8403-6F8D98982C5D}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{A175357F-6399-410F-8403-6F8D98982C5D}.Test|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -538,6 +546,7 @@ Global
 		{E94F58F3-8F0D-45AE-8DE6-083E8EC27245} = {551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}
 		{B9C80511-9166-498E-B43F-3590638DDE9D} = {551D9B92-F5E9-43A2-9D8E-4BF53D2588F4}
 		{F06EEA09-4DC9-4397-96D7-5C3D3552C778} = {042CBC3D-6731-475C-96C6-D1D1F31FCE1F}
+		{A175357F-6399-410F-8403-6F8D98982C5D} = {5AB7A0EA-A6C9-4F0A-AAFE-D3F751BD3E4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DEB08427-A0A7-431A-B457-7C39741CD38E}

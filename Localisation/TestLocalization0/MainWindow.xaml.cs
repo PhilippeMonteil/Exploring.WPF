@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ using System.Windows.Shapes;
 
 namespace TestLocalization0
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -46,7 +48,14 @@ namespace TestLocalization0
             {
                 Thread.CurrentThread.CurrentUICulture = FR;
             }
+            Debug.WriteLine($"{nameof(bnTest_Click)}(+) Thread.CurrentThread.CurrentUICulture={Thread.CurrentThread.CurrentUICulture}");
         }
 
+        private void bnNewWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var window = new Window1();
+            window.Show();
+        }
     }
+
 }

@@ -131,4 +131,28 @@ Theme dictionaries exist in the assembly that defines the types being themed.
 - utiliser un ContentControl pour acceuillir les Views
 - utiliser un DockPanel avec LastChildFill="True" pour le ContentControl des Views
 
-  
+## ConstructorArgument
+
+- indique qu'une propriété est assignée par le constructeur du type : inutile de la sérialiser ...
+- 
+    [MarkupExtensionReturnType(typeof(string))]
+    public class MarkupExtensionLocalization : MarkupExtension
+    {
+        
+        public MarkupExtensionLocalization(string id)
+        {
+            this.ID = id;
+            Debug.WriteLine($"{GetType().Name}[{GetHashCode()}].constructor");
+        }
+
+        ~MarkupExtensionLocalization()
+        {
+            Debug.WriteLine($"{GetType().Name}[{GetHashCode()}].finalizer");
+        }
+
+        [ConstructorArgument("id")]
+        public string ID 
+        { 
+            get; 
+            set; 
+        }

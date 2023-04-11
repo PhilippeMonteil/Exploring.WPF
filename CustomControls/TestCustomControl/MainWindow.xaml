@@ -19,19 +19,19 @@
         <TextBlock Text="{Binding FileName, ElementName=myUserControl}"
                    Foreground="White" FontSize="16" Margin="8" />
         
-        <local:MyCustomControl Width="300" Height="200" Margin="8"
+        <local:MyCustomControl x:Name="Control0" Width="300" Height="200" Margin="8"
                                Face="F2"
                                Background="DarkGray"
                                BorderBrush="Orange" BorderThickness="8" Padding="32"/>
 
-        <lib:CustomControl1 Width="300" Height="200" Margin="8"
+        <lib:CustomControl1 x:Name="Control1" Width="300" Height="200" Margin="8"
                                        BorderBrush="Orange" BorderThickness="8" Padding="32"
                             FileName="FileName0"
                             FileNameChanged="CustomControl1_FileNameChanged">
             
         </lib:CustomControl1>
 
-        <lib:CustomControl2 Width="300" Height="200" Margin="8"
+        <lib:CustomControl2 x:Name="Control2" Width="300" Height="200" Margin="8"
                                        BorderBrush="Orange" BorderThickness="8" Padding="32"
                             FileName="FileName0"
                             FileNameChanged="CustomControl2_FileNameChanged">

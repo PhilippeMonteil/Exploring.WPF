@@ -17,3 +17,4 @@
 
 ### [Control authoring overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/controls/control-authoring-overview?view=netframeworkdesktop-4.8#defining-resources-at-the-theme-level)
 
+### [Xamarin XAML – Tips and Tricks](https://xamgirl.com/xaml-tips-and-tricks/#comments)
