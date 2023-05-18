@@ -18,7 +18,7 @@ https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-in-wpf?view=n
 
 ### The x: prefix
 
-    https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view=netframeworkdesktop-4.8#the-x-prefix
+https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view=netframeworkdesktop-4.8#the-x-prefix
 
 - x:Key: Sets a unique key for each resource in a ResourceDictionary (
 - x:Class: Specifies the CLR namespace and class name for the class that provides code-behind for a XAML page.
@@ -243,14 +243,6 @@ ex :
         <Color x:Key="" ...>
         <Color x:Key="" ...>
     </ResourceDictionary>
-
-
- ### Markup Extensions
-
-  x:Array
-  x:Null
-  x:Static
-  x:Type
 
 ## Attached Properties
 
