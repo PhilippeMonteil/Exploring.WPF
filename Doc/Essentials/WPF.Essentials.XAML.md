@@ -1,5 +1,7 @@
 
-# XAML
+# XAML & WPF 
+
+https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-in-wpf?view=netframeworkdesktop-4.8
 
 ## Elements and attributes
 
@@ -13,6 +15,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestBinding0"
         xmlns:lib="clr-namespace:ItemsControlLib;assembly=ItemsControlLib"
+
+### The x: prefix
+
+    https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view=netframeworkdesktop-4.8#the-x-prefix
+
+- x:Key: Sets a unique key for each resource in a ResourceDictionary (
+- x:Class: Specifies the CLR namespace and class name for the class that provides code-behind for a XAML page.
+
 
 ### mapping namespace XML / namespace .Net: XmlnsDefinitionAttribute
 
@@ -37,6 +47,10 @@
 - attribut TypeConverterAttribute appliqué à une classe ou à une propriété
 - précise le nom d'une classe dérivant de TypeConverter invoquée pour transformer une string 
   en valeur de la classe ou de la propriété marquée.
+
+The per-property type converter technique is particularly useful if you choose to use a property type 
+from Microsoft .NET Framework or from some other library where you cannot control the 
+class definition and cannot apply a “TypeConverter” attribute there.
 
 A XAML processor needs two pieces of information in order to process an attribute value. 
 - The first piece of information is the value type of the property that is being set. 
@@ -97,10 +111,17 @@ both for the XAML scenario and also potentially for code calls in .NET code.
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
+            // obtention de l'objet et de la propriété cible de l'instance de MarkupExtension
             IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
             DependencyObject dependencyObject = provideValueTarget.TargetObject as DependencyObject;
             DependencyProperty dependencyProperty = provideValueTarget.TargetProperty as DependencyProperty;
             ...
+
+            // public class DependencyObject : DispatcherObject
+            // {
+            //     public void SetCurrentValue(DependencyProperty dp, object value);
+            // ...
+
         }
 
     }
@@ -110,6 +131,14 @@ both for the XAML scenario and also potentially for code calls in .NET code.
   This attribute specifies that the associated property can be initialized 
   by a constructor parameter and should be ignored for XAML serialization 
   if the constructor is used to construct the instance.
+
+### x: Markup extensions
+
+#### x:Type
+#### x:Static
+#### x:Null
+#### x:Array
+
 
 ## Children of Object Elements
 
@@ -144,6 +173,20 @@ Example
         <ListBoxItem Content="..." />
     </ListBox.Items>
 
+    <StackPanel>
+        <Button>First Button</Button>
+        <Button>Second Button</Button>
+    </StackPanel>
+
+    <StackPanel>
+        <StackPanel.Children>
+            <!--<UIElementCollection>-->
+            <Button>First Button</Button>
+            <Button>Second Button</Button>
+            <!--</UIElementCollection>-->
+        </StackPanel.Children>
+    </StackPanel>
+
 #### Dictionaries
 
     <ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -151,7 +194,7 @@ Example
         <Color x:Key="" ...>
     </ResourceDictionary>
 
-## Loading XAML at runtime
+## Loading XAML at runtime : XamlReader.Load
 
     FileStream fs=null;
     Window window = (Window)XamlReader.Load(fs);
@@ -162,14 +205,45 @@ Example
 ### XAML keywords
 
  // pour la génération de code
- x:Class
- x:ClassModifier
- x:Name
- x:FieldModifier
- x:Subclass
- x:TypeArguments
- x:Key
- ...
+
+#### x:Class
+
+ex :
+
+    <Window x:Class="WpfApp1.MainWindow"
+
+    public partial class MainWindow : Window
+
+#### x:ClassModifier
+
+#### x:Name
+
+#### x:FieldModifier
+
+#### x:Subclass
+
+#### x:TypeArguments
+
+ ex:
+
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+
+    <scg:List x:TypeArguments="sys:String" ...> 
+        instantiates a new List<T> with a String type argument.
+
+    <scg:Dictionary x:TypeArguments="sys:String,sys:String" ...> 
+        instantiates a new Dictionary<TKey,TValue> with two String type arguments.
+
+#### x:Key
+ 
+ ex:
+
+     <ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <Color x:Key="" ...>
+        <Color x:Key="" ...>
+    </ResourceDictionary>
+
 
  ### Markup Extensions
 
