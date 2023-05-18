@@ -685,8 +685,11 @@ cf [Binding.AsyncState Property](https://docs.microsoft.com/en-us/dotnet/api/sys
 
 	}
 
-## 14) URLs
+## URLs
 
 - [Comprendre le Binding](https://nathanaelmarchand.developpez.com/tutoriels/dotnet/comprendre-binding-wpf-et-silverlight/)
 
+## Data binding how-to topics
+
+- https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/data-binding-how-to-topics?view=netframeworkdesktop-4.8
 

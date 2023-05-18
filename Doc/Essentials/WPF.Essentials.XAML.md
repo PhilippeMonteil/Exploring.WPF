@@ -38,6 +38,25 @@
 - précise le nom d'une classe dérivant de TypeConverter invoquée pour transformer une string 
   en valeur de la classe ou de la propriété marquée.
 
+A XAML processor needs two pieces of information in order to process an attribute value. 
+- The first piece of information is the value type of the property that is being set. 
+- Any string that defines an attribute value and that is processed in XAML must ultimately 
+  be converted or resolved to a value of that type. 
+- If the value is a primitive that is understood by the XAML parser (such as a numeric value), 
+  a direct conversion of the string is attempted. 
+- If the value is an enumeration, the string is used to check for a name match to 
+  a named constant in that enumeration. 
+- If the value is neither a parser-understood primitive nor an enumeration, 
+  then the type in question must be able to provide an instance of the type, 
+  or a value, based on a converted string. 
+  This is done by indicating a type converter class. 
+The type converter is effectively a helper class for providing values of another class, 
+both for the XAML scenario and also potentially for code calls in .NET code.
+
+### https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/typeconverters-and-xaml?view=netframeworkdesktop-4.8
+
+### https://learn.microsoft.com/en-us/previous-versions/ayybcxe5(v=vs.140)?redirectedfrom=MSDN
+
 ### exemples
 
 	[System.ComponentModel.TypeConverter("System.Windows.NullableBoolConverter, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Custom=null")]
