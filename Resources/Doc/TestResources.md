@@ -1,22 +1,95 @@
 
 # TestResources
 
+## Règles à retenir
+
+- les XAML des App, Windows sont compilés sous forme de .baml et regroupés avec
+  les ressources 'Resource' dans un ResourceSet sérialisé dans le ManifestResourceStream
+  nommé 'TestResources.g.resources'
+
+- ressources 'Content' : 
+
+    - pour chaque ressource de ce type un attribut d'assembly AssemblyAssociatedContentFile est
+      inscrit dans le fichier TestResources_Content.g.cs 
+      généré dans le répertoire \obj\Debug\net6.0-windows:
+
+        - TestResources_Content.g.cs
+        [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("binaryresources/folder0/contentimage.png")]
+
 ## Ressources : Binary resources et .resx
 
 - BinaryResources/Folder0
-    - ContentImage.PNG : Build Action : Content; Copy to Output : Copy Always
-    _ ResourceImage.png : Build Action : Resource
+    - ContentImage.PNG : Build Action : 'Content'; Copy to Output : Copy Always
+    - ResourceImage.png : Build Action : 'Resource'
+    - EmbeddedResourceImage.jpeg : Build Action : 'Embedded Resource'
 
 - Resources
     - Resource1.resx
     - Resource1.en.resx
     - ...
 
-## Règles à retenir
+### .csproj
 
-- les XAML des App, Windows sont compilés sous forme de .baml et regroupés avec
-  les 'Resources' dans un ResourceSet sérialisé dans le ManifestResourceStream
-  nommé 'TestResources.g.resources'
+    <Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+        <Configurations>Debug;Release;Test</Configurations>
+        <Platforms>AnyCPU;ARM64;x86;ARM32</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\ResourceAssembly\ResourceAssembly.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="BinaryResources\Folder0\ContentImage.PNG">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="BinaryResources\Folder0\EmbeddedResourceImage.jpeg" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="BinaryResources\Folder0\ResourceImage.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Resources\Resource1.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resource1.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\Settings1.Designer.cs">
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+            <AutoGen>True</AutoGen>
+        <DependentUpon>Settings1.settings</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Resources\Resource1.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Resources\Settings1.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    </Project>
 
 
 ## GetManifestResourceNames

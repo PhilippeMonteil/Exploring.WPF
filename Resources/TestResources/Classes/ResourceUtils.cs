@@ -17,8 +17,20 @@ namespace TestResources.Classes
 
         public static void DebugResources(Assembly assembly)
         {
-            Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
+            Debug.WriteLine($"{nameof(ResourceUtils)}.{nameof(DebugResources)}(-) assembly={assembly}");
+            Debug.WriteLine("");
 
+            Debug.WriteLine("GetManifestResourceInfo()");
+            foreach (string resourceName in assembly.GetManifestResourceNames())
+            {
+                ManifestResourceInfo _manifestResourceInfo = assembly.GetManifestResourceInfo(resourceName);
+                Debug.WriteLine("");
+                Debug.WriteLine($"  resourceName={resourceName}");
+                Debug.WriteLine($"  _manifestResourceInfo .FileName={_manifestResourceInfo.FileName} .ResourceLocation={_manifestResourceInfo.ResourceLocation}");
+            }
+            Debug.WriteLine("");
+
+            Debug.WriteLine("GetManifestResourceStream()");
             // GetManifestResourceNames
             foreach (string resourceName in assembly.GetManifestResourceNames())
             {
@@ -34,7 +46,6 @@ namespace TestResources.Classes
                     // ResourceSet
                     ResourceSet set = new ResourceSet(stream);
 
-                    Debug.WriteLine($"    stream={stream}");
                     Debug.WriteLine($"    set={set}");
 
                     // DictionaryEntry
@@ -53,7 +64,7 @@ namespace TestResources.Classes
                 }
             }
 
-            Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
+            Debug.WriteLine($"{nameof(ResourceUtils)}.{nameof(DebugResources)}(+)");
         }
 
     }
