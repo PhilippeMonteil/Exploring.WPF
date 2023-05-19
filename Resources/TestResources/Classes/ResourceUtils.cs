@@ -19,20 +19,25 @@ namespace TestResources.Classes
         {
             Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
 
+            // GetManifestResourceNames
             foreach (string resourceName in assembly.GetManifestResourceNames())
             {
                 try
                 {
+                    Debug.WriteLine("");
                     Debug.WriteLine($"  resourceName={resourceName}");
 
+                    // GetManifestResourceStream
                     Stream? stream = assembly.GetManifestResourceStream(resourceName);
                     Debug.WriteLine($"  stream={stream}");
 
+                    // ResourceSet
                     ResourceSet set = new ResourceSet(stream);
 
                     Debug.WriteLine($"    stream={stream}");
                     Debug.WriteLine($"    set={set}");
 
+                    // DictionaryEntry
                     foreach (DictionaryEntry resource in set)
                     {
                         Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);

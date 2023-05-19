@@ -12,6 +12,13 @@
     - Resource1.en.resx
     - ...
 
+## Règles à retenir
+
+- les XAML des App, Windows sont compilés sous forme de .baml et regroupés avec
+  les 'Resources' dans un ResourceSet sérialisé dans le ManifestResourceStream
+  nommé 'TestResources.g.resources'
+
+
 ## GetManifestResourceNames
 
 ### DebugResources : GetManifestResourceNames, GetManifestResourceStream, ResourceSet
@@ -20,10 +27,12 @@
      {
         Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
 
+        // GetManifestResourceNames
         foreach (var resourceName in assembly.GetManifestResourceNames())
         {
             Debug.WriteLine($"  resourceName={resourceName}");
 
+            // GetManifestResourceStream
             ResourceSet set = new ResourceSet(assembly.GetManifestResourceStream(resourceName));
 
             foreach (DictionaryEntry resource in set)
@@ -41,6 +50,7 @@
 
 ```
 ResourceUtilsDebugResources(-)
+
   resourceName=TestResources.g.resources
   stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
     stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
@@ -49,6 +59,7 @@ ResourceUtilsDebugResources(-)
       resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
       resource.Key=[app.baml] .Value='System.IO.UnmanagedMemoryStream'
   --------------
+
   resourceName=TestResources.Resources.Resource1.resources
   stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
     stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
@@ -56,11 +67,13 @@ ResourceUtilsDebugResources(-)
       resource.Key=[String1] .Value='Value1'
       resource.Key=[String2] .Value='Value2'
   --------------
+
   resourceName=TestResources.BinaryResources.Folder0.EmbeddedResourceImage.jpeg
   stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
 Exception thrown: 'System.ArgumentException' in System.Private.CoreLib.dll
 Exception=Stream is not a valid resource file.
   --------------
+
 ResourceUtilsDebugResources(+)
 ```
 

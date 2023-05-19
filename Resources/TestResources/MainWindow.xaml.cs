@@ -18,6 +18,7 @@ using System.Resources;
 using System.Diagnostics;
 
 using TestResources.Resources;
+using System.Threading;
 
 namespace TestResources
 {
@@ -35,18 +36,19 @@ namespace TestResources
 
         private void bnTest_Click(object sender, RoutedEventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture =
-                        new System.Globalization.CultureInfo("es");
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
 
+            Debug.WriteLine($"");
+            Debug.WriteLine($"Thread.CurrentThread.CurrentUICulture={Thread.CurrentThread.CurrentUICulture}");
             Debug.WriteLine($"Properties.Resources.String1={Resource1.String1}");
             Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture =
-                        new System.Globalization.CultureInfo("fr");
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr");
 
+            Debug.WriteLine($"");
+            Debug.WriteLine($"Thread.CurrentThread.CurrentUICulture={Thread.CurrentThread.CurrentUICulture}");
             Debug.WriteLine($"Properties.Resources.String1={Resource1.String1}");
             Debug.WriteLine($"rm.String1={rm.GetString("String1")}");
-
         }
     }
 }
