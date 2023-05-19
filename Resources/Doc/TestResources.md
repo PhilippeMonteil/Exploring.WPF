@@ -1,15 +1,20 @@
 
-# Resources
+# TestResources
 
-## [Resources in .NET apps](https://docs.microsoft.com/en-us/dotnet/core/extensions/resources)
+## Ressources : Binary resources et .resx
 
-## [Retrieve resources in .NET apps](https://docs.microsoft.com/en-us/dotnet/core/extensions/retrieve-resources?source=recommendations)
+- BinaryResources/Folder0
+    - ContentImage.PNG : Build Action : Content; Copy to Output : Copy Always
+    _ ResourceImage.png : Build Action : Resource
 
-## [ResourceSet Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourceset?view=net-6.0)
+- Resources
+    - Resource1.resx
+    - Resource1.en.resx
+    - ...
 
 ## GetManifestResourceNames
 
-### Example : GetManifestResourceNames, GetManifestResourceStream, ResourceSet
+### DebugResources : GetManifestResourceNames, GetManifestResourceStream, ResourceSet
 
      public static void DebugResources(Assembly assembly)
      {
@@ -32,11 +37,12 @@
         Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
      }
 
-#### Debug
+### Debug
 
 ```
 ResourceUtilsDebugResources(-)
   resourceName=TestResources.g.resources
+  stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
     stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
     set=System.Resources.ResourceSet
       resource.Key=[binaryresources/folder0/resourceimage.png] .Value='System.IO.UnmanagedMemoryStream'
@@ -44,9 +50,16 @@ ResourceUtilsDebugResources(-)
       resource.Key=[app.baml] .Value='System.IO.UnmanagedMemoryStream'
   --------------
   resourceName=TestResources.Resources.Resource1.resources
+  stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
     stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
     set=System.Resources.ResourceSet
       resource.Key=[String1] .Value='Value1'
+      resource.Key=[String2] .Value='Value2'
+  --------------
+  resourceName=TestResources.BinaryResources.Folder0.EmbeddedResourceImage.jpeg
+  stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
+Exception thrown: 'System.ArgumentException' in System.Private.CoreLib.dll
+Exception=Stream is not a valid resource file.
   --------------
 ResourceUtilsDebugResources(+)
 ```
@@ -121,6 +134,16 @@ Debug :
     Properties.Resources.String1=FR.Value1
     rm.String1=FR.Value1
 
-## [ResourceManager Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager?view=net-6.0)
 
-## [WPF Globalization and Localization Overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/wpf-globalization-and-localization-overview?view=netframeworkdesktop-4.8)
+
+## URLs
+
+- [Resources in .NET apps](https://docs.microsoft.com/en-us/dotnet/core/extensions/resources)
+
+- [Retrieve resources in .NET apps](https://docs.microsoft.com/en-us/dotnet/core/extensions/retrieve-resources?source=recommendations)
+
+- [ResourceSet Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourceset?view=net-6.0)
+
+- [ResourceManager Class](https://docs.microsoft.com/en-us/dotnet/api/system.resources.resourcemanager?view=net-6.0)
+
+- [WPF Globalization and Localization Overview](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/wpf-globalization-and-localization-overview?view=netframeworkdesktop-4.8)

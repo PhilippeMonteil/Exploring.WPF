@@ -110,7 +110,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727E-46E0-BA85-B46EE06560F5}"
 	ProjectSection(SolutionItems) = preProject
-		Resources\Doc\Resources.md = Resources\Doc\Resources.md
+		Resources\Doc\TestResources.md = Resources\Doc\TestResources.md
 		Resources\Doc\XAMLBinaryResources.md = Resources\Doc\XAMLBinaryResources.md
 		Resources\Doc\XAMLResources.md = Resources\Doc\XAMLResources.md
 	EndProjectSection
@@ -250,7 +250,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", 
 		Doc\Essentials\WPF.Essentials.XAML.md = Doc\Essentials\WPF.Essentials.XAML.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMarkupExtension", "WPF\TestMarkupExtension\TestMarkupExtension.csproj", "{A175357F-6399-410F-8403-6F8D98982C5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMarkupExtension", "WPF\TestMarkupExtension\TestMarkupExtension.csproj", "{A175357F-6399-410F-8403-6F8D98982C5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

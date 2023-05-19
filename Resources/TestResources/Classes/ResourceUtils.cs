@@ -19,22 +19,33 @@ namespace TestResources.Classes
         {
             Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
 
-            foreach (var resourceName in assembly.GetManifestResourceNames())
+            foreach (string resourceName in assembly.GetManifestResourceNames())
             {
-                Debug.WriteLine($"  resourceName={resourceName}");
-
-                Stream? stream = assembly.GetManifestResourceStream(resourceName);
-                ResourceSet set = new ResourceSet(stream);
-
-                Debug.WriteLine($"    stream={stream}");
-                Debug.WriteLine($"    set={set}");
-
-                foreach (DictionaryEntry resource in set)
+                try
                 {
-                    Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
-                }
+                    Debug.WriteLine($"  resourceName={resourceName}");
 
-                Debug.WriteLine("  --------------");
+                    Stream? stream = assembly.GetManifestResourceStream(resourceName);
+                    Debug.WriteLine($"  stream={stream}");
+
+                    ResourceSet set = new ResourceSet(stream);
+
+                    Debug.WriteLine($"    stream={stream}");
+                    Debug.WriteLine($"    set={set}");
+
+                    foreach (DictionaryEntry resource in set)
+                    {
+                        Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                    }
+                }
+                catch (Exception E)
+                {
+                    Debug.WriteLine($"Exception={E.Message}");
+                }
+                finally
+                {
+                    Debug.WriteLine("  --------------");
+                }
             }
 
             Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
