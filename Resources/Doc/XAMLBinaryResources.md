@@ -9,7 +9,40 @@
 
 - Site of Origin Files: Standalone data files that have no association with an executable WPF assembly.
 
-## Resource Files
+### exemple : TestXAMLBinaryResources
+
+#### .csproj :
+
+    <ItemGroup>
+        <ProjectReference Include="..\ResourceAssembly\ResourceAssembly.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="BinaryResources\Folder0\ContentImage.PNG">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="BinaryResources\Folder0\ResourceImage.png">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+    </ItemGroup>
+
+#### .xaml :
+
+    <StackPanel Background="DarkGray">
+        <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
+        <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
+        <Image Source="pack://siteOfOrigin:,,,/Folder0/Image0.jpg" Height="100" Margin="8"/>
+        <Image Source="/ResourceAssembly;component/Folder0/Image1.jpg" Height="100" Margin="8"/>
+    </StackPanel>
+
+### accès à une ressource à l'exécution
+
+    imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
+
+## .xaml Resource File
 
     //
     <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -33,17 +66,6 @@
 
     //
     <Frame Name="pageFrame" Source="PageResourceFile.xaml" />
-
-### Example :
-
-    <!--Build Action = Resource-->
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder0/Image0.jpg"></Image>
-    <!--Build Action = Content + Copy to Output = true-->
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder1/Image0.jpg"></Image>
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="c:/TEMP/Image0.jpg"></Image>
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"></Image>
-
-    imTest.Source = new BitmapImage(new Uri("pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"));
 
 ## [WPF Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
