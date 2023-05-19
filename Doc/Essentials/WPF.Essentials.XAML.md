@@ -16,17 +16,31 @@ https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-in-wpf?view=n
         xmlns:local="clr-namespace:TestBinding0"
         xmlns:lib="clr-namespace:ItemsControlLib;assembly=ItemsControlLib"
 
+### mapping namespace XML / namespace .Net: XmlnsDefinitionAttribute
+
+    [assembly: XmlnsDefinitionAttribute("http://my.schemas.com/ResourceAssembly", "ResourceAssembly")]
+
+  https://learn.microsoft.com/en-us/dotnet/api/system.windows.markup.xmlnsdefinitionattribute?view=windowsdesktop-7.0
+
+  Specifies a mapping on a per-assembly basis between a XAML namespace and a CLR namespace, 
+  which is then used for type resolution by a XAML object writer or XAML schema context.
+
+  Apply one or more XmlnsDefinitionAttribute attributes to assemblies in order to identify the types 
+  within the assembly for XAML usage.
+
+  public XmlnsDefinitionAttribute (string xmlNamespace, string clrNamespace);
+
+  [assembly: XmlnsDefinition(
+    xmlNamespace: "http://syncfusion.com/xforms",
+    clrNamespace: "Syncfusion.SfNumericTextBox.XForms")]
+
+
 ### The x: prefix
 
 https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view=netframeworkdesktop-4.8#the-x-prefix
 
 - x:Key: Sets a unique key for each resource in a ResourceDictionary (
 - x:Class: Specifies the CLR namespace and class name for the class that provides code-behind for a XAML page.
-
-
-### mapping namespace XML / namespace .Net: XmlnsDefinitionAttribute
-
-    [assembly: XmlnsDefinitionAttribute("http://my.schemas.com/ResourceAssembly", "ResourceAssembly")]
 
 ## Property elements
 
@@ -41,6 +55,13 @@ https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view
     <Button>
         <Button.Content>Click!</Button.Content>
     </Button>
+
+#### ContentProperty attribute
+
+ex :
+
+    [System.Windows.Markup.ContentProperty("Children")]
+    public abstract class TimelineGroup : System.Windows.Media.Animation.Timeline, System.Windows.Markup.IAddChild
 
 ## Type Converters
 
@@ -199,6 +220,16 @@ Example
     FileStream fs=null;
     Window window = (Window)XamlReader.Load(fs);
     Button ok=(Button)window.FindName("okButton");
+
+## Root window
+
+ex :
+
+    public class RootWindow : Window // non définie en XAML
+    {
+    }
+
+    <local:RootWindow x:Class="WpfApp1.MainWindow" x:ClassModifier="public" ...
 
 ## Code generation
 
