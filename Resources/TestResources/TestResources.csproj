@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="BinaryResources\Folder0\ContentImage.PNG" />
+    <None Remove="BinaryResources\Folder0\ContentImageBis.PNG" />
     <None Remove="BinaryResources\Folder0\EmbeddedResourceImage.jpeg" />
     <None Remove="BinaryResources\Folder0\IMG_0069.jpeg" />
     <None Remove="BinaryResources\Folder0\ResourceImage.png" />
@@ -20,6 +21,7 @@
     <Content Include="BinaryResources\Folder0\ContentImage.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="BinaryResources\Folder0\ContentImageBis.PNG" />
   </ItemGroup>
 
   <ItemGroup>

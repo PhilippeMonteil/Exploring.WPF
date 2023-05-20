@@ -11,18 +11,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Folder0\Content0.jpg" />
+    <None Remove="Folder0\Content1.jpg" />
     <None Remove="Folder0\Image0.jpg" />
     <None Remove="Folder0\Image1.jpg" />
+    <None Remove="Folder0\Resource0.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Folder0\Image0.jpg">
+    <Content Include="Folder0\Content0.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Folder0\Content1.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Folder0\Image1.jpg" />
+    <Resource Include="Folder0\Resource0.jpg" />
   </ItemGroup>
 
 </Project>

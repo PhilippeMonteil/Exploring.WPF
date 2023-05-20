@@ -14,7 +14,11 @@
       généré dans le répertoire \obj\Debug\net6.0-windows:
 
         - TestResources_Content.g.cs
-        [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("binaryresources/folder0/contentimage.png")]
+
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("binaryresources/folder0/contentimage.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("binaryresources/folder0/contentimagebis.png")]
+
+      le chemin relatif indiqué par l'attribut,  "BinaryResources\Folder0" 
 
 ## Ressources : Binary resources et .resx
 
@@ -96,28 +100,57 @@
 
 ### DebugResources : GetManifestResourceNames, GetManifestResourceStream, ResourceSet
 
-     public static void DebugResources(Assembly assembly)
-     {
-        Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
-
-        // GetManifestResourceNames
-        foreach (var resourceName in assembly.GetManifestResourceNames())
+        public static void DebugResources(Assembly assembly)
         {
-            Debug.WriteLine($"  resourceName={resourceName}");
+            Debug.WriteLine($"{nameof(ResourceUtils)}.{nameof(DebugResources)}(-) assembly={assembly}");
+            Debug.WriteLine("");
 
-            // GetManifestResourceStream
-            ResourceSet set = new ResourceSet(assembly.GetManifestResourceStream(resourceName));
-
-            foreach (DictionaryEntry resource in set)
+            Debug.WriteLine("GetManifestResourceInfo()");
+            foreach (string resourceName in assembly.GetManifestResourceNames())
             {
-                Debug.WriteLine("    resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                ManifestResourceInfo _manifestResourceInfo = assembly.GetManifestResourceInfo(resourceName);
+                Debug.WriteLine("");
+                Debug.WriteLine($"  resourceName={resourceName}");
+                Debug.WriteLine($"  _manifestResourceInfo .FileName={_manifestResourceInfo.FileName} .ResourceLocation={_manifestResourceInfo.ResourceLocation}");
+            }
+            Debug.WriteLine("");
+
+            Debug.WriteLine("GetManifestResourceStream()");
+            // GetManifestResourceNames
+            foreach (string resourceName in assembly.GetManifestResourceNames())
+            {
+                try
+                {
+                    Debug.WriteLine("");
+                    Debug.WriteLine($"  resourceName={resourceName}");
+
+                    // GetManifestResourceStream
+                    Stream? stream = assembly.GetManifestResourceStream(resourceName);
+                    Debug.WriteLine($"  stream={stream}");
+
+                    // ResourceSet
+                    ResourceSet set = new ResourceSet(stream);
+
+                    Debug.WriteLine($"    set={set}");
+
+                    // DictionaryEntry
+                    foreach (DictionaryEntry resource in set)
+                    {
+                        Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                    }
+                }
+                catch (Exception E)
+                {
+                    Debug.WriteLine($"Exception={E.Message}");
+                }
+                finally
+                {
+                    Debug.WriteLine("  --------------");
+                }
             }
 
-            Debug.WriteLine("  --------------");
+            Debug.WriteLine($"{nameof(ResourceUtils)}.{nameof(DebugResources)}(+)");
         }
-
-        Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
-     }
 
 ### Debug
 
