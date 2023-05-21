@@ -112,7 +112,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{869CBA54-727
 	ProjectSection(SolutionItems) = preProject
 		Resources\Doc\TestResources.md = Resources\Doc\TestResources.md
 		Resources\Doc\XAMLBinaryResources.md = Resources\Doc\XAMLBinaryResources.md
-		Resources\Doc\XAMLResources.md = Resources\Doc\XAMLResources.md
+		Resources\Doc\XAMLLogicalResources.md = Resources\Doc\XAMLLogicalResources.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VisualStudio", "VisualStudio", "{0428AA0E-1D7D-4F69-9FFB-AA0BCCDC5EF5}"
@@ -243,8 +243,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCustomPanel", "Panels\T
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", "{F06EEA09-4DC9-4397-96D7-5C3D3552C778}"
 	ProjectSection(SolutionItems) = preProject
-		Doc\Essentials\WPF.Essentials.Binding.md = Doc\Essentials\WPF.Essentials.Binding.md
 		Doc\Essentials\WPF.Essentials.BinaryResources.md = Doc\Essentials\WPF.Essentials.BinaryResources.md
+		Doc\Essentials\WPF.Essentials.Binding.md = Doc\Essentials\WPF.Essentials.Binding.md
 		Doc\Essentials\WPF.Essentials.LogicalResources.md = Doc\Essentials\WPF.Essentials.LogicalResources.md
 		Doc\Essentials\WPF.Essentials.Styles.md = Doc\Essentials\WPF.Essentials.Styles.md
 		Doc\Essentials\WPF.Essentials.Templates.md = Doc\Essentials\WPF.Essentials.Templates.md

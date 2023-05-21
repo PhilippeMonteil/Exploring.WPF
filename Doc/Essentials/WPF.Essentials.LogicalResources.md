@@ -1,7 +1,17 @@
 
 # Logical Resources
 
+## [Overview of XAML resources (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&redirectedfrom=MSDN&viewFallbackFrom=netdesktop-6.0)
+
 ## ResourceDictionary Class
+
+    [System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
+    [System.Windows.Markup.Ambient]
+    [System.Windows.Markup.UsableDuringInitialization(true)]
+    public class ResourceDictionary : System.Collections.IDictionary, 
+                                        System.ComponentModel.ISupportInitialize, 
+                                        System.Windows.Markup.INameScope, 
+                                        System.Windows.Markup.IUriContext
 
     public Uri Source { get; set; }
     public System.Collections.ICollection Keys { get; }
@@ -151,4 +161,60 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
     <TextBlock x:Name="tbTest6" Text="Text7" 
         FontSize="32" 
         Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/>
+````
+
+## Skinning
+
+### [WPF complete guide to Themes and Skins](https://michaelscodingspot.com/wpf-complete-guide-themes-skins/)
+
+### Compiled and Static 
+
+#### Notes
+
+- un ResourceDictionary expose à la fois:
+    -  MergedDictionaries, collection de sous ResourceDictionary
+    -  un ensemble Keys, Values, Item[]
+- si un ResourceDictionary inscrit dans MergedDictionaries est modifié,
+  assignation de sa .Source par exemple, son ResourceDictionary l'est aussi
+
+#### classe SkinResourceDictionary
+
+SkinResourceDictionary expose deux Uris : RedSource et BlueSource et les redirige vers
+base.Source (UpdateSource)
+
+````
+    public class SkinResourceDictionary : ResourceDictionary
+    {
+        private Uri _redSource;
+        private Uri _blueSource;
+
+        public Uri RedSource
+        {
+            get { return _redSource; }
+            set
+            {
+                _redSource = value;
+                UpdateSource();
+            }
+        }
+        public Uri BlueSource
+        {
+            get { return _blueSource; }
+            set
+            {
+                _blueSource = value;
+                UpdateSource();
+            }
+        }
+
+        private void UpdateSource()
+        {
+            var val = App.Skin == Skin.Red ? RedSource : BlueSource;
+            if (val != null && base.Source != val)
+            {
+                base.Source = val;
+            }
+        }
+
+    }
 ````
