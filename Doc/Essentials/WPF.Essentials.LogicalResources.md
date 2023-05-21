@@ -59,11 +59,18 @@ remarque :
 
  ## Static vs Dynamic
 
-- Dynamic
-     - on request ...
-     - seulement pour les Dependency Properties
-     - accepte les forward references
-     - 
+### [StaticResource Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/staticresource-markup-extension?view=netframeworkdesktop-4.8)
+
+Provides a value for any XAML property attribute by looking up a reference to an already defined resource. 
+Lookup behavior for that resource is analogous to load-time lookup, 
+which will look for resources that were previously loaded from the markup of the current XAML page 
+as well as other application sources, 
+and will generate that resource value as the property value in the run-time objects.
+
+### [DynamicResource Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dynamicresource-markup-extension?view=netframeworkdesktop-4.8)
+
+Provides a value for any XAML property attribute by deferring that value to be a reference to a defined resource. 
+Lookup behavior for that resource is analogous to run-time lookup.
 
 ## Resource Dictionaries
 
