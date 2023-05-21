@@ -31,7 +31,8 @@
     }
 '
 
-#### Exemple
+#### Exemple : chargement d'un bloc d'UI défini dans une ressource binaire .xaml
+
 
     //
     <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -49,7 +50,7 @@
     Page page = (Page)reader.LoadAsync(info.Stream);
     this.pageFrame.Content = page;
 
-    //
+    // Navigate to xaml page
     Uri pageUri = new Uri("/PageResourceFile.xaml", UriKind.Relative);
     this.pageFrame.Source = pageUri;
 
