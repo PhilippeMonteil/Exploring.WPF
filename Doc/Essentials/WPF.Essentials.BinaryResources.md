@@ -1,5 +1,5 @@
 
-# Binary Resources
+# [Binary Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
 ## Application data file types
 
@@ -18,7 +18,20 @@
     <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="c:/TEMP/Image0.jpg"></Image>
     <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"></Image>
 
-### Example
+### [Application.GetResourceStream](https://learn.microsoft.com/en-us/dotnet/api/system.windows.application.getresourcestream?view=windowsdesktop-7.0)
+
+'
+    public static System.Windows.Resources.StreamResourceInfo GetResourceStream (Uri uriResource);
+
+    public class StreamResourceInfo
+    {
+        // The Multipurpose Internet Mail Extensions (MIME) content type.
+        public string ContentType { get; }
+        public System.IO.Stream Stream { get; }
+    }
+'
+
+#### Exemple
 
     //
     <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  

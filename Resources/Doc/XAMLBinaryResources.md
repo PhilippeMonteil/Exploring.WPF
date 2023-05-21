@@ -31,12 +31,12 @@
 
 #### .xaml :
 
-    <StackPanel Background="DarkGray">
-        <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
-        <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
-        <Image Source="pack://siteOfOrigin:,,,/Folder0/Image0.jpg" Height="100" Margin="8"/>
-        <Image Source="/ResourceAssembly;component/Folder0/Image1.jpg" Height="100" Margin="8"/>
-    </StackPanel>
+    <!--Build Action = Resource-->
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder0/Image0.jpg"></Image>
+    <!--Build Action = Content + Copy to Output = true-->
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder1/Image0.jpg"></Image>
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="c:/TEMP/Image0.jpg"></Image>
+    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"></Image>
 
 ### accès à une ressource à l'exécution
 
@@ -66,6 +66,61 @@
 
     //
     <Frame Name="pageFrame" Source="PageResourceFile.xaml" />
+
+### Example : Assembly.GetManifestResourceNames, GetManifestResourceStream
+
+        public static void DebugResources(Assembly assembly)
+        {
+            Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(-)");
+
+            foreach (var resourceName in assembly.GetManifestResourceNames())
+            {
+                Debug.WriteLine($"  resourceName={resourceName}");
+
+                Stream? stream = assembly.GetManifestResourceStream(resourceName);
+                ResourceSet set = new ResourceSet(stream);
+
+                Debug.WriteLine($"    stream={stream}");
+                Debug.WriteLine($"    set={set}");
+
+                foreach (DictionaryEntry resource in set)
+                {
+                    Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                }
+
+                Debug.WriteLine("  --------------");
+            }
+
+            Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
+        }
+
+ output :
+
+    ResourceUtilsDebugResources(-)
+
+    resourceName=TestResources.g.resources
+    stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
+
+    set=System.Resources.ResourceSet
+      resource.Key=[binaryresources/folder0/resourceimage.png] .Value='System.IO.UnmanagedMemoryStream'
+      resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
+      resource.Key=[app.baml] .Value='System.IO.UnmanagedMemoryStream'
+    --------------
+
+    resourceName=TestResources.Resources.Resource1.resources
+      stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
+      set=System.Resources.ResourceSet
+        resource.Key=[String1] .Value='Value1'
+        resource.Key=[String2] .Value='Value2'
+    --------------
+
+    ResourceUtilsDebugResources(+)
+
+- un ManifestResourceStream **TestResources.g.resources** a été généré 
+- il contient un **ResourceSet**
+- chaque **Resource** de ce ResourceSet précise:
+    - une **.Key** : nom de la Resource 
+    - une **.Value** : UnmanagedMemoryStream contenant la ressource
 
 ## [WPF Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
