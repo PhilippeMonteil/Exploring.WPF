@@ -145,6 +145,10 @@ both for the XAML scenario and also potentially for code calls in .NET code.
 
         }
 
+        puis : DependencyObject.SetCurrentValue
+
+        public void SetCurrentValue (System.Windows.DependencyProperty dp, object value);
+
     }
 
 - ConstructorArgumentAttribute

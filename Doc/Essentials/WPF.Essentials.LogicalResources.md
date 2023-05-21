@@ -83,7 +83,7 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
 ### Resources non partagées : x:Shared="False"
 
-## Manipulation de Ressources par programme
+## Manipulation de Ressources par programme : [FrameworkElement.FindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0)
 
     window.Resources.Add("Key0", new SolidColorBrush("Red"));
     // static
@@ -92,6 +92,8 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
     button.Background = (Brush)windo.Resources("Red");
     // dynamic
     button.SetResourceReference(Button.BackgroundProperty, "Red");
+
+## DynamicResource vs StaticResource
 
 ## Ressources dans une autre Assembly : ComponentResourceKey
 
