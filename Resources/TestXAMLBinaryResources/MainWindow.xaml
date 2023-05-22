@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestXAMLBinaryResources"
         mc:Ignorable="d"
-        Title="MainWindow" Height="Auto" Width="Auto">
+        Title="MainWindow" Height="Auto" Width="Auto"
+        Loaded="Window_Loaded">
     <StackPanel Background="DarkGray">
         <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
         <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
+
+        <!-- / ResourceAssembly, Content, Always Copy -->
         <Image Source="pack://siteOfOrigin:,,,/Folder0/Content0.jpg" Height="100" Margin="8"/>
+        
+        <!-- KO -->
         <Image Source="/ResourceAssembly;component/Folder0/Content0.jpg" Height="100" Margin="8"/>
         <Image Source="/ResourceAssembly;component/Folder0/Content1.jpg" Height="100" Margin="8"/>
+        
         <Image Source="/ResourceAssembly;component/Folder0/Resource0.jpg" Height="100" Margin="8"/>
     </StackPanel>
 </Window>

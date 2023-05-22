@@ -9,14 +9,31 @@
 
 - Site of Origin Files: Standalone data files that have no association with an executable WPF assembly.
 
-### Example
+### Example (TestXAMLBinaryResources)
 
-    <!--Build Action = Resource-->
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder0/Image0.jpg"></Image>
-    <!--Build Action = Content + Copy to Output = true-->
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="Resources/Folder1/Image0.jpg"></Image>
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="c:/TEMP/Image0.jpg"></Image>
-    <Image Width="200" Height="100" Margin="4" Stretch="UniformToFill" Source="pack://application:,,,/ResourceAssembly;Component/Folder0/Image0.jpg"></Image>
+    <StackPanel Background="DarkGray">
+        <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
+        <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
+        <Image Source="pack://siteOfOrigin:,,,/Folder0/Content0.jpg" Height="100" Margin="8"/>
+        
+        <!-- KO -->
+        <Image Source="/ResourceAssembly;component/Folder0/Content0.jpg" Height="100" Margin="8"/>
+        <Image Source="/ResourceAssembly;component/Folder0/Content1.jpg" Height="100" Margin="8"/>
+        
+        <Image Source="/ResourceAssembly;component/Folder0/Resource0.jpg" Height="100" Margin="8"/>
+    </StackPanel>
+
+- 'Resource' dans la même assembly
+        <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
+
+- 'Content' dans la même assembly (attribut)
+        <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
+
+- fichier externe, apporté en tant que 'Content','always copy', par une assembly externe
+        <Image Source="pack://siteOfOrigin:,,,/Folder0/Content0.jpg" Height="100" Margin="8"/>
+
+- 'Resource' dans une assembly référencée
+        <Image Source="/ResourceAssembly;component/Folder0/Resource0.jpg" Height="100" Margin="8"/>
 
 ### [Application.GetResourceStream](https://learn.microsoft.com/en-us/dotnet/api/system.windows.application.getresourcestream?view=windowsdesktop-7.0)
 
@@ -31,8 +48,9 @@
     }
 '
 
-#### Exemple : chargement d'un bloc d'UI défini dans une ressource binaire .xaml
+#### Exemples
 
+##### chargement d'un bloc d'UI défini dans une ressource binaire .xaml 'Resource'
 
     //
     <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ... >  
@@ -57,7 +75,39 @@
     //
     <Frame Name="pageFrame" Source="PageResourceFile.xaml" />
 
-### Example : Assembly.GetManifestResourceNames, GetManifestResourceStream
+##### chargement de ressources 'Resource'
+
+        static void Test(string Path, UriKind uriKind)
+        {
+            try
+            {
+                log($"{nameof(Test)}(-) '{Path}' uriKind={uriKind}");
+                Uri uri = new Uri(Path, uriKind);
+                StreamResourceInfo info = Application.GetResourceStream(uri);
+                log($"info .ContentType='{info?.ContentType}' .Stream{info?.Stream}");
+            }
+            catch (Exception E)
+            {
+                log($"{nameof(Test)} EXCEPTION={E.Message}");
+            }
+            finally
+            {
+                log($"{nameof(Test)}(+)");
+            }
+        }
+    
+    // OK
+    Test("/BinaryResources/Folder0/ResourceImage.PNG", UriKind.Relative);
+    Test("pack://application:,,,/BinaryResources/Folder0/ResourceImage.PNG", UriKind.Absolute);
+
+    // Not OK
+    Test("/BinaryResources/Folder0/ContentImage.PNG", UriKind.Relative);
+    Test("pack://siteOfOrigin:,,,/Folder0/Content0.jpg", UriKind.Absolute);
+    Test("pack://application:,,,/Folder0/Content0.jpg", UriKind.Absolute);
+
+### Assembly.GetManifestResourceNames, GetManifestResourceStream
+
+#### exemple
 
         public static void DebugResources(Assembly assembly)
         {
