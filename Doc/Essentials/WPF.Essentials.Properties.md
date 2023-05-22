@@ -1,5 +1,5 @@
 
-# Dependency Properties
+# [Properties](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/properties-wpf?view=netframeworkdesktop-4.8)
 
 ## [Dependency properties overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-properties-overview?view=netframeworkdesktop-4.8)
 
