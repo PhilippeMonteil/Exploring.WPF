@@ -3,7 +3,7 @@
 
 ## [Overview of XAML resources (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&redirectedfrom=MSDN&viewFallbackFrom=netdesktop-6.0)
 
-## ResourceDictionary Class
+## System.Windows.ResourceDictionary Class
 
     [System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
     [System.Windows.Markup.Ambient]
@@ -36,7 +36,7 @@ remarque :
     </Page.Resources>
 '
 
-## FrameworkElement .Resources Propertyn .FindResource method
+## System.Windows.FrameworkElement : .Resources Property, .FindResource method
 
     public System.Windows.ResourceDictionary Resources { get; set; }
     public object FindResource (object resourceKey);
@@ -49,7 +49,7 @@ remarque :
 
     <Button Background="{StaticResource PurpleBrushKey}" />
 
-## lookup
+## lookup : StaticResource
 
  La XAML Extension StaticResource parcourt de façon ascendante les ResourceDictionary
  à la recherche de la ressource de Key donnée. 
@@ -64,8 +64,8 @@ remarque :
 Provides a value for any XAML property attribute by looking up a reference to an already defined resource. 
 Lookup behavior for that resource is analogous to load-time lookup, 
 which will look for resources that were previously loaded from the markup of the current XAML page 
-as well as other application sources, 
-and will generate that resource value as the property value in the run-time objects.
+as well as other application sources, and will generate that resource value as the property value 
+in the run-time objects.
 
 ### [DynamicResource Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dynamicresource-markup-extension?view=netframeworkdesktop-4.8)
 
@@ -90,7 +90,13 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
 ### Resources non partagées : x:Shared="False"
 
-## Manipulation de Ressources par programme : [FrameworkElement.FindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0)
+## Manipulation de Ressources par programme : FrameworkElement.FindResource, .TryFindResource, .SetResourceReference
+
+  [FrameworkElement.FindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0)
+
+  [FrameworkElement.TryFindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.tryfindresource?view=windowsdesktop-7.0)
+
+  [FrameworkElement.SetResourceReference](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.setresourcereference?view=windowsdesktop-7.0)
 
     window.Resources.Add("Key0", new SolidColorBrush("Red"));
     // static
