@@ -92,11 +92,26 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
 ## Manipulation de Ressources par programme : FrameworkElement.FindResource, .TryFindResource, .SetResourceReference
 
-  [FrameworkElement.FindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0)
+### [FrameworkElement.FindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0)
 
-  [FrameworkElement.TryFindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.tryfindresource?view=windowsdesktop-7.0)
+    public object FindResource (object resourceKey);
 
-  [FrameworkElement.SetResourceReference](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.setresourcereference?view=windowsdesktop-7.0)
+### [FrameworkElement.TryFindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.tryfindresource?view=windowsdesktop-7.0)
+
+    public object TryFindResource (object resourceKey);
+
+### [FrameworkElement.SetResourceReference](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.setresourcereference?view=windowsdesktop-7.0)
+
+    public void SetResourceReference (System.Windows.DependencyProperty dp, object name);
+
+- A resource reference is similar to the use of a DynamicResource Markup Extension in markup. 
+- The resource reference creates an internal expression that supplies the value of the specified property
+  on a run-time deferred basis. 
+- The expression will be re-evaluated whenever the resource dictionary indicates a changed value 
+  through internal events, or whenever the current element is reparented 
+  (a parent change would change the dictionary lookup path).
+
+### exemples :
 
     window.Resources.Add("Key0", new SolidColorBrush("Red"));
     // static
