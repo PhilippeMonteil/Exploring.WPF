@@ -15,12 +15,12 @@
         <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
         <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
         <Image Source="pack://siteOfOrigin:,,,/Folder0/Content0.jpg" Height="100" Margin="8"/>
+        <Image Source="/ResourceAssembly;component/Folder0/Resource0.jpg" Height="100" Margin="8"/>
         
-        <!-- KO -->
+        <!-- KO : Content / assembly référencé -->
         <Image Source="/ResourceAssembly;component/Folder0/Content0.jpg" Height="100" Margin="8"/>
         <Image Source="/ResourceAssembly;component/Folder0/Content1.jpg" Height="100" Margin="8"/>
         
-        <Image Source="/ResourceAssembly;component/Folder0/Resource0.jpg" Height="100" Margin="8"/>
     </StackPanel>
 
 - 'Resource' dans la même assembly
