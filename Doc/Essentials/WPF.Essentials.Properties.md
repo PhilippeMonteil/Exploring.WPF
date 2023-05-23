@@ -3,6 +3,19 @@
 
 ## [Dependency Object](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject?view=windowsdesktop-7.0)
 
+### En résumé
+
+	public void SetValue (System.Windows.DependencyProperty dp, object value);
+	public void SetValue (System.Windows.DependencyPropertyKey key, object value);
+	public void SetCurrentValue (System.Windows.DependencyProperty dp, object value);
+	public object GetValue (System.Windows.DependencyProperty dp);
+	public object ReadLocalValue (System.Windows.DependencyProperty dp);
+	public void ClearValue (System.Windows.DependencyProperty dp);
+	public void ClearValue (System.Windows.DependencyPropertyKey key);
+	public void InvalidateProperty (System.Windows.DependencyProperty dp);
+	protected virtual void OnPropertyChanged (System.Windows.DependencyPropertyChangedEventArgs e);
+	public System.Windows.LocalValueEnumerator GetLocalValueEnumerator ();
+
 ### Inheritance : Object / DispatcherObject / DependencyObject
 
 ### [SetValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.setvalue?view=windowsdesktop-7.0)
@@ -50,6 +63,10 @@
 	public void ClearValue (System.Windows.DependencyProperty dp);
 	public void ClearValue (System.Windows.DependencyPropertyKey key);
 
+- Clearing the property value by calling ClearValue does not necessarily give a dependency property the 
+  default value that is specified in the dependency property metadata. 
+- Clearing the property only specifically clears whatever local value may have been applied.
+
 ### [InvalidateProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.invalidateproperty?view=windowsdesktop-7.0)
 
 	public void InvalidateProperty (System.Windows.DependencyProperty dp);
@@ -62,7 +79,7 @@
 
 ### [GetLocalValueEnumerator](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.getlocalvalueenumerator?view=windowsdesktop-7.0)
 
-### 
+	public System.Windows.LocalValueEnumerator GetLocalValueEnumerator ();
 
 ## [Dependency properties overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-properties-overview?view=netframeworkdesktop-4.8)
 
