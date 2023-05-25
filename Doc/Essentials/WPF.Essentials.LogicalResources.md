@@ -166,7 +166,7 @@ These names are defined by the system theme files, which include the following.
 
 ### Première méthode
 
-#### dans l'assembly de ressources
+#### dans l'assembly de ressources, ex : WPFResourceAssembly
 
 - créer un Folder Themes et un ResourceDictionary generic.xaml
 - créer une classe 'DummyClass', y inscrire l'attribut
@@ -182,7 +182,7 @@ These names are defined by the system theme files, which include the following.
         // app, or any theme specific resource dictionaries)
     )]
 
-- dans le ResourceDictionary:
+- dans le ResourceDictionary : Themes/Generic.xaml :
 
 ````
     <SolidColorBrush 
