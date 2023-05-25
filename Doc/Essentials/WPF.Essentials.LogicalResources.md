@@ -123,6 +123,27 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
 ## DynamicResource vs StaticResource
 
+## Chargement et injection de ressources à l'exécution
+
+### [Application.LoadComponent](https://learn.microsoft.com/fr-fr/dotnet/api/system.windows.application.loadcomponent?view=windowsdesktop-7.0)
+
+    public static object LoadComponent (Uri resourceLocator);
+
+### Exemple
+
+'''''
+
+// chargement d'un ResourceDictionary à l'exécution
+System.Uri resourceLocater = new System.Uri("/CustomControlLibrary2;component/Dictionary1.xaml",
+                                            System.UriKind.Relative);
+_sharedDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);
+
+...
+
+// injection de ce ResourceDictionary dans les Ressources d'un framework element
+this.Resources.MergedDictionaries.Add(SharedDictionaryManager.SharedDictionary);
+'''''
+
 ## Ressources dans une autre Assembly : ComponentResourceKey
 
 ### [enum ResourceDictionaryLocation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0)
