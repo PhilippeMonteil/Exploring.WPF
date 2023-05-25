@@ -150,6 +150,67 @@ _sharedDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocate
 this.Resources.MergedDictionaries.Add(SharedDictionaryManager.SharedDictionary);
 '''''
 
+## Ressources dans une autre Assembly : ComponentResourceKey
+
+En résumé :
+
+- le paramètre resourceKey de FrameworkElement.FindResource
+ 
+    public object FrameworkElement.FindResource (object resourceKey);
+
+  peut ne pas être une string mais une instance d'une classe dérivant de ResourceKey
+
+- ResourceKey est une classe abstraite
+    - dérivant de MarkupExtension 
+    - dont dérive ComponentResourceKey
+    - exposant la propriété abstraite Assembly
+
+        public abstract System.Reflection.Assembly Assembly { get; }
+
+        Gets an assembly object that indicates which assembly's dictionary to look in for 
+        the value associated with this key.
+
+- ComponentResourceKey dérive de ResourceKey
+ 
+    - constructeur :  
+
+        public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+
+        resourceId :
+            A unique identifier to differentiate this ComponentResourceKey from 
+            others associated with the typeInTargetAssembly type.
+
+    - surcharge :
+
+        public abstract System.Reflection.Assembly Assembly { get; }
+
+        retourne l'assembly du paramètre typeInTargetAssembly au constructeur ?
+
+- les ressources fournies par une assembly doivent être inscrites dans un ResourceDictionary
+  dans le .xaml Themes/Generic.xaml et indexées par des keys de type ComponentResourceKey
+
+        <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPFResourceAssembly">
+
+            <SolidColorBrush 
+                x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+                Color="DarkRed"/>
+
+- elles peuvent alors être référencées ainsi :
+
+        <Window x:Class="TestXAMLResources.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:TestXAMLResources"
+            xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+            <TextBlock x:Name="tbTest4" Text="Text4" 
+                   FontSize="32" 
+                   Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/>
+
 ## [ResourceKey Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcekey?view=windowsdesktop-8.0)
 
 ### Class
@@ -189,6 +250,10 @@ Instances of this class are typically used as a key in a dictionary.
         public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
 
     }
+
+Le Type passé en paramètre du constructeur est retourné par le get overridant
+
+    public abstract System.Reflection.Assembly Assembly { get; }
 
 ## Ressources dans une autre Assembly : ComponentResourceKey
 
@@ -298,6 +363,16 @@ These names are defined by the system theme files, which include the following.
         FontSize="32" 
         Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/>
 ````
+
+## System.Window.SystemColors, SystemFonts, SystemParameters Classes
+
+Ces classes exposent des keys telles :
+
+    public static System.Windows.ResourceKey BorderKey { get; }
+
+qui peuvent être utilisées ainsi :
+
+<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
 
 ## Skinning
 
