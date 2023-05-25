@@ -125,6 +125,45 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
 ## Ressources dans une autre Assembly : ComponentResourceKey
 
+### [enum ResourceDictionaryLocation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0)
+
+    None	            0	No theme dictionaries exist.
+    SourceAssembly	    1	Theme dictionaries exist in the assembly that defines the types being themed.
+    ExternalAssembly	2	Theme dictionaries exist in assemblies external to the one defining the types
+                            being themed. They are named based on the original assembly with the 
+                            theme name appended to it; for example, PresentationFramework.Luna.dll. 
+                            These dictionaries share the same version and key as the original assembly.
+
+### [attribut ThemeInfo](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themeinfoattribute?view=windowsdesktop-7.0)
+
+    public ThemeInfoAttribute (System.Windows.ResourceDictionaryLocation themeDictionaryLocation, 
+                                System.Windows.ResourceDictionaryLocation genericDictionaryLocation);
+
+    themeDictionaryLocation     : The location of theme-specific resources.
+    genericDictionaryLocation   : The location of generic, not theme-specific, resources.
+
+When the themeDictionaryLocation is SourceAssembly, you can include files such as Luna.NormalColor.xaml.
+These names are defined by the system theme files, which include the following.
+
+    Classic - "Classic" Windows 9x/2000 look on Windows XP.
+    Luna.NormalColor - Default blue theme on Windows XP.
+    ...
+
+### AssemblyInfo.cs généré pour une application WPF : attribut ThemeInfo
+
+    using System.Windows;
+
+    [assembly: ThemeInfo(
+        // where theme specific resource dictionaries are located
+        // (used if a resource is not found in the page,
+        // or application resource dictionaries)
+        themeDictionaryLocation : ResourceDictionaryLocation.None,    
+
+        // where the generic resource dictionary is located
+        // (used if a resource is not found in the page,
+        // app, or any theme specific resource dictionaries
+        genericDictionaryLocation : ResourceDictionaryLocation.SourceAssembly)]
+
 ### Première méthode
 
 #### dans l'assembly de ressources

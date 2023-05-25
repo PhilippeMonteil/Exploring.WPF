@@ -77,6 +77,8 @@
 
 ##### chargement de ressources 'Resource'
 
+    public static System.Windows.Resources.StreamResourceInfo GetResourceStream (Uri uriResource);
+
         static void Test(string Path, UriKind uriKind)
         {
             try
