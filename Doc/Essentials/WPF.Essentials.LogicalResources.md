@@ -96,9 +96,11 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
     public object FindResource (object resourceKey);
 
-Resource keys are not necessarily strings. For instance, styles for controls at the theme level 
-are deliberately keyed to the Type of the control, and application or page styles for 
-controls typically use this same key convention. 
+**Resource keys are not necessarily strings, cf ResourceKey class.** 
+
+For instance, styles for controls at the theme level are deliberately keyed to the 
+Type of the control, and application or page styles for controls typically use 
+this same key convention. 
 
 ### [FrameworkElement.TryFindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.tryfindresource?view=windowsdesktop-7.0)
 
@@ -171,6 +173,13 @@ Resource keys are either strings or instances of a type.
 
 Gets an assembly object that indicates which assembly's dictionary to look in for the 
 value associated with this key.
+
+### ResourceKey.ProvideValue(IServiceProvider) Method
+
+    public override object ProvideValue (IServiceProvider serviceProvider);
+
+Returns this ResourceKey. 
+Instances of this class are typically used as a key in a dictionary.
 
 ## [ComponentResourceKey Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.componentresourcekey?view=windowsdesktop-8.0)
 
