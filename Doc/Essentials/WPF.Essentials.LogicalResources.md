@@ -96,6 +96,10 @@ Le fichier file1.xaml doit alors être de racine ResourceDictionary
 
     public object FindResource (object resourceKey);
 
+Resource keys are not necessarily strings. For instance, styles for controls at the theme level 
+are deliberately keyed to the Type of the control, and application or page styles for 
+controls typically use this same key convention. 
+
 ### [FrameworkElement.TryFindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.tryfindresource?view=windowsdesktop-7.0)
 
     public object TryFindResource (object resourceKey);
@@ -143,6 +147,39 @@ _sharedDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocate
 // injection de ce ResourceDictionary dans les Ressources d'un framework element
 this.Resources.MergedDictionaries.Add(SharedDictionaryManager.SharedDictionary);
 '''''
+
+## [ResourceKey Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcekey?view=windowsdesktop-8.0)
+
+### Class
+
+    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.ResourceKey))]
+    public abstract class ResourceKey : System.Windows.Markup.MarkupExtension
+
+Inheritance : Object / MarkupExtension / ResourceKey
+
+Derived :
+    System.Windows.ComponentResourceKey
+    System.Windows.TemplateKey
+
+Attributes : MarkupExtensionReturnTypeAttribute
+
+Resource keys are either strings or instances of a type.
+
+### ResourceKey.Assembly Property
+
+    public abstract System.Reflection.Assembly Assembly { get; }
+
+Gets an assembly object that indicates which assembly's dictionary to look in for the 
+value associated with this key.
+
+## [ComponentResourceKey Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.componentresourcekey?view=windowsdesktop-8.0)
+
+    [System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.ComponentResourceKeyConverter))]
+    public class ComponentResourceKey : System.Windows.ResourceKey
+    {
+        public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+
+    }
 
 ## Ressources dans une autre Assembly : ComponentResourceKey
 
