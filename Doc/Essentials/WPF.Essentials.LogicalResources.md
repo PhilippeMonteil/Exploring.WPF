@@ -390,15 +390,8 @@ These names are defined by the system theme files, which include the following.
         Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/>
 ````
 
-## System.Window.SystemColors, SystemFonts, SystemParameters Classes
+## Themes
 
-Ces classes exposent des ResourceKeys telles :
-
-    public static System.Windows.ResourceKey BorderKey { get; }
-
-qui peuvent être utilisées ainsi :
-
-<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
 
 ## Skinning
 
@@ -456,6 +449,26 @@ base.Source (UpdateSource)
     }
 ````
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
 
 - override the theme styles for any element.
@@ -495,6 +508,16 @@ valeur qui eut être 'overridée' par un contrôle dérivé.
 
 ### [FrameworkElement.OverridesDefaultStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle?view=windowsdesktop-8.0)
 
+
+## System.Window.SystemColors, SystemFonts, SystemParameters Classes
+
+Ces classes exposent des ResourceKeys telles :
+
+    public static System.Windows.ResourceKey BorderKey { get; }
+
+qui peuvent être utilisées ainsi :
+
+<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
 
 ### création d'un CustomControl
 
