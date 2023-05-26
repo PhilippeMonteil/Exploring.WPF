@@ -1,7 +1,12 @@
 
 # Styles
 
-## Key, TargetType 
+## Style assigné directement
+
+- la classe FramewokElement expose plusieurs propriétés de type System.Windows.Style : Style, FocusVisualStyle
+- ces propriétés peuvent faire l'objet d'assignations directes par la description XAML d'une instance de FramewokElement 
+
+## Style dans un ResourceDictionary : Key, TargetType 
 
 - un Style devrait préciser son TargetType, de façon à vérifier ses Setters, ... 
 - un Style inscrit dans un ResourceDictionary doit avoir une x:Key,
@@ -31,6 +36,16 @@
         </Setter>
     </Style>
 
+- la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource se fait comme 
+  celle de toute autre ressource
+  - si la Key n'est pas de type ComponentResourceKey :
+      - parcours ascendant de l'arbre visuel à partir du FrameworkElement citant la ressource,
+      - examen de Application.Resources
+      - examen du ResourceDictionary du thème courant
+      - examen du ResourceDictionary par défaut (Themes/generic.xaml) de l'assembly dont est issu le FrameworkElement
+  - si la Key est de type ComponentResourceKey : par examen direct du Themes/generic.xaml de l'assembly
+    citée par la ComponentResourceKey
+      
 ## explicit, implicit, default style 
 
 ### explicit style
