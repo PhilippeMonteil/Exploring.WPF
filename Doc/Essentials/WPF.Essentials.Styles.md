@@ -124,29 +124,29 @@ exemple :
         </Setter> 
     </Style>
 
-
-
-
-
-
-
-
-
 ## FrameworkElement : propriétés liées aux Styles
 
 ### [Style](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.style?view=windowsdesktop-7.0)
 
+Style est une propriété assignable comme les autres, même si son assignation se traduit par celle des propriétés
+faisant l'objet de ses Setters.
+
 ### [FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.focusvisualstyle?view=windowsdesktop-7.0)
 
-### [DefaultStyleKey ](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-7.0)
+### [DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-7.0)
+
+La valeur assignée à une instance de FrameworkElement est le plus souvent celle par défaut, précisée
+par le constructeur statique du type du FrameworkElement.
 
 ### [OverridesDefaultStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle?view=windowsdesktop-7.0)
 
+- true if this element does not use theme style properties; all style-originating properties come from 
+  local application styles, and theme style properties do not apply. 
+- false if application styles apply first, and then theme styles apply for properties that were 
+  not specifically set in application styles. 
+- The default is false.
 
-
-## Notion de ResourceKey
-
-### propriété exposée par un CustomControl
+## ResourceKey exposée statiquement par un CustomControl
 
 - utilisée par son template
 - peut être assignée à un ressources dans un ResourceDictionary pour 'surcharger' la ressource
