@@ -335,6 +335,19 @@ These names are defined by the system theme files, which include the following.
         Color="DarkRed"/>
 ````
 
+- annoter l'assembly, pour indiquer qu'il contient un Themes/generic.xaml ...
+
+    [assembly: ThemeInfo(
+        // where theme specific resource dictionaries are located
+        // (used if a resource is not found in the page,
+        // or application resource dictionaries)
+        themeDictionaryLocation : ResourceDictionaryLocation.None,    
+
+        // where the generic resource dictionary is located
+        // (used if a resource is not found in the page,
+        // app, or any theme specific resource dictionaries
+        genericDictionaryLocation : ResourceDictionaryLocation.SourceAssembly)]
+
 #### dans l'application cliente
 
 - référencer l'assembly
@@ -379,7 +392,7 @@ These names are defined by the system theme files, which include the following.
 
 ## System.Window.SystemColors, SystemFonts, SystemParameters Classes
 
-Ces classes exposent des keys telles :
+Ces classes exposent des ResourceKeys telles :
 
     public static System.Windows.ResourceKey BorderKey { get; }
 
