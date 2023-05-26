@@ -163,3 +163,11 @@
 - chaque **Resource** de ce ResourceSet précise:
     - une **.Key** : nom de la Resource 
     - une **.Value** : UnmanagedMemoryStream contenant la ressource
+
+### [System.AppDomain.ResourceResolve event](https://learn.microsoft.com/en-us/dotnet/api/system.appdomain.resourceresolve?view=net-7.0)
+
+Occurs when the resolution of a resource fails because the resource is not a valid linked or 
+embedded resource in the assembly.
+
+The ResolveEventHandler for this event can attempt to locate the assembly containing the resource 
+and return it.

@@ -449,6 +449,8 @@ base.Source (UpdateSource)
 
     }
 
+### [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
+
 ## Attaching theme styles to existing elements : subclassing and overriding metadata of the FrameworkElement.DefaultStyleKey property
 
 ### [FrameworkElement.DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-8.0)
