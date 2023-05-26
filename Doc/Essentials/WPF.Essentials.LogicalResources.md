@@ -434,13 +434,10 @@ base.Source (UpdateSource)
 
 ## [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
 
-    <object property="{ThemeDictionary assemblyUri}" ... />  
+- override the theme styles for any element.
+- reference any assembly containing a set of theme dictionaries.
 
-    <object>  
-        <object.property>  
-            <ThemeDictionary AssemblyName="assemblyUri"/>  
-        <object.property>  
-    <object>
+    <ResourceDictionary Source="{ThemeDictionary assemblyUri}" />  
 
 ### [ThemeDictionaryExtension Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0)
 
@@ -451,4 +448,63 @@ base.Source (UpdateSource)
         public ThemeDictionaryExtension (string assemblyName);
 
     }
+
+## Attaching theme styles to existing elements : subclassing and overriding metadata of the FrameworkElement.DefaultStyleKey property
+
+### [FrameworkElement.DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-8.0)
+
+    protected internal object DefaultStyleKey { get; set; }
+
+The style key. To work correctly as part of theme style lookup, this value is expected to be 
+the Type of the control being styled.
+
+La valeur de cette propriété est souvent celle enregistrée par défaut auprès de la DP DefaultStyleKeyProperty,
+valeur qui eut être 'overridée' par un contrôle dérivé.
+
+### [FrameworkElement.OverridesDefaultStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle?view=windowsdesktop-8.0)
+
+
+### création d'un CustomControl
+
+### code généré
+
+    public class MyCustomButton : Control 
+    { 
+
+        static MyCustomButton() 
+        { 
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(MyCustomButton), 
+                                    new FrameworkPro pertyMetadata(typeof(MyCustomButton))); 
+        }
+
+     }
+
+### AssemblyInfo.cs :
+
+    // themeDictionaryLocation     : The location of theme-specific resources.
+    // genericDictionaryLocation   : The location of generic, not theme-specific, resources.
+    [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly )]
+
+### Themes/generic.xaml généré
+
+exemple :
+
+    <Style TargetType=”{x:Type local:MyCustomButton}“> 
+        <Setter Property=“Foreground” Value=“White”/> 
+        <Setter Property=“Background” Value=“Black”/> 
+        <Setter Property=“Padding” Value=“2”/> 
+        <Setter Property=“Template”> 
+            <Setter.Value> 
+                <ControlTemplate TargetType=”{x:Type local:MyButton}“> 
+                    <Border Background=”{TemplateBinding Background}“ 
+                            BorderBrush=”{TemplateBinding BorderBrush}“ 
+                            BorderThickness=”{TemplateBinding BorderThickness}“ 
+                            Padding=”{TemplateBinding Padding}“ > 
+                            <ContentPresenter /> 
+                    </Border> 
+                </ControlTemplate> 
+            </Setter.Value> 
+        </Setter> 
+    </Style>
+
 
