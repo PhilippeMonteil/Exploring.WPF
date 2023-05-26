@@ -152,7 +152,7 @@ _sharedDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocate
 this.Resources.MergedDictionaries.Add(SharedDictionaryManager.SharedDictionary);
 '''''
 
-## Ressources dans une autre Assembly : ComponentResourceKey
+## Ressources dans une autre Assembly : ComponentResourceKey, Themes/generic.xaml, ThemeInfo assembly attribute
 
 En résumé :
 
@@ -198,6 +198,17 @@ En résumé :
             <SolidColorBrush 
                 x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
                 Color="DarkRed"/>
+
+- cet assembly doit être annoté d'un attribut ThemeInfo précisant qu'un generic.xaml s'y trouve ...
+
+    [assembly: ThemeInfo(
+                            ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
+                                                             //(used if a resource is not found in the page, 
+                                                             // or application resource dictionaries)
+                            ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
+                                                              //(used if a resource is not found in the page, 
+                                                              // app, or any theme specific resource dictionaries)
+    )]
 
 - elles peuvent alors être référencées ainsi :
 
@@ -437,7 +448,15 @@ base.Source (UpdateSource)
 - override the theme styles for any element.
 - reference any assembly containing a set of theme dictionaries.
 
-    <ResourceDictionary Source="{ThemeDictionary assemblyUri}" />  
+    <Application>
+        <Application.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="{ThemeDictionary assemblyUri}" />  
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Application.Resources>
+    </Application>
 
 ### [ThemeDictionaryExtension Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0)
 
@@ -448,8 +467,6 @@ base.Source (UpdateSource)
         public ThemeDictionaryExtension (string assemblyName);
 
     }
-
-### [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
 
 ## Attaching theme styles to existing elements : subclassing and overriding metadata of the FrameworkElement.DefaultStyleKey property
 
