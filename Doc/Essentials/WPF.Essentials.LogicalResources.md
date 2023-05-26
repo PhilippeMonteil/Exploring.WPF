@@ -135,6 +135,8 @@ this same key convention.
 
     public static object LoadComponent (Uri resourceLocator);
 
+Returns an instance of the root element specified by the XAML file loaded.
+
 ### Exemple
 
 '''''
@@ -257,7 +259,7 @@ Le Type passé en paramètre du constructeur est retourné par le get overridant
 
 ## Ressources dans une autre Assembly : ComponentResourceKey
 
-### [enum ResourceDictionaryLocation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0)
+### [enum System.Windows.ResourceDictionaryLocation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0)
 
     None	            0	No theme dictionaries exist.
     SourceAssembly	    1	Theme dictionaries exist in the assembly that defines the types being themed.
@@ -268,8 +270,8 @@ Le Type passé en paramètre du constructeur est retourné par le get overridant
 
 ### [attribut ThemeInfo](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themeinfoattribute?view=windowsdesktop-7.0)
 
-    public ThemeInfoAttribute (System.Windows.ResourceDictionaryLocation themeDictionaryLocation, 
-                                System.Windows.ResourceDictionaryLocation genericDictionaryLocation);
+    public ThemeInfoAttribute (ResourceDictionaryLocation themeDictionaryLocation, 
+                               ResourceDictionaryLocation genericDictionaryLocation);
 
     themeDictionaryLocation     : The location of theme-specific resources.
     genericDictionaryLocation   : The location of generic, not theme-specific, resources.
@@ -429,3 +431,24 @@ base.Source (UpdateSource)
 
     }
 ````
+
+## [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
+
+    <object property="{ThemeDictionary assemblyUri}" ... />  
+
+    <object>  
+        <object.property>  
+            <ThemeDictionary AssemblyName="assemblyUri"/>  
+        <object.property>  
+    <object>
+
+### [ThemeDictionaryExtension Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0)
+
+    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Uri))]
+    public class ThemeDictionaryExtension : System.Windows.Markup.MarkupExtension
+    {
+
+        public ThemeDictionaryExtension (string assemblyName);
+
+    }
+
