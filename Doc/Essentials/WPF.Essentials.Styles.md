@@ -55,6 +55,8 @@
   - stocké dans Themes/generic.xaml
   - de TargetType, et donc Key, son propre type
 
+### default ResourceDictionary : Themes/generic.xaml
+
 ### création d'un CustomControl : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
 
 ### code généré
@@ -70,7 +72,7 @@
 
      }
 
-### AssemblyInfo.cs :
+### AssemblyInfo.cs généré : ThemeInfo : ResourceDictionary Locations / Themes, Generic
 
     // themeDictionaryLocation     : The location of theme-specific resources.
     // genericDictionaryLocation   : The location of generic, not theme-specific, resources.
