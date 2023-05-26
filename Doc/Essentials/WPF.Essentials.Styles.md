@@ -41,8 +41,10 @@
   - si la Key n'est pas de type ComponentResourceKey :
       - parcours ascendant de l'arbre visuel à partir du FrameworkElement citant la ressource,
       - examen de Application.Resources
-      - examen du ResourceDictionary du thème courant
-      - examen du ResourceDictionary par défaut (Themes/generic.xaml) de l'assembly dont est issu le FrameworkElement
+      - examen du ResourceDictionary du thème courant pointé par l'assembly dont est issu le FrameworkElement
+        (attribut ThemeInfo)
+      - examen du ResourceDictionary par défaut (Themes/generic.xaml) de l'assembly dont est issu le FrameworkElement,
+        si son attribut ThemeInfo l'indique
   - si la Key est de type ComponentResourceKey : par examen direct du Themes/generic.xaml de l'assembly
     citée par la ComponentResourceKey
       
