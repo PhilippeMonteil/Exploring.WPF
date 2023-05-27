@@ -167,10 +167,15 @@ faisant l'objet de ses Setters.
       </Setter>
     </Style>
 
-- [Styling for Focus in Controls, and FocusVisualStyle](https://github.com/dotnet/docs-desktop/blob/main/dotnet-desktop-guide/framework/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle.md)
+- [Styling for Focus in Controls, and FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle?view=netframeworkdesktop-4.8)
 
-    - Setting xref:System.Windows.FrameworkElement.FocusVisualStyle%2A on individual control styles that are not 
-      part of a theme is not the intended usage of focus visual styles. 
+    - the "focus visual style" creates a separate visual tree for an adorner that draws on top of the control, 
+      rather than changing the visual tree of the control or other UI element by replacing it. 
+    - Focus visual styles act only when the focus action was initiated by the keyboard. 
+    - If you want UI changes for any type of focus, whether via mouse, keyboard, or programmatically, 
+      then you should not use focus visual styles, and should instead use setters and triggers 
+      in styles or templates that are working from the value of general focus properties such as 
+      IsFocused or IsKeyboardFocusWithin.
 
 ### [DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-7.0)
 
@@ -190,6 +195,8 @@ faisant l'objet de ses Setters.
 - The default is false.
 
 ## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
+
+Contains properties that you can use to query system settings.
 
 ## ResourceKey exposée statiquement par un CustomControl
 
