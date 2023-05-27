@@ -309,7 +309,7 @@ faisant l'objet de ses Setters.
 
     }
 
-- créer les .xaml des ResourDictionary de chaque Theme en y définissant les Styles 'targetants' 
+- créer, modifier les .xaml des ResourceDictionary de chaque Theme en y définissant les Styles 'targetants' 
   chaque type de Contrôle visé.
 
 
