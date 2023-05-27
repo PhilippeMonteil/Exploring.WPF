@@ -283,3 +283,35 @@ faisant l'objet de ses Setters.
 - This extension is intended to fill only one specific property value: a value for 
   ResourceDictionary.Source.
 
+- exemple :
+
+    <ResourceDictionary Source="{ThemeDictionary MyApplication}" />
+
+    Si l'assembly MyApplication contient des ResourceDictionary par Theme, dont les ressources
+    de type Style sont indexées par TargetType, tous les controles de ces TargetTypes dans la 'scope'
+    de ResourceDictionary verront leur Style adpaté automatiquement au Theme courant.
+
+## Assigner un Style par Thème à des Contrôles existants : autre méthode
+
+- pour chaque type de Contrôle existant dont on veut modifier les Styles par Thème :
+
+    - créer une classe dérivée dont le seul propos est de modifier la valeur par défaut
+      de la DependencyProperty DefaultStyleKeyProperty par un appel à OverrideMetadata.
+      
+    public class MyProgressBar : ProgressBar
+    {
+
+        static MyProgressBar()
+        {
+            DefaultStyleKeyProperty.OverrideMetaData(typeof(DefaultStyleKeyProperty),
+                                                new FrameworkPropertyMetadata(typeof(MyProgressBar)));
+        }
+
+    }
+
+- créer les .xaml des ResourDictionary de chaque Theme en y définissant les Styles 'targetants' 
+  chaque type de Contrôle visé.
+
+
+
+    
