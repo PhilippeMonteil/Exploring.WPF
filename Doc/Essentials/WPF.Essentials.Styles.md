@@ -215,10 +215,22 @@ faisant l'objet de ses Setters.
 
 ## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
 
-- Contains properties that you can use to query system settings.
-- certaines de ces propriétés sont des ResourceKeys qui peuvent être mentionnées dans un Template puis
-  dans un ResourceDictionary, par exemple ...
+- Certaines static properties vont par paire
 
+    exemple :
+
+    public static System.Windows.ResourceKey BorderKey { get; }
+
+        Gets the ResourceKey for the Border property.
+
+    public static int Border { get; }
+
+    exemple: 
+
+      Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}"
+
+- Certaines Keys peuvent être assignées à des ressources dans un ResourceDictionary
+ 
   exemple :
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
@@ -234,65 +246,11 @@ faisant l'objet de ses Setters.
       </Setter>
     </Style>
 
-## Triggers
+- StaticPropertyChanged event
 
-### Property Triggers
+    public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;
 
-     <Style.Triggers>
+## [SystemColors](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemcolors?view=windowsdesktop-7.0)
 
-       <Trigger Property="IsMouseOver" Value="True">
-         <Setter Property="" Value="" />
-       </Trigger>
+## [SystemFonts](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemfonts?view=windowsdesktop-7.0)
 
-       <Trigger Property="Validation.HasErrors" Value="True">
-         <Setter Property="Background" Value="Red" />
-         <Setter Property="Tooltip" 
-            Value="{Binding 
-                    RelativeSource={RelativeSource Self}},
-                    Path={Vaidation.Errors[0].ErrorContent} " />
-       </Trigger>
-
-     </Style.Triggers>
-
-### Data Triggers
-
-     <Style.Triggers>
-
-       <DataTrigger 
-            Binding="{Binding RelativeSource={RelativeSource Self}, Path=Text}" 
-            Value="True">
-         <Setter Property="IsEnabled" Value="False" />
-       </DataTrigger>
-
-     </Style.Triggers>
-
-### MultiTrigger
-
-     <Style.Triggers>
-
-       <MultiTrigger>
-
-         <MultiTrigger.Conditions>
-           <Condition Property="IsMouseOver" Value="True"/>
-           <Condition Property="IsFocused" Value="True"/>
-         </MultiTrigger.Conditions>
-
-         <Setter Property="IsEnabled" Value="False" />
-
-       </MultiTrigger>
-
-     </Style.Triggers>
-
-### Event Trigger
-
-     <Button.Triggers>
-       <EventTrigger RoutedEvent="Button.Click">
-         <EventTrigger.Actions>
-           <BeginStoryBoard>
-             <StoryBoard>
-
-             </StoryBoard>
-           </BeginStoryBoard>
-         </EventTrigger.Actions>
-       </EventTrigger>
-     </Button.Triggers>
