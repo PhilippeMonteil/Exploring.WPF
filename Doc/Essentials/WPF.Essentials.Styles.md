@@ -215,6 +215,12 @@ faisant l'objet de ses Setters.
 
 ## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
 
+- les Keys exposées comme membre statiques des classes SystemParameters, SystemColors, SystemFonts
+  sont de type :
+
+    [TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
+    internal class SystemResourceKey : ResourceKey
+
 - Certaines static properties vont par paire
 
     exemple :
@@ -228,6 +234,17 @@ faisant l'objet de ses Setters.
     exemple: 
 
       Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}"
+
+    exemple :
+
+        ResourceKey _resourceKey = SystemColors.ActiveBorderColorKey;
+        Debug.WriteLine($"_resourceKey={_resourceKey.GetType().Name}");
+
+        var _v = this.TryFindResource(_resourceKey);
+        Debug.WriteLine($".TryFindResource -> _v={_v} .GetType={_v.GetType().Name}");
+
+        var _vv = SystemColors.ActiveBorderColor;
+        Debug.WriteLine($"_vv={_vv} .GetType={_vv.GetType().Name}");
 
 - Certaines Keys peuvent être assignées à des ressources dans un ResourceDictionary
  
