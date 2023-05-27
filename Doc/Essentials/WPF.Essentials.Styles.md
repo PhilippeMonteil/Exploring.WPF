@@ -271,3 +271,15 @@ faisant l'objet de ses Setters.
 
 ## [SystemFonts](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemfonts?view=windowsdesktop-7.0)
 
+## [ThemeDictionaryExtension](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0)
+
+    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Uri))]
+    public class ThemeDictionaryExtension : System.Windows.Markup.MarkupExtension
+
+### [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
+
+    <object property="{ThemeDictionary assemblyUri}" ... />  
+
+- This extension is intended to fill only one specific property value: a value for 
+  ResourceDictionary.Source.
+
