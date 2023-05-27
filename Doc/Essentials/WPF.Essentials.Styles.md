@@ -1,10 +1,56 @@
 
 # Styles
+      
+## explicit, implicit, default style 
 
-## Style assigné directement
+### explicit style
 
-- la classe FramewokElement expose plusieurs propriétés de type System.Windows.Style : Style, FocusVisualStyle
-- ces propriétés peuvent faire l'objet d'assignations directes par la description XAML d'une instance de FramewokElement 
+      <Button Style="{StaticResource {x:Type Button}" />
+
+      <Button>
+        <Button.Style>
+            <Style>
+            ...
+            </Style>
+        </Button.Style>
+      </Button>
+
+### implicit style
+
+- Style inscrit dans un ResourceDictionary avec un TargetType mais pas de x:Key
+
+      <Style TargetType={x:Type Button} >
+        <Setter Property="Control.FontSize" Value="32" />
+      </Style>
+
+### default style
+
+- Style inscrit dans un ResourceDictionary, avec un TargetType mais pas de x:Key,
+  dans le ResourceDirecty associé au Theme courant, ou dans le ResourceDirecty par défaut
+  (Themes/generic.xaml)
+
+      <Style TargetType={x:Type Button} >
+        <Setter Property="Control.FontSize" Value="32" />
+      </Style>
+
+## notion de DefaultStyleKeyProperty, Key utilisée pour trouver le Style implicite ou par défaut d'un FrameworkElement
+
+- la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource se fait comme 
+  celle de toute autre ressource (FrameworkElement.FindResource)
+
+- si la Key n'est pas de type ComponentResourceKey :
+    - parcours ascendant de l'arbre visuel à partir du FrameworkElement citant la ressource
+    - examen de Application.Resources
+    - examen du ResourceDictionary du thème courant pointé par l'assembly dont est issu le FrameworkElement,
+      si son attribut ThemeInfo l'indique
+    - examen du ResourceDictionary par défaut (Themes/generic.xaml) de l'assembly dont est issu le FrameworkElement,
+      si son attribut ThemeInfo l'indique
+
+- si la Key est de type ComponentResourceKey : par examen direct du Themes/generic.xaml de l'assembly
+  citée par la ComponentResourceKey
+
+- la key utilisée pour la résolution d'un Style implicite ou par défaut 
+  est indiquée par la propriété .DefaultStyleKey du FrameworkElement faisant l'objet de la recherche.
 
 ## Style dans un ResourceDictionary : Key, TargetType 
 
@@ -36,60 +82,25 @@
         </Setter>
     </Style>
 
-- la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource se fait comme 
-  celle de toute autre ressource
-  - si la Key n'est pas de type ComponentResourceKey :
-      - parcours ascendant de l'arbre visuel à partir du FrameworkElement citant la ressource,
-      - examen de Application.Resources
-      - examen du ResourceDictionary du thème courant pointé par l'assembly dont est issu le FrameworkElement
-        (attribut ThemeInfo)
-      - examen du ResourceDictionary par défaut (Themes/generic.xaml) de l'assembly dont est issu le FrameworkElement,
-        si son attribut ThemeInfo l'indique
-  - si la Key est de type ComponentResourceKey : par examen direct du Themes/generic.xaml de l'assembly
-    citée par la ComponentResourceKey
-      
-## explicit, implicit, default style 
+## CustomControl : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
 
-### explicit style
+La création d'un CustomControl MyCustomControl par VisualStudio s'accompage de la génération 
+de plusieurs éléments.
 
-      <Button Style="{StaticResource {x:Type Button}" />
+### MyCustomControl.cs : DefaultStyleKeyProperty.OverrideMetadata
 
-### implicit style
-
-- Style inscrit dans un ResourceDictionary avec un TargetType mais pas de x:Key
-
-      <Style TargetType={x:Type Button} >
-        <Setter Property="Control.FontSize" Value="32" />
-      </Style>
-
-### default style
-
-- Style par défaut d'un CustomControl
-- précise son Template par défaut
-- un CustomControl doit 'OverrideMetadata' la DependencyProperty DefaultStyleKeyProperty
-  en précisant son propre type comme valeur par défaut (FrameworkPropertyMetadata)
-  pour étabir une connexion avec son style par defaut :
-  - stocké dans Themes/generic.xaml
-  - de TargetType, et donc Key, son propre type
-
-### default ResourceDictionary : Themes/generic.xaml
-
-### création d'un CustomControl : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
-
-### code généré
-
-    public class MyCustomButton : Control 
+    public class MyCustomControl : Control 
     { 
 
-        static MyCustomButton() 
+        static MyCustomControl() 
         { 
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(MyCustomButton), 
-                                    new FrameworkPropertyMetadata(typeof(MyCustomButton))); 
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(MyCustomControl), 
+                                    new FrameworkPropertyMetadata(typeof(MyCustomControl))); 
         }
 
      }
 
-### AssemblyInfo.cs généré : ThemeInfo : ResourceDictionary Locations / Themes, Generic
+### AssemblyInfo.cs : ThemeInfo : ResourceDictionary Locations / Themes, Generic
 
     // themeDictionaryLocation     : The location of theme-specific resources.
     // genericDictionaryLocation   : The location of generic, not theme-specific, resources.
@@ -99,30 +110,36 @@ L'assembly ainsi annotée indique qu'elle contient un Themes/generic.xaml
 
     genericDictionaryLocation = ResourceDictionaryLocation.SourceAssembly
 
-### Themes/generic.xaml généré
+### Themes/generic.xaml
 
-Generic.xaml is a special file that contains your default styles. 
-You can’t rename it or move it to a different directory.
+- Generic.xaml contains your default styles in a ResourceDictionary 
+- You can’t rename it or move it to a different directory.
 
 exemple :
 
-    <Style TargetType=”{x:Type local:MyCustomButton}“> 
-        <Setter Property=“Foreground” Value=“White”/> 
-        <Setter Property=“Background” Value=“Black”/> 
-        <Setter Property=“Padding” Value=“2”/> 
-        <Setter Property=“Template”> 
-            <Setter.Value> 
-                <ControlTemplate TargetType=”{x:Type local:MyCustomButton}“> 
-                    <Border Background=”{TemplateBinding Background}“ 
-                            BorderBrush=”{TemplateBinding BorderBrush}“ 
-                            BorderThickness=”{TemplateBinding BorderThickness}“ 
-                            Padding=”{TemplateBinding Padding}“ > 
-                            <ContentPresenter /> 
-                    </Border> 
-                </ControlTemplate> 
-            </Setter.Value> 
-        </Setter> 
-    </Style>
+    <ResourceDictionary
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:CustomControlLib">
+
+        <Style TargetType=”{x:Type local:MyCustomControl}“> 
+            <Setter Property=“Foreground” Value=“White”/> 
+            <Setter Property=“Background” Value=“Black”/> 
+            <Setter Property=“Padding” Value=“2”/> 
+            <Setter Property=“Template”> 
+                <Setter.Value> 
+                    <ControlTemplate TargetType=”{x:Type local:MyCustomControl}“> 
+                        <Border Background=”{TemplateBinding Background}“ 
+                                BorderBrush=”{TemplateBinding BorderBrush}“ 
+                                BorderThickness=”{TemplateBinding BorderThickness}“ 
+                                Padding=”{TemplateBinding Padding}“ > 
+                                <ContentPresenter /> 
+                        </Border> 
+                    </ControlTemplate> 
+                </Setter.Value> 
+            </Setter> 
+        </Style>
+        ...
 
 ## FrameworkElement : propriétés liées aux Styles
 
@@ -133,10 +150,36 @@ faisant l'objet de ses Setters.
 
 ### [FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.focusvisualstyle?view=windowsdesktop-7.0)
 
+- Style appliqué à un arbre visuel temporaire, placé au dessus de celui du contrôle.
+- Ce Style doit contenir un Setter de Template définissant cet arbre visuel.
+- un Thème devrait contenir un FocusVisualStyle, Style de Key SystemParameters.FocusVisualStyleKey
+
+    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Rectangle StrokeThickness="1"
+              Stroke="Black"
+              StrokeDashArray="1 2"
+              SnapsToDevicePixels="true"/>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+- [Styling for Focus in Controls, and FocusVisualStyle](https://github.com/dotnet/docs-desktop/blob/main/dotnet-desktop-guide/framework/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle.md)
+
+    - Setting xref:System.Windows.FrameworkElement.FocusVisualStyle%2A on individual control styles that are not 
+      part of a theme is not the intended usage of focus visual styles. 
+
 ### [DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-7.0)
 
-La valeur assignée à une instance de FrameworkElement est le plus souvent celle par défaut, précisée
-par le constructeur statique du type du FrameworkElement.
+    protected internal object DefaultStyleKey { get; set; }
+
+- La valeur assignée à une instance d'un type dérivé de FrameworkElement est le plus souvent celle par défaut, 
+  précisée à l'enregistrement ou à la surcharge de la prorpiété DefaultStyleKeyProperty.
+
+- DefaultStyleKey est utilisé comme Key pour la recherche du Style par défaut d'une instance de FrameworkElement.  
 
 ### [OverridesDefaultStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle?view=windowsdesktop-7.0)
 
@@ -145,6 +188,8 @@ par le constructeur statique du type du FrameworkElement.
 - false if application styles apply first, and then theme styles apply for properties that were 
   not specifically set in application styles. 
 - The default is false.
+
+## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
 
 ## ResourceKey exposée statiquement par un CustomControl
 
