@@ -1,6 +1,49 @@
 
 # Styles
-      
+
+## FrameWorkElement.FindResource en résumé
+
+### notions mises en oeuvre : 
+
+- Static/DynamicResource
+- ResourceKey, ComponentResourceKey, SystemResourceKey
+- ThemeInfo assembly attribute
+- Themes/generic.xaml
+- ThemeDictionaryExtension
+
+### pseudo algo
+
+- la résolution d'une MarkupExtension Static/DynamicResource (ProvideValue) se fait par un appel 
+  à FrameWorkElement.FindResource sur le DependencyObject cible de l'extension 
+  (IServiceProvide.TargetValue.TargetObject) en passant la Key avec laquelle la MarkupExtension 
+  a été construite.
+
+- cette Key peut être une String, une ResourceKey (ComponentResourceKey, SystemResourceKey) ...
+
+- la résolution dépend de la nature la Key concernée
+ 
+    - String :
+
+        - parcours l'arbre visuel, recherche dans les .Resources (ResourceDictionary) de chaque 
+          FrameworkElement d'une ressource pour la Key
+
+        - inspection de Application.Resources
+
+        - dans l'assembly implémentant le FrameWorkElement object de l'appel à .FindResource :
+            - si ThemeInfo le permet : recheche dans le ResourceDictionary correspondant au Thème actif
+            - si ThemeInfo le permet : recheche dans le ResourceDictionary par défaut : Themes/generic.xaml
+
+        - si la .Source d'un des ResourceDictionary est fourni par une MarkupExtension de type ThemeDictionary
+          celle ci précise le nom d'une Assembly fournissant un jeu de ResourceDictionary correspondant 
+          chacun à un Thème. La recherche de la Key se fait dans le ResourceDictionary fourni par l'assembly
+          pour le Thème courant.
+
+        - l'inspection se termine dès qu'une ressource a été trouvée pour la Key recherchée.
+
+    - ComponentResourceKey : dans l'assembly spécifié par le ComponentResourceKey et pour l'id qu'il indique
+
+    - SystemResourceKey : propriété de SystemParameters / SystemColors / SystemFonts correspondant à la Key
+
 ## explicit, implicit, default style 
 
 ### explicit style
@@ -26,7 +69,7 @@
 ### default style
 
 - Style inscrit dans un ResourceDictionary, avec un TargetType mais pas de x:Key,
-  dans le ResourceDirecty associé au Theme courant, ou dans le ResourceDirecty par défaut
+  dans le ResourceDirecty associé au Theme courant, ou dans le ResourceDictionary par défaut
   (Themes/generic.xaml)
 
       <Style TargetType={x:Type Button} >
