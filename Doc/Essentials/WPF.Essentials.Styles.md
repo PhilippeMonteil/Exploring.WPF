@@ -1,6 +1,16 @@
 
 # Styles
 
+## En résumé
+
+### FrameWorkElement.FindResource en résumé
+### styles explicites, implicites, par défaut
+### FrameworkElement .DefaultStyleKeyProperty, .FocusVisualStyle, .OverridesDefaultStyle
+### ResourceKeys : exposées static par un CustomControl, par SystemParameters ...
+### contrôler les Styles par Themes de Contrôles externes
+    - en les dérivant et surchargeant la MetaData de DefaultStyleKeyProperty
+    - à l'aide d'une ThemeDictionaryExtension 
+
 ## FrameWorkElement.FindResource en résumé
 
 ### notions mises en oeuvre : 
