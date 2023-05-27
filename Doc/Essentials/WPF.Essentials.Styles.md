@@ -6,8 +6,9 @@
 ### notions mises en oeuvre : 
 
 - Static/DynamicResource
-- ResourceKey, ComponentResourceKey, SystemResourceKey
-- ThemeInfo assembly attribute
+- resource key : String, ResourceKey, ComponentResourceKey, SystemResourceKey
+- ThemeInfo assembly attribute : themeDictionaryLocation, genericDictionaryLocation, 
+  ResourceDictionaryLocation.None, .SourceAssembly, .ExternalAssembly
 - Themes/generic.xaml
 - ThemeDictionaryExtension
 
