@@ -194,15 +194,12 @@ faisant l'objet de ses Setters.
   not specifically set in application styles. 
 - The default is false.
 
-## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
+## ResourceKey exposées statiquement par un CustomControl
 
-Contains properties that you can use to query system settings.
-
-## ResourceKey exposée statiquement par un CustomControl
-
-- utilisée par son template
-- peut être assignée à un ressources dans un ResourceDictionary pour 'surcharger' la ressource
-  de même ResourceKey par les contrôles 'dans le scope' du ResourceDictionary
+- certains CustomControls exposent sous forme de propriétés statiques les ResourceKeys
+- ces ResourceKeys sont utilisées par leurs templates
+- Une telles ResourceKey peut être assignée à une ressource dans un ResourceDictionary 
+  pour être 'vue' par les contrôles 'dans le scope' du ResourceDictionary
 
 #### Exemple : ToolBar.ButtonStyleKey Property
 
@@ -210,9 +207,32 @@ Contains properties that you can use to query system settings.
 
     <Application>
       <Application.Resources>
-        <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}"
+        <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}">
+        ...
+        </Style>
       </Application.Resources>
     </Application>
+
+## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
+
+- Contains properties that you can use to query system settings.
+- certaines de ces propriétés sont des ResourceKeys qui peuvent être mentionnées dans un Template puis
+  dans un ResourceDictionary, par exemple ...
+
+  exemple :
+
+    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Rectangle StrokeThickness="1"
+              Stroke="Black"
+              StrokeDashArray="1 2"
+              SnapsToDevicePixels="true"/>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
 
 ## Triggers
 
