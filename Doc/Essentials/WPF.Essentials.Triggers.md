@@ -1,7 +1,10 @@
 
 # Triggers
 
-- inscrits dans la propriété .Triggers d'un Style
+- les classes FrameworkElement, Style, DataTemplate, ControlTemplate 
+
+    public System.Windows.TriggerCollection Triggers { get; }
+
 - de divers types : Trigger, MultiTrigger, DataTrigger, EventTrigger
 
 ## Property Triggers
