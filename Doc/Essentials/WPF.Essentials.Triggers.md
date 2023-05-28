@@ -5,6 +5,13 @@
 
     public System.Windows.TriggerCollection Triggers { get; }
 
+  avec cette restriction sur FrameworkElement.Triggers :
+
+    The collection of triggers established on an element only supports EventTrigger, 
+    not property triggers (Trigger). 
+    If you require property triggers, you must place these within a style or template 
+    and then assign that style or template to the element.
+
 - de divers types : Trigger, MultiTrigger, DataTrigger, EventTrigger
 
 ## Property Triggers
