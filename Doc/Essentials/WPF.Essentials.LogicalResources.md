@@ -497,8 +497,30 @@ These names are defined by the system theme files, which include the following.
         Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/>
 ````
 
-## Themes
+## Themes : nommage et localisation des ResourceDictionaries
 
+- créér un .xaml de ResourceDictionary par Theme
+- le nommer <ThemeName>.<ThemeColor>.xaml
+- l'inscrire dans le folder Themes
+- vérifier l'Attribute ThemeInfo de l'Assembly embarquant les ResourceDictionary,
+  et implémentant les Controles 'Thémés':
+
+    // themeDictionaryLocation     : The location of theme-specific resources.
+    // genericDictionaryLocation   : The location of generic, not theme-specific, resources.
+    [assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly, ResourceDictionaryLocation.SourceAssembly )]
+
+- chaque Controle 'Thémé' doit faire l'objet de Ressources dont le TargetType, Key implicite, correspond
+  à son type (cf 'création d'un CustomControl' plus bas).
+
+- il doit être possible de créer des Assemblies de ressources externes, un par Thème,
+    - le ThemeInfo de l'assembly implémentant le Contrôle 'Thémé' doit faire apparaitre :
+      themeDictionaryLocation = [ResourceDictionaryLocation.ExternalAssembly](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0#fields)
+
+    - ResourceDictionaryLocation.ExternalAssembly :
+        Theme dictionaries exist in assemblies external to the one defining the types being themed. 
+        They are named based on the original assembly with the theme name appended to it; 
+        for example, PresentationFramework.Luna.dll. 
+        These dictionaries share the same version and key as the original assembly.
 
 ## Skinning
 
