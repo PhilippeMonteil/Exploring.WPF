@@ -17,7 +17,7 @@
 - Skinning
 - Themes, default resources (Themes/generic.xaml)
 - création d'un CustomControl, aspects liés aux Ressources : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
-- chargement et injection de ressources à l'exécution
+- chargement et injection de ressources à l'exécution : simuler une mécanisme de Dll.Resources similaire à Application.Resources
     - Application.LoadComponent : Uri -> .xaml -> objet (XamlReader.Load)
     - .Resources.MergedDictionaries.Add
 
@@ -107,7 +107,6 @@
                    Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/>
 
             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
-
 
 
 ## [Overview of XAML resources (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&redirectedfrom=MSDN&viewFallbackFrom=netdesktop-6.0)

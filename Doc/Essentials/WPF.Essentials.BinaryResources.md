@@ -1,13 +1,20 @@
 
 # [Binary Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
-## Application data file types
-
-- Resource Files: Data files that are compiled into either an executable or library WPF assembly.
+## [Build Actions](https://learn.microsoft.com/en-us/visualstudio/ide/build-actions?view=vs-2022)
 
 - Content Files: Standalone data files that have an explicit association with an executable WPF assembly.
 
 - Site of Origin Files: Standalone data files that have no association with an executable WPF assembly.
+
+- Build Actions (WPF):
+
+    - ApplicationDefinition	: The file that defines your application. When you first create a project, this is App.xaml.
+    - Page                  : Compile a XAML file to a binary .baml file for faster loading at run time.
+    - Resource	            : Specifies to embed the file in an assembly manifest resource file with the extension .g.resources.
+    - DesignData	        : Used for XAML ViewModel files, to enable user controls to be viewed at design time, with dummy types and sample data.
+
+## [MSBuild reference for .NET Desktop SDK projects](https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props-desktop?source=recommendations)
 
 ### Example (TestXAMLBinaryResources)
 
