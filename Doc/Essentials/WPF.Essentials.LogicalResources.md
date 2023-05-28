@@ -1,6 +1,115 @@
 
 # Logical Resources
 
+## En résumé
+
+- System.Windows.ResourceDictionary : 
+    - dérive de IDictionary : Keys, Values
+    - propriété Uri Source : 
+        - vers un .xaml non compiled resource ou Content
+        - décrivant un ResourceDictionary, liste d'instances présentant une x:Key
+    - propriété Collection<ResourceDictionary> MergedDictionaries
+
+- System.Windows.FrameworkElement : 
+    - propriété : ResourceDictionary Resources 
+    - méthodes : FindResource TryFindResource SetResourceReference
+
+- Skinning
+- Themes, default resources (Themes/generic.xaml)
+- création d'un CustomControl, aspects liés aux Ressources : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
+- chargement et injection de ressources à l'exécution
+    - Application.LoadComponent : Uri -> .xaml -> objet (XamlReader.Load)
+    - .Resources.MergedDictionaries.Add
+
+### FrameWorkElement.FindResource en résumé
+
+#### notions mises en oeuvre : 
+
+- appelée par Static / DynamicResource
+- resource key : String, ResourceKey, ComponentResourceKey, SystemResourceKey
+- ThemeInfo assembly attribute : themeDictionaryLocation, genericDictionaryLocation, 
+  ResourceDictionaryLocation.None, .SourceAssembly, .ExternalAssembly
+- Themes/generic.xaml
+- ThemeDictionaryExtension
+- sources de SystemResourceKeys traitées par FrameworkElement.FindResource : SystemParameters, SystemColors, SystemFonts
+- certains Controles exposent les Keys référencées par leur Template ent tant que public static
+  ce qui les rend assignables à des ressources ancrées 'plus' haut dans l'arbre de recherche de ressources
+
+#### pseudo algo
+
+- la résolution d'une MarkupExtension Static/DynamicResource (ProvideValue) se fait par un appel 
+  à FrameWorkElement.FindResource sur le DependencyObject cible de l'extension 
+  (IServiceProvide.TargetValue.TargetObject) en passant la Key avec laquelle la MarkupExtension 
+  a été construite.
+
+- cette Key peut être une String, une ResourceKey (ComponentResourceKey, SystemResourceKey) ...
+
+- la résolution dépend de la nature la Key concernée
+ 
+    - String :
+
+        - parcours ascendant l'arbre visuel, recherche dans les .Resources (ResourceDictionary) de chaque 
+          FrameworkElement d'une ressource pour la Key
+
+        - inspection de Application.Resources
+
+        - dans l'assembly implémentant le FrameWorkElement object de l'appel à .FindResource :
+            - si son ThemeInfo le permet : recheche dans le ResourceDictionary correspondant au Thème actif
+            - si son ThemeInfo le permet : recheche dans le ResourceDictionary par défaut : Themes/generic.xaml
+
+        - si la .Source d'un des ResourceDictionary inspecté est fourni par une MarkupExtension de type ThemeDictionary
+          celle ci précise le nom d'une Assembly fournissant un jeu de ResourceDictionary correspondant 
+          chacun à un Thème. La recherche de la Key se fait dans le ResourceDictionary fourni par l'assembly
+          pour le Thème courant.
+
+        - l'inspection se termine dès qu'une ressource a été trouvée pour la Key recherchée.
+
+    - ComponentResourceKey : recherche dans l'assembly spécifié par le ComponentResourceKey et pour l'id qu'il indique
+
+    - SystemResourceKey : 
+        - propriété de SystemParameters / SystemColors / SystemFonts correspondant 
+        - correspond à une propriété statique de la classe exposant la Key dont la valeur est retournée par FindResource
+
+#### exemples
+
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="myresourcedictionary.xaml"/>
+            <ResourceDictionary Source="myresourcedictionary2.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+
+    <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+        <Style x:Key="Dictionary1.Style0" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="8" />
+        </Style>
+
+        <SolidColorBrush 
+            x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+            Color="DarkRed"/>
+
+            ...
+
+    <Window x:Class="TestXAMLResources.MainWindow"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:TestXAMLResources"
+            xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+            <TextBlock x:Name="tbTest4" Text="Text4" 
+                   FontSize="32" 
+                   Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/>
+
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
+
+
+
 ## [Overview of XAML resources (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&redirectedfrom=MSDN&viewFallbackFrom=netdesktop-6.0)
 
 ## System.Windows.ResourceDictionary Class
@@ -32,14 +141,17 @@ remarque :
                 <ResourceDictionary Source="myresourcedictionary.xaml"/>
                 <ResourceDictionary Source="myresourcedictionary2.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
+        </ResourceDictionary>
     </Page.Resources>
 '
 
-## System.Windows.FrameworkElement : .Resources Property, .FindResource method
+## [System.Windows.FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0) : .Resources Property, .FindResource method
 
     public System.Windows.ResourceDictionary Resources { get; set; }
     public object FindResource (object resourceKey);
+    public object TryFindResource (object resourceKey);
+    public void SetResourceReference (System.Windows.DependencyProperty dp, object name);
+    public bool ShouldSerializeResources (); //
 
 ### Example
 
@@ -49,13 +161,9 @@ remarque :
 
     <Button Background="{StaticResource PurpleBrushKey}" />
 
-## lookup : StaticResource
+## FindResource, TryFindResource
 
- La XAML Extension StaticResource parcourt de façon ascendante les ResourceDictionary
- à la recherche de la ressource de Key donnée. 
- Cette recherche se fait à travers l'arbre visuel, à partir de l'élément
- pour lequel la Key est cherchée, puis la .Resources de l'application 
- puis (cf Theming) ...
+cf résumé
 
  ## Static vs Dynamic
 
@@ -449,26 +557,6 @@ base.Source (UpdateSource)
     }
 ````
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
 
 - override the theme styles for any element.
@@ -494,20 +582,6 @@ base.Source (UpdateSource)
 
     }
 
-## Attaching theme styles to existing elements : subclassing and overriding metadata of the FrameworkElement.DefaultStyleKey property
-
-### [FrameworkElement.DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-8.0)
-
-    protected internal object DefaultStyleKey { get; set; }
-
-The style key. To work correctly as part of theme style lookup, this value is expected to be 
-the Type of the control being styled.
-
-La valeur de cette propriété est souvent celle enregistrée par défaut auprès de la DP DefaultStyleKeyProperty,
-valeur qui eut être 'overridée' par un contrôle dérivé.
-
-### [FrameworkElement.OverridesDefaultStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle?view=windowsdesktop-8.0)
-
 
 ## System.Window.SystemColors, SystemFonts, SystemParameters Classes
 
@@ -519,7 +593,7 @@ qui peuvent être utilisées ainsi :
 
 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
 
-### création d'un CustomControl
+## création d'un CustomControl : aspects liés aux Ressources:
 
 ### code généré
 
