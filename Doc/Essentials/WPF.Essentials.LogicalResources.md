@@ -46,7 +46,7 @@
 
 - la résolution dépend de la nature la Key concernée
  
-    - String :
+    - String ou Type :
 
         - parcours ascendant l'arbre visuel, recherche dans les .Resources (ResourceDictionary) de chaque 
           FrameworkElement d'une ressource pour la Key
