@@ -1,5 +1,5 @@
 
-# Logical Resources
+# Logical Resources : définition, résolution ...
 
 ## En résumé
 
@@ -582,17 +582,6 @@ base.Source (UpdateSource)
 
     }
 
-
-## System.Window.SystemColors, SystemFonts, SystemParameters Classes
-
-Ces classes exposent des ResourceKeys telles :
-
-    public static System.Windows.ResourceKey BorderKey { get; }
-
-qui peuvent être utilisées ainsi :
-
-<SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
-
 ## création d'un CustomControl : aspects liés aux Ressources:
 
 ### code généré
@@ -636,4 +625,60 @@ exemple :
         </Setter> 
     </Style>
 
+## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
 
+- les Keys exposées comme membre statiques des classes SystemParameters, SystemColors, SystemFonts
+  sont de type :
+
+    [TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
+    internal class SystemResourceKey : ResourceKey
+
+- Certaines static properties vont par paire
+
+    exemple :
+
+    public static System.Windows.ResourceKey BorderKey { get; }
+
+        Gets the ResourceKey for the Border property.
+
+    public static int Border { get; }
+
+    exemple: 
+
+      Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}"
+
+    exemple :
+
+        ResourceKey _resourceKey = SystemColors.ActiveBorderColorKey;
+        Debug.WriteLine($"_resourceKey={_resourceKey.GetType().Name}");
+
+        var _v = this.TryFindResource(_resourceKey);
+        Debug.WriteLine($".TryFindResource -> _v={_v} .GetType={_v.GetType().Name}");
+
+        var _vv = SystemColors.ActiveBorderColor;
+        Debug.WriteLine($"_vv={_vv} .GetType={_vv.GetType().Name}");
+
+- Certaines Keys peuvent être assignées à des ressources dans un ResourceDictionary
+ 
+  exemple :
+
+    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Rectangle StrokeThickness="1"
+              Stroke="Black"
+              StrokeDashArray="1 2"
+              SnapsToDevicePixels="true"/>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+- StaticPropertyChanged event
+
+    public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;
+
+## [SystemColors](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemcolors?view=windowsdesktop-7.0)
+
+## [SystemFonts](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemfonts?view=windowsdesktop-7.0)

@@ -3,11 +3,10 @@
 
 ## En résumé
 
-- FrameWorkElement.FindResource en résumé
-- styles explicites, implicites, par défaut
+- styles explicites, implicites, par Theme, par défaut
 - FrameworkElement .DefaultStyleKeyProperty, .FocusVisualStyle, .OverridesDefaultStyle
-- ResourceKeys : exposées static par un CustomControl, par SystemParameters ...
-- contrôler les Styles par Themes de Contrôles externes
+- ResourceKeys : exposées par SystemParameters, par un CustomControl,  ...
+- contrôler les Styles par Theme de Contrôles externes
     - en les dérivant et surchargeant la MetaData de DefaultStyleKeyProperty
     - à l'aide d'une ThemeDictionaryExtension 
 
@@ -27,13 +26,13 @@
 
 ### implicit style
 
-- Style inscrit dans un ResourceDictionary avec un TargetType mais pas de x:Key
+- Style inscrit dans un ResourceDictionary 'ascendant' avec un TargetType mais pas de x:Key
 
       <Style TargetType={x:Type Button} >
         <Setter Property="Control.FontSize" Value="32" />
       </Style>
 
-### default style
+### Theme, default style
 
 - Style inscrit dans un ResourceDictionary, avec un TargetType mais pas de x:Key,
   dans le ResourceDirecty associé au Theme courant, ou dans le ResourceDictionary par défaut
@@ -45,22 +44,19 @@
 
 ## notion de DefaultStyleKeyProperty, Key utilisée pour trouver le Style implicite ou par défaut d'un FrameworkElement
 
-- la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource se fait comme 
-  celle de toute autre ressource (FrameworkElement.FindResource)
+- la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource,
+  la recherche du Theme ou default Style se fait comme celle de toute autre ressource 
+  (FrameworkElement.FindResource), à partir de la valeur de la propriété DefaultStyleKey
 
-- si la Key n'est pas de type ComponentResourceKey :
-    - parcours ascendant de l'arbre visuel à partir du FrameworkElement citant la ressource
-    - examen de Application.Resources
-    - examen du ResourceDictionary du thème courant pointé par l'assembly dont est issu le FrameworkElement,
-      si son attribut ThemeInfo l'indique
-    - examen du ResourceDictionary par défaut (Themes/generic.xaml) de l'assembly dont est issu le FrameworkElement,
-      si son attribut ThemeInfo l'indique
+    protected internal object DefaultStyleKey { get; set; }
 
-- si la Key est de type ComponentResourceKey : par examen direct du Themes/generic.xaml de l'assembly
-  citée par la ComponentResourceKey
+  du DependencyObject cible de la Markup Extension.
 
-- la key utilisée pour la résolution d'un Style implicite ou par défaut 
-  est indiquée par la propriété .DefaultStyleKey du FrameworkElement faisant l'objet de la recherche.
+- cette valeur est le plus souvent la valeur par défaut précisée par la MetaData précisée lors de la création 
+  par FrameworkElement de la DependencyProperty DefaultStyleKeyProperty, à savoir son type.
+
+- une classe dérivant de FrameworkElement peut surcharger la MetaData de FrameworkElement en redéfinissant
+  cette valeur par défaut comme son type propre.
 
 ## Style dans un ResourceDictionary : Key, TargetType 
 
@@ -95,7 +91,7 @@
 ## CustomControl : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
 
 La création d'un CustomControl MyCustomControl par VisualStudio s'accompage de la génération 
-de plusieurs éléments.
+de plusieurs éléments assurant son support des Themes, Style par défaut.
 
 ### MyCustomControl.cs : DefaultStyleKeyProperty.OverrideMetadata
 
@@ -203,125 +199,3 @@ faisant l'objet de ses Setters.
 - false if application styles apply first, and then theme styles apply for properties that were 
   not specifically set in application styles. 
 - The default is false.
-
-## ResourceKey exposées statiquement par un CustomControl
-
-- certains CustomControls exposent sous forme de propriétés statiques les ResourceKeys
-- ces ResourceKeys sont utilisées par leurs templates
-- Une telles ResourceKey peut être assignée à une ressource dans un ResourceDictionary 
-  pour être 'vue' par les contrôles 'dans le scope' du ResourceDictionary
-
-#### Exemple : ToolBar.ButtonStyleKey Property
-
-    public static System.Windows.ResourceKey ButtonStyleKey { get; }
-
-    <Application>
-      <Application.Resources>
-        <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}">
-        ...
-        </Style>
-      </Application.Resources>
-    </Application>
-
-## [SystemParameters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0)
-
-- les Keys exposées comme membre statiques des classes SystemParameters, SystemColors, SystemFonts
-  sont de type :
-
-    [TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
-    internal class SystemResourceKey : ResourceKey
-
-- Certaines static properties vont par paire
-
-    exemple :
-
-    public static System.Windows.ResourceKey BorderKey { get; }
-
-        Gets the ResourceKey for the Border property.
-
-    public static int Border { get; }
-
-    exemple: 
-
-      Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}"
-
-    exemple :
-
-        ResourceKey _resourceKey = SystemColors.ActiveBorderColorKey;
-        Debug.WriteLine($"_resourceKey={_resourceKey.GetType().Name}");
-
-        var _v = this.TryFindResource(_resourceKey);
-        Debug.WriteLine($".TryFindResource -> _v={_v} .GetType={_v.GetType().Name}");
-
-        var _vv = SystemColors.ActiveBorderColor;
-        Debug.WriteLine($"_vv={_vv} .GetType={_vv.GetType().Name}");
-
-- Certaines Keys peuvent être assignées à des ressources dans un ResourceDictionary
- 
-  exemple :
-
-    <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
-      <Setter Property="Control.Template">
-        <Setter.Value>
-          <ControlTemplate>
-            <Rectangle StrokeThickness="1"
-              Stroke="Black"
-              StrokeDashArray="1 2"
-              SnapsToDevicePixels="true"/>
-          </ControlTemplate>
-        </Setter.Value>
-      </Setter>
-    </Style>
-
-- StaticPropertyChanged event
-
-    public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;
-
-## [SystemColors](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemcolors?view=windowsdesktop-7.0)
-
-## [SystemFonts](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemfonts?view=windowsdesktop-7.0)
-
-## [ThemeDictionaryExtension](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0)
-
-    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Uri))]
-    public class ThemeDictionaryExtension : System.Windows.Markup.MarkupExtension
-
-### [ThemeDictionary Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
-
-    <object property="{ThemeDictionary assemblyUri}" ... />  
-
-- This extension is intended to fill only one specific property value: a value for 
-  ResourceDictionary.Source.
-
-- exemple :
-
-    <ResourceDictionary Source="{ThemeDictionary MyApplication}" />
-
-    Si l'assembly MyApplication contient des ResourceDictionary par Theme, dont les ressources
-    de type Style sont indexées par TargetType, tous les controles de ces TargetTypes dans la 'scope'
-    de ResourceDictionary verront leur Style adpaté automatiquement au Theme courant.
-
-## Assigner un Style par Thème à des Contrôles existants : autre méthode
-
-- pour chaque type de Contrôle existant dont on veut modifier les Styles par Thème :
-
-    - créer une classe dérivée dont le seul propos est de modifier la valeur par défaut
-      de la DependencyProperty DefaultStyleKeyProperty par un appel à OverrideMetadata.
-      
-    public class MyProgressBar : ProgressBar
-    {
-
-        static MyProgressBar()
-        {
-            DefaultStyleKeyProperty.OverrideMetaData(typeof(DefaultStyleKeyProperty),
-                                                new FrameworkPropertyMetadata(typeof(MyProgressBar)));
-        }
-
-    }
-
-- créer, modifier les .xaml des ResourceDictionary de chaque Theme en y définissant les Styles 'targetants' 
-  chaque type de Contrôle visé.
-
-
-
-    
