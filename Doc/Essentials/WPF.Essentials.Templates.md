@@ -218,33 +218,34 @@ ControlTemplate.
 
 #### Exemple
 
-    [TemplatePartAttribute(Name = "PART_EditableTextBox", Type = typeof(TextBox))]
-    [TemplatePartAttribute(Name = "PART_Popup", Type = typeof(Popup))]
-    [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "MouseOver", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "Pressed", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
-    [TemplateVisualState(Name = "Unfocused", GroupName = "FocusStates")]
-    [TemplateVisualState(Name = "Focused", GroupName = "FocusStates")]
-    class ...
+```
+[TemplatePartAttribute(Name = "PART_EditableTextBox", Type = typeof(TextBox))]
+[TemplatePartAttribute(Name = "PART_Popup", Type = typeof(Popup))]
+[TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
+[TemplateVisualState(Name = "MouseOver", GroupName = "CommonStates")]
+[TemplateVisualState(Name = "Pressed", GroupName = "CommonStates")]
+[TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
+[TemplateVisualState(Name = "Unfocused", GroupName = "FocusStates")]
+[TemplateVisualState(Name = "Focused", GroupName = "FocusStates")]
+class ...
 
-    <VisualStateManager.VisualStateGroups>
-                
+<VisualStateManager.VisualStateGroups>
+
     <!-- Positive value are green, negative values are red -->
     <VisualStateGroup x:Name="ValueStates">
         <VisualState x:Name="Negative" >
             <Storyboard>
-                <ColorAnimation To="Red" Storyboard.TargetName="PART_Text"
-					        Storyboard.TargetProperty="(Foreground).(Color)"/>
+                <ColorAnimation To="Red" 
+                    Storyboard.TargetName="PART_Text"
+					Storyboard.TargetProperty="(Foreground).(Color)"/>
             </Storyboard>
         </VisualState>
  
-        <!--Return the control to its initial state by return the TextBlock's
-            Foreground to its original color.-->
+        <!--Return the control to its initial state by return the TextBlock's Foreground to its original color.-->
         <VisualState Name="Positive"/>
  
     </VisualStateGroup>
-                
+
     <VisualStateGroup x:Name="FocusStates">
  
         <!--Add a focus rectangle to highlight the entire control when it has focus.-->
@@ -252,11 +253,11 @@ ControlTemplate.
             <Storyboard>
                 <ObjectAnimationUsingKeyFrames
 					Storyboard.TargetName="PART_FocusVisual" 
-                      Storyboard.TargetProperty="Visibility" Duration="0">
+                    Storyboard.TargetProperty="Visibility" Duration="0">
                     <DiscreteObjectKeyFrame KeyTime="0">
-                      <DiscreteObjectKeyFrame.Value>
+                        <DiscreteObjectKeyFrame.Value>
                             <Visibility>Visible</Visibility>
-                      </DiscreteObjectKeyFrame.Value>
+                        </DiscreteObjectKeyFrame.Value>
                     </DiscreteObjectKeyFrame>
                 </ObjectAnimationUsingKeyFrames>
             </Storyboard>
@@ -267,8 +268,8 @@ ControlTemplate.
 
     </VisualStateGroup>
 
-    </VisualStateManager.VisualStateGroups>
-
+</VisualStateManager.VisualStateGroups>
+```
 
 ### Templates and Style
 
