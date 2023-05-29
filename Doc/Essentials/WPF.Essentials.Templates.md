@@ -210,6 +210,12 @@
 Specifies that a control can be in a certain state and that a VisualState is expected in the control's 
 ControlTemplate.
 
+#### [VisualStateManager Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.visualstatemanager?view=windowsdesktop-7.0)
+
+    public static bool GoToState (System.Windows.FrameworkElement control, string stateName, bool useTransitions);
+
+ VisualStateManager.GoToState(this, "Positive", useTransitions);
+
 #### Exemple
 
     [TemplatePartAttribute(Name = "PART_EditableTextBox", Type = typeof(TextBox))]
