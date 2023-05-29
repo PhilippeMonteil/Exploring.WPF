@@ -10,6 +10,19 @@
     - en les dérivant et surchargeant la MetaData de DefaultStyleKeyProperty
     - à l'aide d'une ThemeDictionaryExtension 
 
+## [Style Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.style?view=windowsdesktop-7.0)
+
+    [System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
+    [System.Windows.Markup.ContentProperty("Setters")]
+    [System.Windows.Markup.DictionaryKeyProperty("TargetType")]
+    public class Style : System.Windows.Threading.DispatcherObject, 
+                                System.Windows.Markup.IAddChild, 
+                                System.Windows.Markup.INameScope, 
+                                System.Windows.Markup.IQueryAmbient
+
+- attribut DictionaryKeyProperty : indique que la propriété TargetType sert de Key lors d'une inserction
+  d'une instance de Style dans un ResourceDictionary
+
 ## explicit, implicit, default style 
 
 ### explicit style
