@@ -162,7 +162,7 @@
 
     protected virtual void OnTemplateChanged (System.Windows.Controls.ControlTemplate oldTemplate, System.Windows.Controls.ControlTemplate newTemplate);
 
-## Respecting the Templated Parent properties : MarkupExtension TemplateBinding, Binding / RelativeSource = TemplatedParent
+### Respecting the Templated Parent properties : MarkupExtension TemplateBinding, Binding / RelativeSource = TemplatedParent
 
      <ControlTemplate TargetType="{x:Type Button}">
        <TextBlock Text="{TemplateBinding Content}" />
@@ -171,13 +171,18 @@
 
 - TemplateBinding ne s'applique qu'à l'intérieur d'un Template et pas aux propriétés exposées par un Freezable
 
-## Named elements in Templates
+### Named elements in Templates
 
 - utilisation interne au Template
 - pas d'application aux éléments créés dans le TemplatedParent
 - méthode FrameworkElement.GetTemplateChild
 
-## Attribut TemplatePart sur un Contrôle, Names : 'PART_', OnApplyTemplate
+### Attribut TemplatePart sur un Contrôle, Names : 'PART_', OnApplyTemplate
+
+#### [TemplatePartAttribute Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.templatepartattribute?redirectedfrom=MSDN&view=windowsdesktop-7.0)
+
+
+#### Exemples
 
 	[System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
 	[System.Windows.TemplatePart(Name="PART_ScrollContentPresenter", Type=typeof(System.Windows.Controls.ScrollContentPresenter))]
@@ -198,11 +203,68 @@
             }
         }
 
-## Visual States
+### Visual States
 
-Triggers du Template.
+#### [TemplateVisualStateAttribute Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.templatevisualstateattribute?view=netframework-4.8)
 
-## Templates and Style
+Specifies that a control can be in a certain state and that a VisualState is expected in the control's 
+ControlTemplate.
+
+#### Exemple
+
+    [TemplatePartAttribute(Name = "PART_EditableTextBox", Type = typeof(TextBox))]
+    [TemplatePartAttribute(Name = "PART_Popup", Type = typeof(Popup))]
+    [TemplateVisualState(Name = "Normal", GroupName = "CommonStates")]
+    [TemplateVisualState(Name = "MouseOver", GroupName = "CommonStates")]
+    [TemplateVisualState(Name = "Pressed", GroupName = "CommonStates")]
+    [TemplateVisualState(Name = "Disabled", GroupName = "CommonStates")]
+    [TemplateVisualState(Name = "Unfocused", GroupName = "FocusStates")]
+    [TemplateVisualState(Name = "Focused", GroupName = "FocusStates")]
+    class ...
+
+    <VisualStateManager.VisualStateGroups>
+                
+    <!-- Positive value are green, negative values are red -->
+    <VisualStateGroup x:Name="ValueStates">
+        <VisualState x:Name="Negative" >
+            <Storyboard>
+                <ColorAnimation To="Red" Storyboard.TargetName="PART_Text"
+					        Storyboard.TargetProperty="(Foreground).(Color)"/>
+            </Storyboard>
+        </VisualState>
+ 
+        <!--Return the control to its initial state by return the TextBlock's
+            Foreground to its original color.-->
+        <VisualState Name="Positive"/>
+ 
+    </VisualStateGroup>
+                
+    <VisualStateGroup x:Name="FocusStates">
+ 
+        <!--Add a focus rectangle to highlight the entire control when it has focus.-->
+        <VisualState Name="Focused">
+            <Storyboard>
+                <ObjectAnimationUsingKeyFrames
+					Storyboard.TargetName="PART_FocusVisual" 
+                      Storyboard.TargetProperty="Visibility" Duration="0">
+                    <DiscreteObjectKeyFrame KeyTime="0">
+                      <DiscreteObjectKeyFrame.Value>
+                            <Visibility>Visible</Visibility>
+                      </DiscreteObjectKeyFrame.Value>
+                    </DiscreteObjectKeyFrame>
+                </ObjectAnimationUsingKeyFrames>
+            </Storyboard>
+        </VisualState>
+ 
+        <!-- Return the control to its initial state by hiding the focus rectangle -->
+        <VisualState Name="Unfocused"/>
+
+    </VisualStateGroup>
+
+    </VisualStateManager.VisualStateGroups>
+
+
+### Templates and Style
 
 Si un style contient un ControlTemplate, une même propriété peut être affectée de divers manières:
 - par un setter dans le Style
@@ -212,4 +274,6 @@ La valeur effective de la propriété est déterminée par un ordre de précédence:
 - les Style Triggers priment sur les Template Triggers
 - les Triggers priment sur les Setters
 - ...
+
+## [DataTemplate](https://learn.microsoft.com/en-us/dotnet/api/system.windows.datatemplate?view=windowsdesktop-7.0)
 
