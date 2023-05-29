@@ -34,7 +34,8 @@
 
 - Templated Parent properties : MarkupExtension TemplateBinding, Binding / RelativeSource = TemplatedParent
 - Named elements in Templates : les retrouver grâce à : FrameworkElement.GetTemplateChild
-- Attribut TemplatePart sur un Contrôle, Names : 'PART_', OnApplyTemplate
+- Attribut TemplatePart, (Name,Type), 'PART_', OnApplyTemplate, GetTemplateChild
+- Attribut TemplateVisualState, (Name, GroupName), VisualStateManager.GoToState(this ...
 
 ## [System.Windows.FrameworkTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworktemplate?view=windowsdesktop-7.0)
 
