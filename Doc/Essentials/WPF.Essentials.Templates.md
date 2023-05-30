@@ -43,6 +43,7 @@
         - object DataTemplateKey // DictionaryKey : attribut DictionaryKeyProperty
         - object DataType { get; set; }
         - TriggerCollection Triggers
+    - usage : ContentPresenter.ContentTemplate, ItemsControl.ItemTemplate
 
 ## [System.Windows.FrameworkTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworktemplate?view=windowsdesktop-7.0)
 
@@ -315,4 +316,43 @@ The method uses the following rules:
     The templatedParent must be a non-null FrameworkElement.
 
     The DataTemplate must be applied to a ContentPresenter.
+
+### Exemples d'usage
+
+#### ContentPresenter .ContentTemplate, .ContentTemplateSelector  
+
+#### ItemsControl .ItemTemplate, .ItemTemplateSelector
+
+[System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
+[System.Windows.Markup.ContentProperty("Items")]
+[System.Windows.StyleTypedProperty(Property="ItemContainerStyle", StyleTargetType=typeof(System.Windows.FrameworkElement))]
+public class ItemsControl : System.Windows.Controls.Control, 
+        System.Windows.Controls.Primitives.IContainItemStorage, 
+        System.Windows.Markup.IAddChild
+
+[System.ComponentModel.Bindable(true)]
+public System.Windows.DataTemplate ItemTemplate { get; set; }
+
+[System.ComponentModel.Bindable(true)]
+public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
+
+Inheritance :
+
+Control
+ItemsControl
+
+Derived :
+
+System.Windows.Controls.HeaderedItemsControl
+System.Windows.Controls.Primitives.DataGridCellsPresenter
+System.Windows.Controls.Primitives.DataGridColumnHeadersPresenter
+System.Windows.Controls.Primitives.MenuBase
+System.Windows.Controls.Primitives.Selector
+System.Windows.Controls.Primitives.StatusBar
+System.Windows.Controls.Ribbon.RibbonContextualTabGroupItemsControl
+System.Windows.Controls.Ribbon.RibbonControlGroup
+System.Windows.Controls.Ribbon.RibbonGallery
+System.Windows.Controls.Ribbon.RibbonQuickAccessToolBar
+System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
+System.Windows.Controls.TreeView
 
