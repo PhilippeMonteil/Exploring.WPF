@@ -23,7 +23,7 @@
 - System.Windows.Control.ControlTemplate
     - classe dérivée de FrameworkTemplate
     - propriétés :
-        - TargetType // DictionaryKey : attribut DictionaryKeyProperty
+        - Type TargetType // DictionaryKey : attribut DictionaryKeyProperty
         - TriggerCollection Triggers
 
 - Control : propriétés et méthodes liées aux Templates
@@ -36,6 +36,13 @@
 - Named elements in Templates : les retrouver grâce à : FrameworkElement.GetTemplateChild
 - Attribut TemplatePart, (Name,Type), 'PART_', OnApplyTemplate, GetTemplateChild
 - Attribut TemplateVisualState, (Name, GroupName), VisualStateManager.GoToState(this ...
+
+- System.Windows.Control.DataTemplate
+    - classe dérivée de FrameworkTemplate
+    - propriétés :
+        - object DataTemplateKey // DictionaryKey : attribut DictionaryKeyProperty
+        - object DataType { get; set; }
+        - TriggerCollection Triggers
 
 ## [System.Windows.FrameworkTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworktemplate?view=windowsdesktop-7.0)
 
@@ -53,7 +60,7 @@
     - System.Windows.DataTemplate
     - System.Windows.Controls.ItemsPanelTemplate
 
-- propriétés :
+### Propriétés
 
     - VisualTree // Content : attribut ContentProperty
     - Template
@@ -117,17 +124,7 @@
 
 ## [System.Windows.Control.ControlTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.controltemplate?view=windowsdesktop-7.0)
 
-### Inheritance
-
-- Object
-- DispatcherObject
-- FrameworkTemplate
-- ControlTemplate
-
-- propriétés :
-
-    - TargetType // DictionaryKey : attribut DictionaryKeyProperty
-    - Triggers
+### Class
 
     [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
     [System.Windows.Markup.DictionaryKeyProperty("TargetType")]
@@ -181,7 +178,6 @@
 ### Attribut TemplatePart sur un Contrôle, Names : 'PART_', OnApplyTemplate
 
 #### [TemplatePartAttribute Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.templatepartattribute?redirectedfrom=MSDN&view=windowsdesktop-7.0)
-
 
 #### Exemples
 
@@ -284,4 +280,39 @@ La valeur effective de la propriété est déterminée par un ordre de précédence:
 - ...
 
 ## [DataTemplate](https://learn.microsoft.com/en-us/dotnet/api/system.windows.datatemplate?view=windowsdesktop-7.0)
+
+### [DataTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.datatemplate?view=windowsdesktop-7.0)
+
+[System.Windows.Markup.DictionaryKeyProperty("DataTemplateKey")]
+public class DataTemplate : System.Windows.FrameworkTemplate
+{
+    public object DataTemplateKey { get; }
+
+    [System.Windows.Markup.Ambient]
+    public object DataType { get; set; }
+
+    [System.Windows.Markup.DependsOn("VisualTree")]
+    [System.Windows.Markup.DependsOn("Template")]
+    public System.Windows.TriggerCollection Triggers { get; }
+
+    protected override void ValidateTemplatedParent (System.Windows.FrameworkElement templatedParent);
+
+}
+
+#### DataTemplateKey
+
+If you do not set the x:Key Directive on a DataTemplate that is in a ResourceDictionary, 
+the DataTemplateKey is used as the key.
+
+#### DataType
+
+Gets or sets the type for which this DataTemplate is intended.
+
+#### ValidateTemplatedParent
+
+The method uses the following rules:
+
+    The templatedParent must be a non-null FrameworkElement.
+
+    The DataTemplate must be applied to a ContentPresenter.
 
