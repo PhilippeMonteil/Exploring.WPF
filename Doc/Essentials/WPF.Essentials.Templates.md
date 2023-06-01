@@ -4,7 +4,7 @@
 ## En résumé
 
 - System.Windows.FrameworkTemplate
-    - classe abstraite dérivée de DispatcherObject
+    - classe abstraite dérivée de  Object / DispatcherObject / FrameworkTemplate
     - classe mère séparément de ControlTemplate, DataTemplate, ItemsPanelTemplate
     - propriétés
         - VisualTree [Content]
@@ -43,7 +43,12 @@
         - object DataTemplateKey // DictionaryKey : attribut DictionaryKeyProperty
         - object DataType { get; set; }
         - TriggerCollection Triggers
-    - usage : ContentPresenter.ContentTemplate, ItemsControl.ItemTemplate
+    - usages : ContentControl.ContentTemplate, ContentPresenter.ContentTemplate, ItemsControl.ItemTemplate, ...
+
+- ItemsPanelTemplate 
+
+    - classe dérivée de FrameworkTemplate
+    - usages : ItemsControl.ItemsPanel, ...
 
 ## [System.Windows.FrameworkTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworktemplate?view=windowsdesktop-7.0)
 
@@ -355,4 +360,15 @@ System.Windows.Controls.Ribbon.RibbonGallery
 System.Windows.Controls.Ribbon.RibbonQuickAccessToolBar
 System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
 System.Windows.Controls.TreeView
+
+## ItemsPanelTemplate 
+
+### [ItemsPanelTemplate class] (https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.itemspaneltemplate?view=windowsdesktop-7.0)
+
+### Inheritance
+
+- FrameworkTemplate
+- ItemsPanelTemplate
+
+### Usage : ItemsControl.ItemsPanel
 

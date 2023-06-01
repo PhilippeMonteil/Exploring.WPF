@@ -12,7 +12,6 @@
                                 System.Windows.Markup.IAddChild
     {
 
-
 ### Inheritance
 
     Object
@@ -47,26 +46,35 @@
 ### Properties
 
     [System.ComponentModel.Bindable(true)]
-    public System.Collections.IEnumerable __ItemsSource__ { get; set; }
+    public System.Collections.IEnumerable ItemsSource { get; set; }
 
     [System.ComponentModel.Bindable(true)]
-    public System.Windows.DataTemplate __ItemTemplate__ { get; set; }
+    public System.Windows.Controls.ItemCollection Items { get; }
 
     [System.ComponentModel.Bindable(true)]
-    public System.Windows.Controls.DataTemplateSelector __ItemTemplateSelector__ { get; set; }
+    public string DisplayMemberPath { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public string ItemStringFormat { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.DataTemplate ItemTemplate { get; set; }
+
+    [System.ComponentModel.Bindable(true)]
+    public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
 
     [System.ComponentModel.Bindable(false)]
-    public System.Windows.Controls.ItemsPanelTemplate __ItemsPanel_ { get; set; }
+    public System.Windows.Controls.ItemsPanelTemplate ItemsPanel_ { get; set; }
 
     [System.ComponentModel.Bindable(true)]
-    public System.Windows.Style __ItemContainerStyle__ { get; set; }
+    public System.Windows.Style ItemContainerStyle { get; set; }
 
     [System.ComponentModel.Bindable(true)]
-    public System.Windows.Controls.StyleSelector __ItemContainerStyleSelector__ { get; set; }
+    public System.Windows.Controls.StyleSelector ItemContainerStyleSelector { get; set; }
 
     [System.ComponentModel.Bindable(false)]
     [System.ComponentModel.Browsable(false)]
-    public System.Windows.Controls.ItemContainerGenerator __ItemContainerGenerator__ { get; }
+    public System.Windows.Controls.ItemContainerGenerator ItemContainerGenerator { get; }
 
 ### Notes
 
