@@ -1,5 +1,5 @@
 
-# Binding
+# [Binding](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/?view=netdesktop-7.0&viewFallbackFrom=netdesktop-5.0)
 
 ## En résumé
 
@@ -18,24 +18,40 @@
         - public string StringFormat { get; set; }
         - public object TargetNullValue { get; set; }
 
-- classe Data.Binding
+- classe Data.Binding (1/2)
 
     - Inheritance : Object - MarkupExtension - BindingBase - Binding
 
     - properties
 
-        - public object Source { get; set; }
+        - public object Source { get; set; } // Default : DataContext du DependencyObject Target du Binding
         - public string ElementName { get; set; }
         - public RelativeSource RelativeSource { get; set; }
 
         - public PropertyPath Path { get; set; }
 
         - public BindingMode Mode { get; set; }
-        - public UpdateSourceTrigger UpdateSourceTrigger { get; set; }
+        - public UpdateSourceTrigger UpdateSourceTrigger { get; set; } // si Mode == TwoWay ou OneWayToSource
 
         - public IValueConverter Converter { get; set; }
         - public System.Globalization.CultureInfo ConverterCulture { get; set; }
         - public object ConverterParameter { get; set; }
+
+- classe BindingExpression
+
+- classe BindingOperations
+
+    - SetBinding
+
+        public static BindingExpressionBase SetBinding(DependencyObject target, 
+                                                DependencyProperty dp, 
+                                                BindingBase binding);
+
+    - GetBinding
+
+        public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
+
+- classe Data.Binding (2/2)
 
         - public bool IsAsync { get; set; }
 
@@ -48,13 +64,12 @@
         - public static readonly System.Windows.RoutedEvent SourceUpdatedEvent;
         - public static readonly System.Windows.RoutedEvent TargetUpdatedEvent;
 
-
-
 - IValueConverter
 
     // Source -> Target
     - public object Convert (object value, Type targetType, object parameter, 
                                 System.Globalization.CultureInfo culture);
+
         - value : The value produced by the binding source.
 
     // Target -> Source
@@ -62,18 +77,6 @@
                                 System.Globalization.CultureInfo culture);
 
          - value : The value that is produced by the binding target.
-
-- classe BindingOperations
-
-    - SetBinding
-
-        public static BindingExpressionBase SetBinding(DependencyObject target, 
-                                                DependencyProperty dp, 
-                                                BindingBase binding);
-
-    - GetBinding
-
-    public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
 
 - FrameworkElement
  
@@ -119,9 +122,42 @@
 
 ## [BindingOperations](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingoperations?view=windowsdesktop-7.0)
 
-Provides static methods to manipulate bindings, including Binding, MultiBinding, and PriorityBinding objects.
+    public static BindingExpressionBase SetBinding (DependencyObject target, DependencyProperty dp, BindingBase binding);
+    public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
 
+    public static BindingExpression GetBindingExpression (DependencyObject target, DependencyProperty dp);
+    public static bool IsDataBound (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
 
+## [BindingExpressionBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingexpressionbase?view=netframework-4.8)
+
+    public abstract class BindingExpressionBase : System.Windows.Expression, 
+                                                    System.Windows.IWeakEventListener
+
+## [BindingExpression](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingexpression?view=windowsdesktop-7.0)
+
+    public sealed class BindingExpression : BindingExpressionBase, 
+                                                System.Windows.IWeakEventListener
+
+- properties
+    - public object DataItem { get; } // Gets the binding source object that this BindingExpression uses.
+    - public Binding ParentBinding { get; }
+    - public object ResolvedSource { get; }
+    - public string ResolvedSourcePropertyName { get; }
+
+- methods
+    - public override void UpdateSource ();
+    - public override void UpdateTarget ();
+
+- A related class, BindingExpression, is the underlying object that maintains the connection between 
+  the source and the target. 
+- A binding contains all the information that can be shared across several binding expressions. 
+- A BindingExpression is an instance expression that cannot be shared and contains all the instance information 
+  of the Binding.
+
+## FrameworkElement and Binding : FrameworkElement.GetBindingExpression, BindingOperations.GetBindingExpression 
+
+    public BindingExpression GetBindingExpression (DependencyProperty dp);
+    public static BindingExpression GetBindingExpression (DependencyObject target, DependencyProperty dp);
 
 ## Source / RelativeSource / ElementName
 
