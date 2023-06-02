@@ -37,19 +37,28 @@
         - public System.Globalization.CultureInfo ConverterCulture { get; set; }
         - public object ConverterParameter { get; set; }
 
-- classe BindingExpression
-
 - classe BindingOperations
 
-    - SetBinding
+    public static BindingExpressionBase SetBinding (DependencyObject target, DependencyProperty dp, BindingBase binding);
+    public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
 
-        public static BindingExpressionBase SetBinding(DependencyObject target, 
-                                                DependencyProperty dp, 
-                                                BindingBase binding);
+    public static BindingExpression GetBindingExpression (DependencyObject target, DependencyProperty dp);
+    public static bool IsDataBound (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
 
-    - GetBinding
+- classe BindingExpression
 
-        public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
+    public sealed class BindingExpression : BindingExpressionBase, 
+                                                System.Windows.IWeakEventListener
+
+- properties
+    - public object DataItem { get; } // Gets the binding source object that this BindingExpression uses.
+    - public Binding ParentBinding { get; }
+    - public object ResolvedSource { get; }
+    - public string ResolvedSourcePropertyName { get; }
+
+- methods
+    - public override void UpdateSource ();
+    - public override void UpdateTarget ();
 
 - classe Data.Binding (2/2)
 
