@@ -27,61 +27,21 @@
 	public class ItemsControl : System.Windows.Controls.Control, 
                                 System.Windows.Controls.Primitives.IContainItemStorage, 
                                 System.Windows.Markup.IAddChild
-    {
 
-### Inheritance
+# [HeaderedItemsControl](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.headereditemscontrol?view=windowsdesktop-7.0)
 
-Object / DispatcherObject / DependencyObject / Visual / UIElement / FrameworkElement / Control / ItemsControl
+## En résumé
 
-### Derived
+- class System.Windows.Controls.HeaderedItemsControl
+- Inheritance : ItemsControl / HeaderedItemsControl
+- Derived : MenuItem, ToolBar, TreeViewItem, ...
+- Properties :
+    - bool HasHeader { get; }
+    - object Header { get; set; }
+    - string HeaderStringFormat { get; set; }
+    - DataTemplate HeaderTemplate { get; set; }
+    - DataTemplateSelector HeaderTemplateSelector { get; set; }
+    - IEnumerator LogicalChildren { get; }
 
-    System.Windows.Controls.HeaderedItemsControl
-    System.Windows.Controls.Primitives.DataGridCellsPresenter
-    System.Windows.Controls.Primitives.DataGridColumnHeadersPresenter
-    System.Windows.Controls.Primitives.MenuBase
-    System.Windows.Controls.Primitives.Selector
-    System.Windows.Controls.Primitives.StatusBar
-    System.Windows.Controls.Ribbon.RibbonContextualTabGroupItemsControl
-    System.Windows.Controls.Ribbon.RibbonControlGroup
-    System.Windows.Controls.Ribbon.RibbonGallery
-    System.Windows.Controls.Ribbon.RibbonQuickAccessToolBar
-    System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
-    System.Windows.Controls.TreeView 
+## [Exemples](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.headereditemscontrol?view=windowsdesktop-7.0#examples)
 
-### Fields
-
-    public static readonly System.Windows.DependencyProperty ItemsSourceProperty;
-    ...
-
-### Properties
-
-    [System.ComponentModel.Bindable(true)]
-    public System.Collections.IEnumerable ItemsSource { get; set; }
-
-    [System.ComponentModel.Bindable(true)]
-    public System.Windows.Controls.ItemCollection Items { get; }
-
-    [System.ComponentModel.Bindable(true)]
-    public string DisplayMemberPath { get; set; }
-
-    [System.ComponentModel.Bindable(true)]
-    public string ItemStringFormat { get; set; }
-
-    [System.ComponentModel.Bindable(true)]
-    public System.Windows.DataTemplate ItemTemplate { get; set; }
-
-    [System.ComponentModel.Bindable(true)]
-    public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
-
-    [System.ComponentModel.Bindable(false)]
-    public System.Windows.Controls.ItemsPanelTemplate ItemsPanel_ { get; set; }
-
-    [System.ComponentModel.Bindable(true)]
-    public System.Windows.Style ItemContainerStyle { get; set; }
-
-    [System.ComponentModel.Bindable(true)]
-    public System.Windows.Controls.StyleSelector ItemContainerStyleSelector { get; set; }
-
-    [System.ComponentModel.Bindable(false)]
-    [System.ComponentModel.Browsable(false)]
-    public System.Windows.Controls.ItemContainerGenerator ItemContainerGenerator { get; }

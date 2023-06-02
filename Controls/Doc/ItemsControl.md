@@ -64,7 +64,7 @@
     public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
 
     [System.ComponentModel.Bindable(false)]
-    public System.Windows.Controls.ItemsPanelTemplate ItemsPanel_ { get; set; }
+    public System.Windows.Controls.ItemsPanelTemplate ItemsPanel { get; set; }
 
     [System.ComponentModel.Bindable(true)]
     public System.Windows.Style ItemContainerStyle { get; set; }
