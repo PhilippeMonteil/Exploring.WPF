@@ -519,3 +519,138 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 			</Trigger>
 		</Style.Triggers>
 	</Style>
+
+## [BindingGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindinggroup?view=windowsdesktop-6.0)
+
+> Contains a collection of bindings and ValidationRule objects that are used to validate an object.
+
+Un ensemble de Bindings peuvent faire référence à un __BindingGroup__ par son nom en assignant leur 
+propriété __BindingGroupName__.
+
+Ce BindingGroup doit être explicitement initié (__BeginEdit__) puis commité (__CommitEdit__) ou abandonné (__CancelEdit__)
+pour que les Bindings qui s'y sont rattachés soient exécutés. 
+
+### Exemple
+
+ 	<Grid.BindingGroup>
+		<BindingGroup Name="DateGroup" NotifyOnValidationError="True">
+			<BindingGroup.ValidationRules>
+				<WpfApplication2:DateRule ValidatesOnTargetUpdated="True" />
+			</BindingGroup.ValidationRules>
+		</BindingGroup>
+	</Grid.BindingGroup>
+	<TextBox x:Name="day"
+			 Grid.Row="0"
+			 Margin="2"
+			 Text="{Binding Path=Day, BindingGroupName=DateGroup, UpdateSourceTrigger=Explicit}" />
+	<TextBox x:Name="month"
+			 Grid.Row="1"
+			 Margin="2"
+			 Text="{Binding Path=Month, BindingGroupName=DateGroup, UpdateSourceTrigger=Explicit}" />
+
+#### Code:
+
+    LayoutRoot.BindingGroup.BeginEdit();
+
+    private void SubmitClick(object sender, RoutedEventArgs e)
+    {
+		if (LayoutRoot.BindingGroup.CommitEdit())
+		{
+			LayoutRoot.BindingGroup.BeginEdit();
+		}
+	}
+
+	private void CancelClick(object sender, RoutedEventArgs e)
+	{
+		LayoutRoot.BindingGroup.CancelEdit();
+		LayoutRoot.BindingGroup.BeginEdit();
+	}
+
+#### ValidationRule:
+
+	public class DateRule : ValidationRule
+    {
+    	public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+    	{
+    		if (!(value is BindingGroup))
+    			return new ValidationResult(false, "Invalid group");
+
+    		var group = value as BindingGroup;
+		
+    		var day = Convert.ToInt32(group.GetValue(group.Items[0], "Day"));
+    		var month = Convert.ToInt32(group.GetValue(group.Items[0], "Month"));
+    		var year = Convert.ToInt32(group.GetValue(group.Items[0], "Year"));
+
+    		try
+    		{
+    			new DateTime(year, month, day);
+    		}
+    		catch (Exception)
+    		{
+    			return new ValidationResult(false, "This is not a valid date");
+    		}
+
+    		return new ValidationResult(true, null);
+    	}
+	}
+
+## Notifications
+
+### Binding.NotifyOnSourceUpdated  / NotifyOnTargetUpdated 
+
+  Si __NotifyOnSourceUpdated__ / __NotifyOnTargetUpdated__ == true un évènement __SourceUpdated__ / __TargetUpdated__ est généré
+
+	<TextBox x:Name="day"
+			 Grid.Row="0"
+			 Margin="2"
+			 Text="{Binding Path=Value, 
+					NotifyOnSourceUpdated=True, 
+					NotifyOnTargetUpdated=True, 
+					UpdateSourceTrigger=PropertyChanged}"
+			 SourceUpdated="OnSourceUpdated"
+			 TargetUpdated="OnTargetUpdated" />
+
+### Binding.NotifyOnValidationError : attached event Validation.Error
+
+   détermine si l'Attached Event Validation.Error doit être déclenché en cas d'erreur de validation
+
+	<TextBox Grid.Row="0"
+				Margin="2"
+				Text="{Binding Path=Value, 
+						NotifyOnValidationError=True, 
+						UpdateSourceTrigger=PropertyChanged, 
+						ValidatesOnExceptions=True}"
+				Validation.Error="OnError" />
+
+
+## Multibinding et multivalue converters
+
+### Exemple
+
+	<Window xmlns:local="clr-namespace:BlogIMultiValueConverter">
+		<Window.Resources>
+			<local:NameMultiValueConverter x:Key="NameMultiValueConverter" />
+		</Window.Resources>
+		<Grid>
+			<TextBox Text="{Binding Path=FirstName, UpdateSourceTrigger=PropertyChanged}" />
+			<TextBox Text="{Binding Path=Surname, UpdateSourceTrigger=PropertyChanged}" />
+			<TextBlock>
+				<TextBlock.Text>
+					<MultiBinding Converter="{StaticResource MultiValueConverter}">
+						<Binding Path="FirstName" />
+						<Binding Path="Surname" />
+					</MultiBinding>
+				</TextBlock.Text>
+			</TextBlock>
+		</Grid>
+	</Window>
+
+	public class NameMultiValueConverter : IMultiValueConverter
+	{
+
+		public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+		{
+			return String.Format("{0} {1}", values[0], values[1]);
+		}
+
+	}
