@@ -622,7 +622,6 @@ pour que les Bindings qui s'y sont rattachés soient exécutés.
 						ValidatesOnExceptions=True}"
 				Validation.Error="OnError" />
 
-
 ## Multibinding et multivalue converters
 
 ### Exemple
@@ -654,3 +653,72 @@ pour que les Bindings qui s'y sont rattachés soient exécutés.
 		}
 
 	}
+
+## [Priority Binding](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-implement-prioritybinding?view=netframeworkdesktop-4.8)
+
+### Exemple
+
+````
+    <TextBlock.Text>
+      <PriorityBinding FallbackValue="defaultvalue">
+        <Binding Path="SlowestDP" IsAsync="True"/>
+        <Binding Path="SlowerDP" IsAsync="True"/>
+        <Binding Path="FastDP" />
+      </PriorityBinding>
+    </TextBlock.Text>
+````
+
+````
+public class AsyncDataSource
+{
+  private string _fastDP;
+  private string _slowerDP;
+  private string _slowestDP;
+
+  public AsyncDataSource()
+  {
+  }
+
+  public string FastDP
+  {
+    get { return _fastDP; }
+    set { _fastDP = value; }
+  }
+
+  public string SlowerDP
+  {
+    get
+    {
+      // This simulates a lengthy time before the
+      // data being bound to is actualy available.
+      Thread.Sleep(3000);
+      return _slowerDP;
+    }
+    set { _slowerDP = value; }
+  }
+
+  public string SlowestDP
+  {
+    get
+    {
+      // This simulates a lengthy time before the
+      // data being bound to is actualy available.
+      Thread.Sleep(5000);
+      return _slowestDP;
+    }
+    set { _slowestDP = value; }
+  }
+}
+````
+
+## [BindingBase.FallbackValue](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.fallbackvalue?view=windowsdesktop-6.0)
+
+	public object FallbackValue { get; set; }
+
+> Gets or sets the value to use when the binding source is unable to return a value.
+
+## [TargetNullValue](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase.targetnullvalue?view=windowsdesktop-6.0)
+
+	public object TargetNullValue { get; set; }
+
+> Gets or sets the value that is used in the target when the value of the source is null.
