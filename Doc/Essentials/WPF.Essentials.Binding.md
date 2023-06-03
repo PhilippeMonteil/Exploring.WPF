@@ -73,6 +73,19 @@
         - public static readonly System.Windows.RoutedEvent SourceUpdatedEvent;
         - public static readonly System.Windows.RoutedEvent TargetUpdatedEvent;
 
+        events reflétés par FrameworkElment :
+
+            public event EventHandler<System.Windows.Data.DataTransferEventArgs> SourceUpdated;
+            public event EventHandler<System.Windows.Data.DataTransferEventArgs> TargetUpdated;
+
+            avec:
+
+            [DataTransferEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.datatransfereventargs?view=windowsdesktop-7.0)
+
+                public System.Windows.DependencyObject TargetObject { get; }
+                public System.Windows.DependencyProperty Property { get; }
+
+
 - IValueConverter
 
     // Source -> Target
