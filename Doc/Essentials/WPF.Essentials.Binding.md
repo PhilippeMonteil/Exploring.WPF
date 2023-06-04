@@ -92,14 +92,17 @@
     - dépend de 
         - Binding.ValidationRules
         - règles standard introduites par : 
-            - Binding.ValidatesOnDataErrors : DataErrorValidationRule
+            - Binding.ValidatesOnDataErrors : DataErrorValidationRule (ValidationStep = UpdatedValue)
             - Binding.ValidatesOnExceptions : ExceptionValidationRule
             - Binding.ValidatesOnNotifyDataErrors : NotifyDataErrorValidationRule
     - appelle Binding.UpdateSourceExceptionFilter en cas d'exception déclenchée par la Source lors d'un update 
     - met à jour BoundElement.Validation.HasErrors, BoundElement.Validation.Errors
+    - ExceptionValidationRule : rule that checks for exceptions that are thrown during the update of the binding source property.
     - DataErrorValidationRule : rule that checks for errors that are raised by the IDataErrorInfo implementation of the source object.
     - NotifyDataErrorValidationRule : rule that checks for errors that are raised by the INotifyDataErrorInfo implementation of the source object.
-    - produit un UI d'affichage des erreurs de validation avec BoundElement.Validation.ErrorTemplate
+
+    - Displaying Validation Errors
+        - Validation.ErrorTemplate : ControlTemplate used to generate validation error feedback on the adorner layer.
 
 ## [BindingBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase?view=windowsdesktop-7.0)
 
@@ -295,7 +298,11 @@ Represents a rule that checks for errors that are raised by the IDataErrorInfo i
 
 Represents a rule that checks for errors that are raised by a data source that implements INotifyDataErrorInfo.
 
-#### [ValidationStep Enum](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validationstep?view=windowsdesktop-7.0)
+### [ExceptionValidationRule](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.exceptionvalidationrule?view=windowsdesktop-8.0)
+
+Represents a rule that checks for exceptions that are thrown during the update of the binding source property.
+
+### [ValidationStep Enum](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validationstep?view=windowsdesktop-7.0)
 
 | Value      | Description |
 | - | - |
@@ -303,6 +310,37 @@ Represents a rule that checks for errors that are raised by a data source that i
 | ConvertedProposedValue | Runs the ValidationRule after the value is converted.|
 | RawProposedValue | Runs the ValidationRule before any conversion occurs.|
 | UpdatedValue | Runs the ValidationRule after the source is updated.|
+
+### Displaying Validation Errors
+
+#### Validation.ErrorTemplate + AdornedElementPlaceholder
+
+- gets or sets the ControlTemplate used to generate validation error feedback on the adorner layer.
+- le template sert à produire un bloc d'UI apparaissant dans le AdornedElementPlaceholder du Template du Target Element. 
+
+##### Exemple
+
+    <TextBox ... Validation.ErrorTemplate="{StaticResource ValidatedTextBoxTemplate}">
+
+#### Tooltip
+
+##### Exemple
+
+        <Style TargetType="{x:Type local:CustomTextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="Tag" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+#### ContentPresenter
+
+##### Exemple
+
+	<TextBox Name="yInput" ... TextBox>
+	<ContentPresenter ... Content="{Binding ElementName=yInput, Path=(Validation.Errors).CurrentItem}" />
 
 #### Exemple
 
