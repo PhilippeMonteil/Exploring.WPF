@@ -26,7 +26,7 @@
 
         - public object Source { get; set; } // Default : DataContext du DependencyObject Target du Binding
         - public string ElementName { get; set; }
-        - public RelativeSource RelativeSource { get; set; }
+        - public RelativeSource RelativeSource { get; set; } // Self / TemplatedParent / FindAncestor
 
         - public PropertyPath Path { get; set; }
 
@@ -86,44 +86,9 @@
  
     - public BindingExpression GetBindingExpression (DependencyProperty dp); // id. BindingOperations.GetBindingExpression
 
-- Validation : Binding.ValidationRules, Validation attached properties & events, IDataErrorInfo / Source
-
-
-
-
-- classe Data.Binding (2/2)
-
-        - public bool IsAsync { get; set; }
-
-        - public bool NotifyOnSourceUpdated { get; set; }
-        - public bool NotifyOnTargetUpdated { get; set; }
-        - public bool NotifyOnValidationError { get; set; }
-
-        - public bool BindsDirectlyToSource { get; set; }
-
-        - public UpdateSourceExceptionFilterCallback UpdateSourceExceptionFilter { get; set; }
-
-            public delegate object UpdateSourceExceptionFilterCallback(object bindExpression, Exception exception);
-
 - IValueConverter : Convert, ConvertBack
 
-
-
-- 4 elements : Target object (DependencyObject) / Target property (DependencyProperty) / Source object / Source property (Path) 
-
-- Source / RelativeSource / ElementName
-    - Source : par défaut DataContext
-    - RelativeSource = Self / TemplatedParent / FindAncestor
-    - ElementName
-- Path / XPath
-- UpdateSourceTrigger
-    - Defaut (cf FrameworkPropertyMetadata.DefaultUpdateSourceTrigger )
-    - PropertyChanged
-    - LostFocus / 
-    - Explicit
-- Mode : Default (cf metadata) / OneTime / OneWay / OneWayToSource / TwoWay
-- Converter, ConverterCulture , ConverterParameter
-- Validation:
+- Validation : Binding.ValidationRules, Validation attached properties & events, IDataErrorInfo / Source
     - dépend de 
         - Binding.ValidationRules
         - Binding.ValidatesOnDataErrors
@@ -211,7 +176,7 @@
 
 ## [UpdateSourceTrigger](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.updatesourcetrigger?view=windowsdesktop-7.0)
 
-- Default / contrôle: ex: perte de focus
+- Default : valeur définie par le FrameworkPropertyMetadata associé à la DependencyProperty target
 - PropertyChanged
 - LostFocus
 - Explicit
@@ -279,7 +244,8 @@ When a value is being transferred from the target property to the source propert
       and add it to BoundElement[Validation.Errors]
     - if BoundElement[Validation.Errors] not empty then raise the 
       BoundElement[Validation.Error] attached event
-
+    - l'appel des ValidationRules se fait en plusieurs fois, chaque ValidationRules précisant un .ValidationStep
+    
 - if no error then call the Binding.Converter, if one exists.
 
 - if the Binding.Converter passes, call the setter of the Source property.
@@ -288,6 +254,13 @@ When a value is being transferred from the target property to the source propert
     - if there is a Binding.UpdateSourceExceptionFilter call it 
     - else create a ValidationError with the exception and add it to Target[Validation.Errors].
 
+- les propriétés .ValidatesOnDataErrors , .ValidatesOnExceptions , .ValidatesOnNotifyDataErrors déclenchent 
+  l'inclusion ou non d'instances dans Binding.ValidationRules :
+
+    - public bool ValidatesOnDataErrors { get; set; } // Gets or sets a value that indicates whether to include the DataErrorValidationRule.
+    - public bool ValidatesOnExceptions { get; set; } // Gets or sets a value that indicates whether to include the ExceptionValidationRule.
+    - public bool ValidatesOnNotifyDataErrors { get; set; } // Gets or sets a value that indicates whether to include the NotifyDataErrorValidationRule.
+    
 ### [ValidationRules](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.binding.validationrules?view=windowsdesktop-6.0)
 
 	public System.Collections.ObjectModel.Collection<System.Windows.Controls.ValidationRule> ValidationRules { get; }
@@ -305,6 +278,7 @@ When a value is being transferred from the target property to the source propert
 - Properties
     - public bool ValidatesOnTargetUpdated { get; set; }
     - public ValidationStep ValidationStep { get; set; }
+- possibilité de définir ses propres ValidationRules
 
 #### [ValidationStep Enum](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validationstep?view=windowsdesktop-7.0)
 
