@@ -91,11 +91,14 @@
 - Validation : Binding.ValidationRules, Validation attached properties & events, IDataErrorInfo / Source
     - dépend de 
         - Binding.ValidationRules
-        - Binding.ValidatesOnDataErrors
-        - Binding.ValidatesOnExceptions
-        - Binding.ValidatesOnNotifyDataErrors
+        - règles standard introduites par : 
+            - Binding.ValidatesOnDataErrors : DataErrorValidationRule
+            - Binding.ValidatesOnExceptions : ExceptionValidationRule
+            - Binding.ValidatesOnNotifyDataErrors : NotifyDataErrorValidationRule
     - appelle Binding.UpdateSourceExceptionFilter en cas d'exception déclenchée par la Source lors d'un update 
     - met à jour BoundElement.Validation.HasErrors, BoundElement.Validation.Errors
+    - DataErrorValidationRule : rule that checks for errors that are raised by the IDataErrorInfo implementation of the source object.
+    - NotifyDataErrorValidationRule : rule that checks for errors that are raised by the INotifyDataErrorInfo implementation of the source object.
     - produit un UI d'affichage des erreurs de validation avec BoundElement.Validation.ErrorTemplate
 
 ## [BindingBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase?view=windowsdesktop-7.0)
@@ -227,7 +230,11 @@
 ## [Data Validation](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/?view=netdesktop-7.0#data-validation)
 
 - The WPF data binding model enables you to associate ValidationRules with your Binding object. 
-- Validation occurs during binding target-to-binding source value transfer before the converter is called
+- Validation occurs during binding target-to-binding source value transfer before the converter is called ...
+
+### [Validation Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validation?view=windowsdesktop-7.0)
+
+- public static class Validation
 
 ### [Validation.HasError, .Errors, .Error, .ErrorTemplate Attached Properties and Event](https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.validation.errors?view=windowsdesktop-6.0)
 
@@ -252,9 +259,9 @@ When a value is being transferred from the target property to the source propert
 
 - if the Binding.ValidationRules has an ExceptionValidationRule and an exception is thrown during the setter call: 
     - if there is a Binding.UpdateSourceExceptionFilter call it 
-    - else create a ValidationError with the exception and add it to Target[Validation.Errors].
+    - else create a ValidationError with the exception and add it to BoundElement[Validation.Errors].
 
-- les propriétés .ValidatesOnDataErrors , .ValidatesOnExceptions , .ValidatesOnNotifyDataErrors déclenchent 
+- les propriétés Binding.ValidatesOnDataErrors , .ValidatesOnExceptions , .ValidatesOnNotifyDataErrors déclenchent 
   l'inclusion ou non d'instances dans Binding.ValidationRules :
 
     - public bool ValidatesOnDataErrors { get; set; } // Gets or sets a value that indicates whether to include the DataErrorValidationRule.
@@ -279,6 +286,14 @@ When a value is being transferred from the target property to the source propert
     - public bool ValidatesOnTargetUpdated { get; set; }
     - public ValidationStep ValidationStep { get; set; }
 - possibilité de définir ses propres ValidationRules
+
+### [DataErrorValidationRule](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.dataerrorvalidationrule?view=windowsdesktop-7.0)
+
+Represents a rule that checks for errors that are raised by the IDataErrorInfo implementation of the source object.
+
+#### [NotifyDataErrorValidationRule](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.notifydataerrorvalidationrule?view=windowsdesktop-8.0)
+
+Represents a rule that checks for errors that are raised by a data source that implements INotifyDataErrorInfo.
 
 #### [ValidationStep Enum](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.validationstep?view=windowsdesktop-7.0)
 
@@ -351,6 +366,8 @@ When a value is being transferred from the target property to the source propert
         - a ValidationError object :
                     - To set the BindingExpression or MultiBindingExpression object as the BindingInError. 
                     - The ValidationError object is added to Errors collection of the bound element.
+
+#### [Article](https://www.codeproject.com/Articles/863291/Validation-in-WPF)
 
 #### Exemple
 
