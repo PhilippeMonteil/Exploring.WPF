@@ -18,7 +18,7 @@
         - public string StringFormat { get; set; }
         - public object TargetNullValue { get; set; }
 
-- classe Data.Binding (1/2)
+- classe Data.Binding
 
     - Inheritance : Object - MarkupExtension - BindingBase - Binding
 
@@ -31,11 +31,30 @@
         - public PropertyPath Path { get; set; }
 
         - public BindingMode Mode { get; set; }
-        - public UpdateSourceTrigger UpdateSourceTrigger { get; set; } // si Mode == TwoWay ou OneWayToSource
+        - public UpdateSourceTrigger UpdateSourceTrigger { get; set; } // si Mode == TwoWay ou OneWayToSource, defaut : MetaData Target DependencyProperty
 
         - public IValueConverter Converter { get; set; }
         - public System.Globalization.CultureInfo ConverterCulture { get; set; }
         - public object ConverterParameter { get; set; }
+
+        // déclenchement d'events
+        - public bool NotifyOnSourceUpdated { get; set; }
+        - public bool NotifyOnTargetUpdated { get; set; }
+        - public bool NotifyOnValidationError { get; set; }
+
+        - public bool IsAsync { get; set; }
+        - public object AsyncState { get; set; }
+
+        - public bool BindsDirectlyToSource { get; set; }
+
+        - public string XPath { get; set; } 
+
+        // validation
+        - public Collection<ValidationRule> ValidationRules { get; }
+        - public bool ValidatesOnDataErrors { get; set; }
+        - public bool ValidatesOnExceptions { get; set; }
+        - public bool ValidatesOnNotifyDataErrors { get; set; }
+        - public UpdateSourceExceptionFilterCallback UpdateSourceExceptionFilter { get; set; }
 
 - classe BindingOperations
 
@@ -47,7 +66,6 @@
 
     public static void ClearBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
     public static void ClearAllBindings (System.Windows.DependencyObject target);
-
 
 - classe BindingExpression
 
@@ -66,7 +84,12 @@
 
 - FrameworkElement
  
-    - public BindingExpression GetBindingExpression (DependencyProperty dp);
+    - public BindingExpression GetBindingExpression (DependencyProperty dp); // id. BindingOperations.GetBindingExpression
+
+- Validation : Binding.ValidationRules, Validation attached properties & events, IDataErrorInfo / Source
+
+
+
 
 - classe Data.Binding (2/2)
 
@@ -76,60 +99,13 @@
         - public bool NotifyOnTargetUpdated { get; set; }
         - public bool NotifyOnValidationError { get; set; }
 
-            - attached events
-
-                - public static readonly System.Windows.RoutedEvent SourceUpdatedEvent;
-                - public static readonly System.Windows.RoutedEvent TargetUpdatedEvent;
-
-                events reflétés par FrameworkElement :
-
-                public event EventHandler<System.Windows.Data.DataTransferEventArgs> SourceUpdated;
-                public event EventHandler<System.Windows.Data.DataTransferEventArgs> TargetUpdated;
-
-                avec:
-
-                [DataTransferEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.datatransfereventargs?view=windowsdesktop-7.0)
-
-                    public System.Windows.DependencyObject TargetObject { get; }
-                    public System.Windows.DependencyProperty Property { get; }
-
         - public bool BindsDirectlyToSource { get; set; }
 
         - public UpdateSourceExceptionFilterCallback UpdateSourceExceptionFilter { get; set; }
 
-            If an UpdateSourceExceptionFilter is not specified on the Binding, the binding engine creates a 
-            ValidationError with the exception and adds it to the Validation.Errors collection of the bound element.
-
             public delegate object UpdateSourceExceptionFilterCallback(object bindExpression, Exception exception);
 
-            - return value :
-                - null :
-                	- To ignore any exceptions. 
-                    - The default behavior (if there is no UpdateSourceExceptionFilterCallback) 
-                      is to create a ValidationError with the exception and adds it to the Errors collection 
-                      of the bound element.
-                - any object : 
-                    - To create a ValidationError object with the ErrorContent set to that object.
-                    - The ValidationError object is added to Errors collection of the bound element.
-                - a ValidationError object :
-                    - To set the BindingExpression or MultiBindingExpression object as the BindingInError. 
-                    - The ValidationError object is added to Errors collection of the bound element.
-
-- IValueConverter
-
-    // Source -> Target
-    - public object Convert (object value, Type targetType, object parameter, 
-                                System.Globalization.CultureInfo culture);
-
-        - value : The value produced by the binding source.
-
-    // Target -> Source
-    - public object ConvertBack (object value, Type targetType, object parameter, 
-                                System.Globalization.CultureInfo culture);
-
-         - value : The value that is produced by the binding target.
-
-- Validation
+- IValueConverter : Convert, ConvertBack
 
 
 
@@ -159,30 +135,11 @@
 
 ## [BindingBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase?view=windowsdesktop-7.0)
 
-- public abstract class BindingBase : Markup.MarkupExtension
-- Inheritance : Object, MarkupExtension, BindingBase
-- Derived : Binding / MultiBinding / PriorityBinding
-- properties
-    - public string BindingGroupName { get; set; }
-    - public int Delay { get; set; }
-    - public object FallbackValue { get; set; }
-    - public string StringFormat { get; set; }
-    - public object TargetNullValue { get; set; }
-
 ## [Binding](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-7.0)
 
 ## [BindingOperations](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingoperations?view=windowsdesktop-7.0)
 
-    public static BindingExpressionBase SetBinding (DependencyObject target, DependencyProperty dp, BindingBase binding);
-    public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
-
-    public static BindingExpression GetBindingExpression (DependencyObject target, DependencyProperty dp);
-    public static bool IsDataBound (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
-
 ## [BindingExpressionBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingexpressionbase?view=netframework-4.8)
-
-    public abstract class BindingExpressionBase : System.Windows.Expression, 
-                                                    System.Windows.IWeakEventListener
 
 ## [BindingExpression](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingexpression?view=windowsdesktop-7.0)
 
@@ -268,6 +225,22 @@
 ### [FrameworkPropertyMetadata](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkpropertymetadata?view=windowsdesktop-7.0)
 
 ## Converter, ConverterCulture , ConverterParameter
+
+### [IValueConverter](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.ivalueconverter?view=windowsdesktop-7.0)
+
+    // Source -> Target
+    - public object Convert (object value, Type targetType, object parameter, 
+                                System.Globalization.CultureInfo culture);
+
+        - value : The value produced by the binding source.
+
+    // Target -> Source
+    - public object ConvertBack (object value, Type targetType, object parameter, 
+                                System.Globalization.CultureInfo culture);
+
+         - value : The value that is produced by the binding target.
+
+### Exemple
 
 	[ValueConversion( typeof( string ), typeof( ProcessingState ) )]
 	public class IntegerStringToProcessingStateConverter : IValueConverter
@@ -378,8 +351,32 @@ When a value is being transferred from the target property to the source propert
 
 - Gets or sets a handler you can use to provide custom logic for handling exceptions that the binding engine 
   encounters during the update of the binding source value. 
-- This is only applicable if you have associated an __ExceptionValidationRule__ with your binding 
+
+- - This is only applicable if you have associated an __ExceptionValidationRule__ with your binding 
   in its __ValidationRules__ property.
+
+- public UpdateSourceExceptionFilterCallback UpdateSourceExceptionFilter { get; set; }
+
+    If an UpdateSourceExceptionFilter is not specified on the Binding, the binding engine creates a 
+    ValidationError with the exception and adds it to the Validation.Errors collection of the bound element.
+
+    public delegate object UpdateSourceExceptionFilterCallback(object bindExpression, Exception exception);
+
+    - return value :
+
+        - null :
+                	- To ignore any exceptions. 
+                    - The default behavior (if there is no UpdateSourceExceptionFilterCallback) 
+                      is to create a ValidationError with the exception and adds it to the Errors collection 
+                      of the bound element.
+
+        - any object : 
+                    - To create a ValidationError object with the ErrorContent set to that object.
+                    - The ValidationError object is added to Errors collection of the bound element.
+
+        - a ValidationError object :
+                    - To set the BindingExpression or MultiBindingExpression object as the BindingInError. 
+                    - The ValidationError object is added to Errors collection of the bound element.
 
 #### Exemple
 
@@ -519,6 +516,25 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 			</Trigger>
 		</Style.Triggers>
 	</Style>
+
+## Update Events
+
+- attached events
+
+    - public static readonly System.Windows.RoutedEvent SourceUpdatedEvent;
+    - public static readonly System.Windows.RoutedEvent TargetUpdatedEvent;
+
+- events reflétés par FrameworkElement :
+
+    public event EventHandler<System.Windows.Data.DataTransferEventArgs> SourceUpdated;
+    public event EventHandler<System.Windows.Data.DataTransferEventArgs> TargetUpdated;
+
+    avec:
+
+    [DataTransferEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.datatransfereventargs?view=windowsdesktop-7.0)
+
+    public System.Windows.DependencyObject TargetObject { get; }
+    public System.Windows.DependencyProperty Property { get; }
 
 ## [BindingGroup](https://docs.microsoft.com/en-us/dotnet/api/system.windows.data.bindinggroup?view=windowsdesktop-6.0)
 
