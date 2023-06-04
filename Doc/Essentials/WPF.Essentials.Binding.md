@@ -48,7 +48,7 @@
         - public bool IsAsync { get; set; }
         - public object AsyncState { get; set; }
 
-        - public bool BindsDirectlyToSource { get; set; } // Source :  DataSourceProvider
+        - public bool BindsDirectlyToSource { get; set; } // Source :  DataSourceProvider, si true : Path / .Data
 
         // validation
         - public Collection<ValidationRule> ValidationRules { get; }
