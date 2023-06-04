@@ -24,15 +24,18 @@
 
     - properties
 
+        Source
         - public object Source { get; set; } // Default : DataContext du DependencyObject Target du Binding
         - public string ElementName { get; set; }
         - public RelativeSource RelativeSource { get; set; } // Self / TemplatedParent / FindAncestor
 
         - public PropertyPath Path { get; set; }
+        - public string XPath { get; set; } 
 
         - public BindingMode Mode { get; set; }
         - public UpdateSourceTrigger UpdateSourceTrigger { get; set; } // si Mode == TwoWay ou OneWayToSource, defaut : MetaData Target DependencyProperty
 
+        // conversion
         - public IValueConverter Converter { get; set; }
         - public System.Globalization.CultureInfo ConverterCulture { get; set; }
         - public object ConverterParameter { get; set; }
@@ -46,8 +49,6 @@
         - public object AsyncState { get; set; }
 
         - public bool BindsDirectlyToSource { get; set; }
-
-        - public string XPath { get; set; } 
 
         // validation
         - public Collection<ValidationRule> ValidationRules { get; }
