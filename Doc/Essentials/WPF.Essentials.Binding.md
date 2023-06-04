@@ -48,7 +48,7 @@
         - public bool IsAsync { get; set; }
         - public object AsyncState { get; set; }
 
-        - public bool BindsDirectlyToSource { get; set; }
+        - public bool BindsDirectlyToSource { get; set; } // Source :  DataSourceProvider
 
         // validation
         - public Collection<ValidationRule> ValidationRules { get; }
@@ -804,3 +804,10 @@ public class AsyncDataSource
 	public object TargetNullValue { get; set; }
 
 > Gets or sets the value that is used in the target when the value of the source is null.
+
+## [BindsDirectlyToSource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.binding.bindsdirectlytosource?view=windowsdesktop-7.0)
+
+- par défaut : false
+- si true et si l'objet Source du Binding est de type [DataSourceProvider](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.datasourceprovider?view=windowsdesktop-7.0)
+  alors le Path du binding est relatif à l'objet fournie par le champ .Data du DataSourceProvider
+
