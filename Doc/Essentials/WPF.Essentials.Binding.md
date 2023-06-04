@@ -103,6 +103,34 @@
 
     - Displaying Validation Errors
         - Validation.ErrorTemplate : ControlTemplate used to generate validation error feedback on the adorner layer.
+        - ContentPresenter : ex: <ContentPresenter Content="{Binding ElementName=yInput, Path=(Validation.Errors).CurrentItem}" ...
+        - Tooltip : ex:
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="Tag" Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+
+- Update, Error Events
+
+    - Binding class attached events :
+
+        public static readonly RoutedEvent SourceUpdatedEvent;
+        public static readonly RoutedEvent TargetUpdatedEvent;
+
+    - Validation class 
+
+        public static readonly System.Windows.RoutedEvent ErrorEvent;
+
+    - FrameworkElement class :
+
+        public event EventHandler<System.Windows.Data.DataTransferEventArgs> SourceUpdated;
+        public event EventHandler<System.Windows.Data.DataTransferEventArgs> TargetUpdated;
+
+        public bool NotifyOnSourceUpdated { get; set; }
+        public bool NotifyOnTargetUpdated { get; set; }
+        public bool NotifyOnValidationError { get; set; }
 
 ## [BindingBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase?view=windowsdesktop-7.0)
 
@@ -548,10 +576,14 @@ Si l'objet source du binding expose [IDataErrorInfo](https://docs.microsoft.com/
 
 ## Update Events
 
-- attached events
+- Binding class attached events
 
-    - public static readonly System.Windows.RoutedEvent SourceUpdatedEvent;
-    - public static readonly System.Windows.RoutedEvent TargetUpdatedEvent;
+    public class Binding : System.Windows.Data.BindingBase
+    {
+        public static readonly System.Windows.RoutedEvent SourceUpdatedEvent;
+        public static readonly System.Windows.RoutedEvent TargetUpdatedEvent;
+
+    }
 
 - events reflétés par FrameworkElement :
 
