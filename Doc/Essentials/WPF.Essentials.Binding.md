@@ -132,6 +132,10 @@
         public bool NotifyOnTargetUpdated { get; set; }
         public bool NotifyOnValidationError { get; set; }
 
+- Multibinding et multivalue converters
+- Priority Binding
+- Binding Groups
+
 ## [BindingBase](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.bindingbase?view=windowsdesktop-7.0)
 
 ## [Binding](https://learn.microsoft.com/en-us/dotnet/api/system.windows.data.binding?view=windowsdesktop-7.0)
