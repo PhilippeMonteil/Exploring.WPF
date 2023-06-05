@@ -63,6 +63,7 @@
     public static Binding GetBinding (DependencyObject target, DependencyProperty dp);
 
     public static BindingExpression GetBindingExpression (DependencyObject target, DependencyProperty dp);
+
     public static bool IsDataBound (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
 
     public static void ClearBinding (System.Windows.DependencyObject target, System.Windows.DependencyProperty dp);
