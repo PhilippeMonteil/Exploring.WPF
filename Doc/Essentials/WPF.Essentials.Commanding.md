@@ -78,8 +78,7 @@
     - events :
 
         - public static event EventHandler RequerySuggested;
-
-
+        exemple : implémentation de l'event ICommand.CanExecuteChanged
 
 ## [System.Windows.Input.ICommand](https://learn.microsoft.com/fr-fr/dotnet/api/system.windows.input.icommand?view=net-8.0)
 
@@ -186,6 +185,21 @@
 - events :
 
     - public static event EventHandler RequerySuggested;
+
+    exemple : implémentation de l'event ICommand.CanExecuteChanged
+
+````
+public class RelayCommand : ICommand
+{
+    private Action<object> execute;
+    private Func<object, bool> canExecute;
+
+    public event EventHandler CanExecuteChanged
+    {
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
+    }
+````
 
 ## [IPreviewCommand](https://learn.microsoft.com/en-us/dotnet/api/microsoft.windows.input.ipreviewcommand?view=windowsdesktop-7.0)
 
