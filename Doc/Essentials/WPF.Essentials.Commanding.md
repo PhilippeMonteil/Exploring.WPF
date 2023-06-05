@@ -21,6 +21,28 @@
         public void Execute (object parameter, System.Windows.IInputElement target);
         public bool CanExecute (object parameter, System.Windows.IInputElement target);
 
+- RoutedUICommand
+
+    - dérive de RoutedCommand
+    - property : 
+        public string Text { get; set; }
+
+- CommandBinding
+
+    - constructeur
+
+        public CommandBinding (System.Windows.Input.ICommand command, 
+                            System.Windows.Input.ExecutedRoutedEventHandler executed, 
+                            System.Windows.Input.CanExecuteRoutedEventHandler canExecute);
+
+    - events
+
+        public event System.Windows.Input.CanExecuteRoutedEventHandler PreviewCanExecute;
+        public event System.Windows.Input.CanExecuteRoutedEventHandler CanExecute;
+
+        public event System.Windows.Input.ExecutedRoutedEventHandler PreviewExecuted;
+        public event System.Windows.Input.ExecutedRoutedEventHandler Executed;
+        
 - ICommandSource
 
     - properties :
@@ -28,9 +50,35 @@
         - public object CommandParameter { get; }
         - public System.Windows.IInputElement CommandTarget { get; }
 
-- [UIElement.CommandBindings Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.commandbindings?view=windowsdesktop-7.0)
+- UIElement.CommandBindings
 
-- CommandBinding
+- CommandManager
+
+    - attached events :
+
+        - public static readonly System.Windows.RoutedEvent PreviewCanExecuteEvent;
+        - public static readonly System.Windows.RoutedEvent CanExecuteEvent;
+        - public static readonly System.Windows.RoutedEvent PreviewExecutedEvent;
+        - public static readonly System.Windows.RoutedEvent ExecutedEvent;
+
+    - methods :
+
+        - public static void AddCanExecuteHandler (System.Windows.UIElement element, System.Windows.Input.CanExecuteRoutedEventHandler handler);
+        - public static void AddPreviewCanExecuteHandler (System.Windows.UIElement element, System.Windows.Input.CanExecuteRoutedEventHandler handler);
+        - ... AddExecutedHandler / AddPreviewExecutedHandler
+        - ... Remove ...
+
+        - public static void InvalidateRequerySuggested();
+
+        // ClassCommandBinding
+        - public static void RegisterClassCommandBinding (Type type, CommandBinding commandBinding);
+        // ClassInputBinding
+        - public static void RegisterClassInputBinding (Type type, InputBinding inputBinding);
+
+    - events :
+
+        - public static event EventHandler RequerySuggested;
+
 
 
 ## [System.Windows.Input.ICommand](https://learn.microsoft.com/fr-fr/dotnet/api/system.windows.input.icommand?view=net-8.0)
@@ -55,6 +103,8 @@
         du ICommandSource ayant déclenché l'exécution de la commande, à la recherche d'un UIElement 
         dont la collection .CommandBindings contient un CommandBinding traitant l'event en cours 
         de propagation.
+
+### [Understanding Routed Events and Commands In WPF](https://learn.microsoft.com/en-us/archive/msdn-magazine/2008/september/advanced-wpf-understanding-routed-events-and-commands-in-wpf)
 
 ## [RoutedUICommand](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.routeduicommand?view=windowsdesktop-7.0)
 
@@ -107,4 +157,46 @@
 ````
 
 ## [CommandManager](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.commandmanager?view=windowsdesktop-7.0)
+
+> The CommandManager is responsible for managing routed commands. For more information about commanding, see Commanding Overview.
+
+- public sealed class CommandManager
+
+- attached events :
+
+    - public static readonly System.Windows.RoutedEvent PreviewCanExecuteEvent;
+    - public static readonly System.Windows.RoutedEvent CanExecuteEvent;
+    - public static readonly System.Windows.RoutedEvent PreviewExecutedEvent;
+    - public static readonly System.Windows.RoutedEvent ExecutedEvent;
+
+- methods :
+
+    - public static void AddCanExecuteHandler (System.Windows.UIElement element, System.Windows.Input.CanExecuteRoutedEventHandler handler);
+    - public static void AddPreviewCanExecuteHandler (System.Windows.UIElement element, System.Windows.Input.CanExecuteRoutedEventHandler handler);
+    - ... AddExecutedHandler / AddPreviewExecutedHandler
+    - ... Remove ...
+
+    - public static void InvalidateRequerySuggested();
+
+    // ClassCommandBinding
+    - public static void RegisterClassCommandBinding (Type type, CommandBinding commandBinding);
+    // ClassInputBinding
+    - public static void RegisterClassInputBinding (Type type, InputBinding inputBinding);
+
+- events :
+
+    - public static event EventHandler RequerySuggested;
+
+## [IPreviewCommand](https://learn.microsoft.com/en-us/dotnet/api/microsoft.windows.input.ipreviewcommand?view=windowsdesktop-7.0)
+
+- public interface IPreviewCommand : System.Windows.Input.ICommand
+- methods :
+    - public void CancelPreview();
+    - public void Preview (object parameter);
+        
+## [IPreviewCommandSource](https://learn.microsoft.com/en-us/dotnet/api/microsoft.windows.input.ipreviewcommandsource?view=windowsdesktop-7.0)
+
+- public interface IPreviewCommandSource : System.Windows.Input.ICommandSource
+- properties :
+    - public object PreviewCommandParameter { get; }
 
