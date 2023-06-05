@@ -80,6 +80,8 @@
         - public static event EventHandler RequerySuggested;
         exemple : implémentation de l'event ICommand.CanExecuteChanged
 
+    - notion de ClassCommandBinding 
+
 ## [System.Windows.Input.ICommand](https://learn.microsoft.com/fr-fr/dotnet/api/system.windows.input.icommand?view=net-8.0)
 
 ## [RoutedCommand](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.routedcommand?view=windowsdesktop-7.0)
