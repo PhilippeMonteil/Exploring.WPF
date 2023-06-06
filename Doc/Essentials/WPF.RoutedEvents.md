@@ -6,6 +6,7 @@
 - RoutedEvent
 
     - TypeConverter : RoutedEventConverter
+
     - properties :
         - public Type HandlerType { get; }
         - public string Name { get; }
@@ -18,24 +19,21 @@
 
     - methods :
 
-        - public static void RegisterClassHandler (Type classType, 
-                                                    RoutedEvent routedEvent, 
-                                                    Delegate handler, 
-                                                    bool handledEventsToo);
-
         - public static RoutedEvent RegisterRoutedEvent (string name, 
                                                     RoutingStrategy routingStrategy, 
                                                     Type handlerType, 
                                                     Type ownerType);
+
+        - public static void RegisterClassHandler (Type classType, 
+                                                    RoutedEvent routedEvent, 
+                                                    Delegate handler, 
+                                                    bool handledEventsToo);
 
         - public static RoutedEvent[] GetRoutedEvents ();
 
         - public static RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
 
 - RoutingStrategy : Tunnel, Bubble, Direct 
-
-- UIElement.RaiseEvent
-    - public void RaiseEvent (RoutedEventArgs e);
 
 - RoutedEventHandler
     - public delegate void RoutedEventHandler(object sender, RoutedEventArgs e);
@@ -47,17 +45,19 @@
     - public RoutedEvent RoutedEvent { get; set; }
     - public object Source { get; set; }
 
+- UIElement.RaiseEvent
+    - public void RaiseEvent (RoutedEventArgs e);
+
 - UIElement.AddHandler, .RemoveHandler
     - public void AddHandler (RoutedEvent routedEvent, Delegate handler);
     - exemple: exposition d'un RoutedEvent comme un event
 
 - attached events
-    - TextBox.PreviewKeyDown="HandlerInstanceEventInfo"
+    - exemple : TextBox.PreviewKeyDown="HandlerInstanceEventInfo"
   
 - Static class event handlers
 - Override class event handlers 
 - Marking routed events as handled
-
 
 ## [RoutedEvent](https://learn.microsoft.com/en-us/dotnet/api/routedevent?view=windowsdesktop-7.0)
 
