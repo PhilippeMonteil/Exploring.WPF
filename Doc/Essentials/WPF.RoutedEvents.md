@@ -1,42 +1,110 @@
 
 # [Routed Events](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/events/routed-events-overview?view=netdesktop-7.0)
 
-## [System.Windows.RoutedEvent](https://learn.microsoft.com/en-us/dotnet/api/system.windows.routedevent?view=windowsdesktop-7.0)
+## En résumé
 
-## [System.Windows.EventManager](https://learn.microsoft.com/en-us/dotnet/api/system.windows.eventmanager?view=windowsdesktop-7.0)
+- RoutedEvent
 
-### [RegisterRoutedEvent](https://learn.microsoft.com/en-us/dotnet/api/system.windows.eventmanager.registerroutedevent?view=windowsdesktop-7.0)
+    - TypeConverter : RoutedEventConverter
+    - properties :
+        - public Type HandlerType { get; }
+        - public string Name { get; }
+        - public Type OwnerType { get; }
+        - public RoutingStrategy RoutingStrategy { get; }
 
-    public static System.Windows.RoutedEvent RegisterRoutedEvent (string name, 
-                            System.Windows.RoutingStrategy routingStrategy, 
+- EventManager
+
+    - public static class EventManager
+
+    - methods :
+
+        - public static void RegisterClassHandler (Type classType, 
+                                                    RoutedEvent routedEvent, 
+                                                    Delegate handler, 
+                                                    bool handledEventsToo);
+
+        - public static RoutedEvent RegisterRoutedEvent (string name, 
+                                                    RoutingStrategy routingStrategy, 
+                                                    Type handlerType, 
+                                                    Type ownerType);
+
+        - public static RoutedEvent[] GetRoutedEvents ();
+
+        - public static RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
+
+- RoutingStrategy : Tunnel, Bubble, Direct 
+
+- UIElement.RaiseEvent
+    - public void RaiseEvent (RoutedEventArgs e);
+
+- RoutedEventHandler
+    - public delegate void RoutedEventHandler(object sender, RoutedEventArgs e);
+ 
+- RoutedEventArgs
+    - public RoutedEventArgs (RoutedEvent routedEvent, object source);
+    - public bool Handled { get; set; }
+    - public object OriginalSource { get; }
+    - public RoutedEvent RoutedEvent { get; set; }
+    - public object Source { get; set; }
+
+- UIElement.AddHandler, .RemoveHandler
+    - public void AddHandler (RoutedEvent routedEvent, Delegate handler);
+    - exemple: exposition d'un RoutedEvent comme un event
+
+- attached events
+    - TextBox.PreviewKeyDown="HandlerInstanceEventInfo"
+  
+- Static class event handlers
+- Override class event handlers 
+- Marking routed events as handled
+
+
+## [RoutedEvent](https://learn.microsoft.com/en-us/dotnet/api/routedevent?view=windowsdesktop-7.0)
+
+- class
+
+    [TypeConverter("Markup.RoutedEventConverter, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Custom=null")]
+    public sealed class RoutedEvent
+
+- properties
+
+    - public Type HandlerType { get; }
+    - public string Name { get; }
+    - public Type OwnerType { get; }
+    - public RoutingStrategy RoutingStrategy { get; }
+
+## [EventManager](https://learn.microsoft.com/en-us/dotnet/api/eventmanager?view=windowsdesktop-7.0)
+
+- public static class EventManager
+
+- méthodes :
+    
+    public static RoutedEvent RegisterRoutedEvent (string name, 
+                            RoutingStrategy routingStrategy, 
                             // The type of the event handler
                             Type handlerType,
                             Type ownerType);
 
-### [RegisterClassHandler](https://learn.microsoft.com/en-us/dotnet/api/system.windows.eventmanager.registerclasshandler?view=windowsdesktop-7.0)
-
     public static void RegisterClassHandler (
                             // The type of the class that is declaring class handling.
                             Type classType, 
-                            System.Windows.RoutedEvent routedEvent, 
+                            RoutedEvent routedEvent, 
                             Delegate handler, 
                             bool handledEventsToo);
 
-### [GetRoutedEvents](https://learn.microsoft.com/en-us/dotnet/api/system.windows.eventmanager.getroutedevents?view=windowsdesktop-7.0)
+    public static RoutedEvent[] GetRoutedEvents ();
 
-    public static System.Windows.RoutedEvent[] GetRoutedEvents ();
+    public static RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
 
-### [GetRoutedEventsForOwner](https://learn.microsoft.com/en-us/dotnet/api/system.windows.eventmanager.getroutedeventsforowner?view=windowsdesktop-7.0)
+## [RoutingStrategy](https://learn.microsoft.com/en-us/dotnet/api/routingstrategy?view=windowsdesktop-7.0)
 
-    public static System.Windows.RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
+- RoutingStrategy : Tunnel, Bubble, Direct 
 
-#### [RoutingStrategy](https://learn.microsoft.com/en-us/dotnet/api/system.windows.routingstrategy?view=windowsdesktop-7.0)
+## [UIElement.RaiseEvent](https://learn.microsoft.com/fr-fr/dotnet/api/uielement.raiseevent?view=windowsdesktop-7.0)
 
-#### [UIElement.RaiseEvent](https://learn.microsoft.com/fr-fr/dotnet/api/system.windows.uielement.raiseevent?view=windowsdesktop-7.0)
+    public void RaiseEvent (RoutedEventArgs e);
 
-    public void RaiseEvent (System.Windows.RoutedEventArgs e);
-
-##### Exemple
+### Exemple
 
 ````
 void RaiseTapEvent()
@@ -46,19 +114,17 @@ void RaiseTapEvent()
 }
 ````
 
-#### UIElement.AddHandler, .RemoveHandler
-
-##### [RoutedEventHandler](https://learn.microsoft.com/en-us/dotnet/api/system.windows.eventmanager.getroutedeventsforowner?view=windowsdesktop-7.0)
+## [RoutedEventHandler](https://learn.microsoft.com/en-us/dotnet/api/eventmanager.getroutedeventsforowner?view=windowsdesktop-7.0)
 
     public delegate void RoutedEventHandler(object sender, RoutedEventArgs e);
 
-##### [RoutedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.routedeventargs?view=windowsdesktop-7.0)
+## [RoutedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/routedeventargs?view=windowsdesktop-7.0)
 
 - public class RoutedEventArgs : EventArgs
 
 - constructeur
 
-    public RoutedEventArgs (System.Windows.RoutedEvent routedEvent, object source);
+    public RoutedEventArgs (RoutedEvent routedEvent, object source);
 
         source : This pre-populates the Source property.
 
@@ -66,18 +132,20 @@ void RaiseTapEvent()
 
     - public bool Handled { get; set; }
     - public object OriginalSource { get; }
-    - public System.Windows.RoutedEvent RoutedEvent { get; set; }
+    - public RoutedEvent RoutedEvent { get; set; }
     - public object Source { get; set; }
 
-##### [UIElement.AddHandler](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.addhandler?view=windowsdesktop-7.0)
+## UIElement.AddHandler, .RemoveHandler
 
-    public void AddHandler (System.Windows.RoutedEvent routedEvent, Delegate handler);
+### [UIElement.AddHandler](https://learn.microsoft.com/en-us/dotnet/api/uielement.addhandler?view=windowsdesktop-7.0)
 
-##### [UIElement.RemoveHandler](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.removehandler?view=windowsdesktop-7.0)
+    public void AddHandler (RoutedEvent routedEvent, Delegate handler);
 
-    public void RemoveHandler (System.Windows.RoutedEvent routedEvent, Delegate handler);
+### [UIElement.RemoveHandler](https://learn.microsoft.com/en-us/dotnet/api/uielement.removehandler?view=windowsdesktop-7.0)
 
-#### Exemple
+    public void RemoveHandler (RoutedEvent routedEvent, Delegate handler);
+
+### Exemple
 
 ````
 // Register a custom routed event using the Bubble routing strategy.
@@ -131,7 +199,7 @@ public event RoutedEventHandler Tap
 - Some visual element base classes expose empty On<event name> and OnPreview<event name> virtual methods 
   for each of their public routed input events. 
 
-  exemple : protected virtual void UIElement.OnKeyDown (System.Windows.Input.KeyEventArgs e);
+  exemple : protected virtual void UIElement.OnKeyDown (Input.KeyEventArgs e);
 
 
 ## [Marking routed events as handled, and class handling](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/events/marking-routed-events-as-handled-and-class-handling?view=netdesktop-7.0#instance-and-class-routed-event-handlers)
