@@ -7,21 +7,21 @@
 
 - UIElement
 
-    - public void Measure (System.Windows.Size availableSize);
-	- protected virtual System.Windows.Size MeasureCore (System.Windows.Size availableSize);
-	- public System.Windows.Size DesiredSize { get; }
+    - public void Measure (Size availableSize);
+	- protected virtual Size MeasureCore (Size availableSize);
+	- public Size DesiredSize { get; }
 
     	Measure appelle MeasureCore puis met à jour DesiredSize
 
-	- public System.Windows.Media.Transform RenderTransform { get; set; }
+	- public Media.Transform RenderTransform { get; set; }
 
     	A render transform does not regenerate layout size or render size information.
 
 - FrameworkElement
 
-	- protected override sealed System.Windows.Size MeasureCore (System.Windows.Size availableSize);
-	- protected virtual System.Windows.Size MeasureOverride (System.Windows.Size availableSize);
-	- public System.Windows.Thickness Margin { get; set; }
+	- protected override sealed Size MeasureCore (Size availableSize);
+	- protected virtual Size MeasureOverride (Size availableSize);
+	- public Thickness Margin { get; set; }
 
         - surcharge 'sealed' de MeasureCore
 		- prise en compte de Margin
@@ -36,11 +36,36 @@
 
 - Control
 
-    - public System.Windows.Thickness Padding { get; set; }
+    - public Thickness Padding { get; set; }
 
     	> The amount of space between the content of a Control and its Margin or Border. 
 
 ### Arrange
+
+- UIElement
+
+	public void Arrange (Rect finalRect);
+
+    	- déclenche le positionnement de this, et de ses children ...
+		- The final size that the parent computes for the child element, 
+		  provided as a Rect instance.
+
+	protected virtual void ArrangeCore (Rect finalRect);
+
+    	- appelée lors de Arrange
+		- The final area within the parent that element should use to arrange itself and its child elements.
+
+	public Size RenderSize { get; set; }
+
+		- Gets (or sets) the final render size of this element.
+		  set ne devrait pas être appelé ...
+
+	public Point TranslatePoint (Point point, UIElement relativeTo);
+
+	public System.Windows.Media.Transform RenderTransform { get; set; }
+	public System.Windows.Point RenderTransformOrigin { get; set; }
+
+
 
 
 
@@ -48,36 +73,36 @@
 
 ### UIElement : .Measure, .MeasureCore, .DesiredSize, .RenderTransform 
 
-	public void Measure (System.Windows.Size availableSize);
-	public System.Windows.Size DesiredSize { get; }
+	public void Measure (Size availableSize);
+	public Size DesiredSize { get; }
 
-	protected virtual System.Windows.Size MeasureCore (System.Windows.Size availableSize);
+	protected virtual Size MeasureCore (Size availableSize);
 
 - Measure appelle MeasureCore et met à jour DesiredSize
 
 - RenderTransform
 
-	public System.Windows.Media.Transform RenderTransform { get; set; }
+	public Media.Transform RenderTransform { get; set; }
 
     - A render transform does not regenerate layout size or render size information. 
 	- Render transforms are typically intended for animating or applying 
 	  a temporary effect to an element. 
 
-#### [UIElement.Measure](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.measure?view=windowsdesktop-7.0)
+#### [UIElement.Measure](https://learn.microsoft.com/en-us/dotnet/api/uielement.measure?view=windowsdesktop-7.0)
 
 - Updates the DesiredSize of a UIElement. 
 - Parent elements call this method from their own MeasureCore(Size) implementations to form a 
   recursive layout update. 
 - Calling this method constitutes the first pass (the "Measure" pass) of a layout update.
 
-#### [UIElement.MeasureCore](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.measurecore?view=windowsdesktop-7.0#system-windows-uielement-measurecore(system-windows-size))
+#### [UIElement.MeasureCore](https://learn.microsoft.com/en-us/dotnet/api/uielement.measurecore?view=windowsdesktop-7.0#system-windows-uielement-measurecore(system-windows-size))
 
 ### FrameworkElement: .MeasureCore, .MeasureOverride, .Margin, .ActualWidth/Height, .Width/Height
 
-	protected override sealed System.Windows.Size MeasureCore (System.Windows.Size availableSize);
-	protected virtual System.Windows.Size MeasureOverride (System.Windows.Size availableSize);
+	protected override sealed Size MeasureCore (Size availableSize);
+	protected virtual Size MeasureOverride (Size availableSize);
 
-	public System.Windows.Thickness Margin { get; set; }
+	public Thickness Margin { get; set; }
 
 > This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
 
@@ -94,28 +119,92 @@
 	public double Min/MaxWidth { get; set; } ...
 	public double Min/MaxHeight { get; set; } ...
 
-#### [MeasureOverride](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.measureoverride?view=windowsdesktop-7.0)
-#### [Margin](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.margin?view=windowsdesktop-7.0)
-#### [ActualWidth](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.actualwidth?view=windowsdesktop-7.0)
+#### [MeasureOverride](https://learn.microsoft.com/en-us/dotnet/api/frameworkelement.measureoverride?view=windowsdesktop-7.0)
+#### [Margin](https://learn.microsoft.com/en-us/dotnet/api/frameworkelement.margin?view=windowsdesktop-7.0)
+#### [ActualWidth](https://learn.microsoft.com/en-us/dotnet/api/frameworkelement.actualwidth?view=windowsdesktop-7.0)
 
 - FrameworkElement surcharge MeasureCore qui appelle MeasureOverride
 
 ### Control: .Padding, .MeasureOverride
 
-	public System.Windows.Thickness Padding { get; set; }
+	public Thickness Padding { get; set; }
 
 		The amount of space between the content of a Control and its Margin or Border. 
 		The default is a thickness of 0 on all four sides.
 
-	protected override System.Windows.Size MeasureOverride (System.Windows.Size constraint);
+	protected override Size MeasureOverride (Size constraint);
 
 ## Arrange
 
-### UIElement: .Arrange, .ArrangeCore
+### UIElement : .Arrange, .ArrangeCore, .TranslatePoint
 
-	public void Arrange (System.Windows.Rect finalRect);
-	protected virtual void ArrangeCore (System.Windows.Rect finalRect);
+	public void Arrange (Rect finalRect);
 
-	public System.Windows.HorizontalAlignment HorizontalAlignment { get; set; }
-	public System.Windows.VerticalAlignment VerticalAlignment { get; set; }
+		- The final size that the parent computes for the child element, provided as a Rect instance.
+
+	protected virtual void ArrangeCore (Rect finalRect);
+
+		- The final area within the parent that element should use to arrange itself and its child elements.
+
+	public Size RenderSize { get; set; }
+
+		- Gets (or sets) the final render size of this element.
+		  set ne devrait pas être appelé ...
+
+	public System.Windows.Media.Transform RenderTransform { get; set; }
+	public System.Windows.Point RenderTransformOrigin { get; set; }
+
+		- A render transform does not regenerate layout size or render size information. 
+		- Render transforms are typically intended for animating or applying a 
+		  temporary effect to an element. 
+
+	public Point TranslatePoint (Point point, UIElement relativeTo);
+
+		- Translates a point relative to this element to coordinates that are relative to 
+		  the specified element.
+
+#### Exemple :
+
+````
+protected override void OnRender(DrawingContext drawingContext)
+{
+  // Get a rectangle that represents the desired size of the rendered element
+  // after the rendering pass.  This will be used to draw at the corners of the 
+  // adorned element.
+  Rect adornedElementRect = new Rect(this.AdornedElement.RenderSize);
+
+  // Some arbitrary drawing implements.
+  SolidColorBrush renderBrush = new SolidColorBrush(Colors.Green);
+  renderBrush.Opacity = 0.2;
+  Pen renderPen = new Pen(new SolidColorBrush(Colors.Navy), 1.5);
+  double renderRadius = 5.0;
+
+  // Just draw a circle at each corner.
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.TopLeft, renderRadius, renderRadius);
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.TopRight, renderRadius, renderRadius);
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.BottomLeft, renderRadius, renderRadius);
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.BottomRight, renderRadius, renderRadius);
+}
+````
+
+### FrameworkElement : .ArrangeCore, .ArrangeOverride, .HorizontalAlignment/...
+
+	protected override sealed void ArrangeCore (Rect finalRect);
+
+	protected virtual Size ArrangeOverride (Size finalSize);
+
+		- The final area within the parent that this element should use to arrange itself and its children.
+
+		> Control authors who want to customize the arrange pass of layout processing should override this method. The implementation pattern should call Arrange(Rect) on each visible child element, and pass the final desired size for each child element as the finalRect parameter. Parent elements should call Arrange(Rect) on each child, otherwise the child elements will not be rendered.
+
+	public HorizontalAlignment HorizontalAlignment { get; set; }
+	public VerticalAlignment VerticalAlignment { get; set; }
+
+### Control
+
+	public Thickness Padding { get; set; }
+
+	protected override Size ArrangeOverride (Size arrangeBounds);
+
+## [Adorner Class](https://learn.microsoft.com/en-us/dotnet/api/documents.adorner?view=windowsdesktop-7.0)
 
