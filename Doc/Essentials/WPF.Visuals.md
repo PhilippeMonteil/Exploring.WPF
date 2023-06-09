@@ -106,4 +106,22 @@ Represents an ordered collection of Visual objects.
 - public void Clear ();
 - public void Insert (int index, System.Windows.Media.Visual visual);
 - public void Remove (System.Windows.Media.Visual visual);
-- 
+- ...
+
+## [DrawingVisual Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.media.drawingvisual?view=windowsdesktop-7.0)
+ 
+ - DrawingVisual dérive de ContainerVisual
+ - DrawingVisual is a visual object that can be used to render vector graphics on the screen. The content is persisted by the system.
+
+ ### Classe
+
+    public class DrawingVisual : System.Windows.Media.ContainerVisual
+
+### Properties
+
+    public System.Windows.Media.DrawingGroup Drawing { get; }
+
+### Methods
+
+    public System.Windows.Media.DrawingContext RenderOpen ();
+
