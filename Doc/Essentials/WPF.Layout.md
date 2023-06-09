@@ -127,6 +127,14 @@
     public event EventHandler LayoutUpdated;
     public event System.Windows.SizeChangedEventHandler SizeChanged;
 
+- FrameworkPropertyMetadata
+
+    public bool AffectsArrange { get; set; }
+    public bool AffectsMeasure { get; set; }
+    public bool AffectsParentArrange { get; set; }
+    public bool AffectsParentMeasure { get; set; }
+    public bool AffectsRender { get; set; }
+    public bool SubPropertiesDoNotAffectRender { get; set; } 
 
 ## Measure
 
@@ -332,7 +340,19 @@ protected override void OnRender(DrawingContext drawingContext)
 
 #### [SizeChangedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.sizechangedeventargs?view=windowsdesktop-7.0)
 
-### Direct vs Routed events
+## [FrameworkPropertyMetadata](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkpropertymetadata?view=windowsdesktop-7.0) 
+
+- public bool AffectsArrange { get; set; }
+- public bool AffectsMeasure { get; set; }
+- public bool AffectsParentArrange { get; set; }
+- public bool AffectsParentMeasure { get; set; }
+- public bool AffectsRender { get; set; }
+- public bool SubPropertiesDoNotAffectRender { get; set; } 
+
+- ces propriétés ne peuvent être assignées que sur une instance de FrameworkPropertyMetadata
+  non encore appliquée à une DependencyProperty.
+
+## Direct vs Routed events
 
 - Direct routed events do not follow a route, they are only handled within the same element on which 
   they are raised. 
