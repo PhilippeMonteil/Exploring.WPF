@@ -8,9 +8,9 @@
     - TypeConverter : RoutedEventConverter
 
     - properties :
-        - public Type HandlerType { get; }
         - public string Name { get; }
         - public Type OwnerType { get; }
+        - public Type HandlerType { get; }
         - public RoutingStrategy RoutingStrategy { get; }
 
 - EventManager
@@ -34,9 +34,6 @@
         - public static RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
 
 - RoutingStrategy : Tunnel, Bubble, Direct 
-
-- RoutedEventHandler
-    - public delegate void RoutedEventHandler(object sender, RoutedEventArgs e);
  
 - RoutedEventArgs
     - public RoutedEventArgs (RoutedEvent routedEvent, object source);
@@ -44,6 +41,9 @@
     - public object OriginalSource { get; }
     - public RoutedEvent RoutedEvent { get; set; }
     - public object Source { get; set; }
+
+- RoutedEventHandler
+    - public delegate void RoutedEventHandler(object sender, RoutedEventArgs e);
 
 - UIElement.RaiseEvent
     - public void RaiseEvent (RoutedEventArgs e);
@@ -100,20 +100,6 @@
 
 - RoutingStrategy : Tunnel, Bubble, Direct 
 
-## [UIElement.RaiseEvent](https://learn.microsoft.com/fr-fr/dotnet/api/uielement.raiseevent?view=windowsdesktop-7.0)
-
-    public void RaiseEvent (RoutedEventArgs e);
-
-### Exemple
-
-````
-void RaiseTapEvent()
-{
-        RoutedEventArgs newEventArgs = new RoutedEventArgs(MyButtonSimple.TapEvent);
-        RaiseEvent(newEventArgs);
-}
-````
-
 ## [RoutedEventHandler](https://learn.microsoft.com/en-us/dotnet/api/eventmanager.getroutedeventsforowner?view=windowsdesktop-7.0)
 
     public delegate void RoutedEventHandler(object sender, RoutedEventArgs e);
@@ -134,6 +120,20 @@ void RaiseTapEvent()
     - public object OriginalSource { get; }
     - public RoutedEvent RoutedEvent { get; set; }
     - public object Source { get; set; }
+
+## [UIElement.RaiseEvent](https://learn.microsoft.com/fr-fr/dotnet/api/uielement.raiseevent?view=windowsdesktop-7.0)
+
+    public void RaiseEvent (RoutedEventArgs e);
+
+### Exemple
+
+````
+void RaiseTapEvent()
+{
+        RoutedEventArgs newEventArgs = new RoutedEventArgs(MyButtonSimple.TapEvent);
+        RaiseEvent(newEventArgs);
+}
+````
 
 ## UIElement.AddHandler, .RemoveHandler
 
