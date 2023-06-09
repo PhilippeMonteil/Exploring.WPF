@@ -65,8 +65,18 @@
 	public System.Windows.Media.Transform RenderTransform { get; set; }
 	public System.Windows.Point RenderTransformOrigin { get; set; }
 
+- FrameworkElement
 
+	protected override sealed void ArrangeCore (Rect finalRect);
+	protected virtual Size ArrangeOverride (Size finalSize);
 
+- Control
+
+	protected override Size ArrangeOverride (Size arrangeBounds);
+
+	public Thickness Padding { get; set; }
+
+		- The amount of space between the content of a Control and its Margin or Border. 
 
 
 ## Measure
@@ -194,6 +204,7 @@ protected override void OnRender(DrawingContext drawingContext)
 	protected virtual Size ArrangeOverride (Size finalSize);
 
 		- The final area within the parent that this element should use to arrange itself and its children.
+		- returns the actual size used.
 
 		> Control authors who want to customize the arrange pass of layout processing should override this method. The implementation pattern should call Arrange(Rect) on each visible child element, and pass the final desired size for each child element as the finalRect parameter. Parent elements should call Arrange(Rect) on each child, otherwise the child elements will not be rendered.
 
@@ -202,9 +213,17 @@ protected override void OnRender(DrawingContext drawingContext)
 
 ### Control
 
+	protected override Size ArrangeOverride (Size arrangeBounds);
+
 	public Thickness Padding { get; set; }
 
-	protected override Size ArrangeOverride (Size arrangeBounds);
+		- The amount of space between the content of a Control and its Margin or Border. 
+
+	public System.Windows.HorizontalAlignment Horizontal/VerticalContentAlignment { get; set; }
+
+		- Gets or sets the horizontal alignment of the control's content.
+
+## [Alignment, Margins, and Padding Overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/alignment-margins-and-padding-overview?view=netframeworkdesktop-4.8)
 
 ## [Adorner Class](https://learn.microsoft.com/en-us/dotnet/api/documents.adorner?view=windowsdesktop-7.0)
 
