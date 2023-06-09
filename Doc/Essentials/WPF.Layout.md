@@ -3,81 +3,111 @@
 
 ## En résumé
 
-### Measure
+- Measure
 
-- UIElement
+    - UIElement
 
-    - public void Measure (Size availableSize);
-	- protected virtual Size MeasureCore (Size availableSize);
-	- public Size DesiredSize { get; }
+        - public void Measure (Size availableSize);
+    	- protected virtual Size MeasureCore (Size availableSize);
+    	- public Size DesiredSize { get; }
 
-    	Measure appelle MeasureCore puis met à jour DesiredSize
+        	Measure appelle MeasureCore puis met à jour DesiredSize
 
-	- public Media.Transform RenderTransform { get; set; }
+    	- public System.Windows.Media.Transform RenderTransform { get; set; }
+    	- public System.Windows.Point RenderTransformOrigin { get; set; }
 
-    	A render transform does not regenerate layout size or render size information.
+        	A render transform does not regenerate layout size or render size information.
 
-- FrameworkElement
+    - FrameworkElement
 
-	- protected override sealed Size MeasureCore (Size availableSize);
-	- protected virtual Size MeasureOverride (Size availableSize);
-	- public Thickness Margin { get; set; }
+    	- protected override sealed Size MeasureCore (Size availableSize);
+    	- protected virtual Size MeasureOverride (Size availableSize);
+    	- public Thickness Margin { get; set; }
 
-        - surcharge 'sealed' de MeasureCore
-		- prise en compte de Margin
-		- appel de MeasureOverride
+            - surcharge 'sealed' de MeasureCore
+    		- prise en compte de Margin
+    		- appel de MeasureOverride
 
-    - public double Width/Height { get; set; }
-	- public double Min/MaxWidth/Height { get; set; } ...
+        - public double Width/Height { get; set; }
+    	- public double Min/MaxWidth/Height { get; set; } ...
 
-	- public double ActualWidth/Height { get; }
+    	- public double ActualWidth/Height { get; }
 
     	> This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
 
-- Control
+    - Control
 
-    - public Thickness Padding { get; set; }
+        - public Thickness Padding { get; set; }
 
     	> The amount of space between the content of a Control and its Margin or Border. 
 
-### Arrange
+- Arrange
 
-- UIElement
+    - UIElement
 
-	public void Arrange (Rect finalRect);
+    	public void Arrange (Rect finalRect);
 
-    	- déclenche le positionnement de this, et de ses children ...
-		- The final size that the parent computes for the child element, 
-		  provided as a Rect instance.
+        	- déclenche le positionnement de this, et de ses children ...
+    		- The final size that the parent computes for the child element, 
+    		  provided as a Rect instance.
 
-	protected virtual void ArrangeCore (Rect finalRect);
+    	protected virtual void ArrangeCore (Rect finalRect);
 
-    	- appelée lors de Arrange
-		- The final area within the parent that element should use to arrange itself and its child elements.
+        	- appelée lors de Arrange
+    		- The final area within the parent that element should use to arrange itself and its child elements.
 
-	public Size RenderSize { get; set; }
+    	public Size RenderSize { get; set; }
 
-		- Gets (or sets) the final render size of this element.
-		  set ne devrait pas être appelé ...
+    		- Gets (or sets) the final render size of this element.
+    		  set ne devrait pas être appelé ...
 
-	public Point TranslatePoint (Point point, UIElement relativeTo);
+    	public Point TranslatePoint (Point point, UIElement relativeTo);
 
-	public System.Windows.Media.Transform RenderTransform { get; set; }
-	public System.Windows.Point RenderTransformOrigin { get; set; }
+    - FrameworkElement
 
-- FrameworkElement
+    	protected override sealed void ArrangeCore (Rect finalRect);
+    	protected virtual Size ArrangeOverride (Size finalSize);
 
-	protected override sealed void ArrangeCore (Rect finalRect);
-	protected virtual Size ArrangeOverride (Size finalSize);
+    - Control
 
-- Control
+    	protected override Size ArrangeOverride (Size arrangeBounds);
 
-	protected override Size ArrangeOverride (Size arrangeBounds);
+    	public Thickness Padding { get; set; }
 
-	public Thickness Padding { get; set; }
+    		- The amount of space between the content of a Control and its Margin or Border. 
 
-		- The amount of space between the content of a Control and its Margin or Border. 
+        public System.Windows.Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }
 
+        public System.Windows.Thickness BorderThickness { get; set; }
+
+- résumé des paramètres de positionnement, sizing, rendu
+
+    - UIElement
+        - public Media.Transform RenderTransform { get; set; }
+    	- public System.Windows.Point RenderTransformOrigin { get; set; }
+
+    - FrameworkElement
+        - public double Width/Height { get; set; }
+        - public double Min/MaxWidth/Height { get; set; } ...
+        - public Thickness Margin { get; set; }
+    	- public HorizontalAlignment HorizontalAlignment { get; set; }
+    	- public VerticalAlignment VerticalAlignment { get; set; }
+
+    - Control
+        - public Thickness Padding { get; set; }
+    	- public System.Windows.Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }
+    	- public System.Windows.Thickness BorderThickness { get; set; }
+
+- résumé des propriétés affectées par les calculs de positionnement, par le rendu 
+
+    - UIElement
+    	- public Size DesiredSize { get; }
+    	- public Size RenderSize { get; set; }
+
+    - FrameworkElement
+    	- public double ActualWidth/Height { get; }
+
+    - Control
 
 ## Measure
 
@@ -222,6 +252,8 @@ protected override void OnRender(DrawingContext drawingContext)
 	public System.Windows.HorizontalAlignment Horizontal/VerticalContentAlignment { get; set; }
 
 		- Gets or sets the horizontal alignment of the control's content.
+
+	public System.Windows.Thickness BorderThickness { get; set; }
 
 ## [Alignment, Margins, and Padding Overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/alignment-margins-and-padding-overview?view=netframeworkdesktop-4.8)
 
