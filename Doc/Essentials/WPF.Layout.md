@@ -115,7 +115,17 @@
 
     	public Point TranslatePoint (Point point, UIElement relativeTo);
 
-- events
+- UIElement methods : InvalidateMeasure, InvalidateArrange, UpdateLayout, InvalidateVisual 
+
+    public void InvalidateMeasure ();
+    public void InvalidateArrange ();
+    public void UpdateLayout ();
+    public void InvalidateVisual ();
+
+- events : UIElement.LayoutUpdated, UIElement.LayoutUpdated
+
+    public event EventHandler LayoutUpdated;
+    public event System.Windows.SizeChangedEventHandler SizeChanged;
 
 
 ## Measure
@@ -266,6 +276,44 @@ protected override void OnRender(DrawingContext drawingContext)
 	public VerticalAlignment VerticalContentAlignment { get; set; }
 
 		- Gets or sets the horizontal alignment of the control's content.
+
+## UIElement methods : InvalidateMeasure, InvalidateArrange, UpdateLayout, InvalidateVisual 
+
+### [InvalidateMeasure](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.invalidatemeasure?view=windowsdesktop-7.0)
+
+    public void InvalidateMeasure ();
+
+- Invalidates the measurement state (layout) for the element.
+- Calling this method also calls InvalidateArrange internally, there is no need to call 
+  InvalidateMeasure and InvalidateArrange in succession. 
+- After the invalidation, the element will have its layout updated, which will occur asynchronously, 
+  unless UpdateLayout is called to force a synchronous layout change.
+
+### [InvalidateArrange](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.invalidatearrange?view=windowsdesktop-7.0)
+
+    public void InvalidateArrange ();
+
+- Invalidates the arrange state (layout) for the element. After the invalidation, 
+  the element will have its layout updated, which will occur asynchronously 
+  unless subsequently forced by UpdateLayout().
+
+### [UIElement.UpdateLayout Method](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.updatelayout?view=windowsdesktop-7.0)
+
+    public void UpdateLayout ();
+
+- Ensures that all visual child elements of this element are properly updated for layout.
+- When you call this method, elements with IsMeasureValid false or IsArrangeValid false 
+  will call element-specific MeasureCore and ArrangeCore methods, which forces layout update, 
+  and all computed sizes will be validated.
+
+### [InvalidateVisual](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.invalidatevisual?view=windowsdesktop-7.0)
+
+    public void InvalidateVisual ();
+
+- Invalidates the rendering of the element, and forces a complete new layout pass. 
+  OnRender(DrawingContext) is called after the layout cycle is completed.
+- This method calls InvalidateArrange internally.
+- This method is not generally called from your application code. 
 
 ## Events
 
