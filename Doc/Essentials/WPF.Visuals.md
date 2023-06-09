@@ -16,7 +16,7 @@
         - ...
  
  - ContainerVisual
-    - dérive de Visual
+    - concrète, dérive de Visual
     - exposition d'une VisualCollection, Children
     - DependencyObject Parent
     - attributs de visualisation : 
