@@ -3,6 +3,46 @@
 
 ## En résumé
 
+### Measure
+
+- UIElement
+
+    - public void Measure (System.Windows.Size availableSize);
+	- protected virtual System.Windows.Size MeasureCore (System.Windows.Size availableSize);
+	- public System.Windows.Size DesiredSize { get; }
+
+    	Measure appelle MeasureCore puis met à jour DesiredSize
+
+	- public System.Windows.Media.Transform RenderTransform { get; set; }
+
+    	A render transform does not regenerate layout size or render size information.
+
+- FrameworkElement
+
+	- protected override sealed System.Windows.Size MeasureCore (System.Windows.Size availableSize);
+	- protected virtual System.Windows.Size MeasureOverride (System.Windows.Size availableSize);
+	- public System.Windows.Thickness Margin { get; set; }
+
+        - surcharge 'sealed' de MeasureCore
+		- prise en compte de Margin
+		- appel de MeasureOverride
+
+    - public double Width/Height { get; set; }
+	- public double Min/MaxWidth/Height { get; set; } ...
+
+	- public double ActualWidth/Height { get; }
+
+    	> This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
+
+- Control
+
+    - public System.Windows.Thickness Padding { get; set; }
+
+    	> The amount of space between the content of a Control and its Margin or Border. 
+
+### Arrange
+
+
 
 ## Measure
 
@@ -39,10 +79,12 @@
 
 	public System.Windows.Thickness Margin { get; set; }
 
-> Elements that have margins set will not typically constrain the size of the specified Margin if the allotted rectangle space is not large enough for the margin plus the element content area. The element content area will be constrained instead when layout is calculated. The only case where margins would be constrained also is if the content is already constrained all the way to zero.
+> This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
 
 	public double ActualWidth { get; }
 	public double ActualHeight { get; }
+
+> Elements that have margins set will not typically constrain the size of the specified Margin if the allotted rectangle space is not large enough for the margin plus the element content area. The element content area will be constrained instead when layout is calculated. The only case where margins would be constrained also is if the content is already constrained all the way to zero.
 
 	public double Width { get; set; }
 	public double Height { get; set; }
