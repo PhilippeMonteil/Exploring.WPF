@@ -13,8 +13,8 @@
 
         	Measure appelle MeasureCore puis met à jour DesiredSize
 
-    	- public System.Windows.Media.Transform RenderTransform { get; set; }
-    	- public System.Windows.Point RenderTransformOrigin { get; set; }
+    	- public Media.Transform RenderTransform { get; set; }
+    	- public Point RenderTransformOrigin { get; set; }
 
         	A render transform does not regenerate layout size or render size information.
 
@@ -22,6 +22,7 @@
 
     	- protected override sealed Size MeasureCore (Size availableSize);
     	- protected virtual Size MeasureOverride (Size availableSize);
+
     	- public Thickness Margin { get; set; }
 
             - surcharge 'sealed' de MeasureCore
@@ -33,7 +34,7 @@
 
     	- public double ActualWidth/Height { get; }
 
-    	> This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
+        	> This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
 
     - Control
 
@@ -61,12 +62,13 @@
     		- Gets (or sets) the final render size of this element.
     		  set ne devrait pas être appelé ...
 
-    	public Point TranslatePoint (Point point, UIElement relativeTo);
-
     - FrameworkElement
 
     	protected override sealed void ArrangeCore (Rect finalRect);
     	protected virtual Size ArrangeOverride (Size finalSize);
+
+    	public HorizontalAlignment HorizontalAlignment { get; set; }
+    	public VerticalAlignment VerticalAlignment { get; set; }
 
     - Control
 
@@ -76,15 +78,15 @@
 
     		- The amount of space between the content of a Control and its Margin or Border. 
 
-        public System.Windows.Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }
+        public Thickness BorderThickness { get; set; }
 
-        public System.Windows.Thickness BorderThickness { get; set; }
+        public Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }
 
 - résumé des paramètres de positionnement, sizing, rendu
 
     - UIElement
         - public Media.Transform RenderTransform { get; set; }
-    	- public System.Windows.Point RenderTransformOrigin { get; set; }
+    	- public Point RenderTransformOrigin { get; set; }
 
     - FrameworkElement
         - public double Width/Height { get; set; }
@@ -95,8 +97,8 @@
 
     - Control
         - public Thickness Padding { get; set; }
-    	- public System.Windows.Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }
-    	- public System.Windows.Thickness BorderThickness { get; set; }
+    	- public Thickness BorderThickness { get; set; }
+    	- public Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }
 
 - résumé des propriétés affectées par les calculs de positionnement, par le rendu 
 
@@ -108,6 +110,10 @@
     	- public double ActualWidth/Height { get; }
 
     - Control
+
+- divers
+
+    	public Point TranslatePoint (Point point, UIElement relativeTo);
 
 ## Measure
 
@@ -191,8 +197,8 @@
 		- Gets (or sets) the final render size of this element.
 		  set ne devrait pas être appelé ...
 
-	public System.Windows.Media.Transform RenderTransform { get; set; }
-	public System.Windows.Point RenderTransformOrigin { get; set; }
+	public Media.Transform RenderTransform { get; set; }
+	public Point RenderTransformOrigin { get; set; }
 
 		- A render transform does not regenerate layout size or render size information. 
 		- Render transforms are typically intended for animating or applying a 
@@ -249,11 +255,14 @@ protected override void OnRender(DrawingContext drawingContext)
 
 		- The amount of space between the content of a Control and its Margin or Border. 
 
-	public System.Windows.HorizontalAlignment Horizontal/VerticalContentAlignment { get; set; }
+	public Thickness BorderThickness { get; set; }
+
+        - espaces entre l'extérieur du Contrôle et sa zone de Padding
+
+	public HorizontalAlignment HorizontalContentAlignment { get; set; }
+	public VerticalAlignment VerticalContentAlignment { get; set; }
 
 		- Gets or sets the horizontal alignment of the control's content.
-
-	public System.Windows.Thickness BorderThickness { get; set; }
 
 ## [Alignment, Margins, and Padding Overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/alignment-margins-and-padding-overview?view=netframeworkdesktop-4.8)
 
