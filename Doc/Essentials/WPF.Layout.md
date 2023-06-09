@@ -115,6 +115,9 @@
 
     	public Point TranslatePoint (Point point, UIElement relativeTo);
 
+- events
+
+
 ## Measure
 
 ### UIElement : .Measure, .MeasureCore, .DesiredSize, .RenderTransform 
@@ -264,7 +267,30 @@ protected override void OnRender(DrawingContext drawingContext)
 
 		- Gets or sets the horizontal alignment of the control's content.
 
-## [Alignment, Margins, and Padding Overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/alignment-margins-and-padding-overview?view=netframeworkdesktop-4.8)
+## Events
+
+### [UIElement.LayoutUpdated](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.control.borderthickness?view=windowsdesktop-7.0)
+
+- public event EventHandler LayoutUpdated;
+- This member is a CLR event, not a routed event.
+
+### [FrameworkElement.SizeChanged](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.sizechanged?view=windowsdesktop-7.0)
+
+- public event System.Windows.SizeChangedEventHandler SizeChanged;
+- Occurs when either the ActualHeight or the ActualWidth properties change value on this element.
+
+- public delegate void SizeChangedEventHandler(object sender, SizeChangedEventArgs e);
+- public class SizeChangedEventArgs : System.Windows.RoutedEventArgs
+
+#### [SizeChangedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.sizechangedeventargs?view=windowsdesktop-7.0)
+
+### Direct vs Routed events
+
+- Direct routed events do not follow a route, they are only handled within the same element on which 
+  they are raised. 
+- Direct routed events do support other routed event behavior: 
+    - they support an accessible handlers collection,
+    - they can be used as an EventTrigger in a style.
 
 ## [Adorner Class](https://learn.microsoft.com/en-us/dotnet/api/documents.adorner?view=windowsdesktop-7.0)
 
