@@ -15,6 +15,53 @@
     - propriétés :
         - Focusable, IsKeyboardFocusWithin, IsMouseOver, IsKeyboardFocused ...
 
+- Keyboard Class
+
+    - public static class Keyboard
+
+    - events
+
+        - PreviewGotKeyboardFocusEvent / GotKeyboardFocusEvent
+        - PreviewLostKeyboardFocusEvent / LostKeyboardFocusEvent
+        - KeyDownEvent / PreviewKeyDownEvent
+        - ...
+
+    - methods
+
+        public static IInputElement FocusedElement { get; }
+        public static void ClearFocus();
+        public static IInputElement Focus(IInputElement element);
+
+        public static KeyStates GetKeyStates(Key key);
+
+        public static bool IsKeyDown(Key key);
+        public static bool IsKeyToggled(Key key);
+        public static bool IsKeyUp(Key key);
+
+        public static void AddGotKeyboardFocusHandler(DependencyObject element, KeyboardFocusChangedEventHandler handler);
+        ...
+
+- FocusManager
+
+    - public static class FocusManager
+
+    - events
+
+        public static readonly RoutedEvent GotFocusEvent;
+        public static readonly RoutedEvent LostFocusEvent;
+
+    - methods
+
+        public static IInputElement GetFocusedElement(DependencyObject element);
+        public static DependencyObject GetFocusScope(DependencyObject element);
+        public static bool GetIsFocusScope(DependencyObject element);
+
+        public static void AddGotFocusHandler(DependencyObject element, RoutedEventHandler handler);
+        public static void RemoveGotFocusHandler(DependencyObject element, RoutedEventHandler handler);
+
+        public static void AddLostFocusHandler(DependencyObject element, RoutedEventHandler handler);
+        public static void RemoveLostFocusHandler(DependencyObject element, RoutedEventHandler handler);
+
 ## [Focus Managment](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/focus-overview?view=netframeworkdesktop-4.8)
 
 ### Keyboard Focus
@@ -118,6 +165,8 @@ System.Windows.UIElement3D
 #### [System.Windows.Input.Keyboard Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.keyboard?view=windowsdesktop-7.0)
 
 - classe
+
+    public static class Keyboard
 
 - méthodes
 
