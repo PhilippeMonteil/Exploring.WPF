@@ -62,6 +62,25 @@
         public static void AddLostFocusHandler(DependencyObject element, RoutedEventHandler handler);
         public static void RemoveLostFocusHandler(DependencyObject element, RoutedEventHandler handler);
 
+- KeyboardNavigation
+ 
+    - public sealed class KeyboardNavigation
+    - méthodes :
+        - set/get attached properties
+             - AcceptsReturn
+             - IsTabStop
+             - TabIndex
+             - TabNavigation
+             - ControlTabNavigation
+             - DirectionalNavigation
+
+- Styling for Focus in Controls
+    - Focus visual styles act exclusively for keyboard focus.
+    - Focus adorner
+    - FocusVisualStyleKey
+    - FrameworkElement.FocusVisualStyle
+    - alternative : trigger on IsKeyboardFocused
+
 ## [Focus Managment](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/focus-overview?view=netframeworkdesktop-4.8)
 
 ### Keyboard Focus
@@ -231,7 +250,7 @@ public static class Keyboard
     }
 ````
 
-### Logical Focus
+### [Logical Focus](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/focus-overview?view=netframeworkdesktop-4.8#logical-focus)
 
 #### [FocusManager Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.focusmanager?view=windowsdesktop-7.0)
 
@@ -270,17 +289,21 @@ public static class Keyboard
     }
  ````
 
- ### [KeyboardNavigation Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.focusmanager.gotfocus?view=windowsdesktop-7.0)
+ ### [KeyboardNavigation](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/focus-overview?view=netframeworkdesktop-4.8#keyboard-navigation)
 
- - classe
+ > The KeyboardNavigation class is responsible for implementing default keyboard focus navigation when one of the navigation keys is pressed. The navigation keys are: TAB, SHIFT+TAB, CTRL+TAB, CTRL+SHIFT+TAB, UPARROW, DOWNARROW, LEFTARROW, and RIGHTARROW keys.
 
- - properties
+ - [classe](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.keyboardnavigation?redirectedfrom=MSDN&view=windowsdesktop-7.0)
+ 
+     public sealed class KeyboardNavigation
+
+ - attached properties
      - AcceptsReturn
+     - IsTabStop
+     - TabIndex
      - TabNavigation
      - ControlTabNavigation
      - DirectionalNavigation
-     - IsTabStop
-     - TabIndex
 
 - [KeyboardNavigationMode](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.keyboardnavigationmode?view=windowsdesktop-7.0)
 
@@ -306,8 +329,26 @@ public static class Keyboard
         public static KeyboardNavigationMode GetDirectionalNavigation(DependencyObject element);
         public static bool GetIsTabStop(DependencyObject element);
         public static int GetTabIndex(DependencyObject element);
-
         public static KeyboardNavigationMode GetTabNavigation(DependencyObject element);
     }
 ````
 
+### [Styling for Focus in Controls, and FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle?view=netframeworkdesktop-4.8)
+
+- Focus adorner
+
+    > What the feature actually does is to overlay a different visual tree (an adorner) on top of the visual tree as created by a control's rendering through its template. You define this separate visual tree using a style that fills the FocusVisualStyle property.
+
+- FocusVisualStyleKey
+ 
+    > The themes for controls include a default focus visual style behavior that becomes the focus visual style for all controls in the theme. This theme style is identified by the value of the static key FocusVisualStyleKey.
+
+- [FrameworkElement.FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.focusvisualstyle?view=windowsdesktop-7.0)
+
+    > Setting FocusVisualStyle on individual control styles that are not part of a theme is not the intended usage of focus visual styles.
+
+- Focus visual styles act exclusively for keyboard focus. 
+
+- Alternatives to Using a Focus Visual Style
+
+    - trigger on IsKeyboardFocused
