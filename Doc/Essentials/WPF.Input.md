@@ -352,3 +352,37 @@ public static class Keyboard
 - Alternatives to Using a Focus Visual Style
 
     - trigger on IsKeyboardFocused
+
+### Button.IsDefault, .IsCancel
+
+### Mnemonics
+
+#### Exemple
+
+````
+    <StackPanel Margin="32">
+        <StackPanel.Background>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+        </StackPanel.Background>
+        <Button x:Name="Button1"
+                Click="Button1_Click"
+                IsCancel="True">
+            <AccessText>_AButton</AccessText>
+        </Button>
+        <Button Margin="8" Width="200" Height="100"
+                Click="Button_Click" 
+                IsDefault="True"
+                Content="_Button">
+        </Button>
+        <Label Content="Your _Name" Target="{Binding ElementName=txtName}" Margin="8,0,0,0"  VerticalAlignment="Center" />
+        <TextBox x:Name="txtName" Text="TextBox" Margin="8" AcceptsReturn="False"/>
+    </StackPanel>
+````
+
+#### [Label.Target Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.label.target?view=windowsdesktop-7.0)
+
+    [System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.NameReferenceConverter))]
+    public System.Windows.UIElement Target { get; set; }
+
+Gets or sets the element that receives focus when the user presses the label's access key.
+
