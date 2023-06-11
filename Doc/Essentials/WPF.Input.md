@@ -83,6 +83,18 @@
              - ControlTabNavigation
              - DirectionalNavigation
 
+- UIElement.InputBindings
+
+    - InputBinding Class
+
+        - Inheritance : Object -> DispatcherObject -> DependencyObject -> Freezable -> InputBinding
+        - Derived : KeyBinding, MouseBinding
+        - properties
+            - public System.Windows.Input.ICommand Command { get; set; }
+            - public object CommandParameter { get; set; }
+            - public System.Windows.IInputElement CommandTarget { get; set; }
+            - public virtual System.Windows.Input.InputGesture Gesture { get; set; }
+
 - Styling for Focus in Controls
     - Focus visual styles act exclusively for keyboard focus.
     - Focus adorner
