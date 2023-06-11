@@ -342,7 +342,6 @@ public static class Keyboard
         public static void SetDirectionalNavigation(DependencyObject element, KeyboardNavigationMode mode);
         public static void SetIsTabStop(DependencyObject element, bool isTabStop);
         public static void SetTabIndex(DependencyObject element, int index);
-        public static void SetTabNavigation(DependencyObject element, KeyboardNavigationMode mode);
 
         public static bool GetAcceptsReturn(DependencyObject element);
         public static KeyboardNavigationMode GetControlTabNavigation(DependencyObject element);
@@ -353,7 +352,29 @@ public static class Keyboard
     }
 ````
 
-### [Styling for Focus in Controls, and FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle?view=netframeworkdesktop-4.8)
+## [UIElement.InputBindings](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.inputbindings?view=windowsdesktop-7.0)
+
+public System.Windows.Input.InputBindingCollection InputBindings { get; }
+
+public sealed class InputBindingCollection : System.Collections.IList
+
+### [InputBinding Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.inputbinding?view=windowsdesktop-7.0)
+
+- Inheritance : Object -> DispatcherObject -> DependencyObject -> Freezable -> InputBinding
+
+- Derived : KeyBinding, MouseBinding
+
+### Exemple
+
+````
+<Window.InputBindings>
+  <KeyBinding Key="B"
+              Modifiers="Control" 
+              Command="ApplicationCommands.Open" />
+</Window.InputBindings>
+````
+
+## [Styling for Focus in Controls, and FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/styling-for-focus-in-controls-and-focusvisualstyle?view=netframeworkdesktop-4.8)
 
 - Focus adorner
 
@@ -373,11 +394,18 @@ public static class Keyboard
 
     - trigger on IsKeyboardFocused
 
-### Button.IsDefault, .IsCancel
+## Button.IsDefault, .IsCancel
 
-### Mnemonics
+## Mnemonics
 
-#### Exemple
+### [Label.Target Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.label.target?view=windowsdesktop-7.0)
+
+    [System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.NameReferenceConverter))]
+    public System.Windows.UIElement Target { get; set; }
+
+Gets or sets the element that receives focus when the user presses the label's access key.
+
+### Exemple
 
 ````
     <StackPanel Margin="32">
@@ -398,11 +426,3 @@ public static class Keyboard
         <TextBox x:Name="txtName" Text="TextBox" Margin="8" AcceptsReturn="False"/>
     </StackPanel>
 ````
-
-#### [Label.Target Property](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.label.target?view=windowsdesktop-7.0)
-
-    [System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.NameReferenceConverter))]
-    public System.Windows.UIElement Target { get; set; }
-
-Gets or sets the element that receives focus when the user presses the label's access key.
-
