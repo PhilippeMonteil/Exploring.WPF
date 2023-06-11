@@ -3,7 +3,10 @@
 
 ## En résumé
 
-- interface IInputElement, classes Keyboard, FocusManager, KeyboardNavigation
+- interface IInputElement : events keyboard/mouse/stylus/focus, add/remove event handler, raise event ...
+- classe Keyboard : Keyboard up/down, focus, event handlers / DependencyObject
+- classe FocusManager : logical focus manager : Focus scope ...
+- classe KeyboardNavigation : attached properties AcceptsReturn, IsTabStop, TabNavigation ...
 
 - IInputElement
 
@@ -44,7 +47,7 @@
         public static void AddGotKeyboardFocusHandler(DependencyObject element, KeyboardFocusChangedEventHandler handler);
         ...
 
-- FocusManager
+- FocusManager : FocusedElement, FocusScope, FocusHandler, RoutedEvent Focus
 
     - public static class FocusManager
 
@@ -55,9 +58,12 @@
 
     - methods
 
+        public static void SetFocusedElement(DependencyObject element, IInputElement value);
         public static IInputElement GetFocusedElement(DependencyObject element);
-        public static DependencyObject GetFocusScope(DependencyObject element);
+
+        public static void SetIsFocusScope(DependencyObject element, bool value);
         public static bool GetIsFocusScope(DependencyObject element);
+        public static DependencyObject GetFocusScope(DependencyObject element);
 
         public static void AddGotFocusHandler(DependencyObject element, RoutedEventHandler handler);
         public static void RemoveGotFocusHandler(DependencyObject element, RoutedEventHandler handler);
@@ -83,6 +89,10 @@
     - FocusVisualStyleKey
     - FrameworkElement.FocusVisualStyle
     - alternative : trigger on IsKeyboardFocused
+
+- Button.IsDefault, .IsCancel
+- Mnemonics, AccessText
+- Label.Target
 
 ## [Focus Managment](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/focus-overview?view=netframeworkdesktop-4.8)
 
@@ -257,6 +267,8 @@ public static class Keyboard
 
 #### [FocusManager Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.focusmanager?view=windowsdesktop-7.0)
 
+- Logical Focus Manager
+
 - Provides a set of static methods, attached properties, and events for determining and setting 
   focus scopes and for setting the focused element within the scope.
 
@@ -273,15 +285,20 @@ public static class Keyboard
     {
         public static readonly DependencyProperty FocusedElementProperty;
         public static readonly DependencyProperty IsFocusScopeProperty;
+
         public static readonly RoutedEvent GotFocusEvent;
         public static readonly RoutedEvent LostFocusEvent;
 
-        public static IInputElement GetFocusedElement(DependencyObject element);
-        public static DependencyObject GetFocusScope(DependencyObject element);
+        // Set/Get IsFocusScope
+        public static void SetIsFocusScope(DependencyObject element, bool value);
         public static bool GetIsFocusScope(DependencyObject element);
 
+        // Sets logical focus on an element in a scope.
         public static void SetFocusedElement(DependencyObject element, IInputElement value);
-        public static void SetIsFocusScope(DependencyObject element, bool value);
+        public static IInputElement GetFocusedElement(DependencyObject element);
+
+        // Determines the closest ancestor of the specified element that has IsFocusScope set to true.
+        public static DependencyObject GetFocusScope(DependencyObject element);
 
         public static void AddGotFocusHandler(DependencyObject element, RoutedEventHandler handler);
         public static void RemoveGotFocusHandler(DependencyObject element, RoutedEventHandler handler);
