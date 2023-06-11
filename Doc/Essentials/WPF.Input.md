@@ -3,17 +3,20 @@
 
 ## En résumé
 
+- interface IInputElement, classes Keyboard, FocusManager, KeyboardNavigation
+
 - IInputElement
 
-    - derived : UIElement, FrameworkElement ...
     - events : 
         - Stylus, Mouse, Keyboard
-        - Preview : PreviewKeyDown, KeyDown ...
+        - Preview : PreviewKeyDown, KeyDown, Focus, MouseCapture ...
     - methods :
         - RoutedEvent : AddHandler, RemoveHandler, RaiseEvent
+        - CaptureMouse, Stylus
         - Focus
     - propriétés :
-        - Focusable, IsKeyboardFocusWithin, IsMouseOver, IsKeyboardFocused ...
+        - IsEnabled, Focusable, IsKeyboardFocusWithin, IsMouse/StylusOver, IsKeyboardFocused ...
+    - derived : UIElement, FrameworkElement ...
 
 - Keyboard Class
 
@@ -66,7 +69,7 @@
  
     - public sealed class KeyboardNavigation
     - méthodes :
-        - set/get attached properties
+        - set/get attached properties / DependencyObject
              - AcceptsReturn
              - IsTabStop
              - TabIndex
