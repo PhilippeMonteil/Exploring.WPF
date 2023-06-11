@@ -361,8 +361,16 @@ public sealed class InputBindingCollection : System.Collections.IList
 ### [InputBinding Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.input.inputbinding?view=windowsdesktop-7.0)
 
 - Inheritance : Object -> DispatcherObject -> DependencyObject -> Freezable -> InputBinding
-
 - Derived : KeyBinding, MouseBinding
+- properties
+    - public System.Windows.Input.ICommand Command { get; set; }
+    - public object CommandParameter { get; set; }
+    - public System.Windows.IInputElement CommandTarget { get; set; }
+    - public virtual System.Windows.Input.InputGesture Gesture { get; set; }
+
+### InputGesture
+
+    public abstract class InputGesture
 
 ### Exemple
 
