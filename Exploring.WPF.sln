@@ -253,10 +253,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", 
 		Doc\Essentials\WPF.Essentials.Templates.md = Doc\Essentials\WPF.Essentials.Templates.md
 		Doc\Essentials\WPF.Essentials.Triggers.md = Doc\Essentials\WPF.Essentials.Triggers.md
 		Doc\Essentials\WPF.Essentials.XAML.md = Doc\Essentials\WPF.Essentials.XAML.md
-		Doc\Essentials\WPF.Input.md = Doc\Essentials\WPF.Input.md
-		Doc\Essentials\WPF.Layout.md = Doc\Essentials\WPF.Layout.md
-		Doc\Essentials\WPF.RoutedEvents.md = Doc\Essentials\WPF.RoutedEvents.md
-		Doc\Essentials\WPF.Visuals.md = Doc\Essentials\WPF.Visuals.md
+		Doc\Essentials\WPF.Essentials.Input.md = Doc\Essentials\WPF.Essentials.Input.md
+		Doc\Essentials\WPF.Essentials.Layout.md = Doc\Essentials\WPF.Essentials.Layout.md
+		Doc\Essentials\WPF.Essentials.RoutedEvents.md = Doc\Essentials\WPF.Essentials.RoutedEvents.md
+		Doc\Essentials\WPF.Essentials.Visuals.md = Doc\Essentials\WPF.Essentials.Visuals.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMarkupExtension", "WPF\TestMarkupExtension\TestMarkupExtension.csproj", "{A175357F-6399-410F-8403-6F8D98982C5D}"
