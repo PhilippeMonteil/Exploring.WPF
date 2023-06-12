@@ -225,3 +225,24 @@ public event RoutedEventHandler Tap
 
 ## [How to create a custom routed event](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/events/how-to-create-a-custom-routed-event?view=netdesktop-7.0)
 
+## [WeakEventManager](https://learn.microsoft.com/en-us/dotnet/api/system.windows.weakeventmanager?view=windowsdesktop-7.0)
+
+### WeakEventManager
+
+- classe : public abstract class WeakEventManager : System.Windows.Threading.DispatcherObject
+ 
+- Inheritance : Object -> DispatcherObject -> WeakEventManager
+
+- Derived :
+    System.Collections.Specialized.CollectionChangedEventManager
+    System.ComponentModel.CurrentChangedEventManager
+    System.ComponentModel.CurrentChangingEventManager
+    System.ComponentModel.ErrorsChangedEventManager
+    System.ComponentModel.PropertyChangedEventManager
+    System.Windows.Data.DataChangedEventManager
+    System.Windows.Input.CanExecuteChangedEventManager
+    System.Windows.LostFocusEventManager
+    System.Windows.WeakEventManager<TEventSource,TEventArgs>
+
+### [Weak event patterns](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/events/weak-event-patterns?view=netdesktop-7.0)
+
