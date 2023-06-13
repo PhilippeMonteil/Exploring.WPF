@@ -1,7 +1,152 @@
 
-# XAML & WPF 
+# [XAML & WPF](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-in-wpf?view=netframeworkdesktop-4.8)
 
-https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-in-wpf?view=netframeworkdesktop-4.8
+## en résumé
+
+- mapping namespace XML / namespace
+    -  used for type resolution by a XAML object writer or XAML schema context.
+    - xmlns:lib="clr-namespace:ItemsControlLib;assembly=ItemsControlLib"
+    - attribut XmlnsDefinitionAttribute
+        - dans AssemblyInfo.cs
+        - ex: [assembly: XmlnsDefinitionAttribute("http://my.schemas.com/ResourceAssembly", "ResourceAssembly")]
+
+    - xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        - x:Key
+        - x:Class
+
+- Property elements
+
+- ContentProperty attribute
+
+- TypeConverters
+
+    - attribut TypeConverterAttribute appliqué à une classe ou à une propriété,
+      précise la classe dérivant de TypeConverter capable de faire des conversions
+      vers et depuis la classe ou la propriété annotée.
+    - exemple :
+    	[System.ComponentModel.TypeConverter("System.Windows.NullableBoolConverter, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Custom=null")]
+    	public bool? IsSynchronizedWithCurrentItem { get; set; }
+
+- Markup extensions
+
+    - de la forme "{MarkupExtensionName [Named Parameter]',' [Positional Parameter]}"
+    - MarkupExtensionName : nom d'une classe dérivant de MarkupExtension
+    - Named Parameter : 
+        - Name = Value
+        - Name correspond à une propriété
+    - Positional Parameter : correspond à un paramètre de constructeur
+    - exemples d'usage :
+
+````
+    	<object property="{DynamicResource key}" ... />  
+	
+    	<object>  
+    		<object.property>  
+    			<DynamicResource ResourceKey="key" ... />  
+    		</object.property>  
+    	</object>  
+````
+    - classe de MarkupExtension
+        - dérive de MarkupExtension
+        - attribut MarkupExtensionReturnType
+            ex : [MarkupExtensionReturnType(typeof(string))]
+        - surcharge ProvideValue :
+            public override object ProvideValue(IServiceProvider serviceProvider)
+        - IServiceProvider.GetService
+            ex :
+                DependencyObject dependencyObject = provideValueTarget.TargetObject as DependencyObject;
+                DependencyProperty dependencyProperty = provideValueTarget.TargetProperty as DependencyProperty;
+
+    - attribut ConstructorArgument
+
+    - x: Markup extensions
+        - x:Type, x:Static, x:Null, x:Array
+
+- Children of Object Elements
+
+    - Content
+    - Collection items
+        - Lists
+        - Dictionaries
+
+- Loading XAML at runtime : XamlReader.Load
+
+- Root window
+
+ex :
+
+    public class RootWindow : Window // non définie en XAML
+    {
+    }
+
+    <local:RootWindow x:Class="WpfApp1.MainWindow" x:ClassModifier="public" ...
+
+- Code generation
+
+    - x:Class
+    - x:ClassModifier
+    - x:Name
+    - x:FieldModifier
+    - x:TypeArguments : support des types génériques
+
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+
+    <scg:List x:TypeArguments="sys:String" ...> 
+        instantiates a new List<T> with a String type argument.
+
+    <scg:Dictionary x:TypeArguments="sys:String,sys:String" ...> 
+
+    - x:Key
+
+````
+ex:
+
+     <ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <Color x:Key="" ...>
+        <Color x:Key="" ...>
+    </ResourceDictionary>
+````
+
+- attached properties
+
+    - ex :
+
+     <DockPanel>
+       <TextBox DockPanel.Dock="Top">Enter text</TextBox>
+     </DockPanel>
+
+    <Grid >
+      <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="CommonStates">
+
+
+
+## Property elements
+## ContentProperty attribute, ex: ContentControl
+
+### Exemple
+
+    <Button>
+        <Button.Content>Click!</Button.Content>
+    </Button>
+
+## ContentProperty attribute, ex: ContentControl
+
+````
+namespace System.Windows.Controls
+{
+    [ContentProperty("Content")]
+    [DefaultProperty("Content")]
+    [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
+    public class ContentControl : Control, IAddChild
+    {
+        public static readonly DependencyProperty ContentProperty;
+
+        [Bindable(true)]
+        public object Content { get; set; }
+````
+
 
 ## Elements and attributes
 
@@ -16,28 +161,31 @@ https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-in-wpf?view=n
         xmlns:local="clr-namespace:TestBinding0"
         xmlns:lib="clr-namespace:ItemsControlLib;assembly=ItemsControlLib"
 
-### mapping namespace XML / namespace .Net: XmlnsDefinitionAttribute
+### [mapping namespace XML / namespace .Net: XmlnsDefinitionAttribute](https://learn.microsoft.com/en-us/dotnet/api/system.windows.markup.xmlnsdefinitionattribute?view=windowsdesktop-7.0)
 
+````
     [assembly: XmlnsDefinitionAttribute("http://my.schemas.com/ResourceAssembly", "ResourceAssembly")]
+````
 
-  https://learn.microsoft.com/en-us/dotnet/api/system.windows.markup.xmlnsdefinitionattribute?view=windowsdesktop-7.0
-
-  Specifies a mapping on a per-assembly basis between a XAML namespace and a CLR namespace, 
+- Specifies a mapping on a per-assembly basis between a XAML namespace and a CLR namespace, 
   which is then used for type resolution by a XAML object writer or XAML schema context.
 
-  Apply one or more XmlnsDefinitionAttribute attributes to assemblies in order to identify the types 
+- Apply one or more XmlnsDefinitionAttribute attributes to assemblies in order to identify the types 
   within the assembly for XAML usage.
 
+````
   public XmlnsDefinitionAttribute (string xmlNamespace, string clrNamespace);
 
   [assembly: XmlnsDefinition(
     xmlNamespace: "http://syncfusion.com/xforms",
     clrNamespace: "Syncfusion.SfNumericTextBox.XForms")]
+````
 
+### [The x: prefix](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view=netframeworkdesktop-4.8#the-x-prefix)
 
-### The x: prefix
-
-https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/xaml-overview?view=netframeworkdesktop-4.8#the-x-prefix
+- the prefix x: was used to map the XAML namespace http://schemas.microsoft.com/winfx/2006/xaml, 
+  which is the dedicated XAML namespace that supports XAML language constructs
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 
 - x:Key: Sets a unique key for each resource in a ResourceDictionary (
 - x:Class: Specifies the CLR namespace and class name for the class that provides code-behind for a XAML page.
@@ -164,6 +312,7 @@ both for the XAML scenario and also potentially for code calls in .NET code.
 #### x:Null
 #### x:Array
 
+### [WPF XAML Extensions](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/wpf-xaml-extensions?view=netframeworkdesktop-4.8)
 
 ## Children of Object Elements
 
