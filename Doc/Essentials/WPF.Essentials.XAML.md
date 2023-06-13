@@ -46,6 +46,7 @@
     		</object.property>  
     	</object>  
 ````
+
     - classe de MarkupExtension
         - dérive de MarkupExtension
         - attribut MarkupExtensionReturnType
@@ -116,7 +117,7 @@ ex:
        <TextBox DockPanel.Dock="Top">Enter text</TextBox>
      </DockPanel>
 
-    <Grid >
+    <Grid>
       <VisualStateManager.VisualStateGroups>
         <VisualStateGroup x:Name="CommonStates">
 
