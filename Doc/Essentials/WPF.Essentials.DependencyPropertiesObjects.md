@@ -22,11 +22,14 @@
     - OverrideMetaData
     	- modifier la MetaData d'une DependencyProperty pour un type dérivant de celui
 		  ayant déclaré ladite DependencyProperty.
-    	public void OverrideMetadata (Type forType, PropertyMetadata typeMetadata, DependencyPropertyKey key);
+
+        	public void OverrideMetadata (Type forType, PropertyMetadata typeMetadata, DependencyPropertyKey key);
+
 		- modifier la valeur défaut d'une DependencyProperty pour un sous-type donné, par exemple
 
     - AddOwner
-        - public DependencyProperty DependencyProperty.AddOwner(Type ownerType, PropertyMetadata typeMetadata);
+
+            public DependencyProperty DependencyProperty.AddOwner(Type ownerType, PropertyMetadata typeMetadata);
 
 - PropertyMetadata 
 
@@ -38,7 +41,7 @@
     - contenu :
         - valeur par défaut
     	- coercion value callbacks and property change callbacks on the owner type
-    	- WPF framework-level dependency property characteristics : the framework layout engine and the property inheritance logic
+    	- FrameworkPropertyMetadata : the framework layout engine and the property inheritance logic
 
     - classes dérivées : UIPropertyMetadata -> FrameworkPropertyMetadata 
 
@@ -59,10 +62,15 @@
             - the new value will replace the existing CoerceValueCallback value. 
     		- If you don't specify a CoerceValueCallback in the override metadata, the value comes from the nearest ancestor that specified CoerceValueCallback in metadata.
 
-
 - Attached Properties 
 
+    - An attached property lets a child element specify a unique value for a property that's defined 
+      in a parent element.
 
+    - XAML :  <attached property provider type>.<property name>
+      ex: <TextBox DockPanel.Dock="Top">Enter text</TextBox>
+
+    - RegisterAttached, RegisterAttachedReadOnly
 
 ## [DependencyProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyproperty?view=windowsdesktop-7.0)
 
@@ -212,6 +220,19 @@
 
 ## [Dependency Property Value Precedence](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-property-value-precedence?view=netframeworkdesktop-4.8)
 
+## [DependencyPropertyHelper Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencypropertyhelper?view=windowsdesktop-7.0)
+
+### méthodes :
+
+    - public static ValueSource GetValueSource (DependencyObject dependencyObject, 
+                                                DependencyProperty dependencyProperty);
+
+    - public static bool IsTemplatedValueDynamic (DependencyObject elementInTemplate, 
+                                                    DependencyProperty dependencyProperty);
+
+### [ValueSource struct](https://learn.microsoft.com/en-us/dotnet/api/system.windows.valuesource?view=windowsdesktop-7.0)
+
+
 ## [DependencyObject](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject?view=windowsdesktop-7.0)
 
 ### En résumé
@@ -219,12 +240,17 @@
 	public void SetValue (DependencyProperty dp, object value);
 	public void SetValue (DependencyPropertyKey key, object value);
 	public void SetCurrentValue (DependencyProperty dp, object value);
+
 	public object GetValue (DependencyProperty dp);
 	public object ReadLocalValue (DependencyProperty dp);
+
 	public void ClearValue (DependencyProperty dp);
 	public void ClearValue (DependencyPropertyKey key);
+
 	public void InvalidateProperty (DependencyProperty dp);
+
 	protected virtual void OnPropertyChanged (DependencyPropertyChangedEventArgs e);
+
 	public LocalValueEnumerator GetLocalValueEnumerator ();
 
 ### Inheritance : Object / DispatcherObject / DependencyObject
