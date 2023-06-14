@@ -72,6 +72,63 @@
 
     - RegisterAttached, RegisterAttachedReadOnly
 
+- DependencyObject
+
+    - Inheritance : Object / DispatcherObject / DependencyObject
+
+    - méthodes :
+ 
+    	public void SetValue (DependencyProperty dp, object value);
+    	public void SetValue (DependencyPropertyKey key, object value);
+
+    	public void SetCurrentValue (DependencyProperty dp, object value);
+
+            - Sets the effective value of a dependency property without changing its value source.
+
+    	public object GetValue (DependencyProperty dp);
+
+    	public object ReadLocalValue (DependencyProperty dp);
+
+            - gets the local, if not effective, value of a dependency property
+
+    	public void ClearValue (DependencyProperty dp);
+    	public void ClearValue (DependencyPropertyKey key);
+
+            - Clears the local value of a property. 
+
+    	public void InvalidateProperty (DependencyProperty dp);
+
+            - Re-evaluates the effective value for the specified dependency property.
+
+    	protected virtual void OnPropertyChanged (DependencyPropertyChangedEventArgs e);
+
+            - DependencyPropertyChangedEventArgs
+
+                - Properties
+                    public object NewValue { get; }
+                    public object OldValue { get; }
+                    public System.Windows.DependencyProperty Property { get; }
+
+    	public LocalValueEnumerator GetLocalValueEnumerator ();
+
+            - LocalValueEnumerator
+
+            - LocalValueEntry
+
+                - Properties
+                public System.Windows.DependencyProperty Property { get; }
+                public object Value { get; }
+ 
+- DependencyPropertyHelper
+
+    - Méthodes :
+        
+        public static ValueSource GetValueSource (DependencyObject dependencyObject, 
+                                                DependencyProperty dependencyProperty);
+
+        public static bool IsTemplatedValueDynamic (DependencyObject elementInTemplate, 
+                                                    DependencyProperty dependencyProperty);
+
 ## [DependencyProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyproperty?view=windowsdesktop-7.0)
 
 ### [Dependency properties overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-properties-overview?view=netframeworkdesktop-4.8)
