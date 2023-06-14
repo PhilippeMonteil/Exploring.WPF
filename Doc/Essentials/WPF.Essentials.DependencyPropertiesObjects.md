@@ -255,7 +255,7 @@
 
 ### Inheritance : Object / DispatcherObject / DependencyObject
 
-### [SetValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.setvalue?view=windowsdesktop-7.0)
+### [SetValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.setvalue?view=windowsdesktop-7.0)
 
 	public void SetValue (DependencyProperty dp, object value);
 
@@ -270,7 +270,7 @@
 
 - Sets the local value of a dependency property
  
-### [SetCurrentValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.setcurrentvalue?view=windowsdesktop-7.0)
+### [SetCurrentValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.setcurrentvalue?view=windowsdesktop-7.0)
 
 	public void SetCurrentValue (DependencyProperty dp, object value);
 
@@ -279,11 +279,11 @@
 - The SetCurrentValue method changes the effective value of the property, but existing triggers, 
   data bindings, and styles will continue to work.
 
-### [GetValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.getvalue?view=windowsdesktop-7.0)
+### [GetValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.getvalue?view=windowsdesktop-7.0)
 
 	public object GetValue (DependencyProperty dp);
 
-### [ReadLocalValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.readlocalvalue?view=windowsdesktop-7.0)
+### [ReadLocalValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.readlocalvalue?view=windowsdesktop-7.0)
 
 	public object ReadLocalValue (DependencyProperty dp);
 
@@ -295,7 +295,7 @@
 - Bindings and other expressions are considered to be local values, after they have been evaluated.
 - When no local value is set, this method returns DependencyProperty.UnsetValue.
 
-### [ClearValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.clearvalue?view=windowsdesktop-7.0)
+### [ClearValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.clearvalue?view=windowsdesktop-7.0)
 
 	public void ClearValue (DependencyProperty dp);
 	public void ClearValue (DependencyPropertyKey key);
@@ -304,16 +304,16 @@
   default value that is specified in the dependency property metadata. 
 - Clearing the property only specifically clears whatever local value may have been applied.
 
-### [InvalidateProperty](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.invalidateproperty?view=windowsdesktop-7.0)
+### [InvalidateProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.invalidateproperty?view=windowsdesktop-7.0)
 
 	public void InvalidateProperty (DependencyProperty dp);
 
 - Re-evaluates the effective value for the specified dependency property.
 
-### [OnPropertyChanged](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.onpropertychanged?view=windowsdesktop-7.0)
+### [OnPropertyChanged](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.onpropertychanged?view=windowsdesktop-7.0)
 
 	protected virtual void OnPropertyChanged (DependencyPropertyChangedEventArgs e);
 
-### [GetLocalValueEnumerator](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.getlocalvalueenumerator?view=windowsdesktop-7.0)
+### [GetLocalValueEnumerator](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.getlocalvalueenumerator?view=windowsdesktop-7.0)
 
 	public LocalValueEnumerator GetLocalValueEnumerator ();
