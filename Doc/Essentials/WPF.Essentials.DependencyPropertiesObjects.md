@@ -49,16 +49,16 @@
 
     - propriétés :
 
-        - public System.Windows.CoerceValueCallback CoerceValueCallback { get; set; }
-
-            public delegate object CoerceValueCallback(DependencyObject d, object baseValue);
-
         - public object DefaultValue { get; set; }
 
         - public System.Windows.PropertyChangedCallback PropertyChangedCallback { get; set; }
 
             public delegate void PropertyChangedCallback(DependencyObject d, 
                                                     DependencyPropertyChangedEventArgs e);
+
+        - public System.Windows.CoerceValueCallback CoerceValueCallback { get; set; }
+
+            public delegate object CoerceValueCallback(DependencyObject d, object baseValue);
 
     - classes dérivées : UIPropertyMetadata -> FrameworkPropertyMetadata 
 
@@ -98,11 +98,11 @@
     	public void SetValue (DependencyProperty dp, object value);
     	public void SetValue (DependencyPropertyKey key, object value);
 
+    	public object GetValue (DependencyProperty dp);
+
     	public void SetCurrentValue (DependencyProperty dp, object value);
 
             - Sets the effective value of a dependency property without changing its value source.
-
-    	public object GetValue (DependencyProperty dp);
 
     	public object ReadLocalValue (DependencyProperty dp);
 
@@ -145,6 +145,21 @@
 
         public static bool IsTemplatedValueDynamic (DependencyObject elementInTemplate, 
                                                     DependencyProperty dependencyProperty);
+
+    - ValueSource
+
+        public System.Windows.BaseValueSource BaseValueSource { get; }
+        public bool IsAnimated { get; }
+        public bool IsCoerced { get; }
+        public bool IsCurrent { get; }
+        public bool IsExpression { get; }
+
+    - BaseValueSource Enum
+
+        - Default :	Source is the default value, as defined by property metadata.
+        - DefaultStyle : Source is from a setter in the default style. The default style comes from the current theme.
+        - DefaultStyleTrigger : 4	
+        - ...
 
 ## [DependencyProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyproperty?view=windowsdesktop-7.0)
 
@@ -306,6 +321,51 @@
 
 ### [ValueSource struct](https://learn.microsoft.com/en-us/dotnet/api/system.windows.valuesource?view=windowsdesktop-7.0)
 
+- properties
+
+    public System.Windows.BaseValueSource BaseValueSource { get; }
+    public bool IsAnimated { get; }
+    public bool IsCoerced { get; }
+    public bool IsCurrent { get; }
+    public bool IsExpression { get; }
+
+### [BaseValueSource Enum](https://learn.microsoft.com/en-us/dotnet/api/system.windows.basevaluesource?view=windowsdesktop-7.0)
+
+Default	1	
+Source is the default value, as defined by property metadata.
+
+DefaultStyle	3	
+Source is from a setter in the default style. The default style comes from the current theme.
+
+DefaultStyleTrigger	4	
+Source is from a trigger in the default style. The default style comes from the current theme.
+
+ImplicitStyleReference	8	
+Source is an implicit style reference (style was based on detected type or based type). This value is only returned for the Style property itself, not for properties that are set through setters or triggers of such a style.
+
+Inherited	2	
+Source is a value through property value inheritance.
+
+Local	11	
+Source is a locally set value.
+
+ParentTemplate	9	
+Source is based on a parent template being used by an element.
+
+ParentTemplateTrigger	10	
+Source is a trigger-based value from a parent template that created the element.
+
+Style	5	
+Source is from a style setter of a non-theme style.
+
+StyleTrigger	7	
+Source is a trigger-based value of a non-theme style.
+
+TemplateTrigger	6	
+Source is a trigger-based value in a template that is from a non-theme style.
+
+Unknown	0	
+Source is not known. This is the default value.
 
 ## [DependencyObject](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject?view=windowsdesktop-7.0)
 
