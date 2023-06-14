@@ -274,6 +274,7 @@
 
 	public void SetCurrentValue (DependencyProperty dp, object value);
 
+- Sets the value of a dependency property without changing its value source.
 - This method is used by a component that programmatically sets the value of one of its own properties 
   without disabling an application's declared use of the property. 
 - The SetCurrentValue method changes the effective value of the property, but existing triggers, 
@@ -300,6 +301,7 @@
 	public void ClearValue (DependencyProperty dp);
 	public void ClearValue (DependencyPropertyKey key);
 
+- Clears the local value of a property. 
 - Clearing the property value by calling ClearValue does not necessarily give a dependency property the 
   default value that is specified in the dependency property metadata. 
 - Clearing the property only specifically clears whatever local value may have been applied.
@@ -314,6 +316,41 @@
 
 	protected virtual void OnPropertyChanged (DependencyPropertyChangedEventArgs e);
 
+#### [DependencyPropertyChangedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencypropertychangedeventargs?view=windowsdesktop-7.0)
+
+- Properties
+    - public object NewValue { get; }
+    - public object OldValue { get; }
+    - public System.Windows.DependencyProperty Property { get; }
+
 ### [GetLocalValueEnumerator](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.getlocalvalueenumerator?view=windowsdesktop-7.0)
 
 	public LocalValueEnumerator GetLocalValueEnumerator ();
+
+#### [LocalValueEnumerator Struct](https://learn.microsoft.com/en-us/dotnet/api/system.windows.localvalueenumerator?view=windowsdesktop-7.0)
+
+#### [LocalValueEntry](https://learn.microsoft.com/en-us/dotnet/api/system.windows.localvalueentry?view=windowsdesktop-7.0)
+
+- Properties
+
+    - public System.Windows.DependencyProperty Property { get; }
+    - public object Value { get; }
+
+#### Exemple :
+
+````
+void RestoreDefaultProperties(object sender, RoutedEventArgs e)
+{
+    UIElementCollection uic = Sandbox.Children;
+    foreach (Shape uie in uic)
+    {
+        LocalValueEnumerator locallySetProperties = uie.GetLocalValueEnumerator();
+        while (locallySetProperties.MoveNext())
+        {
+            DependencyProperty propertyToClear = locallySetProperties.Current.Property;
+            if (!propertyToClear.ReadOnly) { uie.ClearValue(propertyToClear); }
+        }
+    }
+}
+````
+
