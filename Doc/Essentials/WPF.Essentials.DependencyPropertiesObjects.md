@@ -6,11 +6,19 @@
 - DependencyProperty, DependencyPropertyKey
 
     - Register/Attached/Readonly -> DependencyProperty / DependencyPropertyKey
-    	public static DependencyProperty DependencyProperty.Register(string name, Type propertyType, Type ownerType, PropertyMetadata typeMetadata, ValidateValueCallback validateValueCallback);
+
+    	public static DependencyProperty DependencyProperty.Register(string name, 
+                                                Type propertyType, 
+                                                Type ownerType, 
+                                                PropertyMetadata typeMetadata, 
+                                                ValidateValueCallback validateValueCallback);
+
+        public delegate bool ValidateValueCallback(object value);
 
 	- Register -> DependencyProperty
 
 	- RegisterReadOnly -> DependencyPropertyKey
+
     	- une DependencyPropertyKey peut être utilisée pour assigner une valeur à une DependencyProperty
     		public void DependencyObject.SetValue(DependencyPropertyKey key, object value);
         - elle expose une propriété .DependencyProperty qui peut être utilisée pour lire 
@@ -20,6 +28,7 @@
           provoquerait une exception
 
     - OverrideMetaData
+
     	- modifier la MetaData d'une DependencyProperty pour un type dérivant de celui
 		  ayant déclaré ladite DependencyProperty.
 
@@ -38,10 +47,18 @@
         - surchargeable par un type dérivé (OverrideMetadata)
         - surchargeable par un type 'prenant possession' d'une DependencyProperty (AddOwner)
 
-    - contenu :
-        - valeur par défaut
-    	- coercion value callbacks and property change callbacks on the owner type
-    	- FrameworkPropertyMetadata : the framework layout engine and the property inheritance logic
+    - propriétés :
+
+        - public System.Windows.CoerceValueCallback CoerceValueCallback { get; set; }
+
+            public delegate object CoerceValueCallback(DependencyObject d, object baseValue);
+
+        - public object DefaultValue { get; set; }
+
+        - public System.Windows.PropertyChangedCallback PropertyChangedCallback { get; set; }
+
+            public delegate void PropertyChangedCallback(DependencyObject d, 
+                                                    DependencyPropertyChangedEventArgs e);
 
     - classes dérivées : UIPropertyMetadata -> FrameworkPropertyMetadata 
 
