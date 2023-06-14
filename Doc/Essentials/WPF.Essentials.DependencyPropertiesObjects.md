@@ -30,6 +30,39 @@
 
 - PropertyMetadata 
 
+    - données assignées à une DependencyProperty :
+        - lors de son enregistrement
+        - surchargeable par un type dérivé (OverrideMetadata)
+        - surchargeable par un type 'prenant possession' d'une DependencyProperty (AddOwner)
+
+    - contenu :
+        - valeur par défaut
+    	- coercion value callbacks and property change callbacks on the owner type
+    	- WPF framework-level dependency property characteristics : the framework layout engine and the property inheritance logic
+
+    - classes dérivées : UIPropertyMetadata -> FrameworkPropertyMetadata 
+
+    - FrameworkPropertyMetadata
+        - Affects/Parent/Measure/Arrange
+    	- Inherits
+    	- Binding : NotDataBindable, BindsTwoWayByDefault
+
+    - Merge
+        - lors d'un OverrideMetadata, AddOwner 
+        - protected virtual void Merge(PropertyMetadata baseMetadata, DependencyProperty dp);
+        - DefaultValue, the new value will replace the existing default value
+    	- PropertyChangedCallback
+            - merged
+        	- the callback order is determined by class depth, where a callback registered by the base class 
+    		  in the hierarchy would run first.
+        - CoerceValueCallback
+            - the new value will replace the existing CoerceValueCallback value. 
+    		- If you don't specify a CoerceValueCallback in the override metadata, the value comes from the nearest ancestor that specified CoerceValueCallback in metadata.
+
+
+- Attached Properties 
+
+
 
 ## [DependencyProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyproperty?view=windowsdesktop-7.0)
 
@@ -125,7 +158,7 @@
 		- If you don't specify a CoerceValueCallback in the override metadata, the value comes from the nearest ancestor that specified CoerceValueCallback in metadata.
 
 - Merge
-    protected virtual void Merge (System.Windows.PropertyMetadata baseMetadata, System.Windows.DependencyProperty dp);
+    protected virtual void Merge (PropertyMetadata baseMetadata, DependencyProperty dp);
 
 ## [DependencyProperty : Add a class as an owner](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/properties/dependency-property-metadata?view=netdesktop-7.0#add-a-class-as-an-owner)
 
@@ -139,17 +172,45 @@
   dependency property.
 - In the AddOwner call, the adding class can create and assign type-specific metadata for the inherited 
   dependency property.
-  
+    
 ## [Attached properties overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/properties/attached-properties-overview?view=netdesktop-7.0)
 
+- An attached property lets a child element specify a unique value for a property that's defined 
+  in a parent element.
+
+- XAML :  <attached property provider type>.<property name>
+  ex: <TextBox DockPanel.Dock="Top">Enter text</TextBox>
+
+- Attached property metadata
+    - When you specify a default value by overriding attached property metadata, 
+      that value becomes the default for the implicit attached property 
+      on instances of the overriding class.
+
+- RegisterAttached
+
+    public static DependencyProperty RegisterAttached (string name, 
+                                    Type propertyType, 
+                                    Type ownerType, 
+                                    PropertyMetadata defaultMetadata, 
+                                    ValidateValueCallback validateValueCallback);
+
+    public static DependencyPropertyKey RegisterAttachedReadOnly (string name, 
+                                    Type propertyType, 
+                                    Type ownerType, 
+                                    PropertyMetadata defaultMetadata);
+
+- OverrideMetadata
+ 
+    public void OverrideMetadata (Type forType, 
+                                    PropertyMetadata typeMetadata, 
+                                    DependencyPropertyKey key);
+
+- [Add a class as owner of an attached property](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/properties/dependency-property-metadata?view=netdesktop-7.0#add-a-class-as-owner-of-an-attached-property)
+
+    To inherit an attached property from another class, but expose it as a nonattached dependency 
+    property on your class ...
 
 ## [Dependency Property Value Precedence](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-property-value-precedence?view=netframeworkdesktop-4.8)
-
-
-
-
-
-
 
 ## [DependencyObject](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject?view=windowsdesktop-7.0)
 
