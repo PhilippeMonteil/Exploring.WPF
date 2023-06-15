@@ -122,9 +122,9 @@
             - DependencyPropertyChangedEventArgs
 
                 - Properties
-                    public object NewValue { get; }
-                    public object OldValue { get; }
                     public System.Windows.DependencyProperty Property { get; }
+                    public object OldValue { get; }
+                    public object NewValue { get; }
 
     	public LocalValueEnumerator GetLocalValueEnumerator ();
 
