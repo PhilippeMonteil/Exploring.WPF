@@ -248,11 +248,50 @@ both for the XAML scenario and also potentially for code calls in .NET code.
 
 ## Markup extensions
 
+### [MarkupExtension class](https://learn.microsoft.com/en-us/uwp/api/windows.ui.xaml.markup.markupextension?view=winrt-22621)
+
+````
+namespace System.Windows.Markup
+{
+    public abstract class MarkupExtension
+    {
+        protected MarkupExtension();
+
+        public abstract object ProvideValue(IServiceProvider serviceProvider);
+    }
+}
+````
+
+### [IServiceProvider](https://learn.microsoft.com/fr-fr/dotnet/api/system.iserviceprovider?view=net-7.0&viewFallbackFrom=windowsdesktop-7.0)
+
+- méthode :
+
+    public object? GetService (Type serviceType);
+
+- exemple d'appel dans MarkupExtension.ProvideValue
+
+    IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
+
+    // TargetObject, TargetProperty
+    DependencyObject dependencyObject = provideValueTarget.TargetObject as DependencyObject;
+    DependencyProperty dependencyProperty = provideValueTarget.TargetProperty as DependencyProperty;
+
+
+### MarkupExtensionReturnType
+
+Une classe implémentant une MarkupExtension, dérivant de MarkupExtension, devrait exposer
+un attribut MarkupExtensionReturnType
+
+### XAML
+
 - de la forme "{MarkupExtensionName [Named Parameter]',' [Positional Parameter]}"
+
 - MarkupExtensionName : nom d'une classe dérivant de MarkupExtension
+
 - Named Parameter : 
     - Name = Value
     - Name correspond à une propriété
+
 - Positional Parameter : correspond à un paramètre de constructeur
 
 - A markup extension can be implemented to provide values for properties in an attribute usage, 

@@ -9,12 +9,14 @@
     - Content :  lié à l'assembly, non embarqué, accessible par Application.GetContentStream
     - Embedded Resource : embarqué, accessible par Assembly.GetManifestResourceStream
 
-- Image.Source
+- Image.Source : accès aux ressources image 
 
 - Application.GetContentStream
+
     public static System.Windows.Resources.StreamResourceInfo GetContentStream (Uri uriContent);
 
 - Application.GetResourceStream
+
     public static System.Windows.Resources.StreamResourceInfo GetResourceStream (Uri uriResource);
 
 - Assembly.GetManifestResourceNames, GetManifestResourceStream
@@ -22,7 +24,27 @@
     public virtual System.IO.Stream? GetManifestResourceStream (Type type, string name);
     public virtual System.IO.Stream? GetManifestResourceStream (string name);
 
+- ManifestResource '.g.resources'
+
+    - chaque assembly contient une ManifestResource nommée '<Name>.g.resources' 
+      dont le ManifestResourceStream contient une ResourceSet contenant
+      - les .balm des .xaml de l'assembly : App.baml, mainwindow.baml
+      - les fichiers enregistrées comme 'Ressources'
+    
+    - exemple :
+
+````
+    resourceName=TestResources.g.resources
+    stream=System.Reflection.RuntimeAssembly+ManifestResourceStream
+
+    set=System.Resources.ResourceSet
+      resource.Key=[binaryresources/folder0/resourceimage.png] .Value='System.IO.UnmanagedMemoryStream'
+      resource.Key=[mainwindow.baml] .Value='System.IO.UnmanagedMemoryStream'
+      resource.Key=[app.baml] .Value='System.IO.UnmanagedMemoryStream'
+````
+
 - ResourceSet
+
 - System.AppDomain.ResourceResolve event
 
 ## [Build Actions](https://learn.microsoft.com/en-us/visualstudio/ide/build-actions?view=vs-2022)
