@@ -3,25 +3,68 @@
 
 ## En résumé
 
-- styles explicites, implicites, par Theme, par défaut
-- FrameworkElement .DefaultStyleKeyProperty, .FocusVisualStyle, .OverridesDefaultStyle
-- ResourceKeys : exposées par SystemParameters, par un CustomControl,  ...
+- Style
+    - dérive de DispatcherObject
+    - properties
+        public Style BasedOn { get; set; }
+        public Type TargetType { get; set; }
+        public bool IsSealed { get; }
+        public ResourceDictionary Resources { get; set; }
+        public SetterBaseCollection Setters { get; }
+        public TriggerCollection Triggers { get; }
+    - ContentProperty : Setters
+    - DictionaryKeyProperty : TargetType
+
+- styles explicites, implicites, par Theme (par défaut)
+
+- FrameworkElement 
+    - DefaultStyleKeyProperty
+    - FocusVisualStyle
+    - OverridesDefaultStyle
+
+- Themes/generic.xaml
+ 
+- AssemblyInfo.cs : ThemeInfo : ResourceDictionary Locations / Themes, Generic
+
+- CustomControl : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
+
 - contrôler les Styles par Theme de Contrôles externes
     - en les dérivant et surchargeant la MetaData de DefaultStyleKeyProperty
     - à l'aide d'une ThemeDictionaryExtension 
 
 ## [Style Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.style?view=windowsdesktop-7.0)
 
-    [System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
-    [System.Windows.Markup.ContentProperty("Setters")]
-    [System.Windows.Markup.DictionaryKeyProperty("TargetType")]
-    public class Style : System.Windows.Threading.DispatcherObject, 
-                                System.Windows.Markup.IAddChild, 
-                                System.Windows.Markup.INameScope, 
-                                System.Windows.Markup.IQueryAmbient
+    [Localizability(LocalizationCategory.Ignore)]
+    [Markup.ContentProperty("Setters")]
+    [Markup.DictionaryKeyProperty("TargetType")]
+    public class Style : Threading.DispatcherObject, 
+                                Markup.IAddChild, 
+                                Markup.INameScope, 
+                                Markup.IQueryAmbient
 
-- attribut DictionaryKeyProperty : indique que la propriété TargetType sert de Key lors d'une inserction
-  d'une instance de Style dans un ResourceDictionary
+- attribut DictionaryKeyProperty : indique que la propriété TargetType sert de Key lors
+  d'une insertion d'une instance de Style dans un ResourceDictionary
+
+- properties
+
+    [Markup.Ambient]
+    public Style BasedOn { get; set; }
+
+    public bool IsSealed { get; }
+
+    [Markup.Ambient]
+    public ResourceDictionary Resources { get; set; }
+
+    public SetterBaseCollection Setters { get; }
+
+    [Markup.Ambient]
+    public Type TargetType { get; set; }
+
+    public TriggerCollection Triggers { get; }
+
+- methods
+
+    public void Seal ();
 
 ## explicit, implicit, default style 
 
@@ -39,7 +82,8 @@
 
 ### implicit style
 
-- Style inscrit dans un ResourceDictionary 'ascendant' avec un TargetType mais pas de x:Key
+- Style inscrit dans un ResourceDictionary 'ascendant', jusqu'à App.xaml, avec un TargetType 
+  mais pas de x:Key
 
       <Style TargetType={x:Type Button} >
         <Setter Property="Control.FontSize" Value="32" />
@@ -55,7 +99,11 @@
         <Setter Property="Control.FontSize" Value="32" />
       </Style>
 
-## notion de DefaultStyleKeyProperty, Key utilisée pour trouver le Style implicite ou par défaut d'un FrameworkElement
+## notion de FrameworkElement.DefaultStyleKeyProperty
+
+    protected internal object DefaultStyleKey { get; set; }
+
+- Key utilisée pour trouver le Style implicite ou par défaut d'un FrameworkElement
 
 - la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource,
   la recherche du Theme ou default Style se fait comme celle de toute autre ressource 
@@ -65,7 +113,7 @@
 
   du DependencyObject cible de la Markup Extension.
 
-- cette valeur est le plus souvent la valeur par défaut précisée par la MetaData précisée lors de la création 
+- cette valeur est le plus souvent la valeur par défaut précisée par la MetaData définie lors de la création 
   par FrameworkElement de la DependencyProperty DefaultStyleKeyProperty, à savoir son type.
 
 - une classe dérivant de FrameworkElement peut surcharger la MetaData de FrameworkElement en redéfinissant
@@ -206,6 +254,8 @@ faisant l'objet de ses Setters.
 - DefaultStyleKey est utilisé comme Key pour la recherche du Style par défaut d'une instance de FrameworkElement.  
 
 ### [OverridesDefaultStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.overridesdefaultstyle?view=windowsdesktop-7.0)
+
+    public bool OverridesDefaultStyle { get; set; }
 
 - true if this element does not use theme style properties; all style-originating properties come from 
   local application styles, and theme style properties do not apply. 
