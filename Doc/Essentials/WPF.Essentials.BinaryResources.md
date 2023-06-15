@@ -1,24 +1,37 @@
 
 # [Binary Resources](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8)
 
+## En résumé
+
+- types de ressources, Build Actions
+
+
 ## [Build Actions](https://learn.microsoft.com/en-us/visualstudio/ide/build-actions?view=vs-2022)
 
+- Build Actions
+
+    - WPF
+        - ApplicationDefinition	: The file that defines your application. When you first create a project, this is App.xaml.
+        - Page                  : Compile a XAML file to a binary .baml file for faster loading at run time.
+        - Resource	            : Specifies to embed the file in an assembly manifest resource file with the extension .g.resources.
+        - DesignData	        : Used for XAML ViewModel files, to enable user controls to be viewed at design time, with dummy types and sample data.
+        - Splash Screen         : Specifies an image file to be displayed at run time when the app is starting up.
+
+    - .Net
+        - Content               : A file marked as Content can be retrieved as a stream by calling Application.GetContentStream.
+        - Embedded Resource 	: The file is passed to the compiler as a resource to be embedded in the assembly. 
+                                  You can call System.Reflection.Assembly.GetManifestResourceStream 
+                                  to read the file from the assembly.
+
 - Content Files: Standalone data files that have an explicit association with an executable WPF assembly.
-
 - Site of Origin Files: Standalone data files that have no association with an executable WPF assembly.
-
-- Build Actions (WPF):
-
-    - ApplicationDefinition	: The file that defines your application. When you first create a project, this is App.xaml.
-    - Page                  : Compile a XAML file to a binary .baml file for faster loading at run time.
-    - Resource	            : Specifies to embed the file in an assembly manifest resource file with the extension .g.resources.
-    - DesignData	        : Used for XAML ViewModel files, to enable user controls to be viewed at design time, with dummy types and sample data.
 
 ## [MSBuild reference for .NET Desktop SDK projects](https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props-desktop?source=recommendations)
 
-### Example (TestXAMLBinaryResources)
+### Exemples de mise en oeuvre de Binary Resources (TestXAMLBinaryResources)
 
     <StackPanel Background="DarkGray">
+
         <Image Source="BinaryResources/Folder0/ResourceImage.PNG" Height="100" Margin="8"/>
         <Image Source="BinaryResources/Folder0/ContentImage.PNG" Height="100" Margin="8"/>
         <Image Source="pack://siteOfOrigin:,,,/Folder0/Content0.jpg" Height="100" Margin="8"/>
@@ -42,18 +55,22 @@
 - 'Resource' dans une assembly référencée
         <Image Source="/ResourceAssembly;component/Folder0/Resource0.jpg" Height="100" Margin="8"/>
 
+### [Application.GetContentStream](https://learn.microsoft.com/en-us/dotnet/api/system.windows.application.getcontentstream?view=windowsdesktop-7.0)
+
+    public static System.Windows.Resources.StreamResourceInfo GetContentStream (Uri uriContent);
+
 ### [Application.GetResourceStream](https://learn.microsoft.com/en-us/dotnet/api/system.windows.application.getresourcestream?view=windowsdesktop-7.0)
 
-'
     public static System.Windows.Resources.StreamResourceInfo GetResourceStream (Uri uriResource);
 
+````
     public class StreamResourceInfo
     {
         // The Multipurpose Internet Mail Extensions (MIME) content type.
         public string ContentType { get; }
         public System.IO.Stream Stream { get; }
     }
-'
+````
 
 #### Exemples
 
