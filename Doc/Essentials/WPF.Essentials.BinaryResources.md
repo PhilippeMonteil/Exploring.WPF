@@ -3,8 +3,27 @@
 
 ## En résumé
 
-- types de ressources, Build Actions
+- Build Actions
+    - Resource : embed the file in an assembly manifest resource file with the extension .g.resources.,
+                 désérialisable dans un ResourceSet
+    - Content :  lié à l'assembly, non embarqué, accessible par Application.GetContentStream
+    - Embedded Resource : embarqué, accessible par Assembly.GetManifestResourceStream
 
+- Image.Source
+
+- Application.GetContentStream
+    public static System.Windows.Resources.StreamResourceInfo GetContentStream (Uri uriContent);
+
+- Application.GetResourceStream
+    public static System.Windows.Resources.StreamResourceInfo GetResourceStream (Uri uriResource);
+
+- Assembly.GetManifestResourceNames, GetManifestResourceStream
+    public virtual string[] GetManifestResourceNames ();
+    public virtual System.IO.Stream? GetManifestResourceStream (Type type, string name);
+    public virtual System.IO.Stream? GetManifestResourceStream (string name);
+
+- ResourceSet
+- System.AppDomain.ResourceResolve event
 
 ## [Build Actions](https://learn.microsoft.com/en-us/visualstudio/ide/build-actions?view=vs-2022)
 
@@ -190,8 +209,20 @@
 
 ### [System.AppDomain.ResourceResolve event](https://learn.microsoft.com/en-us/dotnet/api/system.appdomain.resourceresolve?view=net-7.0)
 
-Occurs when the resolution of a resource fails because the resource is not a valid linked or 
-embedded resource in the assembly.
+    public event ResolveEventHandler? ResourceResolve;
 
-The ResolveEventHandler for this event can attempt to locate the assembly containing the resource 
-and return it.
+    public delegate System.Reflection.Assembly? ResolveEventHandler(object? sender, ResolveEventArgs args);
+
+        - returns the assembly that resolves the type, assembly, or resource; or null if the assembly cannot be resolved.
+
+    ResolveEventArgs 
+
+        - properties
+            - public string Name { get; }
+            - public System.Reflection.Assembly? RequestingAssembly { get; }
+
+- Occurs when the resolution of a resource fails because the resource is not a valid linked or 
+  embedded resource in the assembly.
+
+- The ResolveEventHandler for this event can attempt to locate the assembly containing the resource 
+  and return it.
