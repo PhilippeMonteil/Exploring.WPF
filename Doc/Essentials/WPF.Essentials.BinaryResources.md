@@ -47,6 +47,8 @@
 
 - System.AppDomain.ResourceResolve event
 
+## [WPF Application Resource, Content, and Data Files](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/app-development/wpf-application-resource-content-and-data-files?view=netframeworkdesktop-4.8#content-files)
+
 ## [Build Actions](https://learn.microsoft.com/en-us/visualstudio/ide/build-actions?view=vs-2022)
 
 - Build Actions
@@ -66,6 +68,36 @@
 
 - Content Files: Standalone data files that have an explicit association with an executable WPF assembly.
 - Site of Origin Files: Standalone data files that have no association with an executable WPF assembly.
+
+- Exemples :
+
+````
+  <ItemGroup>
+    <Content Include="Folder0\Content0.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Folder0\Content1.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Folder0\Resource0.jpg" />
+  </ItemGroup>
+````
+
+## [Content resource : AssemblyAssociatedContentFileAttribute](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute?view=windowsdesktop-7.0)
+
+- When the project is built, an AssemblyAssociatedContentFileAttribute attribute is compiled into the 
+  metadata of the assembly for each content file.
+
+    [assembly: AssemblyAssociatedContentFile("ContentFile.xaml")]
+
+- The value of the AssemblyAssociatedContentFileAttribute implies the path to the content file relative 
+  to its position in the project. For example, if a content file was located in a project subfolder, the additional path information would be incorporated into the AssemblyAssociatedContentFileAttribute value.
+
+    [assembly: AssemblyAssociatedContentFile("Resources/ContentFile.xaml")]
+
+- The AssemblyAssociatedContentFileAttribute value is also the value of the path to the content file in 
+  the build output folder.
 
 ## [MSBuild reference for .NET Desktop SDK projects](https://learn.microsoft.com/en-us/dotnet/core/project-sdk/msbuild-props-desktop?source=recommendations)
 
