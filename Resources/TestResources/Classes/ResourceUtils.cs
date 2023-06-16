@@ -44,15 +44,16 @@ namespace TestResources.Classes
                     Debug.WriteLine($"  stream={stream}");
 
                     // ResourceSet
-                    ResourceSet set = new ResourceSet(stream);
-
-                    Debug.WriteLine($"    set={set}");
-
-                    // DictionaryEntry
-                    foreach (DictionaryEntry resource in set)
+                    using (ResourceSet set = new ResourceSet(stream))
                     {
-                        Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                        Debug.WriteLine($"    set={set}");
+                        // DictionaryEntry
+                        foreach (DictionaryEntry resource in set)
+                        {
+                            Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                        }
                     }
+
                 }
                 catch (Exception E)
                 {
