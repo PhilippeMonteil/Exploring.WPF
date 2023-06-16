@@ -11,16 +11,20 @@
     - propriété Collection<ResourceDictionary> MergedDictionaries
 
 - System.Windows.FrameworkElement : 
+ 
     - propriété : ResourceDictionary Resources 
-    - méthodes : FindResource TryFindResource SetResourceReference
+
+    - méthodes : FindResource TryFindResource
         public object FindResource (object resourceKey);
+        public object TryFindResource (object resourceKey);
+
+    - méthodes : FindResource SetResourceReference
+        public void SetResourceReference (System.Windows.DependencyProperty dp, object resourceKey);
 
 - ResourceKey
     - public abstract class ResourceKey : System.Windows.Markup.MarkupExtension
-    - Derived : ComponentResourceKey, TemplateKey
-    - attribut MarkupExtensionReturnTypeAttribute 
-
-- Skinning
+    - attribut [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.ResourceKey))]
+    - Derived : ComponentResourceKey, TemplateKey, SystemResourceKey (type caché, keys exposées par SystemParameters, ...)
 
 - Themes, default resources (Themes/generic.xaml)
 
@@ -40,12 +44,35 @@
       invalidated and reloaded to be specific for another theme when required.
 
 - création d'un CustomControl, aspects liés aux Ressources : 
-  DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
+  DefaultStyleKeyProperty, assembly attribute ThemeInfo, ressource 'Page' Themes/generic.xaml
+
+- Skinning
 
 - chargement et injection de ressources à l'exécution : 
   simuler une mécanisme de Dll.Resources similaire à Application.Resources
     - Application.LoadComponent : Uri -> .xaml -> objet (XamlReader.Load)
     - .Resources.MergedDictionaries.Add
+
+- SystemResourceKey
+
+    [TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
+    internal class SystemResourceKey : ResourceKey
+ 
+- SystemParameters, SystemColors, SystemFonts
+
+    - paires ResourceKey / static field
+
+    ex: 
+        public static System.Windows.ResourceKey BorderKey { get; }
+        public static int Border { get; }
+
+    ex:
+        Width="{x:Static SystemParameters.IconGridWidth}"
+        Width="{DynamicResource {x:Static SystemParameters.IconGridWidthKey}}"
+
+- SystemParameters.StaticPropertyChanged Event
+
+    public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;
 
 ## FrameWorkElement.FindResource en résumé
 
@@ -84,7 +111,7 @@
             - si son ThemeInfo le permet : recheche dans le ResourceDictionary correspondant au Thème actif
             - si son ThemeInfo le permet : recheche dans le ResourceDictionary par défaut : Themes/generic.xaml
 
-        - si la .Source d'un des ResourceDictionary inspecté est fourni par une MarkupExtension de type ThemeDictionary
+        - si la .Source d'un des ResourceDictionary inspecté est fournie par une MarkupExtension de type ThemeDictionary
           celle ci précise le nom d'une Assembly fournissant un jeu de ResourceDictionary correspondant 
           chacun à un Thème. La recherche de la Key se fait dans le ResourceDictionary fourni par l'assembly
           pour le Thème courant.
@@ -94,8 +121,10 @@
     - ComponentResourceKey : recherche dans l'assembly spécifié par le ComponentResourceKey et pour l'id qu'il indique
 
     - SystemResourceKey : 
+        - type caché, dérivant de ResourceKey
         - propriété de SystemParameters / SystemColors / SystemFonts correspondant 
-        - correspond à une propriété statique de la classe exposant la Key dont la valeur est retournée par FindResource
+          correspond à une propriété statique de la classe exposant la Key dont la valeur 
+          est retournée par FindResource.
 
 ### exemples
 
@@ -705,7 +734,7 @@ exemple :
     [TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
     internal class SystemResourceKey : ResourceKey
 
-- Certaines static properties vont par paire
+- Certaines static properties vont par paire avec une ResourceKey (SystemResourceKey)
 
     exemple :
 
@@ -717,7 +746,8 @@ exemple :
 
     exemple: 
 
-      Width="{DynamicResource {x:Static SystemParameters.VirtualScreenWidthKey}}"
+        Width="{x:Static SystemParameters.IconGridWidth}">
+        Width="{DynamicResource {x:Static SystemParameters.IconGridWidthKey}}"
 
     exemple :
 
@@ -747,9 +777,11 @@ exemple :
       </Setter>
     </Style>
 
-- StaticPropertyChanged event
+- SystemParameters.StaticPropertyChanged Event
 
     public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;
+
+    SystemColors, SystemFonts ?
 
 ## [SystemColors](https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemcolors?view=windowsdesktop-7.0)
 
