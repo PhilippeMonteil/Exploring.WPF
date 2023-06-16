@@ -13,21 +13,32 @@
 - System.Windows.FrameworkElement : 
     - propriété : ResourceDictionary Resources 
     - méthodes : FindResource TryFindResource SetResourceReference
+        public object FindResource (object resourceKey);
 
 - Skinning
+
 - Themes, default resources (Themes/generic.xaml)
-- création d'un CustomControl, aspects liés aux Ressources : DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
-- chargement et injection de ressources à l'exécution : simuler une mécanisme de Dll.Resources similaire à Application.Resources
+
+- création d'un CustomControl, aspects liés aux Ressources : 
+  DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
+
+- ThemeInfo assembly attribute : ResourceDictionaryLocation themeDictionaryLocation, genericDictionaryLocation, 
+    - ResourceDictionaryLocation : 
+        - SourceAssembly :
+            - Theme dictionaries exist in the assembly that defines the types being themed.
+        - ExternalAssembly :
+            - They are named based on the original assembly with the theme name appended to it; 
+              for example, PresentationFramework.Luna.dll. 
+              These dictionaries share the same version and key as the original assembly.
+
+- chargement et injection de ressources à l'exécution : 
+  simuler une mécanisme de Dll.Resources similaire à Application.Resources
     - Application.LoadComponent : Uri -> .xaml -> objet (XamlReader.Load)
     - .Resources.MergedDictionaries.Add
 
-- FrameWorkElement.FindResource
- 
-    public object FindResource (object resourceKey);
+## FrameWorkElement.FindResource en résumé
 
-### FrameWorkElement.FindResource en résumé
-
-#### notions mises en oeuvre : 
+### notions mises en oeuvre : 
 
 - appelée par Static / DynamicResource
 - resource key : String, ResourceKey, ComponentResourceKey, SystemResourceKey
@@ -40,7 +51,7 @@
 - certains Controles exposent les Keys référencées par leur Template en tant que public static
   ce qui les rend assignables à des ressources ancrées 'plus' haut dans l'arbre de recherche de ressources
 
-#### pseudo algo
+### pseudo algo
 
 - la résolution d'une MarkupExtension Static/DynamicResource (ProvideValue) se fait par un appel 
   à FrameWorkElement.FindResource sur le DependencyObject cible de la MarkupExtension 
@@ -75,7 +86,7 @@
         - propriété de SystemParameters / SystemColors / SystemFonts correspondant 
         - correspond à une propriété statique de la classe exposant la Key dont la valeur est retournée par FindResource
 
-#### exemples
+### exemples
 
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
@@ -112,7 +123,6 @@
                    Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/>
 
             <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/> 
-
 
 ## [Overview of XAML resources (WPF .NET)](https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&redirectedfrom=MSDN&viewFallbackFrom=netdesktop-6.0)
 
