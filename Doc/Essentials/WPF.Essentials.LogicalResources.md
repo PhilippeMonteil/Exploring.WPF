@@ -25,7 +25,7 @@
 - Themes, default resources (Themes/generic.xaml)
 
 - ThemeInfo assembly attribute : 
-    - ResourceDictionaryLocation themeDictionaryLocation, genericDictionaryLocation, 
+    - paramètres constructeur : ResourceDictionaryLocation themeDictionaryLocation, genericDictionaryLocation, 
     - ResourceDictionaryLocation : 
         - SourceAssembly :
             - Theme dictionaries exist in the assembly that defines the types being themed.
