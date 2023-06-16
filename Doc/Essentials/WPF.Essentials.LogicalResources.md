@@ -15,14 +15,17 @@
     - méthodes : FindResource TryFindResource SetResourceReference
         public object FindResource (object resourceKey);
 
+- ResourceKey
+    - public abstract class ResourceKey : System.Windows.Markup.MarkupExtension
+    - Derived : ComponentResourceKey, TemplateKey
+    - attribut MarkupExtensionReturnTypeAttribute 
+
 - Skinning
 
 - Themes, default resources (Themes/generic.xaml)
 
-- création d'un CustomControl, aspects liés aux Ressources : 
-  DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
-
-- ThemeInfo assembly attribute : ResourceDictionaryLocation themeDictionaryLocation, genericDictionaryLocation, 
+- ThemeInfo assembly attribute : 
+    - ResourceDictionaryLocation themeDictionaryLocation, genericDictionaryLocation, 
     - ResourceDictionaryLocation : 
         - SourceAssembly :
             - Theme dictionaries exist in the assembly that defines the types being themed.
@@ -30,6 +33,14 @@
             - They are named based on the original assembly with the theme name appended to it; 
               for example, PresentationFramework.Luna.dll. 
               These dictionaries share the same version and key as the original assembly.
+
+- ThemeDictionary MarkupExtension
+    - <ResourceDictionary Source="{ThemeDictionary assemblyUri}" ... />  
+    - By using this extension, the contents of a control-specific resource dictionary can be automatically 
+      invalidated and reloaded to be specific for another theme when required.
+
+- création d'un CustomControl, aspects liés aux Ressources : 
+  DefaultStyleKeyProperty, ThemeInfo, Themes/generic.xaml
 
 - chargement et injection de ressources à l'exécution : 
   simuler une mécanisme de Dll.Resources similaire à Application.Resources
@@ -40,7 +51,7 @@
 
 ### notions mises en oeuvre : 
 
-- appelée par Static / DynamicResource
+- appelée par Static / DynamicResource ?
 - resource key : String, ResourceKey, ComponentResourceKey, SystemResourceKey
 - ThemeInfo assembly attribute : themeDictionaryLocation, genericDictionaryLocation, 
   ResourceDictionaryLocation.None, .SourceAssembly, .ExternalAssembly
@@ -613,6 +624,8 @@ base.Source (UpdateSource)
 
 ### [ThemeDictionaryExtension Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0)
 
+#### [ThemeDictionaryExtension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8)
+
     [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Uri))]
     public class ThemeDictionaryExtension : System.Windows.Markup.MarkupExtension
     {
@@ -620,6 +633,26 @@ base.Source (UpdateSource)
         public ThemeDictionaryExtension (string assemblyName);
 
     }
+
+````
+    <object property="{ThemeDictionary assemblyUri}" ... />  
+
+    <object>  
+        <object.property>  
+            <ThemeDictionary AssemblyName="assemblyUri"/>  
+        <object.property>  
+    <object>  
+````
+
+- This extension is intended to fill only one specific property value: ResourceDictionary.Source.
+
+- By using this extension, you can specify a single resources-only assembly that contains some styles 
+  to use only when the Windows Aero theme is applied to the user's system, other styles only when 
+  the Luna theme is active, and so on. 
+
+- By using this extension, the contents of a control-specific resource dictionary can be automatically 
+  invalidated and reloaded to be specific for another theme when required.
+
 
 ## création d'un CustomControl : aspects liés aux Ressources:
 
