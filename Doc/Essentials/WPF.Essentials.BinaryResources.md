@@ -219,7 +219,6 @@
 
 #### [ResourceSet](https://learn.microsoft.com/en-us/dotnet/api/system.resources.resourceset?view=net-7.0)
 
-
 #### exemple
 
         public static void DebugResources(Assembly assembly)
@@ -231,17 +230,19 @@
                 Debug.WriteLine($"  resourceName={resourceName}");
 
                 Stream? stream = assembly.GetManifestResourceStream(resourceName);
-                ResourceSet set = new ResourceSet(stream);
-
-                Debug.WriteLine($"    stream={stream}");
-                Debug.WriteLine($"    set={set}");
-
-                foreach (DictionaryEntry resource in set)
+                using (ResourceSet set = new ResourceSet(stream))
                 {
-                    Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                    Debug.WriteLine($"    stream={stream}");
+                    Debug.WriteLine($"    set={set}");
+
+                    foreach (DictionaryEntry resource in set)
+                    {
+                        Debug.WriteLine("      resource.Key=[{0}] .Value='{1}'", resource.Key, resource.Value);
+                    }
+
+                    Debug.WriteLine("  --------------");
                 }
 
-                Debug.WriteLine("  --------------");
             }
 
             Debug.WriteLine($"{nameof(ResourceUtils)}{nameof(DebugResources)}(+)");
