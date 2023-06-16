@@ -9,6 +9,8 @@
     - Content :  lié à l'assembly, non embarqué, accessible par Application.GetContentStream
     - Embedded Resource : embarqué, accessible par Assembly.GetManifestResourceStream
 
+- ressource Content : AssemblyAssociatedContentFileAttribute
+
 - Image.Source : accès aux ressources image 
 
 - Application.GetContentStream
@@ -86,6 +88,8 @@
 
 ## [Content resource : AssemblyAssociatedContentFileAttribute](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resources.assemblyassociatedcontentfileattribute?view=windowsdesktop-7.0)
 
+- attribut d'assembly marquant une référence à une ressource 'Content'
+  
 - When the project is built, an AssemblyAssociatedContentFileAttribute attribute is compiled into the 
   metadata of the assembly for each content file.
 
