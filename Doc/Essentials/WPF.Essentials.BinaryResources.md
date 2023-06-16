@@ -210,6 +210,13 @@
 
 ### Assembly.GetManifestResourceNames, GetManifestResourceStream
 
+    public virtual string[] GetManifestResourceNames ();
+    public virtual System.IO.Stream? GetManifestResourceStream (string name);
+    public virtual System.IO.Stream? GetManifestResourceStream (Type type, string name);
+
+        For example, if the full name specified for type is "MyNameSpace.MyClasses" and name is "Net", 
+        this method overload searches for a resource named "MyNameSpace.Net".
+
 #### exemple
 
         public static void DebugResources(Assembly assembly)
