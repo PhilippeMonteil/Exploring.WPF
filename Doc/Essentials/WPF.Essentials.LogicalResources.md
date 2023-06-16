@@ -6,8 +6,8 @@
 - System.Windows.ResourceDictionary : 
     - dérive de IDictionary : Keys, Values
     - propriété Uri Source : 
-        - vers un .xaml non compiled resource ou Content
-        - décrivant un ResourceDictionary, liste d'instances présentant une x:Key
+        - vers un .xaml Resource ou Content
+        - décrivant une instance ResourceDictionary
     - propriété Collection<ResourceDictionary> MergedDictionaries
 
 - System.Windows.FrameworkElement : 
@@ -21,6 +21,10 @@
     - Application.LoadComponent : Uri -> .xaml -> objet (XamlReader.Load)
     - .Resources.MergedDictionaries.Add
 
+- FrameWorkElement.FindResource
+ 
+    public object FindResource (object resourceKey);
+
 ### FrameWorkElement.FindResource en résumé
 
 #### notions mises en oeuvre : 
@@ -31,14 +35,15 @@
   ResourceDictionaryLocation.None, .SourceAssembly, .ExternalAssembly
 - Themes/generic.xaml
 - ThemeDictionaryExtension
-- sources de SystemResourceKeys traitées par FrameworkElement.FindResource : SystemParameters, SystemColors, SystemFonts
-- certains Controles exposent les Keys référencées par leur Template ent tant que public static
+- sources de SystemResourceKeys traitées par FrameworkElement.FindResource : 
+    SystemParameters, SystemColors, SystemFonts
+- certains Controles exposent les Keys référencées par leur Template en tant que public static
   ce qui les rend assignables à des ressources ancrées 'plus' haut dans l'arbre de recherche de ressources
 
 #### pseudo algo
 
 - la résolution d'une MarkupExtension Static/DynamicResource (ProvideValue) se fait par un appel 
-  à FrameWorkElement.FindResource sur le DependencyObject cible de l'extension 
+  à FrameWorkElement.FindResource sur le DependencyObject cible de la MarkupExtension 
   (IServiceProvide.TargetValue.TargetObject) en passant la Key avec laquelle la MarkupExtension 
   a été construite.
 
@@ -130,10 +135,13 @@
 remarque :
 
     - .Source
-        - specified as a Pack URI, which references the location of a resource dictionary that is included as a noncompiled Resource or Content build action by your application building project.
+        - specified as a Pack URI, which references the location of a resource dictionary that is included 
+          as a noncompiled Resource or Content build action by your application building project.
         - souvent assigné aux ResourceDictionary apparaissant dans .MergedDictionaries
 
-'
+        - exemple:
+
+````
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -142,7 +150,7 @@ remarque :
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-'
+````
 
 ## [System.Windows.FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0) : .Resources Property, .FindResource method
 
@@ -164,7 +172,7 @@ remarque :
 
 cf résumé
 
- ## Static vs Dynamic
+## Static vs Dynamic
 
 ### [StaticResource Markup Extension](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/staticresource-markup-extension?view=netframeworkdesktop-4.8)
 
@@ -613,7 +621,7 @@ base.Source (UpdateSource)
         static MyCustomButton() 
         { 
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MyCustomButton), 
-                                    new FrameworkPro pertyMetadata(typeof(MyCustomButton))); 
+                                    new FrameworkPropertyMetadata(typeof(MyCustomButton))); 
         }
 
      }
