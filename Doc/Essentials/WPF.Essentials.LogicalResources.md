@@ -24,15 +24,33 @@
     - resourceKey : string, instance dérivant de ResourceKey, ...
 
 - ResourceKey
+
     - public abstract class ResourceKey : System.Windows.Markup.MarkupExtension
+
     - attribut [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.ResourceKey))]
+
     - Derived : ComponentResourceKey, TemplateKey, SystemResourceKey (type caché, keys exposées par SystemParameters, ...)
+
+    - Method : 
+
+        public override object ProvideValue (IServiceProvider serviceProvider);
+
+            Returns this ResourceKey. Instances of this class are typically used as a key in a dictionary.
 
 - StaticResource, DynamicResource : MarkupExtensions
 
+    - StaticResource
+
+        public StaticResourceExtension (object resourceKey);
+
     - DynamicResource : 
+
         établit une connexion entre la DependencyObject.DependencyProperty cible
-        et la ResourceKey passée en paramètre constructeur
+        et la ResourceKey passée en paramètre constructeur,
+        cf FrameworkElement.SetResourceReference
+
+        public DynamicResourceExtension (object resourceKey);
+
         ex: Width="{DynamicResource {x:Static SystemParameters.IconGridWidthKey}}"
 
 - Themes, default resources (Themes/generic.xaml)
@@ -92,7 +110,45 @@
         {
             public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
         }
+
+    - constructeur
+
+            public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+
+            - typeInTargetAssembly : The type that defines the resource key.
+
+            - resourceId : A unique identifier to differentiate this ComponentResourceKey from 
+                           others associated with the typeInTargetAssembly type.
+
+    - ResourceKey permettant d'accéder à une ressource définie dans un assembly externe
+
+        - la ressource doit se trouver dans un ResourceDictionary 'thème' ou generic (Theme/generic.xaml)
+        - l'assembly doit préciser un attribut ThemeInfo
+        - l'assembly doit créer une 'dummy class'
+        - marquer la ressource par une key de type ComponentResourceKey
+          ex:
+
+````
+            <SolidColorBrush 
+                x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+                Color="DarkRed" />
+````
     
+    - dans l'application cliente
+
+        - référencer l'assembly
+        - dans le XAML :
+
+````
+            xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+            <TextBlock x:Name="tbTest4" 
+                Text="Text4" 
+                FontSize="32" 
+                Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, 
+                                                MyComponentLibBrush}}"/>
+````
+
 ## FrameWorkElement.FindResource en résumé
 
 ### notions mises en oeuvre : 
