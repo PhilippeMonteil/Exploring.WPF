@@ -21,10 +21,19 @@
     - méthodes : FindResource SetResourceReference
         public void SetResourceReference (System.Windows.DependencyProperty dp, object resourceKey);
 
+    - resourceKey : string, instance dérivant de ResourceKey, ...
+
 - ResourceKey
     - public abstract class ResourceKey : System.Windows.Markup.MarkupExtension
     - attribut [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.ResourceKey))]
     - Derived : ComponentResourceKey, TemplateKey, SystemResourceKey (type caché, keys exposées par SystemParameters, ...)
+
+- StaticResource, DynamicResource : MarkupExtensions
+
+    - DynamicResource : 
+        établit une connexion entre la DependencyObject.DependencyProperty cible
+        et la ResourceKey passée en paramètre constructeur
+        ex: Width="{DynamicResource {x:Static SystemParameters.IconGridWidthKey}}"
 
 - Themes, default resources (Themes/generic.xaml)
 
@@ -74,6 +83,16 @@
 
     public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;
 
+- ComponentResourceKey
+
+    - classe
+
+        [System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.ComponentResourceKeyConverter))]
+        public class ComponentResourceKey : System.Windows.ResourceKey
+        {
+            public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+        }
+    
 ## FrameWorkElement.FindResource en résumé
 
 ### notions mises en oeuvre : 
@@ -426,7 +445,6 @@ Instances of this class are typically used as a key in a dictionary.
     public class ComponentResourceKey : System.Windows.ResourceKey
     {
         public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
-
     }
 
 Le Type passé en paramètre du constructeur est retourné par le get overridant
