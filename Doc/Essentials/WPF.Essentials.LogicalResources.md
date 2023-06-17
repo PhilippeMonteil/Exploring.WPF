@@ -35,7 +35,13 @@
 
         public override object ProvideValue (IServiceProvider serviceProvider);
 
-            Returns this ResourceKey. Instances of this class are typically used as a key in a dictionary.
+            Returns this ResourceKey. 
+
+    - Une ResourceKey apparait souvent comme paramètre d'une extension StaticResource par exemple
+
+        ex :
+
+        Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"
 
 - StaticResource, DynamicResource : MarkupExtensions
 
