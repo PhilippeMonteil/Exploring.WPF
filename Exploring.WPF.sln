@@ -207,6 +207,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{6D48AEE2-EDCA-444B-94F7-8EC58C3DF024}"
 	ProjectSection(SolutionItems) = preProject
 		MVVM\Doc\MVVM.Commanding.md = MVVM\Doc\MVVM.Commanding.md
+		MVVM\Doc\MVVM.md = MVVM\Doc\MVVM.md
 		MVVM\Doc\MVVM.Messaging.md = MVVM\Doc\MVVM.Messaging.md
 		MVVM\Doc\MVVM.Observable.md = MVVM\Doc\MVVM.Observable.md
 		MVVM\Doc\MVVM.SourceGenerators.md = MVVM\Doc\MVVM.SourceGenerators.md
