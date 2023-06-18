@@ -14,6 +14,7 @@
         public TriggerCollection Triggers { get; }
     - ContentProperty : Setters
     - DictionaryKeyProperty : TargetType
+        utilisée pour inscrire un Style dans un ResourceDictionary si aucune key n'est précisée
 
 - styles explicites, implicites, par Theme (par défaut)
 
@@ -31,6 +32,11 @@
 - contrôler les Styles par Theme de Contrôles externes
     - en les dérivant et surchargeant la MetaData de DefaultStyleKeyProperty
     - à l'aide d'une ThemeDictionaryExtension 
+
+- FocusVisualStyle
+    - Style appliqué à un arbre visuel temporaire, placé au dessus de celui du contrôle.
+    - Ce Style doit contenir un Setter de Template définissant cet arbre visuel.
+    - un Thème devrait contenir un FocusVisualStyle, Style de Key SystemParameters.FocusVisualStyleKey
 
 ## [Style Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.style?view=windowsdesktop-7.0)
 
