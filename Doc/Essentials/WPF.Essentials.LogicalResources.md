@@ -840,9 +840,9 @@ exemple :
         var _vv = SystemColors.ActiveBorderColor;
         Debug.WriteLine($"_vv={_vv} .GetType={_vv.GetType().Name}");
 
-- Certaines Keys peuvent être assignées à des ressources dans un ResourceDictionary
+- Certaines de ces Keys peuvent être assignées à des ressources dans un ResourceDictionary
  
-  exemple :
+  exemple : SystemParameters.FocusVisualStyleKey
 
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
       <Setter Property="Control.Template">

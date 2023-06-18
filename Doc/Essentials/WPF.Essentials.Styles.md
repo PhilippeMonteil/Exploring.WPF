@@ -20,7 +20,7 @@
 
 - FrameworkElement 
     - DefaultStyleKeyProperty
-    - FocusVisualStyle
+    - FocusVisualStyle, SystemParameters.FocusVisualStyleKey
     - OverridesDefaultStyle
 
 - Themes/generic.xaml
@@ -249,6 +249,13 @@ faisant l'objet de ses Setters.
       then you should not use focus visual styles, and should instead use setters and triggers 
       in styles or templates that are working from the value of general focus properties such as 
       IsFocused or IsKeyboardFocusWithin.
+    - The themes for controls include a default focus visual style behavior that becomes the 
+      focus visual style for all controls in the theme. 
+    - This theme style is identified by the value of the static key SystemParameters.FocusVisualStyleKey. 
+    - When you declare your own focus visual style at the application level, you replace this 
+      default style behavior from the themes. 
+    - Alternatively, if you define the entire theme, then you should use this same key to define 
+      the style for the default behavior for your entire theme.
 
 ### [DefaultStyleKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.defaultstylekey?view=windowsdesktop-7.0)
 
