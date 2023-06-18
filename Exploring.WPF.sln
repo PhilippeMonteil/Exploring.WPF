@@ -61,6 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{D38E8301-051
 		CSharp\Doc\CSharp.Tricks.md = CSharp\Doc\CSharp.Tricks.md
 		CSharp\Doc\CSharp_DelegatesLambdas.md = CSharp\Doc\CSharp_DelegatesLambdas.md
 		CSharp\Doc\CSharp_Events.md = CSharp\Doc\CSharp_Events.md
+		CSharp\Doc\Dotnet.Notes.md = CSharp\Doc\Dotnet.Notes.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DelegatesLambdas", "Tests\DelegatesLambdas\DelegatesLambdas.csproj", "{A2ABA881-F969-42D3-B927-39C7F6CAAF22}"
