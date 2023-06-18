@@ -250,6 +250,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essentials", "Essentials", 
 		Doc\Essentials\WPF.Essentials.ItemsControl.md = Doc\Essentials\WPF.Essentials.ItemsControl.md
 		Doc\Essentials\WPF.Essentials.Layout.md = Doc\Essentials\WPF.Essentials.Layout.md
 		Doc\Essentials\WPF.Essentials.LogicalResources.md = Doc\Essentials\WPF.Essentials.LogicalResources.md
+		Doc\Essentials\WPF.Essentials.md = Doc\Essentials\WPF.Essentials.md
 		Doc\Essentials\WPF.Essentials.RoutedEvents.md = Doc\Essentials\WPF.Essentials.RoutedEvents.md
 		Doc\Essentials\WPF.Essentials.Styles.md = Doc\Essentials\WPF.Essentials.Styles.md
 		Doc\Essentials\WPF.Essentials.Templates.md = Doc\Essentials\WPF.Essentials.Templates.md
