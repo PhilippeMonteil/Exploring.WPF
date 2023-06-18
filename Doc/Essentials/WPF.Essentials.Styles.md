@@ -23,6 +23,14 @@
     - FocusVisualStyle, SystemParameters.FocusVisualStyleKey
     - OverridesDefaultStyle
 
+        public bool OverridesDefaultStyle { get; set; }
+
+        - true if this element does not use theme style properties; all style-originating properties come from 
+          local application styles, and theme style properties do not apply. 
+        - false if application styles apply first, and then theme styles apply for properties that were 
+          not specifically set in application styles. 
+        - The default is false.
+
 - Themes/generic.xaml
  
 - AssemblyInfo.cs : ThemeInfo : ResourceDictionary Locations / Themes, Generic
