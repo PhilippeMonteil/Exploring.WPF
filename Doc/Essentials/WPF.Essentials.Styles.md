@@ -19,6 +19,7 @@
 - styles explicites, implicites, par Theme (par défaut)
 
 - FrameworkElement 
+    - Style 
     - DefaultStyleKeyProperty
     - FocusVisualStyle, SystemParameters.FocusVisualStyleKey
     - OverridesDefaultStyle
@@ -79,6 +80,19 @@
 - methods
 
     public void Seal ();
+
+## FrameworkElement et Styles 
+
+- propriétés
+    - public System.Windows.Style Style { get; set; }
+    - protected internal object DefaultStyleKey { get; set; }
+    - public System.Windows.Style FocusVisualStyle { get; set; }
+    - public bool OverridesDefaultStyle { get; set; }
+
+- methodes
+    - protected internal virtual void OnStyleChanged (System.Windows.Style oldStyle, System.Windows.Style newStyle);
+    - public bool ShouldSerializeStyle ();
+    - public void UpdateDefaultStyle ();
 
 ## explicit, implicit, default style 
 
