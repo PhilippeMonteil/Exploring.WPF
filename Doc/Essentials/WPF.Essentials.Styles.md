@@ -81,18 +81,39 @@
 
     public void Seal ();
 
-## FrameworkElement et Styles 
+## BasedOn
 
-- propriétés
-    - public System.Windows.Style Style { get; set; }
-    - protected internal object DefaultStyleKey { get; set; }
-    - public System.Windows.Style FocusVisualStyle { get; set; }
-    - public bool OverridesDefaultStyle { get; set; }
+- exemple :
 
-- methodes
-    - protected internal virtual void OnStyleChanged (System.Windows.Style oldStyle, System.Windows.Style newStyle);
-    - public bool ShouldSerializeStyle ();
-    - public void UpdateDefaultStyle ();
+````
+<Window.Resources>
+    <!-- .... other resources .... -->
+
+    <!--A Style that affects all TextBlocks-->
+    <Style TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    
+    <!--A Style that extends the previous TextBlock Style with an x:Key of TitleText-->
+    <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="TextBlock"
+           x:Key="TitleText">
+        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <LinearGradientBrush.GradientStops>
+                        <GradientStop Offset="0.0" Color="#90DDDD" />
+                        <GradientStop Offset="1.0" Color="#5BFFFF" />
+                    </LinearGradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Window.Resources>
+````
 
 ## explicit, implicit, default style 
 
@@ -152,7 +173,9 @@
 - un Style devrait préciser son TargetType, de façon à vérifier ses Setters, ... 
 - un Style inscrit dans un ResourceDictionary doit avoir une x:Key,
   si ce n'est pas le cas son TargetType fait office de x:Key
- 
+- pour être un implicite pour un type de FramewokElement particulier, un Style doit préciser
+  un TargetType mais pas de x:Key
+
     <Style x:Key="MyStyle">
         <Setter Property="Control.FontSize" Value="32" />
     </Style>
@@ -238,6 +261,17 @@ exemple :
 
 ## FrameworkElement : propriétés liées aux Styles
 
+- propriétés
+    - public System.Windows.Style Style { get; set; }
+    - protected internal object DefaultStyleKey { get; set; }
+    - public System.Windows.Style FocusVisualStyle { get; set; }
+    - public bool OverridesDefaultStyle { get; set; }
+
+- methodes
+    - protected internal virtual void OnStyleChanged (System.Windows.Style oldStyle, System.Windows.Style newStyle);
+    - public bool ShouldSerializeStyle ();
+    - public void UpdateDefaultStyle ();
+
 ### [Style](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.style?view=windowsdesktop-7.0)
 
 Style est une propriété assignable comme les autres, même si son assignation se traduit par celle des propriétés
@@ -245,7 +279,7 @@ faisant l'objet de ses Setters.
 
 ### [FocusVisualStyle](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.focusvisualstyle?view=windowsdesktop-7.0)
 
-- Style appliqué à un arbre visuel temporaire, placé au dessus de celui du contrôle.
+- Style appliqué à un arbre visuel temporaire, placé au dessus de celui du contrôle (Adorner).
 - Ce Style doit contenir un Setter de Template définissant cet arbre visuel.
 - un Thème devrait contenir un FocusVisualStyle, Style de Key SystemParameters.FocusVisualStyleKey
 
