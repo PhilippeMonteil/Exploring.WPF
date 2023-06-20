@@ -10,7 +10,7 @@
         - VisualTree [Content]
         - Resources
     - méthodes
-        - FindName : retrouvé un contrôle dans un templatedParent à partir de son nom
+        - FindName : retrouver un contrôle dans un templatedParent à partir de son nom
 
 - FrameworkElement : propriétés et méthodes liées aux Templates
     - propriétés
@@ -30,7 +30,7 @@
     - propriétés
         - ControlTemplate Template { get; set; }
     - méthodes
-        - protected virtual void OnTemplateChanged (System.Windows.Controls.ControlTemplate oldTemplate, System.Windows.Controls.ControlTemplate newTemplate);
+        - protected virtual void OnTemplateChanged (ControlTemplate oldTemplate, ControlTemplate newTemplate);
 
 - Templated Parent properties : MarkupExtension TemplateBinding, Binding / RelativeSource = TemplatedParent
 - Named elements in Templates : les retrouver grâce à : FrameworkElement.GetTemplateChild
@@ -50,6 +50,24 @@
     - classe dérivée de FrameworkTemplate
     - usages : ItemsControl.ItemsPanel, ...
 
+- ItemsControl
+
+    - properties
+        - public DataTemplate ItemTemplate { get; set; }
+        - public DataTemplateSelector ItemTemplateSelector { get; set; }
+
+    - methods
+        - protected virtual void OnItemTemplateChanged(DataTemplate oldItemTemplate, DataTemplate newItemTemplate);
+        - protected virtual void OnItemTemplateSelectorChanged(DataTemplateSelector oldItemTemplateSelector, DataTemplateSelector newItemTemplateSelector);
+
+- DataTemplateSelector
+
+    - methods
+        - public virtual System.Windows.DataTemplate SelectTemplate (object item, 
+                                                                    DependencyObject container);
+            - item : The data object for which to select the template.
+            - container : The data-bound object.
+
 ## [System.Windows.FrameworkTemplate Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworktemplate?view=windowsdesktop-7.0)
 
 ### Inheritance
@@ -62,9 +80,9 @@
 
 - classes dérivées directes :
 
-    - System.Windows.Controls.ControlTemplate
+    - ControlTemplate
     - System.Windows.DataTemplate
-    - System.Windows.Controls.ItemsPanelTemplate
+    - ItemsPanelTemplate
 
 ### Propriétés
 
@@ -160,11 +178,11 @@
 
 #### Template
 
-    public System.Windows.Controls.ControlTemplate Template { get; set; }
+    public ControlTemplate Template { get; set; }
 
 #### OnTemplateChanged
 
-    protected virtual void OnTemplateChanged (System.Windows.Controls.ControlTemplate oldTemplate, System.Windows.Controls.ControlTemplate newTemplate);
+    protected virtual void OnTemplateChanged (ControlTemplate oldTemplate, ControlTemplate newTemplate);
 
 ### Respecting the Templated Parent properties : MarkupExtension TemplateBinding, Binding / RelativeSource = TemplatedParent
 
@@ -188,10 +206,10 @@
 #### Exemples
 
 	[System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
-	[System.Windows.TemplatePart(Name="PART_ScrollContentPresenter", Type=typeof(System.Windows.Controls.ScrollContentPresenter))]
-	[System.Windows.TemplatePart(Name="PART_HorizontalScrollBar", Type=typeof(System.Windows.Controls.Primitives.ScrollBar))]
-	[System.Windows.TemplatePart(Name="PART_VerticalScrollBar", Type=typeof(System.Windows.Controls.Primitives.ScrollBar))]
-	public class ScrollViewer : System.Windows.Controls.ContentControl
+	[System.Windows.TemplatePart(Name="PART_ScrollContentPresenter", Type=typeof(ScrollContentPresenter))]
+	[System.Windows.TemplatePart(Name="PART_HorizontalScrollBar", Type=typeof(Primitives.ScrollBar))]
+	[System.Windows.TemplatePart(Name="PART_VerticalScrollBar", Type=typeof(Primitives.ScrollBar))]
+	public class ScrollViewer : ContentControl
     {
 
     }
@@ -331,15 +349,15 @@ The method uses the following rules:
 [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
 [System.Windows.Markup.ContentProperty("Items")]
 [System.Windows.StyleTypedProperty(Property="ItemContainerStyle", StyleTargetType=typeof(System.Windows.FrameworkElement))]
-public class ItemsControl : System.Windows.Controls.Control, 
-        System.Windows.Controls.Primitives.IContainItemStorage, 
+public class ItemsControl : Control, 
+        Primitives.IContainItemStorage, 
         System.Windows.Markup.IAddChild
 
 [System.ComponentModel.Bindable(true)]
 public System.Windows.DataTemplate ItemTemplate { get; set; }
 
 [System.ComponentModel.Bindable(true)]
-public System.Windows.Controls.DataTemplateSelector ItemTemplateSelector { get; set; }
+public DataTemplateSelector ItemTemplateSelector { get; set; }
 
 Inheritance :
 
@@ -348,18 +366,18 @@ ItemsControl
 
 Derived :
 
-System.Windows.Controls.HeaderedItemsControl
-System.Windows.Controls.Primitives.DataGridCellsPresenter
-System.Windows.Controls.Primitives.DataGridColumnHeadersPresenter
-System.Windows.Controls.Primitives.MenuBase
-System.Windows.Controls.Primitives.Selector
-System.Windows.Controls.Primitives.StatusBar
-System.Windows.Controls.Ribbon.RibbonContextualTabGroupItemsControl
-System.Windows.Controls.Ribbon.RibbonControlGroup
-System.Windows.Controls.Ribbon.RibbonGallery
-System.Windows.Controls.Ribbon.RibbonQuickAccessToolBar
-System.Windows.Controls.Ribbon.RibbonTabHeaderItemsControl
-System.Windows.Controls.TreeView
+HeaderedItemsControl
+Primitives.DataGridCellsPresenter
+Primitives.DataGridColumnHeadersPresenter
+Primitives.MenuBase
+Primitives.Selector
+Primitives.StatusBar
+Ribbon.RibbonContextualTabGroupItemsControl
+Ribbon.RibbonControlGroup
+Ribbon.RibbonGallery
+Ribbon.RibbonQuickAccessToolBar
+Ribbon.RibbonTabHeaderItemsControl
+TreeView
 
 ## ItemsPanelTemplate 
 
@@ -371,4 +389,8 @@ System.Windows.Controls.TreeView
 - ItemsPanelTemplate
 
 ### Usage : ItemsControl.ItemsPanel
+
+## DataTemplateSelector
+
+### [DataTemplateSelector Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.datatemplateselector?view=windowsdesktop-7.0)
 

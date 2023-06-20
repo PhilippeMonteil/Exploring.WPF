@@ -13,9 +13,10 @@ WPF.Essentials.LogicalResources.md
 
 WPF.Essentials.Styles.md
 
+WPF.Essentials.Templates.md
+
 ----
 
-WPF.Essentials.Templates.md
 WPF.Essentials.Triggers.md
 
 WPF.Essentials.Binding.md
