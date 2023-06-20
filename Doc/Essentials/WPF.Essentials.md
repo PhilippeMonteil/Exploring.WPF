@@ -12,7 +12,6 @@ WPF.Essentials.BinaryResources.md
 WPF.Essentials.LogicalResources.md
 
 WPF.Essentials.Styles.md
-
 WPF.Essentials.Templates.md
 
 ----
