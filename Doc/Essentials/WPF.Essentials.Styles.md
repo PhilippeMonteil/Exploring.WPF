@@ -17,18 +17,27 @@
         utilisée pour inscrire un Style dans un ResourceDictionary si aucune key n'est précisée
 
 - FrameworkElement 
-    - Style 
-    - DefaultStyleKeyProperty
-    - FocusVisualStyle, SystemParameters.FocusVisualStyleKey
-    - OverridesDefaultStyle
 
-        public bool OverridesDefaultStyle { get; set; }
+    - properties
 
-        - true if this element does not use theme style properties; all style-originating properties 
-          come from local application styles, and theme style properties do not apply. 
-        - false if application styles apply first, and then theme styles apply for properties that were 
-          not specifically set in application styles. 
-        - The default is false.
+        - Style 
+        - DefaultStyleKeyProperty
+        - FocusVisualStyle, SystemParameters.FocusVisualStyleKey
+        - OverridesDefaultStyle
+
+            public bool OverridesDefaultStyle { get; set; }
+
+            - true if this element does not use theme style properties; all style-originating properties 
+              come from local application styles, and theme style properties do not apply. 
+            - false if application styles apply first, and then theme styles apply for properties that were 
+              not specifically set in application styles. 
+            - The default is false.
+
+    - methods
+
+        - protected internal virtual void OnStyleChanged (System.Windows.Style oldStyle, System.Windows.Style newStyle);
+        - public bool ShouldSerializeStyle ();
+        - public void UpdateDefaultStyle ();
 
 - styles explicites, implicites, par Theme (par défaut)
 
