@@ -13,6 +13,11 @@ WPF.Essentials.LogicalResources.md
 
 WPF.Essentials.Styles.md
 
+----
+
+WPF.Essentials.Templates.md
+WPF.Essentials.Triggers.md
+
 WPF.Essentials.Binding.md
 WPF.Essentials.Commanding.md
 WPF.Essentials.ContentControl.md
@@ -20,6 +25,4 @@ WPF.Essentials.Input.md
 WPF.Essentials.ItemsControl.md
 WPF.Essentials.Layout.md
 WPF.Essentials.RoutedEvents.md
-WPF.Essentials.Templates.md
-WPF.Essentials.Triggers.md
 WPF.Essentials.Visuals.md

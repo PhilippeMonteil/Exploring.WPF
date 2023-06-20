@@ -16,8 +16,6 @@
     - DictionaryKeyProperty : TargetType
         utilisée pour inscrire un Style dans un ResourceDictionary si aucune key n'est précisée
 
-- styles explicites, implicites, par Theme (par défaut)
-
 - FrameworkElement 
     - Style 
     - DefaultStyleKeyProperty
@@ -26,11 +24,13 @@
 
         public bool OverridesDefaultStyle { get; set; }
 
-        - true if this element does not use theme style properties; all style-originating properties come from 
-          local application styles, and theme style properties do not apply. 
+        - true if this element does not use theme style properties; all style-originating properties 
+          come from local application styles, and theme style properties do not apply. 
         - false if application styles apply first, and then theme styles apply for properties that were 
           not specifically set in application styles. 
         - The default is false.
+
+- styles explicites, implicites, par Theme (par défaut)
 
 - Themes/generic.xaml
  
