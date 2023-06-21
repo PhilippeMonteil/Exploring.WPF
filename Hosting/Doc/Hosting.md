@@ -33,7 +33,7 @@ The following defaults are applied to the returned HostBuilder:
 
 	public IHostBuilder ConfigureAppConfiguration (Action<HostBuilderContext,IConfigurationBuilder> configureDelegate);
 
-	public Microsoft.Extensions.Hosting.IHostBuilder ConfigureServices (Action<Microsoft.Extensions.Hosting.HostBuilderContext,Microsoft.Extensions.DependencyInjection.IServiceCollection> configureDelegate);
+	public IHostBuilder ConfigureServices (Action<HostBuilderContext,Microsoft.Extensions.DependencyInjection.IServiceCollection> configureDelegate);
 
 ## [HostBuilderContext](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.hostbuildercontext?view=dotnet-plat-ext-6.0)
 
@@ -123,3 +123,8 @@ comme :
 - le code enregistré auprès de .ApplicationStarted doit déclencher la fin de l'appication :
 
     _appLifetime.StopApplication();
+
+## [Update on using HostBuilder, Dependency Injection and Service Provider with .NET Core 3.0 WPF applications](https://marcominerva.wordpress.com/2019/11/07/update-on-using-hostbuilder-dependency-injection-and-service-provider-with-net-core-3-0-wpf-applications/)
+
+https://marcominerva.wordpress.com/2019/05/21/a-simple-navigationservice-with-dependency-injection-for-wpf-on-net-core-3-0/
+
