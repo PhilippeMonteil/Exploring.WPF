@@ -5,7 +5,8 @@
 
 - RoutedEvent
 
-    - TypeConverter : RoutedEventConverter
+    [TypeConverter("Markup.RoutedEventConverter, PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Custom=null")]
+    public sealed class RoutedEvent
 
     - properties :
         - public string Name { get; }
@@ -53,11 +54,39 @@
     - exemple: exposition d'un RoutedEvent comme un event
 
 - attached events
+
     - exemple : TextBox.PreviewKeyDown="HandlerInstanceEventInfo"
   
 - Static class event handlers
+
+    - You can attach static class event handlers by calling the RegisterClassHandler method in the static constructor 
+      of a class. 
+
 - Override class event handlers 
+
+    - Some visual element base classes expose empty On<event name> and OnPreview<event name> virtual methods 
+      for each of their public routed input events. 
+
 - Marking routed events as handled
+
+    - Although there's no absolute rule for when to mark a routed event as handled, 
+      consider marking an event as handled if your code responds to the event in a significant way. 
+  
+    - A routed event that's marked as handled will continue along its route, but only handlers that are configured 
+      to respond to handled events are invoked. 
+  
+    - Basically, marking a routed event as handled limits its visibility to listeners along the event route.
+
+    - Routed event handlers can be either instance handlers or class handlers. 
+
+    - Instance handlers handle routed events on objects or XAML elements. 
+
+    - Class handlers handle a routed event at a class level, and are invoked before any instance handler responding 
+      to the same event on any instance of the class.
+
+    - When routed events are marked as handled, they're often marked as such within class handlers.
+
+    - To mark an event as handled, set the Handled property value in its event data to true.
 
 ## [RoutedEvent](https://learn.microsoft.com/en-us/dotnet/api/routedevent?view=windowsdesktop-7.0)
 

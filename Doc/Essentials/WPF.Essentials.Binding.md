@@ -3,6 +3,8 @@
 
 ## En résumé
 
+- Binding, BindingOperations, BindingExpressionBase
+
 - classe Data.BindingBase
 
     - public abstract class BindingBase : Markup.MarkupExtension
@@ -56,6 +58,11 @@
         - public bool ValidatesOnExceptions { get; set; }
         - public bool ValidatesOnNotifyDataErrors { get; set; }
         - public UpdateSourceExceptionFilterCallback UpdateSourceExceptionFilter { get; set; }
+
+- class RelativeSource
+
+    [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.Data.RelativeSource))]
+    public class RelativeSource : System.Windows.Markup.MarkupExtension, System.ComponentModel.ISupportInitialize
 
 - classe BindingOperations
 

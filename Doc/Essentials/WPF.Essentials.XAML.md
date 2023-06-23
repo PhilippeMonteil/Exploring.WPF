@@ -482,4 +482,7 @@ ex :
       <VisualStateManager.VisualStateGroups>
         <VisualStateGroup x:Name="CommonStates">
 
+## [WPF XAML Namescopes](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/wpf-xaml-namescopes?view=netframeworkdesktop-4.8)
+
+
 
