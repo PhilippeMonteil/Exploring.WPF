@@ -34,7 +34,10 @@
 
     	- public double ActualWidth/Height { get; }
 
-        	> This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.
+        	- This property is a calculated value based on other width inputs, and the layout system. 
+            - The value is set by the layout system itself, based on an actual rendering pass, 
+              and may therefore lag slightly behind the set value of properties such as Width 
+              that are the basis of the input change.
 
     - Control
 
@@ -55,7 +58,8 @@
     	protected virtual void ArrangeCore (Rect finalRect);
 
         	- appelée lors de Arrange
-    		- The final area within the parent that element should use to arrange itself and its child elements.
+    		- The final area within the parent that element should use to arrange itself 
+              and its child elements.
 
     	public Size RenderSize { get; set; }
 
