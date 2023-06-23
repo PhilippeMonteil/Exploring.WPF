@@ -17,10 +17,12 @@ WPF.Essentials.Triggers.md
 
 WPF.Essentials.Binding.md
 
+WPF.Essentials.RoutedEvents.md
+
 ----
 
-WPF.Essentials.RoutedEvents.md
 WPF.Essentials.Commanding.md
+
 WPF.Essentials.Input.md
 WPF.Essentials.Layout.md
 WPF.Essentials.Visuals.md
