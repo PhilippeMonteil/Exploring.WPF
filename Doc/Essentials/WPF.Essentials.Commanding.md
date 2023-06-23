@@ -52,6 +52,8 @@
 
 - UIElement.CommandBindings
 
+    public System.Windows.Input.CommandBindingCollection CommandBindings { get; }
+
 - CommandManager
 
     - attached events :
