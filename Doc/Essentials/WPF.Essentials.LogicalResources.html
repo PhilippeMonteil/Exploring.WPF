@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<!-- saved from url=(0011)about:blank -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    
+    <!--<base href="http://browsing-file-host/">--><base href=".">
+    <style>
+        html, body {margin: 0; padding-bottom:10px}
+        body {
+    background: #1f1f1f
+}
+.markdown-body {
+    color-scheme: dark;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    margin: 0;
+    color: #c9d1d9;
+    background-color: #1f1f1f;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+    .markdown-body .octicon {
+        display: inline-block;
+        fill: currentColor;
+        vertical-align: text-bottom;
+    }
+
+    .markdown-body h1:hover .anchor .octicon-link:before,
+    .markdown-body h2:hover .anchor .octicon-link:before,
+    .markdown-body h3:hover .anchor .octicon-link:before,
+    .markdown-body h4:hover .anchor .octicon-link:before,
+    .markdown-body h5:hover .anchor .octicon-link:before,
+    .markdown-body h6:hover .anchor .octicon-link:before {
+        width: 16px;
+        height: 16px;
+        content: ' ';
+        display: inline-block;
+        background-color: currentColor;
+        -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+        mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+    }
+
+    .markdown-body details,
+    .markdown-body figcaption,
+    .markdown-body figure {
+        display: block;
+    }
+
+    .markdown-body summary {
+        display: list-item;
+    }
+
+    .markdown-body [hidden] {
+        display: none !important;
+    }
+
+    .markdown-body a {
+        background-color: transparent;
+        color: #58a6ff;
+        text-decoration: none;
+    }
+
+        .markdown-body a:active,
+        .markdown-body a:hover {
+            outline-width: 0;
+        }
+
+    .markdown-body abbrMarkdown Preview {
+        border-bottom: none;
+        text-decoration: underline dotted;
+    }
+
+    .markdown-body b,
+    .markdown-body strong {
+        font-weight: 600;
+    }
+
+    .markdown-body dfn {
+        font-style: italic;
+    }
+
+    .markdown-body h1 {
+        margin: .67em 0;
+        font-weight: 600;
+        padding-bottom: .3em;
+        font-size: 2em;
+        border-bottom: 1px solid #21262d;
+    }
+
+    .markdown-body mark {
+        background-color: rgba(187,128,9,0.15);
+        color: #c9d1d9;
+    }
+
+    .markdown-body small {
+        font-size: 90%;
+    }
+
+    .markdown-body sub,
+    .markdown-body sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    .markdown-body sub {
+        bottom: -0.25em;
+    }
+
+    .markdown-body sup {
+        top: -0.5em;
+    }
+
+    .markdown-body img {
+        border-style: none;
+        max-width: 100%;
+        box-sizing: content-box;
+        background-color: #1f1f1f;
+    }
+
+    .markdown-body code,
+    .markdown-body kbd,
+    .markdown-body pre,
+    .markdown-body samp {
+        font-family: monospace,monospace;
+        font-size: 1em;
+    }
+
+    .markdown-body figure {
+        margin: 1em 40px;
+    }
+
+    .markdown-body hr {
+        box-sizing: content-box;
+        overflow: hidden;
+        background: transparent;
+        border-bottom: 1px solid #21262d;
+        height: .25em;
+        padding: 0;
+        margin: 24px 0;
+        background-color: #30363d;
+        border: 0;
+    }
+
+    .markdown-body input {
+        font: inherit;
+        margin: 0;
+        overflow: visible;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    .markdown-body [type=button],
+    .markdown-body [type=reset],
+    .markdown-body [type=submit] {
+        -webkit-appearance: button;
+    }
+
+        .markdown-body [type=button]::-moz-focus-inner,
+        .markdown-body [type=reset]::-moz-focus-inner,
+        .markdown-body [type=submit]::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+
+        .markdown-body [type=button]:-moz-focusring,
+        .markdown-body [type=reset]:-moz-focusring,
+        .markdown-body [type=submit]:-moz-focusring {
+            outline: 1px dotted ButtonText;
+        }
+
+    .markdown-body [type=checkbox],
+    .markdown-body [type=radio] {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .markdown-body [type=number]::-webkit-inner-spin-button,
+    .markdown-body [type=number]::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    .markdown-body [type=search] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+    }
+
+        .markdown-body [type=search]::-webkit-search-cancel-button,
+        .markdown-body [type=search]::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+    .markdown-body ::-webkit-input-placeholder {
+        color: inherit;
+        opacity: .54;
+    }
+
+    .markdown-body ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+    }
+
+    .markdown-body a:hover {
+        text-decoration: underline;
+    }
+
+    .markdown-body hr::before {
+        display: table;
+        content: "";
+    }
+
+    .markdown-body hr::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+
+    .markdown-body table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+    }
+
+    .markdown-body td,
+    .markdown-body th {
+        padding: 0;
+    }
+
+    .markdown-body details summary {
+        cursor: pointer;
+    }
+
+    .markdown-body details:not([open]) > *:not(summary) {
+        display: none !important;
+    }
+
+    .markdown-body kbd {
+        display: inline-block;
+        padding: 3px 5px;
+        font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        line-height: 10px;
+        color: #c9d1d9;
+        vertical-align: middle;
+        background-color: #161b22;
+        border: solid 1px rgba(110,118,129,0.4);
+        border-bottom-color: rgba(110,118,129,0.4);
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(110,118,129,0.4);
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+
+    .markdown-body h2 {
+        font-weight: 600;
+        padding-bottom: .3em;
+        font-size: 1.5em;
+        border-bottom: 1px solid #21262d;
+    }
+
+    .markdown-body h3 {
+        font-weight: 600;
+        font-size: 1.25em;
+    }
+
+    .markdown-body h4 {
+        font-weight: 600;
+        font-size: 1em;
+    }
+
+    .markdown-body h5 {
+        font-weight: 600;
+        font-size: .875em;
+    }
+
+    .markdown-body h6 {
+        font-weight: 600;
+        font-size: .85em;
+        color: #8b949e;
+    }
+
+    .markdown-body p {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .markdown-body blockquote {
+        margin: 0;
+        padding: 0 1em;
+        color: #8b949e;
+        border-left: .25em solid #30363d;
+    }
+
+    .markdown-body ul {
+        list-style: disc
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 2em;
+    }
+
+        .markdown-body ol ol,
+        .markdown-body ul ol {
+            list-style-type: lower-roman;
+        }
+
+            .markdown-body ul ul ol,
+            .markdown-body ul ol ol,
+            .markdown-body ol ul ol,
+            .markdown-body ol ol ol {
+                list-style-type: lower-alpha;
+            }
+
+    .markdown-body dd {
+        margin-left: 0;
+    }
+
+    .markdown-body tt,
+    .markdown-body code {
+        font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        font-size: 12px;
+    }
+
+    .markdown-body pre {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        font-size: 12px;
+        word-wrap: normal;
+    }
+
+    .markdown-body .octicon {
+        display: inline-block;
+        overflow: visible !important;
+        vertical-align: text-bottom;
+        fill: currentColor;
+    }
+
+    .markdown-body ::placeholder {
+        color: #484f58;
+        opacity: 1;
+    }
+
+    .markdown-body input::-webkit-outer-spin-button,
+    .markdown-body input::-webkit-inner-spin-button {
+        margin: 0;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .markdown-body .pl-c {
+        color: #8b949e;
+    }
+
+    .markdown-body .pl-c1,
+    .markdown-body .pl-s .pl-v {
+        color: #79c0ff;
+    }
+
+    .markdown-body .pl-e,
+    .markdown-body .pl-en {
+        color: #d2a8ff;
+    }
+
+    .markdown-body .pl-smi,
+    .markdown-body .pl-s .pl-s1 {
+        color: #c9d1d9;
+    }
+
+    .markdown-body .pl-ent {
+        color: #7ee787;
+    }
+
+    .markdown-body .pl-k {
+        color: #ff7b72;
+    }
+
+    .markdown-body .pl-s,
+    .markdown-body .pl-pds,
+    .markdown-body .pl-s .pl-pse .pl-s1,
+    .markdown-body .pl-sr,
+    .markdown-body .pl-sr .pl-cce,
+    .markdown-body .pl-sr .pl-sre,
+    .markdown-body .pl-sr .pl-sra {
+        color: #a5d6ff;
+    }
+
+    .markdown-body .pl-v,
+    .markdown-body .pl-smw {
+        color: #ffa657;
+    }
+
+    .markdown-body .pl-bu {
+        color: #f85149;
+    }
+
+    .markdown-body .pl-ii {
+        color: #f0f6fc;
+        background-color: #8e1519;
+    }
+
+    .markdown-body .pl-c2 {
+        color: #f0f6fc;
+        background-color: #b62324;
+    }
+
+    .markdown-body .pl-sr .pl-cce {
+        font-weight: bold;
+        color: #7ee787;
+    }
+
+    .markdown-body .pl-ml {
+        color: #f2cc60;
+    }
+
+    .markdown-body .pl-mh,
+    .markdown-body .pl-mh .pl-en,
+    .markdown-body .pl-ms {
+        font-weight: bold;
+        color: #1f6feb;
+    }
+
+    .markdown-body .pl-mi {
+        font-style: italic;
+        color: #c9d1d9;
+    }
+
+    .markdown-body .pl-mb {
+        font-weight: bold;
+        color: #c9d1d9;
+    }
+
+    .markdown-body .pl-md {
+        color: #ffdcd7;
+        background-color: #67060c;
+    }
+
+    .markdown-body .pl-mi1 {
+        color: #aff5b4;
+        background-color: #033a16;
+    }
+
+    .markdown-body .pl-mc {
+        color: #ffdfb6;
+        background-color: #5a1e02;
+    }
+
+    .markdown-body .pl-mi2 {
+        color: #c9d1d9;
+        background-color: #1158c7;
+    }
+
+    .markdown-body .pl-mdr {
+        font-weight: bold;
+        color: #d2a8ff;
+    }
+
+    .markdown-body .pl-ba {
+        color: #8b949e;
+    }
+
+    .markdown-body .pl-sg {
+        color: #484f58;
+    }
+
+    .markdown-body .pl-corl {
+        text-decoration: underline;
+        color: #a5d6ff;
+    }
+
+    .markdown-body [data-catalyst] {
+        display: block;
+    }
+
+    .markdown-body g-emoji {
+        font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1em;
+        font-style: normal !important;
+        font-weight: 400;
+        line-height: 1;
+        vertical-align: -0.075em;
+    }
+
+        .markdown-body g-emoji img {
+            width: 1em;
+            height: 1em;
+        }
+
+    .markdown-body::before {
+        display: table;
+        content: "";
+    }
+
+    .markdown-body::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+
+    .markdown-body > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    .markdown-body > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .markdown-body a:not([href]) {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .markdown-body .absent {
+        color: #f85149;
+    }
+
+    .markdown-body .anchor {
+        float: left;
+        padding-right: 4px;
+        margin-left: -20px;
+        line-height: 1;
+    }
+
+        .markdown-body .anchor:focus {
+            outline: none;
+        }
+
+    .markdown-body p,
+    .markdown-body blockquote,
+    .markdown-body ul,
+    .markdown-body ol,
+    .markdown-body dl,
+    .markdown-body table,
+    .markdown-body pre,
+    .markdown-body details {
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+        .markdown-body blockquote > :first-child {
+            margin-top: 0;
+        }
+
+        .markdown-body blockquote > :last-child {
+            margin-bottom: 0;
+        }
+
+    .markdown-body sup > a::before {
+        content: "[";
+    }
+
+    .markdown-body sup > a::after {
+        content: "]";
+    }
+
+    .markdown-body h1 .octicon-link,
+    .markdown-body h2 .octicon-link,
+    .markdown-body h3 .octicon-link,
+    .markdown-body h4 .octicon-link,
+    .markdown-body h5 .octicon-link,
+    .markdown-body h6 .octicon-link {
+        color: #c9d1d9;
+        vertical-align: middle;
+        visibility: hidden;
+    }
+
+    .markdown-body h1:hover .anchor,
+    .markdown-body h2:hover .anchor,
+    .markdown-body h3:hover .anchor,
+    .markdown-body h4:hover .anchor,
+    .markdown-body h5:hover .anchor,
+    .markdown-body h6:hover .anchor {
+        text-decoration: none;
+    }
+
+        .markdown-body h1:hover .anchor .octicon-link,
+        .markdown-body h2:hover .anchor .octicon-link,
+        .markdown-body h3:hover .anchor .octicon-link,
+        .markdown-body h4:hover .anchor .octicon-link,
+        .markdown-body h5:hover .anchor .octicon-link,
+        .markdown-body h6:hover .anchor .octicon-link {
+            visibility: visible;
+        }
+
+    .markdown-body h1 tt,
+    .markdown-body h1 code,
+    .markdown-body h2 tt,
+    .markdown-body h2 code,
+    .markdown-body h3 tt,
+    .markdown-body h3 code,
+    .markdown-body h4 tt,
+    .markdown-body h4 code,
+    .markdown-body h5 tt,
+    .markdown-body h5 code,
+    .markdown-body h6 tt,
+    .markdown-body h6 code {
+        padding: 0 .2em;
+        font-size: inherit;
+    }
+
+    .markdown-body ul.no-list,
+    .markdown-body ol.no-list {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .markdown-body ol[type="1"] {
+        list-style-type: decimal;
+    }
+
+    .markdown-body ol[type=a] {
+        list-style-type: lower-alpha;
+    }
+
+    .markdown-body ol[type=i] {
+        list-style-type: lower-roman;
+    }
+
+    .markdown-body div > ol:not([type]) {
+        list-style-type: decimal;
+    }
+
+    .markdown-body ul ul,
+    .markdown-body ul ol,
+    .markdown-body ol ol,
+    .markdown-body ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .markdown-body li > p {
+        margin-top: 16px;
+    }
+
+    .markdown-body li + li {
+        margin-top: .25em;
+    }
+
+    .markdown-body dl {
+        padding: 0;
+    }
+
+        .markdown-body dl dt {
+            padding: 0;
+            margin-top: 16px;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .markdown-body dl dd {
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+
+    .markdown-body table th {
+        font-weight: 600;
+    }
+
+    .markdown-body table th,
+    .markdown-body table td {
+        padding: 6px 13px;
+        border: 1px solid #30363d;
+    }
+
+    .markdown-body table tr {
+        background-color: #1f1f1f;
+        border-top: 1px solid #21262d;
+    }
+
+        .markdown-body table tr:nth-child(2n) {
+            background-color: #161b22;
+        }
+
+    .markdown-body table img {
+        background-color: transparent;
+    }
+
+    .markdown-body img[align=right] {
+        padding-left: 20px;
+    }
+
+    .markdown-body img[align=left] {
+        padding-right: 20px;
+    }
+
+    .markdown-body .emoji {
+        max-width: none;
+        vertical-align: text-top;
+        background-color: transparent;
+    }
+
+    .markdown-body span.frame {
+        display: block;
+        overflow: hidden;
+    }
+
+        .markdown-body span.frame > span {
+            display: block;
+            float: left;
+            width: auto;
+            padding: 7px;
+            margin: 13px 0 0;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+
+        .markdown-body span.frame span img {
+            display: block;
+            float: left;
+        }
+
+        .markdown-body span.frame span span {
+            display: block;
+            padding: 5px 0 0;
+            clear: both;
+            color: #c9d1d9;
+        }
+
+    .markdown-body span.align-center {
+        display: block;
+        overflow: hidden;
+        clear: both;
+    }
+
+        .markdown-body span.align-center > span {
+            display: block;
+            margin: 13px auto 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .markdown-body span.align-center span img {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+    .markdown-body span.align-right {
+        display: block;
+        overflow: hidden;
+        clear: both;
+    }
+
+        .markdown-body span.align-right > span {
+            display: block;
+            margin: 13px 0 0;
+            overflow: hidden;
+            text-align: right;
+        }
+
+        .markdown-body span.align-right span img {
+            margin: 0;
+            text-align: right;
+        }
+
+    .markdown-body span.float-left {
+        display: block;
+        float: left;
+        margin-right: 13px;
+        overflow: hidden;
+    }
+
+        .markdown-body span.float-left span {
+            margin: 13px 0 0;
+        }
+
+    .markdown-body span.float-right {
+        display: block;
+        float: right;
+        margin-left: 13px;
+        overflow: hidden;
+    }
+
+        .markdown-body span.float-right > span {
+            display: block;
+            margin: 13px auto 0;
+            overflow: hidden;
+            text-align: right;
+        }
+
+    .markdown-body code,
+    .markdown-body tt {
+        padding: .2em .4em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(110,118,129,0.4);
+        border-radius: 6px;
+    }
+
+        .markdown-body code br,
+        .markdown-body tt br {
+            display: none;
+        }
+
+    .markdown-body del code {
+        text-decoration: inherit;
+    }
+
+    .markdown-body pre code {
+        font-size: 100%;
+    }
+
+    .markdown-body pre > code {
+        padding: 0;
+        margin: 0;
+        word-break: normal;
+        white-space: pre;
+        background: transparent;
+        border: 0;
+    }
+
+    .markdown-body .highlight {
+        margin-bottom: 16px;
+    }
+
+        .markdown-body .highlight pre {
+            margin-bottom: 0;
+            word-break: normal;
+        }
+
+        .markdown-body .highlight pre,
+        .markdown-body pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #161b22;
+            border-radius: 6px;
+        }
+
+            .markdown-body pre code,
+            .markdown-body pre tt {
+                display: inline;
+                max-width: auto;
+                padding: 0;
+                margin: 0;
+                overflow: visible;
+                line-height: inherit;
+                word-wrap: normal;
+                background-color: transparent;
+                border: 0;
+            }
+
+    .markdown-body .csv-data td,
+    .markdown-body .csv-data th {
+        padding: 5px;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 1;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .markdown-body .csv-data .blob-num {
+        padding: 10px 8px 9px;
+        text-align: right;
+        background: #1f1f1f;
+        border: 0;
+    }
+
+    .markdown-body .csv-data tr {
+        border-top: 0;
+    }
+
+    .markdown-body .csv-data th {
+        font-weight: 600;
+        background: #161b22;
+        border-top: 0;
+    }
+
+    .markdown-body .footnotes {
+        font-size: 12px;
+        color: #8b949e;
+        border-top: 1px solid #30363d;
+    }
+
+        .markdown-body .footnotes ol {
+            padding-left: 16px;
+        }
+
+        .markdown-body .footnotes li {
+            position: relative;
+        }
+
+            .markdown-body .footnotes li:target::before {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                bottom: -8px;
+                left: -24px;
+                pointer-events: none;
+                content: "";
+                border: 2px solid #1f6feb;
+                border-radius: 6px;
+            }
+
+            .markdown-body .footnotes li:target {
+                color: #c9d1d9;
+            }
+
+        .markdown-body .footnotes .data-footnote-backref g-emoji {
+            font-family: monospace;
+        }
+
+    .markdown-body .task-list-item {
+        list-style-type: none;
+    }
+
+        .markdown-body .task-list-item label {
+            font-weight: 400;
+        }
+
+        .markdown-body .task-list-item.enabled label {
+            cursor: pointer;
+        }
+
+        .markdown-body .task-list-item + .task-list-item {
+            margin-top: 3px;
+        }
+
+        .markdown-body .task-list-item .handle {
+            display: none;
+        }
+
+    .markdown-body .task-list-item-checkbox {
+        margin: 0 .2em .25em -1.6em;
+        vertical-align: middle;
+    }
+
+    .markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
+        margin: 0 -1.6em .25em .2em;
+    }
+
+    .markdown-body ::-webkit-calendar-picker-indicator {
+        filter: invert(50%);
+    }
+/* PrismJS 1.25.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
+code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+    </style>
+    <title>Markdown Preview</title>
+    <meta http-equiv="cache-control" content="no-cache">
+</head>
+<body>
+
+    
+    <div id="___markdown-content___" class="markdown-body">
+        <h1 id="logical-resources-definition-resolution"><a id="pragma-line-1"></a>Logical Resources : définition, résolution ...</h1>
+<h2 id="en-resume"><a id="pragma-line-3"></a>En résumé</h2>
+<ul id="pragma-line-5">
+<li id="pragma-line-5"><p id="pragma-line-5">System.Windows.ResourceDictionary :</p>
+<ul id="pragma-line-6">
+<li id="pragma-line-6">dérive de IDictionary : Keys, Values</li>
+<li id="pragma-line-7">propriété Uri Source :
+<ul id="pragma-line-8">
+<li id="pragma-line-8">vers un .xaml Resource ou Content</li>
+<li id="pragma-line-9">décrivant une instance ResourceDictionary</li>
+</ul>
+</li>
+<li id="pragma-line-10">propriété Collection<resourcedictionary> MergedDictionaries</resourcedictionary></li>
+</ul>
+</li>
+<li id="pragma-line-12"><p id="pragma-line-12">System.Windows.FrameworkElement :</p>
+<ul id="pragma-line-14">
+<li id="pragma-line-14"><p id="pragma-line-14">propriété : ResourceDictionary Resources</p>
+</li>
+<li id="pragma-line-16"><p id="pragma-line-16">méthodes : FindResource TryFindResource
+public object FindResource (object resourceKey);
+public object TryFindResource (object resourceKey);</p>
+</li>
+<li id="pragma-line-20"><p id="pragma-line-20">méthodes : FindResource SetResourceReference
+public void SetResourceReference (System.Windows.DependencyProperty dp, object resourceKey);</p>
+</li>
+<li id="pragma-line-23"><p id="pragma-line-23">resourceKey : string, instance dérivant de ResourceKey, ...</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-25"><p id="pragma-line-25">ResourceKey</p>
+<ul id="pragma-line-27">
+<li id="pragma-line-27"><p id="pragma-line-27">public abstract class ResourceKey : System.Windows.Markup.MarkupExtension</p>
+</li>
+<li id="pragma-line-29"><p id="pragma-line-29">attribut [System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.ResourceKey))]</p>
+</li>
+<li id="pragma-line-31"><p id="pragma-line-31">Derived : ComponentResourceKey, TemplateKey, SystemResourceKey (type caché, keys exposées par SystemParameters, ...)</p>
+</li>
+<li id="pragma-line-33"><p id="pragma-line-33">Method :</p>
+<p id="pragma-line-35">public override object ProvideValue (IServiceProvider serviceProvider);</p>
+<pre><code id="pragma-line-37">  Returns this ResourceKey. 
+</code></pre>
+</li>
+<li id="pragma-line-39"><p id="pragma-line-39">Une ResourceKey apparait souvent comme paramètre d'une extension StaticResource par exemple</p>
+<p id="pragma-line-41">ex :</p>
+<p id="pragma-line-43" x:type="" rlib:dummyclass="">Foreground="{DynamicResource {ComponentResourceKey , MyComponentLibBrush}}"</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-45"><p id="pragma-line-45">StaticResource, DynamicResource : MarkupExtensions</p>
+<ul id="pragma-line-47">
+<li id="pragma-line-47"><p id="pragma-line-47">StaticResource</p>
+<p id="pragma-line-49">public StaticResourceExtension (object resourceKey);</p>
+</li>
+<li id="pragma-line-51"><p id="pragma-line-51">DynamicResource :</p>
+<p id="pragma-line-53">établit une connexion entre la DependencyObject.DependencyProperty cible
+et la ResourceKey passée en paramètre constructeur,
+cf FrameworkElement.SetResourceReference</p>
+<p id="pragma-line-57">public DynamicResourceExtension (object resourceKey);</p>
+<p id="pragma-line-59" x:static="" systemparameters.icongridwidthkey="">ex: Width="{DynamicResource }"</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-61"><p id="pragma-line-61">Themes, default resources (Themes/generic.xaml)</p>
+</li>
+<li id="pragma-line-63"><p id="pragma-line-63">ThemeInfo assembly attribute :</p>
+<ul id="pragma-line-64">
+<li id="pragma-line-64">paramètres constructeur : ResourceDictionaryLocation themeDictionaryLocation, genericDictionaryLocation,</li>
+<li id="pragma-line-65">ResourceDictionaryLocation :
+<ul id="pragma-line-66">
+<li id="pragma-line-66">SourceAssembly :
+<ul id="pragma-line-67">
+<li id="pragma-line-67">Theme dictionaries exist in the assembly that defines the types being themed.</li>
+</ul>
+</li>
+<li id="pragma-line-68">ExternalAssembly :
+<ul id="pragma-line-69">
+<li id="pragma-line-69">They are named based on the original assembly with the theme name appended to it;
+for example, PresentationFramework.Luna.dll.
+These dictionaries share the same version and key as the original assembly.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="pragma-line-73"><p id="pragma-line-73">ThemeDictionary MarkupExtension</p>
+<ul id="pragma-line-74">
+<li id="pragma-line-74">&lt;ResourceDictionary Source="" ... /&gt;</li>
+<li id="pragma-line-75">By using this extension, the contents of a control-specific resource dictionary can be automatically
+invalidated and reloaded to be specific for another theme when required.</li>
+</ul>
+</li>
+<li id="pragma-line-78"><p id="pragma-line-78">création d'un CustomControl, aspects liés aux Ressources :
+DefaultStyleKeyProperty, assembly attribute ThemeInfo, ressource 'Page' Themes/generic.xaml</p>
+</li>
+<li id="pragma-line-81"><p id="pragma-line-81">Skinning</p>
+</li>
+<li id="pragma-line-83"><p id="pragma-line-83">chargement et injection de ressources à l'exécution :
+simuler une mécanisme de Dll.Resources similaire à Application.Resources</p>
+<ul id="pragma-line-85">
+<li id="pragma-line-85">Application.LoadComponent : Uri → .xaml → objet (XamlReader.Load)</li>
+<li id="pragma-line-86">.Resources.MergedDictionaries.Add</li>
+</ul>
+</li>
+<li id="pragma-line-88"><p id="pragma-line-88">SystemResourceKey</p>
+<p id="pragma-line-90">[TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
+internal class SystemResourceKey : ResourceKey</p>
+</li>
+<li id="pragma-line-93"><p id="pragma-line-93">SystemParameters, SystemColors, SystemFonts</p>
+<ul id="pragma-line-95">
+<li id="pragma-line-95">paires ResourceKey / static field</li>
+</ul>
+<p id="pragma-line-97">ex:
+public static System.Windows.ResourceKey BorderKey { get; }
+public static int Border { get; }</p>
+<p id="pragma-line-101" x:static="" systemparameters.icongridwidth="" systemparameters.icongridwidthkey="">ex:
+Width=""
+Width="{DynamicResource }"</p>
+</li>
+<li id="pragma-line-105"><p id="pragma-line-105">SystemParameters.StaticPropertyChanged Event</p>
+<p id="pragma-line-107">public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;</p>
+</li>
+<li id="pragma-line-109"><p id="pragma-line-109">ComponentResourceKey</p>
+<ul id="pragma-line-111">
+<li id="pragma-line-111"><p id="pragma-line-111">classe</p>
+<p id="pragma-line-113">[System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.ComponentResourceKeyConverter))]
+public class ComponentResourceKey : System.Windows.ResourceKey
+{
+public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+}</p>
+</li>
+<li id="pragma-line-119"><p id="pragma-line-119">constructeur</p>
+<pre><code id="pragma-line-121">  public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+
+  - typeInTargetAssembly : The type that defines the resource key.
+
+  - resourceId : A unique identifier to differentiate this ComponentResourceKey from 
+                 others associated with the typeInTargetAssembly type.
+</code></pre>
+</li>
+<li id="pragma-line-128"><p id="pragma-line-128">ResourceKey permettant d'accéder à une ressource définie dans un assembly externe</p>
+<ul id="pragma-line-130">
+<li id="pragma-line-130">la ressource doit se trouver dans un ResourceDictionary 'thème' ou generic (Theme/generic.xaml)</li>
+<li id="pragma-line-131">l'assembly doit préciser un attribut ThemeInfo</li>
+<li id="pragma-line-132">l'assembly doit créer une 'dummy class'</li>
+<li id="pragma-line-133">marquer la ressource par une key de type ComponentResourceKey
+ex:</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code id="pragma-line-136">            &lt;SolidColorBrush 
+                x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+                Color="DarkRed" /&gt;
+</code></pre>
+<pre><code id="pragma-line-142">- dans l'application cliente
+
+    - référencer l'assembly
+    - dans le XAML :
+</code></pre>
+<pre><code id="pragma-line-147">            xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+            &lt;TextBlock x:Name="tbTest4" 
+                Text="Text4" 
+                FontSize="32" 
+                Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, 
+                                                MyComponentLibBrush}}"/&gt;
+</code></pre>
+<h2 id="frameworkelement.findresource-en-resume"><a id="pragma-line-157"></a>FrameWorkElement.FindResource en résumé</h2>
+<h3 id="notions-mises-en-oeuvre"><a id="pragma-line-159"></a>notions mises en oeuvre :</h3>
+<ul id="pragma-line-161">
+<li id="pragma-line-161">appelée par Static / DynamicResource ?</li>
+<li id="pragma-line-162">resource key : String, ResourceKey, ComponentResourceKey, SystemResourceKey</li>
+<li id="pragma-line-163">ThemeInfo assembly attribute : themeDictionaryLocation, genericDictionaryLocation,
+ResourceDictionaryLocation.None, .SourceAssembly, .ExternalAssembly</li>
+<li id="pragma-line-165">Themes/generic.xaml</li>
+<li id="pragma-line-166">ThemeDictionaryExtension</li>
+<li id="pragma-line-167">sources de SystemResourceKeys traitées par FrameworkElement.FindResource :
+SystemParameters, SystemColors, SystemFonts</li>
+<li id="pragma-line-169">certains Controles exposent les Keys référencées par leur Template en tant que public static
+ce qui les rend assignables à des ressources ancrées 'plus' haut dans l'arbre de recherche de ressources</li>
+</ul>
+<h3 id="pseudo-algo"><a id="pragma-line-172"></a>pseudo algo</h3>
+<ul id="pragma-line-174">
+<li id="pragma-line-174"><p id="pragma-line-174">la résolution d'une MarkupExtension Static/DynamicResource (ProvideValue) se fait par un appel
+à FrameWorkElement.FindResource sur le DependencyObject cible de la MarkupExtension
+(IServiceProvide.TargetValue.TargetObject) en passant la Key avec laquelle la MarkupExtension
+a été construite.</p>
+</li>
+<li id="pragma-line-179"><p id="pragma-line-179">cette Key peut être une String, une ResourceKey (ComponentResourceKey, SystemResourceKey) ...</p>
+</li>
+<li id="pragma-line-181"><p id="pragma-line-181">la résolution dépend de la nature la Key concernée</p>
+<ul id="pragma-line-183">
+<li id="pragma-line-183"><p id="pragma-line-183">String ou Type :</p>
+<ul id="pragma-line-185">
+<li id="pragma-line-185"><p id="pragma-line-185">parcours ascendant l'arbre visuel, recherche dans les .Resources (ResourceDictionary) de chaque
+FrameworkElement d'une ressource pour la Key</p>
+</li>
+<li id="pragma-line-188"><p id="pragma-line-188">inspection de Application.Resources</p>
+</li>
+<li id="pragma-line-190"><p id="pragma-line-190">dans l'assembly implémentant le FrameWorkElement object de l'appel à .FindResource :</p>
+<ul id="pragma-line-191">
+<li id="pragma-line-191">si son ThemeInfo le permet : recheche dans le ResourceDictionary correspondant au Thème actif</li>
+<li id="pragma-line-192">si son ThemeInfo le permet : recheche dans le ResourceDictionary par défaut : Themes/generic.xaml</li>
+</ul>
+</li>
+<li id="pragma-line-194"><p id="pragma-line-194">si la .Source d'un des ResourceDictionary inspecté est fournie par une MarkupExtension de type ThemeDictionary
+celle ci précise le nom d'une Assembly fournissant un jeu de ResourceDictionary correspondant
+chacun à un Thème. La recherche de la Key se fait dans le ResourceDictionary fourni par l'assembly
+pour le Thème courant.</p>
+</li>
+<li id="pragma-line-199"><p id="pragma-line-199">l'inspection se termine dès qu'une ressource a été trouvée pour la Key recherchée.</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-201"><p id="pragma-line-201">ComponentResourceKey : recherche dans l'assembly spécifié par le ComponentResourceKey et pour l'id qu'il indique</p>
+</li>
+<li id="pragma-line-203"><p id="pragma-line-203">SystemResourceKey :</p>
+<ul id="pragma-line-204">
+<li id="pragma-line-204">type caché, dérivant de ResourceKey</li>
+<li id="pragma-line-205">propriété de SystemParameters / SystemColors / SystemFonts correspondant
+correspond à une propriété statique de la classe exposant la Key dont la valeur
+est retournée par FindResource.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="exemples"><a id="pragma-line-209"></a>exemples</h3>
+<pre><code id="pragma-line-211">&lt;ResourceDictionary&gt;
+    &lt;ResourceDictionary.MergedDictionaries&gt;
+        &lt;ResourceDictionary Source="myresourcedictionary.xaml"/&gt;
+        &lt;ResourceDictionary Source="myresourcedictionary2.xaml"/&gt;
+    &lt;/ResourceDictionary.MergedDictionaries&gt;
+&lt;/ResourceDictionary&gt;
+
+&lt;ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"&gt;
+
+    &lt;Style x:Key="Dictionary1.Style0" TargetType="TextBlock"&gt;
+        &lt;Setter Property="Foreground" Value="Red" /&gt;
+        &lt;Setter Property="FontSize" Value="16" /&gt;
+        &lt;Setter Property="Margin" Value="8" /&gt;
+    &lt;/Style&gt;
+
+    &lt;SolidColorBrush 
+        x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+        Color="DarkRed"/&gt;
+
+        ...
+
+&lt;Window x:Class="TestXAMLResources.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestXAMLResources"
+        xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+        &lt;TextBlock x:Name="tbTest4" Text="Text4" 
+               FontSize="32" 
+               Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/&gt;
+
+        &lt;SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/&gt; 
+</code></pre>
+<h2 id="overview-of-xaml-resources-wpf.net"><a id="pragma-line-247"></a><a href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/systems/xaml-resources-overview?view=netdesktop-6.0&amp;redirectedfrom=MSDN&amp;viewFallbackFrom=netdesktop-6.0">Overview of XAML resources (WPF .NET)</a></h2>
+<h2 id="system.windows.resourcedictionary-class"><a id="pragma-line-249"></a>System.Windows.ResourceDictionary Class</h2>
+<pre><code id="pragma-line-251">[System.Windows.Localizability(System.Windows.LocalizationCategory.Ignore)]
+[System.Windows.Markup.Ambient]
+[System.Windows.Markup.UsableDuringInitialization(true)]
+public class ResourceDictionary : System.Collections.IDictionary, 
+                                    System.ComponentModel.ISupportInitialize, 
+                                    System.Windows.Markup.INameScope, 
+                                    System.Windows.Markup.IUriContext
+
+public Uri Source { get; set; }
+public System.Collections.ICollection Keys { get; }
+public System.Collections.ICollection Values { get; }
+public object this[object key] { get; set; }
+public Collection&lt;ResourceDictionary&gt; MergedDictionaries { get; }
+</code></pre>
+<p id="pragma-line-265">remarque :</p>
+<pre><code id="pragma-line-267">- .Source
+    - specified as a Pack URI, which references the location of a resource dictionary that is included 
+      as a noncompiled Resource or Content build action by your application building project.
+    - souvent assigné aux ResourceDictionary apparaissant dans .MergedDictionaries
+
+    - exemple:
+</code></pre>
+<pre><code id="pragma-line-274">    &lt;Page.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;ResourceDictionary.MergedDictionaries&gt;
+                &lt;ResourceDictionary Source="myresourcedictionary.xaml"/&gt;
+                &lt;ResourceDictionary Source="myresourcedictionary2.xaml"/&gt;
+            &lt;/ResourceDictionary.MergedDictionaries&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/Page.Resources&gt;
+</code></pre>
+<h2 id="system.windows.frameworkelement.resources-property.findresource-method"><a id="pragma-line-285"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0">System.Windows.FrameworkElement</a> : .Resources Property, .FindResource method</h2>
+<pre><code id="pragma-line-287">public System.Windows.ResourceDictionary Resources { get; set; }
+public object FindResource (object resourceKey);
+public object TryFindResource (object resourceKey);
+public void SetResourceReference (System.Windows.DependencyProperty dp, object name);
+public bool ShouldSerializeResources (); //
+</code></pre>
+<h3 id="example"><a id="pragma-line-293"></a>Example</h3>
+<pre><code id="pragma-line-295">&lt;Window.Resources&gt;
+    &lt;SolidColorBrush x:Key="PurpleBrushKey" Color="Purple"/&gt;
+&lt;/Window.Resources&gt;
+
+&lt;Button Background="{StaticResource PurpleBrushKey}" /&gt;
+</code></pre>
+<h2 id="findresource-tryfindresource"><a id="pragma-line-301"></a>FindResource, TryFindResource</h2>
+<p id="pragma-line-303">cf résumé</p>
+<h2 id="static-vs-dynamic"><a id="pragma-line-305"></a>Static vs Dynamic</h2>
+<h3 id="staticresource-markup-extension"><a id="pragma-line-307"></a><a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/staticresource-markup-extension?view=netframeworkdesktop-4.8">StaticResource Markup Extension</a></h3>
+<p id="pragma-line-309">Provides a value for any XAML property attribute by looking up a reference to an already defined resource.
+Lookup behavior for that resource is analogous to load-time lookup,
+which will look for resources that were previously loaded from the markup of the current XAML page
+as well as other application sources, and will generate that resource value as the property value
+in the run-time objects.</p>
+<h3 id="dynamicresource-markup-extension"><a id="pragma-line-315"></a><a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dynamicresource-markup-extension?view=netframeworkdesktop-4.8">DynamicResource Markup Extension</a></h3>
+<p id="pragma-line-317">Provides a value for any XAML property attribute by deferring that value to be a reference to a defined resource.
+Lookup behavior for that resource is analogous to run-time lookup.</p>
+<h2 id="resource-dictionaries"><a id="pragma-line-320"></a>Resource Dictionaries</h2>
+<h3 id="exemple"><a id="pragma-line-322"></a>Exemple</h3>
+<pre><code id="pragma-line-324">&lt;Application.Resources&gt;
+
+    &lt;ResourceDictionary&gt;
+        &lt;ResourceDictionary.MergedDictionaries&gt;
+            &lt;ResourceDictionary Source="file1.xaml" /&gt;
+        &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+
+&lt;/Application.Resources&gt;
+</code></pre>
+<p id="pragma-line-334">Le fichier file1.xaml doit alors être de racine ResourceDictionary</p>
+<h3 id="resources-non-partagees-xsharedfalse"><a id="pragma-line-336"></a>Resources non partagées : x:Shared="False"</h3>
+<h2 id="manipulation-de-ressources-par-programme-frameworkelement.findresource.tryfindresource.setresourcereference"><a id="pragma-line-338"></a>Manipulation de Ressources par programme : FrameworkElement.FindResource, .TryFindResource, .SetResourceReference</h2>
+<h3 id="frameworkelement.findresource"><a id="pragma-line-340"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0">FrameworkElement.FindResource</a></h3>
+<pre><code id="pragma-line-342">public object FindResource (object resourceKey);
+</code></pre>
+<p id="pragma-line-344"><strong>Resource keys are not necessarily strings, cf ResourceKey class.</strong></p>
+<p id="pragma-line-346">For instance, styles for controls at the theme level are deliberately keyed to the
+Type of the control, and application or page styles for controls typically use
+this same key convention.</p>
+<h3 id="frameworkelement.tryfindresource"><a id="pragma-line-350"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.tryfindresource?view=windowsdesktop-7.0">FrameworkElement.TryFindResource</a></h3>
+<pre><code id="pragma-line-352">public object TryFindResource (object resourceKey);
+</code></pre>
+<h3 id="frameworkelement.setresourcereference"><a id="pragma-line-354"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.setresourcereference?view=windowsdesktop-7.0">FrameworkElement.SetResourceReference</a></h3>
+<pre><code id="pragma-line-356">public void SetResourceReference (System.Windows.DependencyProperty dp, object name);
+</code></pre>
+<ul id="pragma-line-358">
+<li id="pragma-line-358">A resource reference is similar to the use of a DynamicResource Markup Extension in markup.</li>
+<li id="pragma-line-359">The resource reference creates an internal expression that supplies the value of the specified property
+on a run-time deferred basis.</li>
+<li id="pragma-line-361">The expression will be re-evaluated whenever the resource dictionary indicates a changed value
+through internal events, or whenever the current element is reparented
+(a parent change would change the dictionary lookup path).</li>
+</ul>
+<h3 id="exemples-1"><a id="pragma-line-365"></a>exemples :</h3>
+<pre><code id="pragma-line-367">window.Resources.Add("Key0", new SolidColorBrush("Red"));
+// static
+button.Background = (Brush)button.FindResource("Red");
+// static sans recherche
+button.Background = (Brush)windo.Resources("Red");
+// dynamic
+button.SetResourceReference(Button.BackgroundProperty, "Red");
+</code></pre>
+<h2 id="dynamicresource-vs-staticresource"><a id="pragma-line-375"></a>DynamicResource vs StaticResource</h2>
+<h2 id="chargement-et-injection-de-ressources-a-lexecution"><a id="pragma-line-377"></a>Chargement et injection de ressources à l'exécution</h2>
+<h3 id="application.loadcomponent"><a id="pragma-line-379"></a><a href="https://learn.microsoft.com/fr-fr/dotnet/api/system.windows.application.loadcomponent?view=windowsdesktop-7.0">Application.LoadComponent</a></h3>
+<pre><code id="pragma-line-381">public static object LoadComponent (Uri resourceLocator);
+</code></pre>
+<p id="pragma-line-383">Returns an instance of the root element specified by the XAML file loaded.</p>
+<h3 id="exemple-1"><a id="pragma-line-385"></a>Exemple</h3>
+<p id="pragma-line-387">'''''</p>
+<p id="pragma-line-389">// chargement d'un ResourceDictionary à l'exécution
+System.Uri resourceLocater = new System.Uri("/CustomControlLibrary2;component/Dictionary1.xaml",
+System.UriKind.Relative);
+_sharedDictionary = (ResourceDictionary)Application.LoadComponent(resourceLocater);</p>
+<p id="pragma-line-394">...</p>
+<p id="pragma-line-396">// injection de ce ResourceDictionary dans les Ressources d'un framework element
+this.Resources.MergedDictionaries.Add(SharedDictionaryManager.SharedDictionary);
+'''''</p>
+<h2 id="ressources-dans-une-autre-assembly-componentresourcekey-themesgeneric.xaml-themeinfo-assembly-attribute"><a id="pragma-line-400"></a>Ressources dans une autre Assembly : ComponentResourceKey, Themes/generic.xaml, ThemeInfo assembly attribute</h2>
+<p id="pragma-line-402">En résumé :</p>
+<ul id="pragma-line-404">
+<li id="pragma-line-404"><p id="pragma-line-404">le paramètre resourceKey de FrameworkElement.FindResource</p>
+<p id="pragma-line-406">public object FrameworkElement.FindResource (object resourceKey);</p>
+<p id="pragma-line-408">peut ne pas être une string mais une instance d'une classe dérivant de ResourceKey</p>
+</li>
+<li id="pragma-line-410"><p id="pragma-line-410">ResourceKey est une classe abstraite</p>
+<ul id="pragma-line-411">
+<li id="pragma-line-411"><p id="pragma-line-411">dérivant de MarkupExtension</p>
+</li>
+<li id="pragma-line-412"><p id="pragma-line-412">dont dérive ComponentResourceKey</p>
+</li>
+<li id="pragma-line-413"><p id="pragma-line-413">exposant la propriété abstraite Assembly</p>
+<p id="pragma-line-415">public abstract System.Reflection.Assembly Assembly { get; }</p>
+<p id="pragma-line-417">Gets an assembly object that indicates which assembly's dictionary to look in for
+the value associated with this key.</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-420"><p id="pragma-line-420">ComponentResourceKey dérive de ResourceKey</p>
+<ul id="pragma-line-422">
+<li id="pragma-line-422"><p id="pragma-line-422">constructeur :</p>
+<p id="pragma-line-424">public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);</p>
+<p id="pragma-line-426">resourceId :
+A unique identifier to differentiate this ComponentResourceKey from
+others associated with the typeInTargetAssembly type.</p>
+</li>
+<li id="pragma-line-430"><p id="pragma-line-430">surcharge :</p>
+<p id="pragma-line-432">public abstract System.Reflection.Assembly Assembly { get; }</p>
+<p id="pragma-line-434">retourne l'assembly du paramètre typeInTargetAssembly au constructeur ?</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-436"><p id="pragma-line-436">les ressources fournies par une assembly doivent être inscrites dans un ResourceDictionary
+dans le .xaml Themes/Generic.xaml et indexées par des keys de type ComponentResourceKey</p>
+<pre><code id="pragma-line-439">  &lt;ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:local="clr-namespace:WPFResourceAssembly"&gt;
+
+      &lt;SolidColorBrush 
+          x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+          Color="DarkRed"/&gt;
+</code></pre>
+</li>
+<li id="pragma-line-447"><p id="pragma-line-447">cet assembly doit être annoté d'un attribut ThemeInfo précisant qu'un generic.xaml s'y trouve ...</p>
+<p id="pragma-line-449">[assembly: ThemeInfo(
+ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
+//(used if a resource is not found in the page,
+// or application resource dictionaries)
+ResourceDictionaryLocation.SourceAssembly //where the generic resource dictionary is located
+//(used if a resource is not found in the page,
+// app, or any theme specific resource dictionaries)
+)]</p>
+</li>
+<li id="pragma-line-458"><p id="pragma-line-458">elles peuvent alors être référencées ainsi :</p>
+<pre><code id="pragma-line-460">  &lt;Window x:Class="TestXAMLResources.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:TestXAMLResources"
+      xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+      &lt;TextBlock x:Name="tbTest4" Text="Text4" 
+             FontSize="32" 
+             Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/&gt;
+</code></pre>
+</li>
+</ul>
+<h2 id="resourcekey-class"><a id="pragma-line-472"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcekey?view=windowsdesktop-8.0">ResourceKey Class</a></h2>
+<h3 id="class"><a id="pragma-line-474"></a>Class</h3>
+<pre><code id="pragma-line-476">[System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Windows.ResourceKey))]
+public abstract class ResourceKey : System.Windows.Markup.MarkupExtension
+</code></pre>
+<p id="pragma-line-479">Inheritance : Object / MarkupExtension / ResourceKey</p>
+<p id="pragma-line-481">Derived :
+System.Windows.ComponentResourceKey
+System.Windows.TemplateKey</p>
+<p id="pragma-line-485">Attributes : MarkupExtensionReturnTypeAttribute</p>
+<p id="pragma-line-487">Resource keys are either strings or instances of a type.</p>
+<h3 id="resourcekey.assembly-property"><a id="pragma-line-489"></a>ResourceKey.Assembly Property</h3>
+<pre><code id="pragma-line-491">public abstract System.Reflection.Assembly Assembly { get; }
+</code></pre>
+<p id="pragma-line-493">Gets an assembly object that indicates which assembly's dictionary to look in for the
+value associated with this key.</p>
+<h3 id="resourcekey.providevalueiserviceprovider-method"><a id="pragma-line-496"></a>ResourceKey.ProvideValue(IServiceProvider) Method</h3>
+<pre><code id="pragma-line-498">public override object ProvideValue (IServiceProvider serviceProvider);
+</code></pre>
+<p id="pragma-line-500">Returns this ResourceKey.
+Instances of this class are typically used as a key in a dictionary.</p>
+<h2 id="componentresourcekey-class"><a id="pragma-line-503"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.componentresourcekey?view=windowsdesktop-8.0">ComponentResourceKey Class</a></h2>
+<pre><code id="pragma-line-505">[System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.ComponentResourceKeyConverter))]
+public class ComponentResourceKey : System.Windows.ResourceKey
+{
+    public ComponentResourceKey (Type typeInTargetAssembly, object resourceId);
+}
+</code></pre>
+<p id="pragma-line-511">Le Type passé en paramètre du constructeur est retourné par le get overridant</p>
+<pre><code id="pragma-line-513">public abstract System.Reflection.Assembly Assembly { get; }
+</code></pre>
+<h2 id="ressources-dans-une-autre-assembly-componentresourcekey"><a id="pragma-line-515"></a>Ressources dans une autre Assembly : ComponentResourceKey</h2>
+<h3 id="enum-system.windows.resourcedictionarylocation"><a id="pragma-line-517"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0">enum System.Windows.ResourceDictionaryLocation</a></h3>
+<pre><code id="pragma-line-519">None	            0	No theme dictionaries exist.
+SourceAssembly	    1	Theme dictionaries exist in the assembly that defines the types being themed.
+ExternalAssembly	2	Theme dictionaries exist in assemblies external to the one defining the types
+                        being themed. They are named based on the original assembly with the 
+                        theme name appended to it; for example, PresentationFramework.Luna.dll. 
+                        These dictionaries share the same version and key as the original assembly.
+</code></pre>
+<h3 id="attribut-themeinfo"><a id="pragma-line-526"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.themeinfoattribute?view=windowsdesktop-7.0">attribut ThemeInfo</a></h3>
+<pre><code id="pragma-line-528">public ThemeInfoAttribute (ResourceDictionaryLocation themeDictionaryLocation, 
+                           ResourceDictionaryLocation genericDictionaryLocation);
+
+themeDictionaryLocation     : The location of theme-specific resources.
+genericDictionaryLocation   : The location of generic, not theme-specific, resources.
+</code></pre>
+<p id="pragma-line-534">When the themeDictionaryLocation is SourceAssembly, you can include files such as Luna.NormalColor.xaml.
+These names are defined by the system theme files, which include the following.</p>
+<pre><code id="pragma-line-537">Classic - "Classic" Windows 9x/2000 look on Windows XP.
+Luna.NormalColor - Default blue theme on Windows XP.
+...
+</code></pre>
+<h3 id="assemblyinfo.cs-genere-pour-une-application-wpf-attribut-themeinfo"><a id="pragma-line-541"></a>AssemblyInfo.cs généré pour une application WPF : attribut ThemeInfo</h3>
+<pre><code id="pragma-line-543">using System.Windows;
+
+[assembly: ThemeInfo(
+    // where theme specific resource dictionaries are located
+    // (used if a resource is not found in the page,
+    // or application resource dictionaries)
+    themeDictionaryLocation : ResourceDictionaryLocation.None,    
+
+    // where the generic resource dictionary is located
+    // (used if a resource is not found in the page,
+    // app, or any theme specific resource dictionaries
+    genericDictionaryLocation : ResourceDictionaryLocation.SourceAssembly)]
+</code></pre>
+<h3 id="premiere-methode"><a id="pragma-line-556"></a>Première méthode</h3>
+<h4 id="dans-lassembly-de-ressources-ex-wpfresourceassembly"><a id="pragma-line-558"></a>dans l'assembly de ressources, ex : WPFResourceAssembly</h4>
+<ul id="pragma-line-560">
+<li id="pragma-line-560"><p id="pragma-line-560">créer un Folder Themes et un ResourceDictionary generic.xaml</p>
+</li>
+<li id="pragma-line-561"><p id="pragma-line-561">créer une classe 'DummyClass', y inscrire l'attribut</p>
+<p id="pragma-line-563">[assembly: ThemeInfo(
+ResourceDictionaryLocation.None,
+// where theme specific resource dictionaries are located
+// (used if a resource is not found in the page,
+// or application resource dictionaries)
+ResourceDictionaryLocation.SourceAssembly
+// where the generic resource dictionary is located
+// (used if a resource is not found in the page,
+// app, or any theme specific resource dictionaries)
+)]</p>
+</li>
+<li id="pragma-line-574"><p id="pragma-line-574">dans le ResourceDictionary : Themes/Generic.xaml :</p>
+</li>
+</ul>
+<pre><code id="pragma-line-576">    &lt;SolidColorBrush 
+        x:Key="{ComponentResourceKey {x:Type local:DummyClass}, MyComponentLibBrush}" 
+        Color="DarkRed"/&gt;
+</code></pre>
+<ul id="pragma-line-582">
+<li id="pragma-line-582"><p id="pragma-line-582">annoter l'assembly, pour indiquer qu'il contient un Themes/generic.xaml ...</p>
+<p id="pragma-line-584">[assembly: ThemeInfo(
+// where theme specific resource dictionaries are located
+// (used if a resource is not found in the page,
+// or application resource dictionaries)
+themeDictionaryLocation : ResourceDictionaryLocation.None,</p>
+<pre><code id="pragma-line-590">  // where the generic resource dictionary is located
+  // (used if a resource is not found in the page,
+  // app, or any theme specific resource dictionaries
+  genericDictionaryLocation : ResourceDictionaryLocation.SourceAssembly)]
+</code></pre>
+</li>
+</ul>
+<h4 id="dans-lapplication-cliente"><a id="pragma-line-595"></a>dans l'application cliente</h4>
+<ul id="pragma-line-597">
+<li id="pragma-line-597">référencer l'assembly</li>
+<li id="pragma-line-598">dans le XAML :</li>
+</ul>
+<pre><code id="pragma-line-600">    xmlns:rlib="clr-namespace:WPFResourceAssembly;assembly=WPFResourceAssembly"
+
+    &lt;TextBlock x:Name="tbTest4" Text="Text4" 
+        FontSize="32" 
+        Foreground="{DynamicResource {ComponentResourceKey {x:Type rlib:DummyClass}, MyComponentLibBrush}}"/&gt;
+</code></pre>
+<h3 id="autre-methode-exposition-dune-componentresourcekey"><a id="pragma-line-608"></a>Autre méthode : exposition d'une ComponentResourceKey</h3>
+<h4 id="dans-lassembly-de-ressources"><a id="pragma-line-610"></a>dans l'assembly de ressources</h4>
+<ul id="pragma-line-612">
+<li id="pragma-line-612"><p id="pragma-line-612">idem méthode précédente</p>
+</li>
+<li id="pragma-line-613"><p id="pragma-line-613">plus :</p>
+<p id="pragma-line-615">public class DummyClass
+{
+static ComponentResourceKey key0 = new ComponentResourceKey(typeof(DummyClass), "Key0");
+public static ComponentResourceKey Key0 ⇒ key0;
+}</p>
+</li>
+</ul>
+<pre><code id="pragma-line-621">    &lt;SolidColorBrush 
+        x:Key="{x:Static local:DummyClass.Key0}" Color="DarkGreen"/&gt;
+</code></pre>
+<h4 id="dans-lapplication-cliente-1"><a id="pragma-line-626"></a>dans l'application cliente</h4>
+<ul id="pragma-line-628">
+<li id="pragma-line-628">idem méthode précédente</li>
+<li id="pragma-line-629">plus :</li>
+</ul>
+<pre><code id="pragma-line-631">    &lt;TextBlock x:Name="tbTest6" Text="Text7" 
+        FontSize="32" 
+        Foreground="{DynamicResource {x:Static rlib:DummyClass.Key0} }"/&gt;
+</code></pre>
+<h2 id="themes-nommage-et-localisation-des-resourcedictionaries"><a id="pragma-line-637"></a>Themes : nommage et localisation des ResourceDictionaries</h2>
+<ul id="pragma-line-639">
+<li id="pragma-line-639"><p id="pragma-line-639">créér un .xaml de ResourceDictionary par Theme</p>
+</li>
+<li id="pragma-line-640"><p id="pragma-line-640">le nommer <themename>.<themecolor>.xaml</themecolor></themename></p>
+</li>
+<li id="pragma-line-641"><p id="pragma-line-641">l'inscrire dans le folder Themes</p>
+</li>
+<li id="pragma-line-642"><p id="pragma-line-642">vérifier l'Attribute ThemeInfo de l'Assembly embarquant les ResourceDictionary,
+et implémentant les Controles 'Thémés':</p>
+<p id="pragma-line-645">// themeDictionaryLocation     : The location of theme-specific resources.
+// genericDictionaryLocation   : The location of generic, not theme-specific, resources.
+[assembly: ThemeInfo(ResourceDictionaryLocation.SourceAssembly, ResourceDictionaryLocation.SourceAssembly )]</p>
+</li>
+<li id="pragma-line-649"><p id="pragma-line-649">chaque Controle 'Thémé' doit faire l'objet de Ressources dont le TargetType, Key implicite, correspond
+à son type (cf 'création d'un CustomControl' plus bas).</p>
+</li>
+<li id="pragma-line-652"><p id="pragma-line-652">il doit être possible de créer des Assemblies de ressources externes, un par Thème,</p>
+<ul id="pragma-line-653">
+<li id="pragma-line-653"><p id="pragma-line-653">le ThemeInfo de l'assembly implémentant le Contrôle 'Thémé' doit faire apparaitre :
+themeDictionaryLocation = <a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0#fields">ResourceDictionaryLocation.ExternalAssembly</a></p>
+</li>
+<li id="pragma-line-656"><p id="pragma-line-656">ResourceDictionaryLocation.ExternalAssembly :
+Theme dictionaries exist in assemblies external to the one defining the types being themed.
+They are named based on the original assembly with the theme name appended to it;
+for example, PresentationFramework.Luna.dll.
+These dictionaries share the same version and key as the original assembly.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="skinning"><a id="pragma-line-662"></a>Skinning</h2>
+<h3 id="wpf-complete-guide-to-themes-and-skins"><a id="pragma-line-664"></a><a href="https://michaelscodingspot.com/wpf-complete-guide-themes-skins/">WPF complete guide to Themes and Skins</a></h3>
+<h3 id="compiled-and-static"><a id="pragma-line-666"></a>Compiled and Static</h3>
+<h4 id="notes"><a id="pragma-line-668"></a>Notes</h4>
+<ul id="pragma-line-670">
+<li id="pragma-line-670">un ResourceDictionary expose à la fois:
+<ul id="pragma-line-671">
+<li id="pragma-line-671">MergedDictionaries, collection de sous ResourceDictionary</li>
+<li id="pragma-line-672">un ensemble Keys, Values, Item[]</li>
+</ul>
+</li>
+<li id="pragma-line-673">si un ResourceDictionary inscrit dans MergedDictionaries est modifié,
+assignation de sa .Source par exemple, son ResourceDictionary l'est aussi</li>
+</ul>
+<h4 id="classe-skinresourcedictionary"><a id="pragma-line-676"></a>classe SkinResourceDictionary</h4>
+<p id="pragma-line-678">SkinResourceDictionary expose deux Uris : RedSource et BlueSource et les redirige vers
+base.Source (UpdateSource)</p>
+<pre><code id="pragma-line-681">    public class SkinResourceDictionary : ResourceDictionary
+    {
+        private Uri _redSource;
+        private Uri _blueSource;
+
+        public Uri RedSource
+        {
+            get { return _redSource; }
+            set
+            {
+                _redSource = value;
+                UpdateSource();
+            }
+        }
+        public Uri BlueSource
+        {
+            get { return _blueSource; }
+            set
+            {
+                _blueSource = value;
+                UpdateSource();
+            }
+        }
+
+        private void UpdateSource()
+        {
+            var val = App.Skin == Skin.Red ? RedSource : BlueSource;
+            if (val != null &amp;&amp; base.Source != val)
+            {
+                base.Source = val;
+            }
+        }
+
+    }
+</code></pre>
+<h2 id="themedictionary-markup-extension"><a id="pragma-line-718"></a><a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8">ThemeDictionary Markup Extension</a></h2>
+<ul id="pragma-line-720">
+<li id="pragma-line-720"><p id="pragma-line-720">override the theme styles for any element.</p>
+</li>
+<li id="pragma-line-721"><p id="pragma-line-721">reference any assembly containing a set of theme dictionaries.</p>
+  <application>
+      <application.resources>
+          <resourcedictionary>
+              <resourcedictionary.mergeddictionaries>
+                  <resourcedictionary source="{ThemeDictionary assemblyUri}">  
+              </resourcedictionary></resourcedictionary.mergeddictionaries>
+          </resourcedictionary>
+      </application.resources>
+  </application>
+</li>
+</ul>
+<h3 id="themedictionaryextension-class"><a id="pragma-line-733"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.themedictionaryextension?view=windowsdesktop-8.0">ThemeDictionaryExtension Class</a></h3>
+<h4 id="themedictionaryextension"><a id="pragma-line-735"></a><a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/themedictionary-markup-extension?view=netframeworkdesktop-4.8">ThemeDictionaryExtension</a></h4>
+<pre><code id="pragma-line-737">[System.Windows.Markup.MarkupExtensionReturnType(typeof(System.Uri))]
+public class ThemeDictionaryExtension : System.Windows.Markup.MarkupExtension
+{
+
+    public ThemeDictionaryExtension (string assemblyName);
+
+}
+</code></pre>
+<pre><code id="pragma-line-745">    &lt;object property="{ThemeDictionary assemblyUri}" ... /&gt;  
+
+    &lt;object&gt;  
+        &lt;object.property&gt;  
+            &lt;ThemeDictionary AssemblyName="assemblyUri"/&gt;  
+        &lt;object.property&gt;  
+    &lt;object&gt;  
+</code></pre>
+<ul id="pragma-line-755">
+<li id="pragma-line-755"><p id="pragma-line-755">This extension is intended to fill only one specific property value: ResourceDictionary.Source.</p>
+</li>
+<li id="pragma-line-757"><p id="pragma-line-757">By using this extension, you can specify a single resources-only assembly that contains some styles
+to use only when the Windows Aero theme is applied to the user's system, other styles only when
+the Luna theme is active, and so on.</p>
+</li>
+<li id="pragma-line-761"><p id="pragma-line-761">By using this extension, the contents of a control-specific resource dictionary can be automatically
+invalidated and reloaded to be specific for another theme when required.</p>
+</li>
+</ul>
+<h2 id="creation-dun-customcontrol-aspects-lies-aux-ressources"><a id="pragma-line-765"></a>création d'un CustomControl : aspects liés aux Ressources:</h2>
+<h3 id="code-genere"><a id="pragma-line-767"></a>code généré</h3>
+<pre><code id="pragma-line-769">public class MyCustomButton : Control 
+{ 
+
+    static MyCustomButton() 
+    { 
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(MyCustomButton), 
+                                new FrameworkPropertyMetadata(typeof(MyCustomButton))); 
+    }
+
+ }
+</code></pre>
+<h3 id="assemblyinfo.cs"><a id="pragma-line-780"></a>AssemblyInfo.cs :</h3>
+<pre><code id="pragma-line-782">// themeDictionaryLocation     : The location of theme-specific resources.
+// genericDictionaryLocation   : The location of generic, not theme-specific, resources.
+[assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly )]
+</code></pre>
+<h3 id="themesgeneric.xaml-genere"><a id="pragma-line-786"></a>Themes/generic.xaml généré</h3>
+<p id="pragma-line-788">exemple :</p>
+<pre><code id="pragma-line-790">&lt;Style TargetType=”{x:Type local:MyCustomButton}“&gt; 
+    &lt;Setter Property=“Foreground” Value=“White”/&gt; 
+    &lt;Setter Property=“Background” Value=“Black”/&gt; 
+    &lt;Setter Property=“Padding” Value=“2”/&gt; 
+    &lt;Setter Property=“Template”&gt; 
+        &lt;Setter.Value&gt; 
+            &lt;ControlTemplate TargetType=”{x:Type local:MyButton}“&gt; 
+                &lt;Border Background=”{TemplateBinding Background}“ 
+                        BorderBrush=”{TemplateBinding BorderBrush}“ 
+                        BorderThickness=”{TemplateBinding BorderThickness}“ 
+                        Padding=”{TemplateBinding Padding}“ &gt; 
+                        &lt;ContentPresenter /&gt; 
+                &lt;/Border&gt; 
+            &lt;/ControlTemplate&gt; 
+        &lt;/Setter.Value&gt; 
+    &lt;/Setter&gt; 
+&lt;/Style&gt;
+</code></pre>
+<h2 id="systemparameters"><a id="pragma-line-808"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemparameters?view=windowsdesktop-7.0">SystemParameters</a></h2>
+<ul id="pragma-line-810">
+<li id="pragma-line-810"><p id="pragma-line-810">les Keys exposées comme membre statiques des classes SystemParameters, SystemColors, SystemFonts
+sont de type :</p>
+<p id="pragma-line-813">[TypeConverter(typeof(System.Windows.Markup.SystemKeyConverter))]
+internal class SystemResourceKey : ResourceKey</p>
+</li>
+<li id="pragma-line-816"><p id="pragma-line-816">Certaines static properties vont par paire avec une ResourceKey (SystemResourceKey)</p>
+<p id="pragma-line-818">exemple :</p>
+<p id="pragma-line-820">public static System.Windows.ResourceKey BorderKey { get; }</p>
+<pre><code id="pragma-line-822">  Gets the ResourceKey for the Border property.
+</code></pre>
+<p id="pragma-line-824">public static int Border { get; }</p>
+<p id="pragma-line-826">exemple:</p>
+<pre><code id="pragma-line-828">  Width="{x:Static SystemParameters.IconGridWidth}"&gt;
+  Width="{DynamicResource {x:Static SystemParameters.IconGridWidthKey}}"
+</code></pre>
+<p id="pragma-line-831">exemple :</p>
+<pre><code id="pragma-line-833">  ResourceKey _resourceKey = SystemColors.ActiveBorderColorKey;
+  Debug.WriteLine($"_resourceKey={_resourceKey.GetType().Name}");
+
+  var _v = this.TryFindResource(_resourceKey);
+  Debug.WriteLine($".TryFindResource -&gt; _v={_v} .GetType={_v.GetType().Name}");
+
+  var _vv = SystemColors.ActiveBorderColor;
+  Debug.WriteLine($"_vv={_vv} .GetType={_vv.GetType().Name}");
+</code></pre>
+</li>
+<li id="pragma-line-842"><p id="pragma-line-842">Certaines de ces Keys peuvent être assignées à des ressources dans un ResourceDictionary</p>
+<p id="pragma-line-844">exemple : SystemParameters.FocusVisualStyleKey</p>
+  <style x:key="{x:Static SystemParameters.FocusVisualStyleKey}">
+    <Setter Property="Control.Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Rectangle StrokeThickness="1"
+            Stroke="Black"
+            StrokeDashArray="1 2"
+            SnapsToDevicePixels="true"/>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </style>
+</li>
+<li id="pragma-line-859"><p id="pragma-line-859">SystemParameters.StaticPropertyChanged Event</p>
+<p id="pragma-line-861">public static event System.ComponentModel.PropertyChangedEventHandler StaticPropertyChanged;</p>
+<p id="pragma-line-863">SystemColors, SystemFonts ?</p>
+</li>
+</ul>
+<h2 id="systemcolors"><a id="pragma-line-865"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemcolors?view=windowsdesktop-7.0">SystemColors</a></h2>
+<h2 id="systemfonts"><a id="pragma-line-867"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.systemfonts?view=windowsdesktop-7.0">SystemFonts</a></h2>
+
+    </div>
+    <script src="http://markdown-editor-host/margin/prism.js"></script>
+    <script src="http://markdown-editor-host/margin/mermaid.min.js"></script>
+    <!--<script src="http://markdown-editor-host/margin/mathjax.js"></script>-->
+    <script>
+        mermaid.initialize({ 'securityLevel': 'loose', 'theme': 'dark', startOnLoad: true, flowchart: { htmlLabels: false } });
+    </script>
+    
+
+</body></html>

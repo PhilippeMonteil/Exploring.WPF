@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<!-- saved from url=(0011)about:blank -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    
+    <!--<base href="http://browsing-file-host/">--><base href=".">
+    <style>
+        html, body {margin: 0; padding-bottom:10px}
+        body {
+    background: #1f1f1f
+}
+.markdown-body {
+    color-scheme: dark;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    margin: 0;
+    color: #c9d1d9;
+    background-color: #1f1f1f;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+    .markdown-body .octicon {
+        display: inline-block;
+        fill: currentColor;
+        vertical-align: text-bottom;
+    }
+
+    .markdown-body h1:hover .anchor .octicon-link:before,
+    .markdown-body h2:hover .anchor .octicon-link:before,
+    .markdown-body h3:hover .anchor .octicon-link:before,
+    .markdown-body h4:hover .anchor .octicon-link:before,
+    .markdown-body h5:hover .anchor .octicon-link:before,
+    .markdown-body h6:hover .anchor .octicon-link:before {
+        width: 16px;
+        height: 16px;
+        content: ' ';
+        display: inline-block;
+        background-color: currentColor;
+        -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+        mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+    }
+
+    .markdown-body details,
+    .markdown-body figcaption,
+    .markdown-body figure {
+        display: block;
+    }
+
+    .markdown-body summary {
+        display: list-item;
+    }
+
+    .markdown-body [hidden] {
+        display: none !important;
+    }
+
+    .markdown-body a {
+        background-color: transparent;
+        color: #58a6ff;
+        text-decoration: none;
+    }
+
+        .markdown-body a:active,
+        .markdown-body a:hover {
+            outline-width: 0;
+        }
+
+    .markdown-body abbrMarkdown Preview {
+        border-bottom: none;
+        text-decoration: underline dotted;
+    }
+
+    .markdown-body b,
+    .markdown-body strong {
+        font-weight: 600;
+    }
+
+    .markdown-body dfn {
+        font-style: italic;
+    }
+
+    .markdown-body h1 {
+        margin: .67em 0;
+        font-weight: 600;
+        padding-bottom: .3em;
+        font-size: 2em;
+        border-bottom: 1px solid #21262d;
+    }
+
+    .markdown-body mark {
+        background-color: rgba(187,128,9,0.15);
+        color: #c9d1d9;
+    }
+
+    .markdown-body small {
+        font-size: 90%;
+    }
+
+    .markdown-body sub,
+    .markdown-body sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    .markdown-body sub {
+        bottom: -0.25em;
+    }
+
+    .markdown-body sup {
+        top: -0.5em;
+    }
+
+    .markdown-body img {
+        border-style: none;
+        max-width: 100%;
+        box-sizing: content-box;
+        background-color: #1f1f1f;
+    }
+
+    .markdown-body code,
+    .markdown-body kbd,
+    .markdown-body pre,
+    .markdown-body samp {
+        font-family: monospace,monospace;
+        font-size: 1em;
+    }
+
+    .markdown-body figure {
+        margin: 1em 40px;
+    }
+
+    .markdown-body hr {
+        box-sizing: content-box;
+        overflow: hidden;
+        background: transparent;
+        border-bottom: 1px solid #21262d;
+        height: .25em;
+        padding: 0;
+        margin: 24px 0;
+        background-color: #30363d;
+        border: 0;
+    }
+
+    .markdown-body input {
+        font: inherit;
+        margin: 0;
+        overflow: visible;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+    .markdown-body [type=button],
+    .markdown-body [type=reset],
+    .markdown-body [type=submit] {
+        -webkit-appearance: button;
+    }
+
+        .markdown-body [type=button]::-moz-focus-inner,
+        .markdown-body [type=reset]::-moz-focus-inner,
+        .markdown-body [type=submit]::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+
+        .markdown-body [type=button]:-moz-focusring,
+        .markdown-body [type=reset]:-moz-focusring,
+        .markdown-body [type=submit]:-moz-focusring {
+            outline: 1px dotted ButtonText;
+        }
+
+    .markdown-body [type=checkbox],
+    .markdown-body [type=radio] {
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .markdown-body [type=number]::-webkit-inner-spin-button,
+    .markdown-body [type=number]::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    .markdown-body [type=search] {
+        -webkit-appearance: textfield;
+        outline-offset: -2px;
+    }
+
+        .markdown-body [type=search]::-webkit-search-cancel-button,
+        .markdown-body [type=search]::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+    .markdown-body ::-webkit-input-placeholder {
+        color: inherit;
+        opacity: .54;
+    }
+
+    .markdown-body ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        font: inherit;
+    }
+
+    .markdown-body a:hover {
+        text-decoration: underline;
+    }
+
+    .markdown-body hr::before {
+        display: table;
+        content: "";
+    }
+
+    .markdown-body hr::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+
+    .markdown-body table {
+        border-spacing: 0;
+        border-collapse: collapse;
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+    }
+
+    .markdown-body td,
+    .markdown-body th {
+        padding: 0;
+    }
+
+    .markdown-body details summary {
+        cursor: pointer;
+    }
+
+    .markdown-body details:not([open]) > *:not(summary) {
+        display: none !important;
+    }
+
+    .markdown-body kbd {
+        display: inline-block;
+        padding: 3px 5px;
+        font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        line-height: 10px;
+        color: #c9d1d9;
+        vertical-align: middle;
+        background-color: #161b22;
+        border: solid 1px rgba(110,118,129,0.4);
+        border-bottom-color: rgba(110,118,129,0.4);
+        border-radius: 6px;
+        box-shadow: inset 0 -1px 0 rgba(110,118,129,0.4);
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+    }
+
+    .markdown-body h2 {
+        font-weight: 600;
+        padding-bottom: .3em;
+        font-size: 1.5em;
+        border-bottom: 1px solid #21262d;
+    }
+
+    .markdown-body h3 {
+        font-weight: 600;
+        font-size: 1.25em;
+    }
+
+    .markdown-body h4 {
+        font-weight: 600;
+        font-size: 1em;
+    }
+
+    .markdown-body h5 {
+        font-weight: 600;
+        font-size: .875em;
+    }
+
+    .markdown-body h6 {
+        font-weight: 600;
+        font-size: .85em;
+        color: #8b949e;
+    }
+
+    .markdown-body p {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .markdown-body blockquote {
+        margin: 0;
+        padding: 0 1em;
+        color: #8b949e;
+        border-left: .25em solid #30363d;
+    }
+
+    .markdown-body ul {
+        list-style: disc
+    }
+
+    .markdown-body ul,
+    .markdown-body ol {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 2em;
+    }
+
+        .markdown-body ol ol,
+        .markdown-body ul ol {
+            list-style-type: lower-roman;
+        }
+
+            .markdown-body ul ul ol,
+            .markdown-body ul ol ol,
+            .markdown-body ol ul ol,
+            .markdown-body ol ol ol {
+                list-style-type: lower-alpha;
+            }
+
+    .markdown-body dd {
+        margin-left: 0;
+    }
+
+    .markdown-body tt,
+    .markdown-body code {
+        font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        font-size: 12px;
+    }
+
+    .markdown-body pre {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+        font-size: 12px;
+        word-wrap: normal;
+    }
+
+    .markdown-body .octicon {
+        display: inline-block;
+        overflow: visible !important;
+        vertical-align: text-bottom;
+        fill: currentColor;
+    }
+
+    .markdown-body ::placeholder {
+        color: #484f58;
+        opacity: 1;
+    }
+
+    .markdown-body input::-webkit-outer-spin-button,
+    .markdown-body input::-webkit-inner-spin-button {
+        margin: 0;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .markdown-body .pl-c {
+        color: #8b949e;
+    }
+
+    .markdown-body .pl-c1,
+    .markdown-body .pl-s .pl-v {
+        color: #79c0ff;
+    }
+
+    .markdown-body .pl-e,
+    .markdown-body .pl-en {
+        color: #d2a8ff;
+    }
+
+    .markdown-body .pl-smi,
+    .markdown-body .pl-s .pl-s1 {
+        color: #c9d1d9;
+    }
+
+    .markdown-body .pl-ent {
+        color: #7ee787;
+    }
+
+    .markdown-body .pl-k {
+        color: #ff7b72;
+    }
+
+    .markdown-body .pl-s,
+    .markdown-body .pl-pds,
+    .markdown-body .pl-s .pl-pse .pl-s1,
+    .markdown-body .pl-sr,
+    .markdown-body .pl-sr .pl-cce,
+    .markdown-body .pl-sr .pl-sre,
+    .markdown-body .pl-sr .pl-sra {
+        color: #a5d6ff;
+    }
+
+    .markdown-body .pl-v,
+    .markdown-body .pl-smw {
+        color: #ffa657;
+    }
+
+    .markdown-body .pl-bu {
+        color: #f85149;
+    }
+
+    .markdown-body .pl-ii {
+        color: #f0f6fc;
+        background-color: #8e1519;
+    }
+
+    .markdown-body .pl-c2 {
+        color: #f0f6fc;
+        background-color: #b62324;
+    }
+
+    .markdown-body .pl-sr .pl-cce {
+        font-weight: bold;
+        color: #7ee787;
+    }
+
+    .markdown-body .pl-ml {
+        color: #f2cc60;
+    }
+
+    .markdown-body .pl-mh,
+    .markdown-body .pl-mh .pl-en,
+    .markdown-body .pl-ms {
+        font-weight: bold;
+        color: #1f6feb;
+    }
+
+    .markdown-body .pl-mi {
+        font-style: italic;
+        color: #c9d1d9;
+    }
+
+    .markdown-body .pl-mb {
+        font-weight: bold;
+        color: #c9d1d9;
+    }
+
+    .markdown-body .pl-md {
+        color: #ffdcd7;
+        background-color: #67060c;
+    }
+
+    .markdown-body .pl-mi1 {
+        color: #aff5b4;
+        background-color: #033a16;
+    }
+
+    .markdown-body .pl-mc {
+        color: #ffdfb6;
+        background-color: #5a1e02;
+    }
+
+    .markdown-body .pl-mi2 {
+        color: #c9d1d9;
+        background-color: #1158c7;
+    }
+
+    .markdown-body .pl-mdr {
+        font-weight: bold;
+        color: #d2a8ff;
+    }
+
+    .markdown-body .pl-ba {
+        color: #8b949e;
+    }
+
+    .markdown-body .pl-sg {
+        color: #484f58;
+    }
+
+    .markdown-body .pl-corl {
+        text-decoration: underline;
+        color: #a5d6ff;
+    }
+
+    .markdown-body [data-catalyst] {
+        display: block;
+    }
+
+    .markdown-body g-emoji {
+        font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-size: 1em;
+        font-style: normal !important;
+        font-weight: 400;
+        line-height: 1;
+        vertical-align: -0.075em;
+    }
+
+        .markdown-body g-emoji img {
+            width: 1em;
+            height: 1em;
+        }
+
+    .markdown-body::before {
+        display: table;
+        content: "";
+    }
+
+    .markdown-body::after {
+        display: table;
+        clear: both;
+        content: "";
+    }
+
+    .markdown-body > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    .markdown-body > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .markdown-body a:not([href]) {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .markdown-body .absent {
+        color: #f85149;
+    }
+
+    .markdown-body .anchor {
+        float: left;
+        padding-right: 4px;
+        margin-left: -20px;
+        line-height: 1;
+    }
+
+        .markdown-body .anchor:focus {
+            outline: none;
+        }
+
+    .markdown-body p,
+    .markdown-body blockquote,
+    .markdown-body ul,
+    .markdown-body ol,
+    .markdown-body dl,
+    .markdown-body table,
+    .markdown-body pre,
+    .markdown-body details {
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+        .markdown-body blockquote > :first-child {
+            margin-top: 0;
+        }
+
+        .markdown-body blockquote > :last-child {
+            margin-bottom: 0;
+        }
+
+    .markdown-body sup > a::before {
+        content: "[";
+    }
+
+    .markdown-body sup > a::after {
+        content: "]";
+    }
+
+    .markdown-body h1 .octicon-link,
+    .markdown-body h2 .octicon-link,
+    .markdown-body h3 .octicon-link,
+    .markdown-body h4 .octicon-link,
+    .markdown-body h5 .octicon-link,
+    .markdown-body h6 .octicon-link {
+        color: #c9d1d9;
+        vertical-align: middle;
+        visibility: hidden;
+    }
+
+    .markdown-body h1:hover .anchor,
+    .markdown-body h2:hover .anchor,
+    .markdown-body h3:hover .anchor,
+    .markdown-body h4:hover .anchor,
+    .markdown-body h5:hover .anchor,
+    .markdown-body h6:hover .anchor {
+        text-decoration: none;
+    }
+
+        .markdown-body h1:hover .anchor .octicon-link,
+        .markdown-body h2:hover .anchor .octicon-link,
+        .markdown-body h3:hover .anchor .octicon-link,
+        .markdown-body h4:hover .anchor .octicon-link,
+        .markdown-body h5:hover .anchor .octicon-link,
+        .markdown-body h6:hover .anchor .octicon-link {
+            visibility: visible;
+        }
+
+    .markdown-body h1 tt,
+    .markdown-body h1 code,
+    .markdown-body h2 tt,
+    .markdown-body h2 code,
+    .markdown-body h3 tt,
+    .markdown-body h3 code,
+    .markdown-body h4 tt,
+    .markdown-body h4 code,
+    .markdown-body h5 tt,
+    .markdown-body h5 code,
+    .markdown-body h6 tt,
+    .markdown-body h6 code {
+        padding: 0 .2em;
+        font-size: inherit;
+    }
+
+    .markdown-body ul.no-list,
+    .markdown-body ol.no-list {
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .markdown-body ol[type="1"] {
+        list-style-type: decimal;
+    }
+
+    .markdown-body ol[type=a] {
+        list-style-type: lower-alpha;
+    }
+
+    .markdown-body ol[type=i] {
+        list-style-type: lower-roman;
+    }
+
+    .markdown-body div > ol:not([type]) {
+        list-style-type: decimal;
+    }
+
+    .markdown-body ul ul,
+    .markdown-body ul ol,
+    .markdown-body ol ol,
+    .markdown-body ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .markdown-body li > p {
+        margin-top: 16px;
+    }
+
+    .markdown-body li + li {
+        margin-top: .25em;
+    }
+
+    .markdown-body dl {
+        padding: 0;
+    }
+
+        .markdown-body dl dt {
+            padding: 0;
+            margin-top: 16px;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .markdown-body dl dd {
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+
+    .markdown-body table th {
+        font-weight: 600;
+    }
+
+    .markdown-body table th,
+    .markdown-body table td {
+        padding: 6px 13px;
+        border: 1px solid #30363d;
+    }
+
+    .markdown-body table tr {
+        background-color: #1f1f1f;
+        border-top: 1px solid #21262d;
+    }
+
+        .markdown-body table tr:nth-child(2n) {
+            background-color: #161b22;
+        }
+
+    .markdown-body table img {
+        background-color: transparent;
+    }
+
+    .markdown-body img[align=right] {
+        padding-left: 20px;
+    }
+
+    .markdown-body img[align=left] {
+        padding-right: 20px;
+    }
+
+    .markdown-body .emoji {
+        max-width: none;
+        vertical-align: text-top;
+        background-color: transparent;
+    }
+
+    .markdown-body span.frame {
+        display: block;
+        overflow: hidden;
+    }
+
+        .markdown-body span.frame > span {
+            display: block;
+            float: left;
+            width: auto;
+            padding: 7px;
+            margin: 13px 0 0;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+
+        .markdown-body span.frame span img {
+            display: block;
+            float: left;
+        }
+
+        .markdown-body span.frame span span {
+            display: block;
+            padding: 5px 0 0;
+            clear: both;
+            color: #c9d1d9;
+        }
+
+    .markdown-body span.align-center {
+        display: block;
+        overflow: hidden;
+        clear: both;
+    }
+
+        .markdown-body span.align-center > span {
+            display: block;
+            margin: 13px auto 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .markdown-body span.align-center span img {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+    .markdown-body span.align-right {
+        display: block;
+        overflow: hidden;
+        clear: both;
+    }
+
+        .markdown-body span.align-right > span {
+            display: block;
+            margin: 13px 0 0;
+            overflow: hidden;
+            text-align: right;
+        }
+
+        .markdown-body span.align-right span img {
+            margin: 0;
+            text-align: right;
+        }
+
+    .markdown-body span.float-left {
+        display: block;
+        float: left;
+        margin-right: 13px;
+        overflow: hidden;
+    }
+
+        .markdown-body span.float-left span {
+            margin: 13px 0 0;
+        }
+
+    .markdown-body span.float-right {
+        display: block;
+        float: right;
+        margin-left: 13px;
+        overflow: hidden;
+    }
+
+        .markdown-body span.float-right > span {
+            display: block;
+            margin: 13px auto 0;
+            overflow: hidden;
+            text-align: right;
+        }
+
+    .markdown-body code,
+    .markdown-body tt {
+        padding: .2em .4em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(110,118,129,0.4);
+        border-radius: 6px;
+    }
+
+        .markdown-body code br,
+        .markdown-body tt br {
+            display: none;
+        }
+
+    .markdown-body del code {
+        text-decoration: inherit;
+    }
+
+    .markdown-body pre code {
+        font-size: 100%;
+    }
+
+    .markdown-body pre > code {
+        padding: 0;
+        margin: 0;
+        word-break: normal;
+        white-space: pre;
+        background: transparent;
+        border: 0;
+    }
+
+    .markdown-body .highlight {
+        margin-bottom: 16px;
+    }
+
+        .markdown-body .highlight pre {
+            margin-bottom: 0;
+            word-break: normal;
+        }
+
+        .markdown-body .highlight pre,
+        .markdown-body pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #161b22;
+            border-radius: 6px;
+        }
+
+            .markdown-body pre code,
+            .markdown-body pre tt {
+                display: inline;
+                max-width: auto;
+                padding: 0;
+                margin: 0;
+                overflow: visible;
+                line-height: inherit;
+                word-wrap: normal;
+                background-color: transparent;
+                border: 0;
+            }
+
+    .markdown-body .csv-data td,
+    .markdown-body .csv-data th {
+        padding: 5px;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: 1;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .markdown-body .csv-data .blob-num {
+        padding: 10px 8px 9px;
+        text-align: right;
+        background: #1f1f1f;
+        border: 0;
+    }
+
+    .markdown-body .csv-data tr {
+        border-top: 0;
+    }
+
+    .markdown-body .csv-data th {
+        font-weight: 600;
+        background: #161b22;
+        border-top: 0;
+    }
+
+    .markdown-body .footnotes {
+        font-size: 12px;
+        color: #8b949e;
+        border-top: 1px solid #30363d;
+    }
+
+        .markdown-body .footnotes ol {
+            padding-left: 16px;
+        }
+
+        .markdown-body .footnotes li {
+            position: relative;
+        }
+
+            .markdown-body .footnotes li:target::before {
+                position: absolute;
+                top: -8px;
+                right: -8px;
+                bottom: -8px;
+                left: -24px;
+                pointer-events: none;
+                content: "";
+                border: 2px solid #1f6feb;
+                border-radius: 6px;
+            }
+
+            .markdown-body .footnotes li:target {
+                color: #c9d1d9;
+            }
+
+        .markdown-body .footnotes .data-footnote-backref g-emoji {
+            font-family: monospace;
+        }
+
+    .markdown-body .task-list-item {
+        list-style-type: none;
+    }
+
+        .markdown-body .task-list-item label {
+            font-weight: 400;
+        }
+
+        .markdown-body .task-list-item.enabled label {
+            cursor: pointer;
+        }
+
+        .markdown-body .task-list-item + .task-list-item {
+            margin-top: 3px;
+        }
+
+        .markdown-body .task-list-item .handle {
+            display: none;
+        }
+
+    .markdown-body .task-list-item-checkbox {
+        margin: 0 .2em .25em -1.6em;
+        vertical-align: middle;
+    }
+
+    .markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox {
+        margin: 0 -1.6em .25em .2em;
+    }
+
+    .markdown-body ::-webkit-calendar-picker-indicator {
+        filter: invert(50%);
+    }
+/* PrismJS 1.25.0
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
+code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+    </style>
+    <title>Markdown Preview</title>
+    <meta http-equiv="cache-control" content="no-cache">
+</head>
+<body>
+
+    
+    <div id="___markdown-content___" class="markdown-body">
+        <h1 id="layout"><a id="pragma-line-1"></a>Layout</h1>
+<h2 id="en-resume"><a id="pragma-line-3"></a>En résumé</h2>
+<ul id="pragma-line-5">
+<li id="pragma-line-5"><p id="pragma-line-5">Measure</p>
+<ul id="pragma-line-7">
+<li id="pragma-line-7"><p id="pragma-line-7">UIElement</p>
+<ul id="pragma-line-9">
+<li id="pragma-line-9"><p id="pragma-line-9">public void Measure (Size availableSize);</p>
+</li>
+<li id="pragma-line-10"><p id="pragma-line-10">protected virtual Size MeasureCore (Size availableSize);</p>
+</li>
+<li id="pragma-line-11"><p id="pragma-line-11">public Size DesiredSize { get; }</p>
+<p id="pragma-line-13">Measure appelle MeasureCore puis met à jour DesiredSize</p>
+</li>
+<li id="pragma-line-15"><p id="pragma-line-15">public Media.Transform RenderTransform { get; set; }</p>
+</li>
+<li id="pragma-line-16"><p id="pragma-line-16">public Point RenderTransformOrigin { get; set; }</p>
+<p id="pragma-line-18">A render transform does not regenerate layout size or render size information.</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-20"><p id="pragma-line-20">FrameworkElement</p>
+<ul id="pragma-line-22">
+<li id="pragma-line-22"><p id="pragma-line-22">protected override sealed Size MeasureCore (Size availableSize);</p>
+</li>
+<li id="pragma-line-23"><p id="pragma-line-23">protected virtual Size MeasureOverride (Size availableSize);</p>
+</li>
+<li id="pragma-line-25"><p id="pragma-line-25">public Thickness Margin { get; set; }</p>
+<ul id="pragma-line-27">
+<li id="pragma-line-27">surcharge 'sealed' de MeasureCore</li>
+<li id="pragma-line-28">prise en compte de Margin</li>
+<li id="pragma-line-29">appel de MeasureOverride</li>
+</ul>
+</li>
+<li id="pragma-line-31"><p id="pragma-line-31">public double Width/Height { get; set; }</p>
+</li>
+<li id="pragma-line-32"><p id="pragma-line-32">public double Min/MaxWidth/Height { get; set; } ...</p>
+</li>
+<li id="pragma-line-34"><p id="pragma-line-34">public double ActualWidth/Height { get; }</p>
+<ul id="pragma-line-36">
+<li id="pragma-line-36">This property is a calculated value based on other width inputs, and the layout system.</li>
+<li id="pragma-line-37">The value is set by the layout system itself, based on an actual rendering pass,
+and may therefore lag slightly behind the set value of properties such as Width
+that are the basis of the input change.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="pragma-line-41"><p id="pragma-line-41">Control</p>
+<ul id="pragma-line-43">
+<li id="pragma-line-43">public Thickness Padding { get; set; }</li>
+</ul>
+<blockquote id="pragma-line-45">
+<p id="pragma-line-45">The amount of space between the content of a Control and its Margin or Border.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li id="pragma-line-47"><p id="pragma-line-47">Arrange</p>
+<ul id="pragma-line-49">
+<li id="pragma-line-49"><p id="pragma-line-49">UIElement</p>
+<p id="pragma-line-51">public void Arrange (Rect finalRect);</p>
+<pre><code id="pragma-line-53">  - déclenche le positionnement de this, et de ses children ...
+  - The final size that the parent computes for the child element, 
+    provided as a Rect instance.
+</code></pre>
+<p id="pragma-line-57">protected virtual void ArrangeCore (Rect finalRect);</p>
+<pre><code id="pragma-line-59">  - appelée lors de Arrange
+  - The final area within the parent that element should use to arrange itself 
+    and its child elements.
+</code></pre>
+<p id="pragma-line-63">public Size RenderSize { get; set; }</p>
+<pre><code id="pragma-line-65">  - Gets (or sets) the final render size of this element.
+    set ne devrait pas être appelé ...
+</code></pre>
+</li>
+<li id="pragma-line-68"><p id="pragma-line-68">FrameworkElement</p>
+<p id="pragma-line-70">protected override sealed void ArrangeCore (Rect finalRect);
+protected virtual Size ArrangeOverride (Size finalSize);</p>
+<p id="pragma-line-73">public HorizontalAlignment HorizontalAlignment { get; set; }
+public VerticalAlignment VerticalAlignment { get; set; }</p>
+</li>
+<li id="pragma-line-76"><p id="pragma-line-76">Control</p>
+<p id="pragma-line-78">protected override Size ArrangeOverride (Size arrangeBounds);</p>
+<p id="pragma-line-80">public Thickness Padding { get; set; }</p>
+<pre><code id="pragma-line-82">  - The amount of space between the content of a Control and its Margin or Border. 
+</code></pre>
+<p id="pragma-line-84">public Thickness BorderThickness { get; set; }</p>
+<p id="pragma-line-86">public Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-88"><p id="pragma-line-88">résumé des paramètres de positionnement, sizing, rendu</p>
+<ul id="pragma-line-90">
+<li id="pragma-line-90"><p id="pragma-line-90">UIElement</p>
+<ul id="pragma-line-91">
+<li id="pragma-line-91">public Media.Transform RenderTransform { get; set; }</li>
+<li id="pragma-line-92">public Point RenderTransformOrigin { get; set; }</li>
+</ul>
+</li>
+<li id="pragma-line-94"><p id="pragma-line-94">FrameworkElement</p>
+<ul id="pragma-line-95">
+<li id="pragma-line-95">public double Width/Height { get; set; }</li>
+<li id="pragma-line-96">public double Min/MaxWidth/Height { get; set; } ...</li>
+<li id="pragma-line-97">public Thickness Margin { get; set; }</li>
+<li id="pragma-line-98">public HorizontalAlignment HorizontalAlignment { get; set; }</li>
+<li id="pragma-line-99">public VerticalAlignment VerticalAlignment { get; set; }</li>
+</ul>
+</li>
+<li id="pragma-line-101"><p id="pragma-line-101">Control</p>
+<ul id="pragma-line-102">
+<li id="pragma-line-102">public Thickness Padding { get; set; }</li>
+<li id="pragma-line-103">public Thickness BorderThickness { get; set; }</li>
+<li id="pragma-line-104">public Horizontal/VerticalAlignment Horizontal/VerticalContentAlignment { get; set; }</li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="pragma-line-106"><p id="pragma-line-106">résumé des propriétés affectées par les calculs de positionnement, par le rendu</p>
+<ul id="pragma-line-108">
+<li id="pragma-line-108"><p id="pragma-line-108">UIElement</p>
+<ul id="pragma-line-109">
+<li id="pragma-line-109">public Size DesiredSize { get; }</li>
+<li id="pragma-line-110">public Size RenderSize { get; set; }</li>
+</ul>
+</li>
+<li id="pragma-line-112"><p id="pragma-line-112">FrameworkElement</p>
+<ul id="pragma-line-113">
+<li id="pragma-line-113">public double ActualWidth/Height { get; }</li>
+</ul>
+</li>
+<li id="pragma-line-115"><p id="pragma-line-115">Control</p>
+</li>
+</ul>
+</li>
+<li id="pragma-line-117"><p id="pragma-line-117">divers</p>
+<pre><code id="pragma-line-119">  public Point TranslatePoint (Point point, UIElement relativeTo);
+</code></pre>
+</li>
+<li id="pragma-line-121"><p id="pragma-line-121">UIElement methods : InvalidateMeasure, InvalidateArrange, UpdateLayout, InvalidateVisual</p>
+<p id="pragma-line-123">public void InvalidateMeasure ();
+public void InvalidateArrange ();
+public void UpdateLayout ();
+public void InvalidateVisual ();</p>
+</li>
+<li id="pragma-line-128"><p id="pragma-line-128">events : UIElement.LayoutUpdated, UIElement.LayoutUpdated</p>
+<p id="pragma-line-130">public event EventHandler LayoutUpdated;
+public event System.Windows.SizeChangedEventHandler SizeChanged;</p>
+</li>
+<li id="pragma-line-133"><p id="pragma-line-133">FrameworkPropertyMetadata</p>
+<p id="pragma-line-135">public bool AffectsArrange { get; set; }
+public bool AffectsMeasure { get; set; }
+public bool AffectsParentArrange { get; set; }
+public bool AffectsParentMeasure { get; set; }
+public bool AffectsRender { get; set; }
+public bool SubPropertiesDoNotAffectRender { get; set; }</p>
+</li>
+</ul>
+<h2 id="measure"><a id="pragma-line-142"></a>Measure</h2>
+<h3 id="uielement.measure.measurecore.desiredsize.rendertransform"><a id="pragma-line-144"></a>UIElement : .Measure, .MeasureCore, .DesiredSize, .RenderTransform</h3>
+<pre><code id="pragma-line-146">public void Measure (Size availableSize);
+public Size DesiredSize { get; }
+
+protected virtual Size MeasureCore (Size availableSize);
+</code></pre>
+<ul id="pragma-line-151">
+<li id="pragma-line-151"><p id="pragma-line-151">Measure appelle MeasureCore et met à jour DesiredSize</p>
+</li>
+<li id="pragma-line-153"><p id="pragma-line-153">RenderTransform</p>
+<p id="pragma-line-155">public Media.Transform RenderTransform { get; set; }</p>
+<ul id="pragma-line-157">
+<li id="pragma-line-157">A render transform does not regenerate layout size or render size information.</li>
+<li id="pragma-line-158">Render transforms are typically intended for animating or applying
+a temporary effect to an element.</li>
+</ul>
+</li>
+</ul>
+<h4 id="uielement.measure"><a id="pragma-line-161"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/uielement.measure?view=windowsdesktop-7.0">UIElement.Measure</a></h4>
+<ul id="pragma-line-163">
+<li id="pragma-line-163">Updates the DesiredSize of a UIElement.</li>
+<li id="pragma-line-164">Parent elements call this method from their own MeasureCore(Size) implementations to form a
+recursive layout update.</li>
+<li id="pragma-line-166">Calling this method constitutes the first pass (the "Measure" pass) of a layout update.</li>
+</ul>
+<h4 id="uielement.measurecore"><a id="pragma-line-168"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/uielement.measurecore?view=windowsdesktop-7.0#system-windows-uielement-measurecore(system-windows-size)">UIElement.MeasureCore</a></h4>
+<h3 id="frameworkelement.measurecore.measureoverride.margin.actualwidthheight.widthheight"><a id="pragma-line-170"></a>FrameworkElement: .MeasureCore, .MeasureOverride, .Margin, .ActualWidth/Height, .Width/Height</h3>
+<pre><code id="pragma-line-172">protected override sealed Size MeasureCore (Size availableSize);
+protected virtual Size MeasureOverride (Size availableSize);
+
+public Thickness Margin { get; set; }
+</code></pre>
+<blockquote id="pragma-line-177">
+<p id="pragma-line-177">This property is a calculated value based on other width inputs, and the layout system. The value is set by the layout system itself, based on an actual rendering pass, and may therefore lag slightly behind the set value of properties such as Width that are the basis of the input change.</p>
+</blockquote>
+<pre><code id="pragma-line-179">public double ActualWidth { get; }
+public double ActualHeight { get; }
+</code></pre>
+<blockquote id="pragma-line-182">
+<p id="pragma-line-182">Elements that have margins set will not typically constrain the size of the specified Margin if the allotted rectangle space is not large enough for the margin plus the element content area. The element content area will be constrained instead when layout is calculated. The only case where margins would be constrained also is if the content is already constrained all the way to zero.</p>
+</blockquote>
+<pre><code id="pragma-line-184">public double Width { get; set; }
+public double Height { get; set; }
+</code></pre>
+<blockquote id="pragma-line-187">
+<p id="pragma-line-187">The return value of this property is always the same as any value that was set to it. In contrast, the value of the ActualWidth may vary. The layout may have rejected the suggested size for some reason. Also, the layout system itself works asynchronously relative to the property system set of Width and may not have processed that particular sizing property change yet.</p>
+</blockquote>
+<pre><code id="pragma-line-189">public double Min/MaxWidth { get; set; } ...
+public double Min/MaxHeight { get; set; } ...
+</code></pre>
+<h4 id="measureoverride"><a id="pragma-line-192"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/frameworkelement.measureoverride?view=windowsdesktop-7.0">MeasureOverride</a></h4>
+<h4 id="margin"><a id="pragma-line-193"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/frameworkelement.margin?view=windowsdesktop-7.0">Margin</a></h4>
+<h4 id="actualwidth"><a id="pragma-line-194"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/frameworkelement.actualwidth?view=windowsdesktop-7.0">ActualWidth</a></h4>
+<ul id="pragma-line-196">
+<li id="pragma-line-196">FrameworkElement surcharge MeasureCore qui appelle MeasureOverride</li>
+</ul>
+<h3 id="control.padding.measureoverride"><a id="pragma-line-198"></a>Control: .Padding, .MeasureOverride</h3>
+<pre><code id="pragma-line-200">public Thickness Padding { get; set; }
+
+	The amount of space between the content of a Control and its Margin or Border. 
+	The default is a thickness of 0 on all four sides.
+
+protected override Size MeasureOverride (Size constraint);
+</code></pre>
+<h2 id="arrange"><a id="pragma-line-207"></a>Arrange</h2>
+<h3 id="uielement.arrange.arrangecore.translatepoint"><a id="pragma-line-209"></a>UIElement : .Arrange, .ArrangeCore, .TranslatePoint</h3>
+<pre><code id="pragma-line-211">public void Arrange (Rect finalRect);
+
+	- The final size that the parent computes for the child element, provided as a Rect instance.
+
+protected virtual void ArrangeCore (Rect finalRect);
+
+	- The final area within the parent that element should use to arrange itself and its child elements.
+
+public Size RenderSize { get; set; }
+
+	- Gets (or sets) the final render size of this element.
+	  set ne devrait pas être appelé ...
+
+public Media.Transform RenderTransform { get; set; }
+public Point RenderTransformOrigin { get; set; }
+
+	- A render transform does not regenerate layout size or render size information. 
+	- Render transforms are typically intended for animating or applying a 
+	  temporary effect to an element. 
+
+public Point TranslatePoint (Point point, UIElement relativeTo);
+
+	- Translates a point relative to this element to coordinates that are relative to 
+	  the specified element.
+</code></pre>
+<h4 id="exemple"><a id="pragma-line-236"></a>Exemple :</h4>
+<pre><code id="pragma-line-238">protected override void OnRender(DrawingContext drawingContext)
+{
+  // Get a rectangle that represents the desired size of the rendered element
+  // after the rendering pass.  This will be used to draw at the corners of the 
+  // adorned element.
+  Rect adornedElementRect = new Rect(this.AdornedElement.RenderSize);
+
+  // Some arbitrary drawing implements.
+  SolidColorBrush renderBrush = new SolidColorBrush(Colors.Green);
+  renderBrush.Opacity = 0.2;
+  Pen renderPen = new Pen(new SolidColorBrush(Colors.Navy), 1.5);
+  double renderRadius = 5.0;
+
+  // Just draw a circle at each corner.
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.TopLeft, renderRadius, renderRadius);
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.TopRight, renderRadius, renderRadius);
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.BottomLeft, renderRadius, renderRadius);
+  drawingContext.DrawEllipse(renderBrush, renderPen, adornedElementRect.BottomRight, renderRadius, renderRadius);
+}
+</code></pre>
+<h3 id="frameworkelement.arrangecore.arrangeoverride.horizontalalignment"><a id="pragma-line-260"></a>FrameworkElement : .ArrangeCore, .ArrangeOverride, .HorizontalAlignment/...</h3>
+<pre><code id="pragma-line-262">protected override sealed void ArrangeCore (Rect finalRect);
+
+protected virtual Size ArrangeOverride (Size finalSize);
+
+	- The final area within the parent that this element should use to arrange itself and its children.
+	- returns the actual size used.
+
+	&gt; Control authors who want to customize the arrange pass of layout processing should override this method. The implementation pattern should call Arrange(Rect) on each visible child element, and pass the final desired size for each child element as the finalRect parameter. Parent elements should call Arrange(Rect) on each child, otherwise the child elements will not be rendered.
+
+public HorizontalAlignment HorizontalAlignment { get; set; }
+public VerticalAlignment VerticalAlignment { get; set; }
+</code></pre>
+<h3 id="control"><a id="pragma-line-274"></a>Control</h3>
+<pre><code id="pragma-line-276">protected override Size ArrangeOverride (Size arrangeBounds);
+
+public Thickness Padding { get; set; }
+
+	- The amount of space between the content of a Control and its Margin or Border. 
+
+public Thickness BorderThickness { get; set; }
+
+    - espaces entre l'extérieur du Contrôle et sa zone de Padding
+
+public HorizontalAlignment HorizontalContentAlignment { get; set; }
+public VerticalAlignment VerticalContentAlignment { get; set; }
+
+	- Gets or sets the horizontal alignment of the control's content.
+</code></pre>
+<h2 id="uielement-methods-invalidatemeasure-invalidatearrange-updatelayout-invalidatevisual"><a id="pragma-line-291"></a>UIElement methods : InvalidateMeasure, InvalidateArrange, UpdateLayout, InvalidateVisual</h2>
+<h3 id="invalidatemeasure"><a id="pragma-line-293"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.invalidatemeasure?view=windowsdesktop-7.0">InvalidateMeasure</a></h3>
+<pre><code id="pragma-line-295">public void InvalidateMeasure ();
+</code></pre>
+<ul id="pragma-line-297">
+<li id="pragma-line-297">Invalidates the measurement state (layout) for the element.</li>
+<li id="pragma-line-298">Calling this method also calls InvalidateArrange internally, there is no need to call
+InvalidateMeasure and InvalidateArrange in succession.</li>
+<li id="pragma-line-300">After the invalidation, the element will have its layout updated, which will occur asynchronously,
+unless UpdateLayout is called to force a synchronous layout change.</li>
+</ul>
+<h3 id="invalidatearrange"><a id="pragma-line-303"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.invalidatearrange?view=windowsdesktop-7.0">InvalidateArrange</a></h3>
+<pre><code id="pragma-line-305">public void InvalidateArrange ();
+</code></pre>
+<ul id="pragma-line-307">
+<li id="pragma-line-307">Invalidates the arrange state (layout) for the element. After the invalidation,
+the element will have its layout updated, which will occur asynchronously
+unless subsequently forced by UpdateLayout().</li>
+</ul>
+<h3 id="uielement.updatelayout-method"><a id="pragma-line-311"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.updatelayout?view=windowsdesktop-7.0">UIElement.UpdateLayout Method</a></h3>
+<pre><code id="pragma-line-313">public void UpdateLayout ();
+</code></pre>
+<ul id="pragma-line-315">
+<li id="pragma-line-315">Ensures that all visual child elements of this element are properly updated for layout.</li>
+<li id="pragma-line-316">When you call this method, elements with IsMeasureValid false or IsArrangeValid false
+will call element-specific MeasureCore and ArrangeCore methods, which forces layout update,
+and all computed sizes will be validated.</li>
+</ul>
+<h3 id="invalidatevisual"><a id="pragma-line-320"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.uielement.invalidatevisual?view=windowsdesktop-7.0">InvalidateVisual</a></h3>
+<pre><code id="pragma-line-322">public void InvalidateVisual ();
+</code></pre>
+<ul id="pragma-line-324">
+<li id="pragma-line-324">Invalidates the rendering of the element, and forces a complete new layout pass.
+OnRender(DrawingContext) is called after the layout cycle is completed.</li>
+<li id="pragma-line-326">This method calls InvalidateArrange internally.</li>
+<li id="pragma-line-327">This method is not generally called from your application code.</li>
+</ul>
+<h2 id="events"><a id="pragma-line-329"></a>Events</h2>
+<h3 id="uielement.layoutupdated"><a id="pragma-line-331"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.control.borderthickness?view=windowsdesktop-7.0">UIElement.LayoutUpdated</a></h3>
+<ul id="pragma-line-333">
+<li id="pragma-line-333">public event EventHandler LayoutUpdated;</li>
+<li id="pragma-line-334">This member is a CLR event, not a routed event.</li>
+</ul>
+<h3 id="frameworkelement.sizechanged"><a id="pragma-line-336"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.sizechanged?view=windowsdesktop-7.0">FrameworkElement.SizeChanged</a></h3>
+<ul id="pragma-line-338">
+<li id="pragma-line-338"><p id="pragma-line-338">public event System.Windows.SizeChangedEventHandler SizeChanged;</p>
+</li>
+<li id="pragma-line-339"><p id="pragma-line-339">Occurs when either the ActualHeight or the ActualWidth properties change value on this element.</p>
+</li>
+<li id="pragma-line-341"><p id="pragma-line-341">public delegate void SizeChangedEventHandler(object sender, SizeChangedEventArgs e);</p>
+</li>
+<li id="pragma-line-342"><p id="pragma-line-342">public class SizeChangedEventArgs : System.Windows.RoutedEventArgs</p>
+</li>
+</ul>
+<h4 id="sizechangedeventargs"><a id="pragma-line-344"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.sizechangedeventargs?view=windowsdesktop-7.0">SizeChangedEventArgs</a></h4>
+<h2 id="frameworkpropertymetadata"><a id="pragma-line-346"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkpropertymetadata?view=windowsdesktop-7.0">FrameworkPropertyMetadata</a></h2>
+<ul id="pragma-line-348">
+<li id="pragma-line-348"><p id="pragma-line-348">public bool AffectsArrange { get; set; }</p>
+</li>
+<li id="pragma-line-349"><p id="pragma-line-349">public bool AffectsMeasure { get; set; }</p>
+</li>
+<li id="pragma-line-350"><p id="pragma-line-350">public bool AffectsParentArrange { get; set; }</p>
+</li>
+<li id="pragma-line-351"><p id="pragma-line-351">public bool AffectsParentMeasure { get; set; }</p>
+</li>
+<li id="pragma-line-352"><p id="pragma-line-352">public bool AffectsRender { get; set; }</p>
+</li>
+<li id="pragma-line-353"><p id="pragma-line-353">public bool SubPropertiesDoNotAffectRender { get; set; }</p>
+</li>
+<li id="pragma-line-355"><p id="pragma-line-355">ces propriétés ne peuvent être assignées que sur une instance de FrameworkPropertyMetadata
+non encore appliquée à une DependencyProperty.</p>
+</li>
+</ul>
+<h2 id="direct-vs-routed-events"><a id="pragma-line-358"></a>Direct vs Routed events</h2>
+<ul id="pragma-line-360">
+<li id="pragma-line-360">Direct routed events do not follow a route, they are only handled within the same element on which
+they are raised.</li>
+<li id="pragma-line-362">Direct routed events do support other routed event behavior:
+<ul id="pragma-line-363">
+<li id="pragma-line-363">they support an accessible handlers collection,</li>
+<li id="pragma-line-364">they can be used as an EventTrigger in a style.</li>
+</ul>
+</li>
+</ul>
+<h2 id="adorner-class"><a id="pragma-line-366"></a><a href="https://learn.microsoft.com/en-us/dotnet/api/documents.adorner?view=windowsdesktop-7.0">Adorner Class</a></h2>
+
+    </div>
+    <script src="http://markdown-editor-host/margin/prism.js"></script>
+    <script src="http://markdown-editor-host/margin/mermaid.min.js"></script>
+    <!--<script src="http://markdown-editor-host/margin/mathjax.js"></script>-->
+    <script>
+        mermaid.initialize({ 'securityLevel': 'loose', 'theme': 'dark', startOnLoad: true, flowchart: { htmlLabels: false } });
+    </script>
+    
+
+</body></html>

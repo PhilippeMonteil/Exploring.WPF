@@ -4,7 +4,7 @@
 ## en résumé
 
 - mapping namespace XML / namespace
-    -  used for type resolution by a XAML object writer or XAML schema context.
+    - used for type resolution by a XAML object writer or XAML schema context.
     - xmlns:lib="clr-namespace:ItemsControlLib;assembly=ItemsControlLib"
     - attribut XmlnsDefinitionAttribute
         - dans AssemblyInfo.cs
@@ -55,6 +55,7 @@
             public override object ProvideValue(IServiceProvider serviceProvider)
         - IServiceProvider.GetService
             ex :
+                IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
                 DependencyObject dependencyObject = provideValueTarget.TargetObject as DependencyObject;
                 DependencyProperty dependencyProperty = provideValueTarget.TargetProperty as DependencyProperty;
 

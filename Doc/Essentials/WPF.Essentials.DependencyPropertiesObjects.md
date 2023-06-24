@@ -21,8 +21,10 @@
 
     	- une DependencyPropertyKey peut être utilisée pour assigner une valeur à une DependencyProperty
     		public void DependencyObject.SetValue(DependencyPropertyKey key, object value);
+
         - elle expose une propriété .DependencyProperty qui peut être utilisée pour lire 
     		public object DependencyObject.GetValue(DependencyProperty dp);
+
           mais pas pour écrire une valeur dans la DependencyProperty : SetValue
     		  public void DependencyObject.SetValue (DependencyProperty dp, object value);
           provoquerait une exception
@@ -51,12 +53,12 @@
 
         - public object DefaultValue { get; set; }
 
-        - public System.Windows.PropertyChangedCallback PropertyChangedCallback { get; set; }
+        - public PropertyChangedCallback PropertyChangedCallback { get; set; }
 
             public delegate void PropertyChangedCallback(DependencyObject d, 
                                                     DependencyPropertyChangedEventArgs e);
 
-        - public System.Windows.CoerceValueCallback CoerceValueCallback { get; set; }
+        - public CoerceValueCallback CoerceValueCallback { get; set; }
 
             public delegate object CoerceValueCallback(DependencyObject d, object baseValue);
 
@@ -87,7 +89,13 @@
     - XAML :  <attached property provider type>.<property name>
       ex: <TextBox DockPanel.Dock="Top">Enter text</TextBox>
 
-    - RegisterAttached, RegisterAttachedReadOnly
+    - DependencyProperty.RegisterAttached, RegisterAttachedReadOnly
+
+        public static DependencyProperty RegisterAttached (string name, 
+                                                            Type propertyType, 
+                                                            Type ownerType, 
+                                                            PropertyMetadata defaultMetadata, 
+                                                            ValidateValueCallback validateValueCallback);
 
 - DependencyObject
 
@@ -122,7 +130,7 @@
             - DependencyPropertyChangedEventArgs
 
                 - Properties
-                    public System.Windows.DependencyProperty Property { get; }
+                    public DependencyProperty Property { get; }
                     public object OldValue { get; }
                     public object NewValue { get; }
 
@@ -130,11 +138,15 @@
 
             - LocalValueEnumerator
 
+                - public struct LocalValueEnumerator : System.Collections.IEnumerator
+                - -> LocalValueEntry
+
             - LocalValueEntry
 
                 - Properties
-                public System.Windows.DependencyProperty Property { get; }
-                public object Value { get; }
+
+                    public DependencyProperty Property { get; }
+                    public object Value { get; }
  
 - DependencyPropertyHelper
 
@@ -148,7 +160,7 @@
 
     - ValueSource
 
-        public System.Windows.BaseValueSource BaseValueSource { get; }
+        public BaseValueSource BaseValueSource { get; }
         public bool IsAnimated { get; }
         public bool IsCoerced { get; }
         public bool IsCurrent { get; }
@@ -161,7 +173,7 @@
         - DefaultStyleTrigger : 4	
         - ...
 
-## [DependencyProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyproperty?view=windowsdesktop-7.0)
+## [DependencyProperty](https://learn.microsoft.com/en-us/dotnet/api/dependencyproperty?view=windowsdesktop-7.0)
 
 ### [Dependency properties overview](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-properties-overview?view=netframeworkdesktop-4.8)
 
@@ -191,7 +203,7 @@
 	public static DependencyProperty RegisterAttached (string name, Type propertyType, Type ownerType, PropertyMetadata defaultMetadata, ValidateValueCallback validateValueCallback);
 	public static DependencyPropertyKey RegisterAttachedReadOnly (string name, Type propertyType, Type ownerType, PropertyMetadata defaultMetadata, ValidateValueCallback validateValueCallback);
 
-### [DependencyPropertyKey](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencypropertykey?view=windowsdesktop-7.0)
+### [DependencyPropertyKey](https://learn.microsoft.com/en-us/dotnet/api/dependencypropertykey?view=windowsdesktop-7.0)
 
 - DependencyProperty.RegisterReadOnly -> DependencyPropertyKey
 - DependencyPropertyKey.DependencyProperty 
@@ -225,11 +237,11 @@
 
 ### [PropertyMetadata](https://learn.microsoft.com/en-us/dotnet/api/propertymetadata?view=windowsdesktop-7.0)
 
-### [UIPropertyMetadata](https://learn.microsoft.com/en-us/dotnet/api/system.windows.uipropertymetadata?view=windowsdesktop-7.0)
+### [UIPropertyMetadata](https://learn.microsoft.com/en-us/dotnet/api/uipropertymetadata?view=windowsdesktop-7.0)
 
 ### [FrameworkPropertyMetadata](https://learn.microsoft.com/en-us/dotnet/api/frameworkpropertymetadata?view=windowsdesktop-7.0)
 
-### [FrameworkPropertyMetadataOptions](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkpropertymetadataoptions?view=windowsdesktop-7.0)
+### [FrameworkPropertyMetadataOptions](https://learn.microsoft.com/en-us/dotnet/api/frameworkpropertymetadataoptions?view=windowsdesktop-7.0)
 
 ### [Overriding metadata](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/properties/dependency-property-metadata?view=netdesktop-7.0#overriding-metadata)
 
@@ -309,7 +321,7 @@
 
 ## [Dependency Property Value Precedence](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/advanced/dependency-property-value-precedence?view=netframeworkdesktop-4.8)
 
-## [DependencyPropertyHelper Class](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencypropertyhelper?view=windowsdesktop-7.0)
+## [DependencyPropertyHelper Class](https://learn.microsoft.com/en-us/dotnet/api/dependencypropertyhelper?view=windowsdesktop-7.0)
 
 ### méthodes :
 
@@ -319,17 +331,17 @@
     - public static bool IsTemplatedValueDynamic (DependencyObject elementInTemplate, 
                                                     DependencyProperty dependencyProperty);
 
-### [ValueSource struct](https://learn.microsoft.com/en-us/dotnet/api/system.windows.valuesource?view=windowsdesktop-7.0)
+### [ValueSource struct](https://learn.microsoft.com/en-us/dotnet/api/valuesource?view=windowsdesktop-7.0)
 
 - properties
 
-    public System.Windows.BaseValueSource BaseValueSource { get; }
+    public BaseValueSource BaseValueSource { get; }
     public bool IsAnimated { get; }
     public bool IsCoerced { get; }
     public bool IsCurrent { get; }
     public bool IsExpression { get; }
 
-### [BaseValueSource Enum](https://learn.microsoft.com/en-us/dotnet/api/system.windows.basevaluesource?view=windowsdesktop-7.0)
+### [BaseValueSource Enum](https://learn.microsoft.com/en-us/dotnet/api/basevaluesource?view=windowsdesktop-7.0)
 
 Default	1	
 Source is the default value, as defined by property metadata.
@@ -367,7 +379,7 @@ Source is a trigger-based value in a template that is from a non-theme style.
 Unknown	0	
 Source is not known. This is the default value.
 
-## [DependencyObject](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject?view=windowsdesktop-7.0)
+## [DependencyObject](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject?view=windowsdesktop-7.0)
 
 ### En résumé
 
@@ -389,7 +401,7 @@ Source is not known. This is the default value.
 
 ### Inheritance : Object / DispatcherObject / DependencyObject
 
-### [SetValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.setvalue?view=windowsdesktop-7.0)
+### [SetValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.setvalue?view=windowsdesktop-7.0)
 
 	public void SetValue (DependencyProperty dp, object value);
 
@@ -404,7 +416,7 @@ Source is not known. This is the default value.
 
 - Sets the local value of a dependency property
  
-### [SetCurrentValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.setcurrentvalue?view=windowsdesktop-7.0)
+### [SetCurrentValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.setcurrentvalue?view=windowsdesktop-7.0)
 
 	public void SetCurrentValue (DependencyProperty dp, object value);
 
@@ -414,11 +426,11 @@ Source is not known. This is the default value.
 - The SetCurrentValue method changes the effective value of the property, but existing triggers, 
   data bindings, and styles will continue to work.
 
-### [GetValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.getvalue?view=windowsdesktop-7.0)
+### [GetValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.getvalue?view=windowsdesktop-7.0)
 
 	public object GetValue (DependencyProperty dp);
 
-### [ReadLocalValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.readlocalvalue?view=windowsdesktop-7.0)
+### [ReadLocalValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.readlocalvalue?view=windowsdesktop-7.0)
 
 	public object ReadLocalValue (DependencyProperty dp);
 
@@ -430,7 +442,7 @@ Source is not known. This is the default value.
 - Bindings and other expressions are considered to be local values, after they have been evaluated.
 - When no local value is set, this method returns DependencyProperty.UnsetValue.
 
-### [ClearValue](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.clearvalue?view=windowsdesktop-7.0)
+### [ClearValue](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.clearvalue?view=windowsdesktop-7.0)
 
 	public void ClearValue (DependencyProperty dp);
 	public void ClearValue (DependencyPropertyKey key);
@@ -440,34 +452,34 @@ Source is not known. This is the default value.
   default value that is specified in the dependency property metadata. 
 - Clearing the property only specifically clears whatever local value may have been applied.
 
-### [InvalidateProperty](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.invalidateproperty?view=windowsdesktop-7.0)
+### [InvalidateProperty](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.invalidateproperty?view=windowsdesktop-7.0)
 
 	public void InvalidateProperty (DependencyProperty dp);
 
 - Re-evaluates the effective value for the specified dependency property.
 
-### [OnPropertyChanged](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.onpropertychanged?view=windowsdesktop-7.0)
+### [OnPropertyChanged](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.onpropertychanged?view=windowsdesktop-7.0)
 
 	protected virtual void OnPropertyChanged (DependencyPropertyChangedEventArgs e);
 
-#### [DependencyPropertyChangedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencypropertychangedeventargs?view=windowsdesktop-7.0)
+#### [DependencyPropertyChangedEventArgs](https://learn.microsoft.com/en-us/dotnet/api/dependencypropertychangedeventargs?view=windowsdesktop-7.0)
 
 - Properties
     - public object NewValue { get; }
     - public object OldValue { get; }
-    - public System.Windows.DependencyProperty Property { get; }
+    - public DependencyProperty Property { get; }
 
-### [GetLocalValueEnumerator](https://learn.microsoft.com/en-us/dotnet/api/system.windows.dependencyobject.getlocalvalueenumerator?view=windowsdesktop-7.0)
+### [GetLocalValueEnumerator](https://learn.microsoft.com/en-us/dotnet/api/dependencyobject.getlocalvalueenumerator?view=windowsdesktop-7.0)
 
 	public LocalValueEnumerator GetLocalValueEnumerator ();
 
-#### [LocalValueEnumerator Struct](https://learn.microsoft.com/en-us/dotnet/api/system.windows.localvalueenumerator?view=windowsdesktop-7.0)
+#### [LocalValueEnumerator Struct](https://learn.microsoft.com/en-us/dotnet/api/localvalueenumerator?view=windowsdesktop-7.0)
 
-#### [LocalValueEntry](https://learn.microsoft.com/en-us/dotnet/api/system.windows.localvalueentry?view=windowsdesktop-7.0)
+#### [LocalValueEntry](https://learn.microsoft.com/en-us/dotnet/api/localvalueentry?view=windowsdesktop-7.0)
 
 - Properties
 
-    - public System.Windows.DependencyProperty Property { get; }
+    - public DependencyProperty Property { get; }
     - public object Value { get; }
 
 #### Exemple :
