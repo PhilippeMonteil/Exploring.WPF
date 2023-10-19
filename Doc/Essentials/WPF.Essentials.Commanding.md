@@ -50,6 +50,8 @@
         - public object CommandParameter { get; }
         - public IInputElement CommandTarget { get; }
 
+    - implements : ButtonBase 
+
 - UIElement.CommandBindings
 
     public System.Windows.Input.CommandBindingCollection CommandBindings { get; }
@@ -98,6 +100,10 @@
 
 - IPreviewCommand, IPreviewCommandSource
 
+    public interface IPreviewCommand : System.Windows.Input.ICommand
+
+    public interface IPreviewCommandSource : System.Windows.Input.ICommandSource
+
 ## [ICommand](https://learn.microsoft.com/fr-fr/dotnet/api/icommand?view=net-8.0)
 
 ## [RoutedCommand](https://learn.microsoft.com/en-us/dotnet/api/routedcommand?view=windowsdesktop-7.0)
@@ -108,18 +114,19 @@
 - Implements : ICommand
 
 - methods :
-
+```
     public void Execute (object parameter, IInputElement target);
     public bool CanExecute (object parameter, IInputElement target);
 
         target : Element at which to begin looking for command handlers.
+```
 
-        L'appel de CanExecute / Execute se traduit par un déclenchement de la paire d'attached events
-        de CommandManager .PreviewCanExecute /.CanExecute et .PreviewExecuted (tunneling)/.Executed (bubbling) 
-        La propagation de ces events se fait le long de l'arbre visuel, à partir de la .CommandTarget
-        du ICommandSource ayant déclenché l'exécution de la commande, à la recherche d'un UIElement 
-        dont la collection .CommandBindings contient un CommandBinding traitant l'event en cours 
-        de propagation.
+L'appel de CanExecute / Execute se traduit par un déclenchement de la paire d'attached events
+de CommandManager .PreviewCanExecute /.CanExecute et .PreviewExecuted (tunneling)/.Executed (bubbling) 
+La propagation de ces events se fait le long de l'arbre visuel, à partir de la .CommandTarget
+du ICommandSource ayant déclenché l'exécution de la commande, à la recherche d'un UIElement 
+dont la collection .CommandBindings contient un CommandBinding traitant l'event en cours 
+de propagation.
 
 ### [Understanding Routed Events and Commands In WPF](https://learn.microsoft.com/en-us/archive/msdn-magazine/2008/september/advanced-wpf-understanding-routed-events-and-commands-in-wpf)
 
@@ -224,6 +231,7 @@ public class RelayCommand : ICommand
     Provides methods for previewing commands without actually committing the action.
 
 - public interface IPreviewCommand : ICommand
+
 - methods :
     - public void CancelPreview();
     - public void Preview (object parameter);
