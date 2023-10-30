@@ -31,18 +31,21 @@
 
     - OverrideMetaData
 
-    	- modifier la MetaData d'une DependencyProperty pour un type dérivant de celui
+    	- modifier la MetaData d'une DependencyProperty pour un type __dérivant__ de celui
 		  ayant déclaré ladite DependencyProperty.
 
         	public void OverrideMetadata (Type forType, PropertyMetadata typeMetadata, DependencyPropertyKey key);
 
-		- modifier la valeur défaut d'une DependencyProperty pour un sous-type donné, par exemple
+		- modifier la valeur par défaut d'une DependencyProperty pour un sous-type donné, par exemple
 
     - AddOwner
 
-            public DependencyProperty DependencyProperty.AddOwner(Type ownerType, PropertyMetadata typeMetadata);
+            public DependencyProperty AddOwner (Type ownerType);
+            public DependencyProperty AddOwner(Type ownerType, PropertyMetadata typeMetadata);
 
 - PropertyMetadata 
+
+            public void OverrideMetadata (Type forType, PropertyMetadata typeMetadata);
 
     - données assignées à une DependencyProperty :
         - lors de son enregistrement
@@ -69,7 +72,7 @@
     	- Inherits
     	- Binding : NotDataBindable, BindsTwoWayByDefault
 
-    - Merge
+    - PropertyMetadata.Merge
         - lors d'un OverrideMetadata, AddOwner 
         - protected virtual void Merge(PropertyMetadata baseMetadata, DependencyProperty dp);
         - DefaultValue, the new value will replace the existing default value
@@ -108,10 +111,6 @@
 
     	public object GetValue (DependencyProperty dp);
 
-    	public void SetCurrentValue (DependencyProperty dp, object value);
-
-            - Sets the effective value of a dependency property without changing its value source.
-
     	public object ReadLocalValue (DependencyProperty dp);
 
             - gets the local, if not effective, value of a dependency property
@@ -120,6 +119,10 @@
     	public void ClearValue (DependencyPropertyKey key);
 
             - Clears the local value of a property. 
+
+    	public void SetCurrentValue (DependencyProperty dp, object value);
+
+            - Sets the effective value of a dependency property without changing its value source.
 
     	public void InvalidateProperty (DependencyProperty dp);
 
