@@ -111,14 +111,28 @@
 
     	public object GetValue (DependencyProperty dp);
 
-    	public object ReadLocalValue (DependencyProperty dp);
-
-            - gets the local, if not effective, value of a dependency property
-
     	public void ClearValue (DependencyProperty dp);
     	public void ClearValue (DependencyPropertyKey key);
 
             - Clears the local value of a property. 
+
+    	public object ReadLocalValue (DependencyProperty dp);
+
+            - gets the local, if not effective, value of a dependency property
+
+    	public LocalValueEnumerator GetLocalValueEnumerator ();
+
+            - LocalValueEnumerator
+
+                - public struct LocalValueEnumerator : System.Collections.IEnumerator
+                - -> LocalValueEntry
+
+            - LocalValueEntry
+
+                - Properties
+
+                    public DependencyProperty Property { get; }
+                    public object Value { get; }
 
     	public void SetCurrentValue (DependencyProperty dp, object value);
 
@@ -136,20 +150,6 @@
                     public DependencyProperty Property { get; }
                     public object OldValue { get; }
                     public object NewValue { get; }
-
-    	public LocalValueEnumerator GetLocalValueEnumerator ();
-
-            - LocalValueEnumerator
-
-                - public struct LocalValueEnumerator : System.Collections.IEnumerator
-                - -> LocalValueEntry
-
-            - LocalValueEntry
-
-                - Properties
-
-                    public DependencyProperty Property { get; }
-                    public object Value { get; }
  
 - DependencyPropertyHelper
 
