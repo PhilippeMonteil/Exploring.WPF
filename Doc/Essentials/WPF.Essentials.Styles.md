@@ -4,17 +4,35 @@
 ## En résumé
 
 - Style
-    - dérive de DispatcherObject
-    - properties
-        public Style BasedOn { get; set; }
-        public Type TargetType { get; set; }
-        public bool IsSealed { get; }
-        public ResourceDictionary Resources { get; set; }
-        public SetterBaseCollection Setters { get; }
-        public TriggerCollection Triggers { get; }
-    - ContentProperty : Setters
-    - DictionaryKeyProperty : TargetType
-        utilisée pour inscrire un Style dans un ResourceDictionary si aucune key n'est précisée
+
+```c#
+[Localizability(LocalizationCategory.Ignore)]
+[Markup.ContentProperty("Setters")]
+[Markup.DictionaryKeyProperty("TargetType")]
+public class Style : Threading.DispatcherObject, 
+                                Markup.IAddChild, 
+                                Markup.INameScope, 
+                                Markup.IQueryAmbient
+{
+    ...
+}
+```
+
+- dérive de DispatcherObject
+- properties
+
+```c#
+public Style BasedOn { get; set; }
+public Type TargetType { get; set; }
+public bool IsSealed { get; }
+public ResourceDictionary Resources { get; set; }
+public SetterBaseCollection Setters { get; }
+public TriggerCollection Triggers { get; }
+```
+
+  - ContentProperty : Setters
+  - DictionaryKeyProperty : TargetType
+        propriété utilisée comme key pour inscrire un Style dans un ResourceDictionary si aucune key n'est précisée
 
 - FrameworkElement 
 
@@ -161,6 +179,8 @@
 
     protected internal object DefaultStyleKey { get; set; }
 
+    Gets or sets the key to use to reference the style for this control, when theme styles are used or defined.
+
 - Key utilisée pour trouver le Style implicite ou par défaut d'un FrameworkElement
 
 - la résolution d'un Style par une Markup Extension StaticResource ou DynamicResource,
@@ -181,7 +201,10 @@
 
 - un Style devrait préciser son TargetType, de façon à vérifier ses Setters, ... 
 - un Style inscrit dans un ResourceDictionary doit avoir une x:Key,
-  si ce n'est pas le cas son TargetType fait office de x:Key
+  si ce n'est pas le cas son TargetType fait office de x:Key, comme indiqué par:
+```
+    [Markup.DictionaryKeyProperty("TargetType")]
+```
 - pour être un implicite pour un type de FramewokElement particulier, un Style doit préciser
   un TargetType mais pas de x:Key
 
