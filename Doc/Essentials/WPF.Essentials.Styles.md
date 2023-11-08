@@ -187,7 +187,9 @@ public TriggerCollection Triggers { get; }
   la recherche du Theme ou default Style se fait comme celle de toute autre ressource 
   (FrameworkElement.FindResource), à partir de la valeur de la propriété DefaultStyleKey
 
-    protected internal object DefaultStyleKey { get; set; }
+      public object FindResource (object resourceKey);
+
+      protected internal object DefaultStyleKey { get; set; }
 
   du DependencyObject cible de la Markup Extension.
 
