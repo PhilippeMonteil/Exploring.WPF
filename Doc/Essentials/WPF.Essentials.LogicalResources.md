@@ -155,7 +155,9 @@
                                                 MyComponentLibBrush}}"/>
 ````
 
-## FrameWorkElement.FindResource en résumé
+## [FrameWorkElement.FindResource](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement.findresource?view=windowsdesktop-7.0) en résumé
+
+    public object FindResource (object resourceKey);
 
 ### notions mises en oeuvre : 
 
@@ -174,7 +176,7 @@
 
 - la résolution d'une MarkupExtension Static/DynamicResource (ProvideValue) se fait par un appel 
   à FrameWorkElement.FindResource sur le DependencyObject cible de la MarkupExtension 
-  (IServiceProvide.TargetValue.TargetObject) en passant la Key avec laquelle la MarkupExtension 
+  (IServiceProvider.TargetValue.TargetObject) en passant la Key avec laquelle la MarkupExtension 
   a été construite.
 
 - cette Key peut être une String, une ResourceKey (ComponentResourceKey, SystemResourceKey) ...
@@ -189,8 +191,8 @@
         - inspection de Application.Resources
 
         - dans l'assembly implémentant le FrameWorkElement object de l'appel à .FindResource :
-            - si son ThemeInfo le permet : recheche dans le ResourceDictionary correspondant au Thème actif
-            - si son ThemeInfo le permet : recheche dans le ResourceDictionary par défaut : Themes/generic.xaml
+            - si son ThemeInfo le permet : recherche dans le ResourceDictionary correspondant au Thème actif
+            - si son ThemeInfo le permet : recherche dans le ResourceDictionary par défaut : Themes/generic.xaml
 
         - si la .Source d'un des ResourceDictionary inspecté est fournie par une MarkupExtension de type ThemeDictionary
           celle ci précise le nom d'une Assembly fournissant un jeu de ResourceDictionary correspondant 
@@ -204,7 +206,7 @@
     - SystemResourceKey : 
         - type caché, dérivant de ResourceKey
         - propriété de SystemParameters / SystemColors / SystemFonts correspondant 
-          correspond à une propriété statique de la classe exposant la Key dont la valeur 
+          à une propriété statique de la classe exposant la Key dont la valeur 
           est retournée par FindResource.
 
 ### exemples

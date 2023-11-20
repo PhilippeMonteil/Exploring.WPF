@@ -265,7 +265,7 @@ L'assembly ainsi annotée indique qu'elle contient un Themes/generic.xaml
 #### [public enum ResourceDictionaryLocation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.resourcedictionarylocation?view=windowsdesktop-7.0)
 
 | Syntax | Description |
-| ----------- | ----------- |
+| - | - |
 | ExternalAssembly | Theme dictionaries exist in assemblies external to the one defining the types being themed. They are named based on the original assembly with the theme name appended to it; for example, PresentationFramework.Luna.dll. These dictionaries share the same version and key as the original assembly.|
 | SourceAssembly | Theme dictionaries exist in the assembly that defines the types being themed. |
 
